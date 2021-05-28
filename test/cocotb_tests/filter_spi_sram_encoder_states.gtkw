@@ -1,0 +1,8 @@
+000 idle
+001 start
+010 instruction
+011 address
+100 read
+101 write
+110 reset
+111 set_SQI_mode

@@ -1,0 +1,15 @@
+[options]
+
+mode cover
+depth 60
+
+
+[engines]
+smtbmc
+
+[script]
+read -formal spi_sram_encoder.v
+prep -top spi_sram_encoder
+
+[files]
+../src/spi_sram_encoder.v

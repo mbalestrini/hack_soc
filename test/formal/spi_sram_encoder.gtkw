@@ -1,0 +1,33 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Mon May 24 00:21:48 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/spi_sram_encoder_task1/engine_0/trace0.vcd"
+[dumpfile_mtime] "Mon May 24 00:19:21 2021"
+[dumpfile_size] 11060
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/spi_sram_encoder.gtkw"
+[timestart] 0
+[size] 1920 1147
+[pos] -9 -23
+*-6.005206 80 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 213
+[signals_width] 298
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+spi_sram_encoder.clk
+spi_sram_encoder.reset
+spi_sram_encoder.sram_sck
+spi_sram_encoder.request
+spi_sram_encoder.sram_cs_n
+spi_sram_encoder.current_state[2:0]
+@22
+spi_sram_encoder.sio_o[3:0]
+spi_sram_encoder.sio_i[3:0]
+spi_sram_encoder.address[23:0]
+@28
+spi_sram_encoder.busy
+@420
+smt_step
+[pattern_trace] 1
+[pattern_trace] 0

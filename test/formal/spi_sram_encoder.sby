@@ -1,0 +1,21 @@
+[tasks]
+task_cover
+task_prove
+
+[options]
+task_prove: mode prove
+task_prove: depth 60
+
+task_cover: mode cover
+task_cover: depth 60
+
+
+[engines]
+smtbmc
+
+[script]
+read -formal spi_sram_encoder.v
+prep -top spi_sram_encoder
+
+[files]
+../src/spi_sram_encoder.v

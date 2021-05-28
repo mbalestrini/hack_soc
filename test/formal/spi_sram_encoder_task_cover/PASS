@@ -1,0 +1,6 @@
+Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
+Elapsed process time [H:MM:SS (secs)]: 0:00:03 (3)
+engine_0 (smtbmc) returned pass
+trace: formal/spi_sram_encoder_task_cover/engine_0/trace0.vcd
+trace: formal/spi_sram_encoder_task_cover/engine_0/trace1.vcd
+trace: formal/spi_sram_encoder_task_cover/engine_0/trace2.vcd

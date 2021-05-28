@@ -1,0 +1,43 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Wed May 26 00:26:04 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_1.vcd"
+[dumpfile_mtime] "Wed May 26 00:25:18 2021"
+[dumpfile_size] 25845
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_1.gtwk"
+[timestart] 0
+[size] 1920 1147
+[pos] -9 -23
+*-28.000000 2580000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] hack_soc.
+[treeopen] hack_soc.cpu.
+[sst_width] 213
+[signals_width] 259
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+hack_soc.reset
+hack_soc.clk
+hack_soc.ram_sck
+hack_soc.hack_clock_0.hack_clk
+hack_soc.hack_reset
+@22
+hack_soc.cpu.pc[14:0]
+hack_soc.cpu.instruction[15:0]
+hack_soc.cpu.addressM[14:0]
+hack_soc.cpu.inM[15:0]
+@28
+hack_soc.ram_request
+hack_soc.rom_request
+hack_soc.rom_busy
+@2028
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_sram_encoder_states.gtkw
+hack_soc.rom_encoder_0.current_state[2:0]
+@28
+hack_soc.ram_busy
+@2028
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_sram_encoder_states.gtkw
+hack_soc.ram_encoder_0.current_state[2:0]
+[pattern_trace] 1
+[pattern_trace] 0

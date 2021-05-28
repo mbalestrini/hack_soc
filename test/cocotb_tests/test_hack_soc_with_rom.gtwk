@@ -1,0 +1,50 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Wed May 26 14:11:21 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_with_rom.vcd"
+[dumpfile_mtime] "Wed May 26 14:10:30 2021"
+[dumpfile_size] 564484
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_with_rom.gtwk"
+[timestart] 0
+[size] 1920 1147
+[pos] -9 -23
+*-32.000000 16215000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test_hack_soc_with_rom.
+[treeopen] test_hack_soc_with_rom.soc.
+[treeopen] test_hack_soc_with_rom.soc.cpu.
+[treeopen] test_hack_soc_with_rom.soc.rom_encoder_0.
+[sst_width] 284
+[signals_width] 331
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+test_hack_soc_with_rom.clk
+test_hack_soc_with_rom.reset
+test_hack_soc_with_rom.soc.hack_clk
+@22
+test_hack_soc_with_rom.soc.hack_pc[14:0]
+test_hack_soc_with_rom.soc.hack_instruction[15:0]
+test_hack_soc_with_rom.soc.hack_addressM[14:0]
+test_hack_soc_with_rom.soc.hack_outM[15:0]
+test_hack_soc_with_rom.soc.hack_inM[15:0]
+@28
+test_hack_soc_with_rom.soc.hack_writeM
+test_hack_soc_with_rom.rom.CS_N
+@22
+test_hack_soc_with_rom.soc.rom_encoder_0.data_in[15:0]
+@28
+test_hack_soc_with_rom.soc.cpu.pc_load
+@22
+test_hack_soc_with_rom.soc.cpu.dreg_out[15:0]
+test_hack_soc_with_rom.soc.cpu.areg_out[15:0]
+@28
+test_hack_soc_with_rom.soc.cpu.dreg_load
+@22
+test_hack_soc_with_rom.soc.cpu.dreg_in[15:0]
+test_hack_soc_with_rom.ram.MemoryByte00000[7:0]
+test_hack_soc_with_rom.ram.MemoryByte00001[7:0]
+test_hack_soc_with_rom.ram.MemoryByte00002[7:0]
+test_hack_soc_with_rom.ram.MemoryByte00003[7:0]
+[pattern_trace] 1
+[pattern_trace] 0

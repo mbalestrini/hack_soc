@@ -1,0 +1,23 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Thu May 13 12:16:26 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/verilator/traces/test_A.vcd"
+[dumpfile_mtime] "Thu May 13 12:13:34 2021"
+[dumpfile_size] 6858
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/verilator/traces/show_test_A.gtkw"
+[timestart] 8
+[size] 1000 600
+[pos] -1 -1
+*-6.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 213
+[signals_width] 94
+[sst_expanded] 1
+[sst_vpaned_height] 151
+@28
+TOP.clk
+TOP.data_in
+TOP.data_out
+TOP.reset
+[pattern_trace] 1
+[pattern_trace] 0

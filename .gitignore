@@ -1,0 +1,12 @@
+*.swp
+*.vcd
+*.log
+*.bin
+__pycache__
+sim_build
+results.xml
+build
+engine_*/
+design/
+devlog/
+development_tests/

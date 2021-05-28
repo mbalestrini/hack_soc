@@ -1,0 +1,74 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Mon May 24 18:39:12 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_encoder_with_23LC2014_tb.vcd"
+[dumpfile_mtime] "Mon May 24 18:37:04 2021"
+[dumpfile_size] 14239
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_encoder_with_23LC2014_tb.gtkw"
+[timestart] 0
+[size] 1920 1147
+[pos] -1 -1
+*-28.000000 253000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] encoder_with_23LC2014_tb.
+[treeopen] encoder_with_23LC2014_tb._spi_sram_encoder.
+[sst_width] 323
+[signals_width] 288
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+encoder_with_23LC2014_tb.clk
+encoder_with_23LC2014_tb.initialized
+encoder_with_23LC2014_tb.reset
+@22
+encoder_with_23LC2014_tb._spi_sram_encoder.initializing_step[4:0]
+@28
+encoder_with_23LC2014_tb._spi_sram_encoder.current_state[2:0]
+encoder_with_23LC2014_tb._spi_sram_encoder.clk
+@22
+encoder_with_23LC2014_tb.hack_addressM[15:0]
+@28
+encoder_with_23LC2014_tb.hack_writeM
+@22
+encoder_with_23LC2014_tb.hack_outM[15:0]
+@28
+encoder_with_23LC2014_tb._spi_sram_encoder.sram_sck
+encoder_with_23LC2014_tb._spi_sram_encoder.initialized
+encoder_with_23LC2014_tb._spi_sram_encoder.request
+encoder_with_23LC2014_tb.busy
+encoder_with_23LC2014_tb._spi_sram_encoder.sram_cs_n
+encoder_with_23LC2014_tb._spi_sram_encoder.sram_sio_oe
+@22
+encoder_with_23LC2014_tb._spi_sram_encoder.sio_o[3:0]
+encoder_with_23LC2014_tb._spi_sram_encoder.sio_i[3:0]
+@28
+encoder_with_23LC2014_tb.sram_sio0
+encoder_with_23LC2014_tb.sram_sio1
+@23
+encoder_with_23LC2014_tb.hack_inM[15:0]
+@22
+encoder_with_23LC2014_tb._23ml1024.AddrRegister[16:0]
+@28
+encoder_with_23LC2014_tb._23ml1024.CS_N
+encoder_with_23LC2014_tb._23ml1024.RESET
+encoder_with_23LC2014_tb._23ml1024.SCK
+encoder_with_23LC2014_tb._23ml1024.SI_SIO0
+encoder_with_23LC2014_tb._23ml1024.SO_SIO1
+encoder_with_23LC2014_tb._23ml1024.SIO2
+encoder_with_23LC2014_tb._23ml1024.HOLD_N_SIO3
+encoder_with_23LC2014_tb._23ml1024.IOMode[1:0]
+@22
+encoder_with_23LC2014_tb._23ml1024.ClockCounter[31:0]
+@28
+encoder_with_23LC2014_tb._23ml1024.DataShifterI[7:0]
+@22
+encoder_with_23LC2014_tb._23ml1024.DataShifterO[7:0]
+encoder_with_23LC2014_tb._23ml1024.InstRegister[7:0]
+@28
+encoder_with_23LC2014_tb._23ml1024.IOMode[1:0]
+encoder_with_23LC2014_tb._23ml1024.Hold
+encoder_with_23LC2014_tb._23ml1024.InstructionEQIO
+encoder_with_23LC2014_tb._23ml1024.InstructionEDIO
+encoder_with_23LC2014_tb._23ml1024.InstructionRSTIO
+[pattern_trace] 1
+[pattern_trace] 0
