@@ -10,3 +10,4 @@ engine_*/
 design/
 devlog/
 development_tests/
+test/formal/*task*/
