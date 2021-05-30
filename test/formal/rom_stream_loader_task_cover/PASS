@@ -1,8 +1,0 @@
-Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
-Elapsed process time [H:MM:SS (secs)]: 0:00:02 (2)
-engine_0 (smtbmc) returned pass
-trace: formal/rom_stream_loader_task_cover/engine_0/trace0.vcd
-trace: formal/rom_stream_loader_task_cover/engine_0/trace1.vcd
-trace: formal/rom_stream_loader_task_cover/engine_0/trace2.vcd
-trace: formal/rom_stream_loader_task_cover/engine_0/trace3.vcd
-trace: formal/rom_stream_loader_task_cover/engine_0/trace4.vcd
