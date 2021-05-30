@@ -1,0 +1,92 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Sat May 29 20:32:05 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_rom_loader_with_spi_encoder.vcd"
+[dumpfile_mtime] "Sat May 29 20:31:41 2021"
+[dumpfile_size] 188341
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_rom_loader_with_spi_encoder.gtwk"
+[timestart] 0
+[size] 1920 1147
+[pos] -9 -23
+*-32.000000 15220000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test_rom_loader_with_spi_encoder.
+[sst_width] 350
+[signals_width] 333
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+test_rom_loader_with_spi_encoder.clk
+test_rom_loader_with_spi_encoder.sram_sck
+test_rom_loader_with_spi_encoder.reset
+test_rom_loader_with_spi_encoder.manual_test
+@29
+test_rom_loader_with_spi_encoder.file_to_rom.run
+@28
+test_rom_loader_with_spi_encoder.file_to_rom.done_loading
+test_rom_loader_with_spi_encoder.rom_busy
+test_rom_loader_with_spi_encoder.rom_initialized
+[color] 2
+test_rom_loader_with_spi_encoder.rom_loader.load
+@22
+test_rom_loader_with_spi_encoder.rom_loader_data[15:0]
+@28
+test_rom_loader_with_spi_encoder.rom_loader_request
+test_rom_loader_with_spi_encoder.rom_loader_reset
+@22
+test_rom_loader_with_spi_encoder._spi_sram_encoder.data_out[15:0]
+test_rom_loader_with_spi_encoder.rom_loader_output_address[15:0]
+test_rom_loader_with_spi_encoder.rom_loader_output_data[15:0]
+@28
+test_rom_loader_with_spi_encoder.sram_cs_n
+@22
+test_rom_loader_with_spi_encoder.sram_sio_oe
+@c00022
+#{test_rom_loader_with_spi_encoder.sram_sio[3:0]} test_rom_loader_with_spi_encoder.sram_sio3 test_rom_loader_with_spi_encoder.sram_sio2 test_rom_loader_with_spi_encoder.sram_sio1 test_rom_loader_with_spi_encoder.sram_sio0
+@28
+test_rom_loader_with_spi_encoder.sram_sio3
+test_rom_loader_with_spi_encoder.sram_sio2
+test_rom_loader_with_spi_encoder.sram_sio1
+test_rom_loader_with_spi_encoder.sram_sio0
+@1401200
+-group_end
+@28
+test_rom_loader_with_spi_encoder.rom_write_enable
+@2028
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_sram_encoder_states.gtkw
+test_rom_loader_with_spi_encoder._spi_sram_encoder.current_state[2:0]
+@22
+test_rom_loader_with_spi_encoder._spi_sram_encoder.output_bits_left[4:0]
+test_rom_loader_with_spi_encoder._spi_sram_encoder.output_buffer[23:0]
+@c00022
+#{test_rom_loader_with_spi_encoder.sram_sio[3:0]_o} test_rom_loader_with_spi_encoder.sram_sio3_o test_rom_loader_with_spi_encoder.sram_sio2_o test_rom_loader_with_spi_encoder.sram_sio1_o test_rom_loader_with_spi_encoder.sram_sio0_o
+@28
+test_rom_loader_with_spi_encoder.sram_sio0_o
+test_rom_loader_with_spi_encoder.sram_sio1_o
+test_rom_loader_with_spi_encoder.sram_sio2_o
+test_rom_loader_with_spi_encoder.sram_sio3_o
+@1401200
+-group_end
+@22
+test_rom_loader_with_spi_encoder.rom.MemoryByte00000[7:0]
+test_rom_loader_with_spi_encoder.rom.MemoryByte00001[7:0]
+test_rom_loader_with_spi_encoder.rom.MemoryByte00002[7:0]
+test_rom_loader_with_spi_encoder.rom.MemoryByte00003[7:0]
+test_rom_loader_with_spi_encoder.rom.MemoryByte00004[7:0]
+test_rom_loader_with_spi_encoder.rom.MemoryByte00005[7:0]
+test_rom_loader_with_spi_encoder.rom.AddrRegister[16:0]
+test_rom_loader_with_spi_encoder.rom.DataShifterI[7:0]
+test_rom_loader_with_spi_encoder.rom.DataShifterO[7:0]
+test_rom_loader_with_spi_encoder.rom.ClockCounter[31:0]
+@28
+test_rom_loader_with_spi_encoder.rom.IOMode[1:0]
+@22
+test_rom_loader_with_spi_encoder.rom.SO_DO[3:0]
+@28
+test_rom_loader_with_spi_encoder.rom.OutputEnable3
+test_rom_loader_with_spi_encoder.rom.OutputEnable2
+test_rom_loader_with_spi_encoder.rom.OutputEnable1
+test_rom_loader_with_spi_encoder.rom.SO_OE
+test_rom_loader_with_spi_encoder.rom_loader_ack
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,16 +1,16 @@
 `default_nettype none
 `timescale 1ns/10ps
 
-module test_hack_soc_with_rom(
+module fpga_hack_soc_plus_rom_loader(
 	input EXTERNAL_CLK, 
 	input RESET_N,
 
-	output RAM_CS_N,
-	output RAM_SCK,
-	inout RAM_SIO0,
-	inout RAM_SIO1,
-	inout RAM_SIO2,
-	inout RAM_SIO3,
+	output ROM_CS_N,
+	output ROM_SCK,
+	inout ROM_SIO0,
+	inout ROM_SIO1,
+	inout ROM_SIO2,
+	inout ROM_SIO3,
 
 	output LED1,
 	output LED2,
@@ -27,13 +27,13 @@ module test_hack_soc_with_rom(
 
 	);
 
-parameter WORD_WIDTH = 16;
-parameter ADDRESS_WIDTH = 16;
-// parameter ROM_FILE = "hack_programs/counter_loop.hack";
-parameter ROM_FILE = "hack_programs/led_loop.hack";
-// parameter ROM_FILE = "hack_programs/zero_op.hack";
 
 
+// localparam  ROM_FILE = "hack_programs/test_assignment_and_jump.hack";
+localparam	FILE_LINES = 24;
+localparam  INSTRUCTION_WIDTH = 16;
+localparam  ROM_ADDRESS_WIDTH = 16;
+localparam HACK_GPIO_WIDTH = 16;
 
 
 wire debounced_btn1;
@@ -79,18 +79,45 @@ end
 wire clk = (~slow_clock_pause & slow_clock_counter[14]) || debounced_btn2;
 wire reset = ~RESET_N;
 
+// ROM Loading Lines
+wire rom_loader_reset;
+wire rom_loader_load;
+wire [INSTRUCTION_WIDTH-1:0] rom_loader_data;
+wire rom_loader_ack;
+wire rom_loader_load_received;
 
 
-rom_M23LC1024 #(.ROM_FILE(ROM_FILE)) rom (
-		.SI_SIO0(rom_sio0), 
-		.SO_SIO1(rom_sio1), 
-		.SCK(rom_sck), 
-		.CS_N(rom_cs_n), 
-		.SIO2(rom_sio2), 
-		.HOLD_N_SIO3(rom_sio3), 
-		.RESET(reset));
+
+reg run_file_to_rom;
+
+wire done_loading_rom;
+wire file_to_rom_loader_reset;
+wire file_to_rom_loader_load;
+wire [INSTRUCTION_WIDTH-1:0] file_to_rom_loader_data;
+load_file_to_rom #(
+        .BYTE_COUNT(FILE_LINES),
+        // .ROM_FILE(ROM_FILE),
+        .DATA_WIDTH(INSTRUCTION_WIDTH)
+    ) file_to_rom (
+
+    .clk(clk), 
+    .reset(reset),
+
+    .run(run_file_to_rom),
+    .done_loading(done_loading_rom),
+
+    // Control lines
+    .rom_loader_reset(rom_loader_reset),
+    .rom_loader_load(rom_loader_load),
+    .rom_loader_data(rom_loader_data),
+    .rom_loader_ack(rom_loader_ack),
+    .rom_loader_load_received(rom_loader_load_received)
+);
 
 
+
+wire RAM_SCK;
+wire RAM_CS_N;
 wire RAM_SIO0;
 wire RAM_SIO1;
 wire RAM_SIO2;
@@ -118,12 +145,14 @@ assign ram_sio2_i = RAM_SIO2;
 assign RAM_SIO3 = ram_sio_oe ? ram_sio3_o : 1'bZ;
 assign ram_sio3_i = RAM_SIO3;
 
-wire rom_sck;
-wire rom_cs_n;
-wire rom_sio0;
-wire rom_sio1;
-wire rom_sio2;
-wire rom_sio3;
+
+
+wire ROM_SCK;
+wire ROM_CS_N;
+wire ROM_SIO0;
+wire ROM_SIO1;
+wire ROM_SIO2;
+wire ROM_SIO3;
 
 wire rom_sio_oe;
 wire rom_sio0_i;
@@ -135,24 +164,33 @@ wire rom_sio1_o;
 wire rom_sio2_o;
 wire rom_sio3_o;
 
-assign rom_sio0 = rom_sio_oe ? rom_sio0_o : 1'bZ;
-assign rom_sio0_i = rom_sio0;
+assign ROM_SIO0 = rom_sio_oe ? rom_sio0_o : 1'bZ;
+assign rom_sio0_i = ROM_SIO0;
+assign ROM_SIO1 = rom_sio_oe ? rom_sio1_o : 1'bZ;
+assign rom_sio1_i = ROM_SIO1;
+assign ROM_SIO2 = rom_sio_oe ? rom_sio2_o : 1'bZ;
+assign rom_sio2_i = ROM_SIO2;
+assign ROM_SIO3 = rom_sio_oe ? rom_sio3_o : 1'bZ;
+assign rom_sio3_i = ROM_SIO3;
 
-assign rom_sio1 = rom_sio_oe ? rom_sio1_o : 1'bZ;
-assign rom_sio1_i = rom_sio1;
+rom_M23LC1024 ram (
+		.SI_SIO0(RAM_SIO0), 
+		.SO_SIO1(RAM_SIO1), 
+		.SCK(RAM_SCK), 
+		.CS_N(RAM_CS_N), 
+		.SIO2(ROM_SIO2), 
+		.HOLD_N_SIO3(ROM_SIO3), 
+		.RESET(reset));
 
-assign rom_sio2 = rom_sio_oe ? rom_sio2_o : 1'bZ;
-assign rom_sio2_i = rom_sio2;
 
-assign rom_sio3 = rom_sio_oe ? rom_sio3_o : 1'bZ;
-assign rom_sio3_i = rom_sio3;
-
-
-
+reg hack_external_reset;
+wire [HACK_GPIO_WIDTH-1:0] gpio;
 
 hack_soc soc(
 	.clk(clk),
 	.reset(reset),
+
+	.hack_external_reset(hack_external_reset),
 
 	/** RAM: qspi serial sram **/
 	.ram_cs_n(RAM_CS_N),
@@ -170,8 +208,8 @@ hack_soc soc(
 	.ram_sio3_o(ram_sio3_o), // sram_hold_n_sio3
 
 	/** ROM: qspi serial sram **/
-	.rom_cs_n(rom_cs_n),
-	.rom_sck(rom_sck),
+	.rom_cs_n(ROM_CS_N),
+	.rom_sck(ROM_SCK),
 	.rom_sio_oe(rom_sio_oe), // output enable the SIO lines
 	// SIO as inputs from SRAM	
 	.rom_sio0_i(rom_sio0_i), // sram_si_sio0 
@@ -184,26 +222,44 @@ hack_soc soc(
 	.rom_sio2_o(rom_sio2_o), // sram_sio2
 	.rom_sio3_o(rom_sio3_o), // sram_hold_n_sio3
 
-	// DEBUG nets
-	.debug_pc(debug_pc),
-	.debug_addressM(debug_addressM),
-	.debug_instruction(debug_instruction),
-	.debug_gpio(debug_gpio)
+
+	// ROM LOADING LINES
+	// inputs
+	.rom_loader_reset(rom_loader_reset),
+	.rom_loader_load(rom_loader_load),
+	.rom_loader_data(rom_loader_data),
+	// outputs
+	.rom_loader_ack(rom_loader_ack),
+	.rom_loader_load_received(rom_loader_load_received),
+
+
+	// GPIO
+	.gpio(gpio)
+
 	);
 
 
 
-// DEBUG
-wire [15:0] debug_pc;
-wire [15:0] debug_addressM;
-wire [15:0] debug_instruction;
-wire [15:0] debug_gpio;
+always @(posedge clk) begin
+    if(reset) begin
+        run_file_to_rom <= 0;
+		hack_external_reset <= 1;
+    end else begin
+		if(done_loading_rom) begin
+			hack_external_reset <= 0;
+			run_file_to_rom <= 0;
+		end else if(!run_file_to_rom) begin
+        	run_file_to_rom <= 1;
+		end
+    end
+    
+end
 
 // assign {LED5, LED4, LED3, LED2} = debug_gpio[3:0];
-assign {LED5, LED4, LED3, LED2} = debug_pc[3:0];
-assign LEDR_N = ~debug_instruction[0];
-assign LEDG_N = ~debug_instruction[1];
-assign LED1 = debug_pc[0];
+assign {LED5, LED4, LED3, LED2} = gpio[3:0];
+assign LEDR_N = ~done_loading_rom;
+assign LEDG_N = ~rom_loader_load;
+assign LED1 = hack_external_reset;
 // assign LED1 = debug_pc[0];
 // assign {LED2, LED3, LED4, LED5} = debug_pc[3:0];
 

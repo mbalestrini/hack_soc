@@ -128,43 +128,43 @@
 ; yosys-smt2-input address 16
 ; yosys-smt2-wire address 16
 (define-fun |spi_sram_encoder_n address| ((state |spi_sram_encoder_s|)) (_ BitVec 16) (|spi_sram_encoder#26| state))
-(declare-fun |spi_sram_encoder#27| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $past$spi_sram_encoder.v:346$6$0
-; yosys-smt2-register $past$spi_sram_encoder.v:346$6$0 1
-(define-fun |spi_sram_encoder_n $past$spi_sram_encoder.v:346$6$0| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#27| state)) #b1))
-(declare-fun |spi_sram_encoder#28| (|spi_sram_encoder_s|) (_ BitVec 4)) ; $past$spi_sram_encoder.v:343$5$0
-; yosys-smt2-register $past$spi_sram_encoder.v:343$5$0 4
-(define-fun |spi_sram_encoder_n $past$spi_sram_encoder.v:343$5$0| ((state |spi_sram_encoder_s|)) (_ BitVec 4) (|spi_sram_encoder#28| state))
-(declare-fun |spi_sram_encoder#29| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:347$19_EN
-; yosys-smt2-register $formal$spi_sram_encoder.v:347$19_EN 1
-(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:347$19_EN| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#29| state)) #b1))
-(declare-fun |spi_sram_encoder#30| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:347$19_CHECK
-; yosys-smt2-register $formal$spi_sram_encoder.v:347$19_CHECK 1
-(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:347$19_CHECK| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#30| state)) #b1))
-(declare-fun |spi_sram_encoder#31| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:342$18_EN
-; yosys-smt2-register $formal$spi_sram_encoder.v:342$18_EN 1
-(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:342$18_EN| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#31| state)) #b1))
-(declare-fun |spi_sram_encoder#32| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:342$18_CHECK
-; yosys-smt2-register $formal$spi_sram_encoder.v:342$18_CHECK 1
-(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:342$18_CHECK| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#32| state)) #b1))
-(declare-fun |spi_sram_encoder#33| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:338$17_EN
-; yosys-smt2-register $formal$spi_sram_encoder.v:338$17_EN 1
-(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:338$17_EN| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#33| state)) #b1))
-(declare-fun |spi_sram_encoder#34| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:338$17_CHECK
-; yosys-smt2-register $formal$spi_sram_encoder.v:338$17_CHECK 1
-(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:338$17_CHECK| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#34| state)) #b1))
-(declare-fun |spi_sram_encoder#35| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:327$13_EN
-; yosys-smt2-register $formal$spi_sram_encoder.v:327$13_EN 1
-(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:327$13_EN| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#35| state)) #b1))
-(declare-fun |spi_sram_encoder#36| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:327$13_CHECK
-; yosys-smt2-register $formal$spi_sram_encoder.v:327$13_CHECK 1
-(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:327$13_CHECK| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#36| state)) #b1))
-(declare-fun |spi_sram_encoder#37| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:323$12_EN
-; yosys-smt2-register $formal$spi_sram_encoder.v:323$12_EN 1
-(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:323$12_EN| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#37| state)) #b1))
-(declare-fun |spi_sram_encoder#38| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:323$12_CHECK
-; yosys-smt2-register $formal$spi_sram_encoder.v:323$12_CHECK 1
-(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:323$12_CHECK| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#38| state)) #b1))
-(declare-fun |spi_sram_encoder#39| (|spi_sram_encoder_s|) Bool) ; $formal$spi_sram_encoder.v:332$14_EN
+(declare-fun |spi_sram_encoder#27| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $past$spi_sram_encoder.v:348$6$0
+; yosys-smt2-register $past$spi_sram_encoder.v:348$6$0 1
+(define-fun |spi_sram_encoder_n $past$spi_sram_encoder.v:348$6$0| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#27| state)) #b1))
+(declare-fun |spi_sram_encoder#28| (|spi_sram_encoder_s|) (_ BitVec 4)) ; $past$spi_sram_encoder.v:345$5$0
+; yosys-smt2-register $past$spi_sram_encoder.v:345$5$0 4
+(define-fun |spi_sram_encoder_n $past$spi_sram_encoder.v:345$5$0| ((state |spi_sram_encoder_s|)) (_ BitVec 4) (|spi_sram_encoder#28| state))
+(declare-fun |spi_sram_encoder#29| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:349$19_EN
+; yosys-smt2-register $formal$spi_sram_encoder.v:349$19_EN 1
+(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:349$19_EN| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#29| state)) #b1))
+(declare-fun |spi_sram_encoder#30| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:349$19_CHECK
+; yosys-smt2-register $formal$spi_sram_encoder.v:349$19_CHECK 1
+(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:349$19_CHECK| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#30| state)) #b1))
+(declare-fun |spi_sram_encoder#31| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:344$18_EN
+; yosys-smt2-register $formal$spi_sram_encoder.v:344$18_EN 1
+(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:344$18_EN| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#31| state)) #b1))
+(declare-fun |spi_sram_encoder#32| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:344$18_CHECK
+; yosys-smt2-register $formal$spi_sram_encoder.v:344$18_CHECK 1
+(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:344$18_CHECK| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#32| state)) #b1))
+(declare-fun |spi_sram_encoder#33| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:340$17_EN
+; yosys-smt2-register $formal$spi_sram_encoder.v:340$17_EN 1
+(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:340$17_EN| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#33| state)) #b1))
+(declare-fun |spi_sram_encoder#34| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:340$17_CHECK
+; yosys-smt2-register $formal$spi_sram_encoder.v:340$17_CHECK 1
+(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:340$17_CHECK| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#34| state)) #b1))
+(declare-fun |spi_sram_encoder#35| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:329$13_EN
+; yosys-smt2-register $formal$spi_sram_encoder.v:329$13_EN 1
+(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:329$13_EN| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#35| state)) #b1))
+(declare-fun |spi_sram_encoder#36| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:329$13_CHECK
+; yosys-smt2-register $formal$spi_sram_encoder.v:329$13_CHECK 1
+(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:329$13_CHECK| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#36| state)) #b1))
+(declare-fun |spi_sram_encoder#37| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:325$12_EN
+; yosys-smt2-register $formal$spi_sram_encoder.v:325$12_EN 1
+(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:325$12_EN| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#37| state)) #b1))
+(declare-fun |spi_sram_encoder#38| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $formal$spi_sram_encoder.v:325$12_CHECK
+; yosys-smt2-register $formal$spi_sram_encoder.v:325$12_CHECK 1
+(define-fun |spi_sram_encoder_n $formal$spi_sram_encoder.v:325$12_CHECK| ((state |spi_sram_encoder_s|)) Bool (= ((_ extract 0 0) (|spi_sram_encoder#38| state)) #b1))
+(declare-fun |spi_sram_encoder#39| (|spi_sram_encoder_s|) Bool) ; $formal$spi_sram_encoder.v:334$14_EN
 ; yosys-smt2-assert 0 ASSERT_SRAM_OFF_ON_IDLE
 (define-fun |spi_sram_encoder_a 0| ((state |spi_sram_encoder_s|)) Bool (or (= ((_ extract 0 0) (|spi_sram_encoder#30| state)) #b1) (not (= ((_ extract 0 0) (|spi_sram_encoder#29| state)) #b1)))) ; ASSERT_SRAM_OFF_ON_IDLE
 ; yosys-smt2-assert 1 ASSERT_SRAM_INPUT_SET_BEFORE_CLOCK
@@ -175,68 +175,68 @@
 (define-fun |spi_sram_encoder_a 3| ((state |spi_sram_encoder_s|)) Bool (or (= ((_ extract 0 0) (|spi_sram_encoder#34| state)) #b1) (not (= ((_ extract 0 0) (|spi_sram_encoder#33| state)) #b1)))) ; ASSERT_INITILIZED
 ; yosys-smt2-assert 4 ASSERT_BUSY
 (define-fun |spi_sram_encoder_a 4| ((state |spi_sram_encoder_s|)) Bool (or (= ((_ extract 0 0) (|spi_sram_encoder#38| state)) #b1) (not (= ((_ extract 0 0) (|spi_sram_encoder#37| state)) #b1)))) ; ASSERT_BUSY
-(define-fun |spi_sram_encoder#40| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#26| state) #b1010111011010000)) ; $0$formal$spi_sram_encoder.v:308$11_CHECK[0:0]$44
-; yosys-smt2-assume 0 spi_sram_encoder.v:308.32-310.28
-(define-fun |spi_sram_encoder_u 0| ((state |spi_sram_encoder_s|)) Bool (or (|spi_sram_encoder#40| state) (not true))) ; $assume$spi_sram_encoder.v:308$87
-(define-fun |spi_sram_encoder#41| ((state |spi_sram_encoder_s|)) Bool (not (or  (= ((_ extract 0 0) (|spi_sram_encoder#23| state)) #b1) (= ((_ extract 1 1) (|spi_sram_encoder#23| state)) #b1) (= ((_ extract 2 2) (|spi_sram_encoder#23| state)) #b1)))) ; $0$formal$spi_sram_encoder.v:306$9_CHECK[0:0]$93
-(define-fun |spi_sram_encoder#42| ((state |spi_sram_encoder_s|)) Bool (|spi_sram_encoder_is| state)) ; $0$formal$spi_sram_encoder.v:305$7_EN[0:0]$91
-; yosys-smt2-assume 1 spi_sram_encoder.v:306.12-306.37
-(define-fun |spi_sram_encoder_u 1| ((state |spi_sram_encoder_s|)) Bool (or (|spi_sram_encoder#41| state) (not (|spi_sram_encoder#42| state)))) ; $assume$spi_sram_encoder.v:306$86
-; yosys-smt2-assume 2 spi_sram_encoder.v:305.12-305.26
-(define-fun |spi_sram_encoder_u 2| ((state |spi_sram_encoder_s|)) Bool (or (|spi_sram_encoder#10| state) (not (|spi_sram_encoder#42| state)))) ; $assume$spi_sram_encoder.v:305$85
+(define-fun |spi_sram_encoder#40| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#26| state) #b1010111011010000)) ; $0$formal$spi_sram_encoder.v:310$11_CHECK[0:0]$44
+; yosys-smt2-assume 0 spi_sram_encoder.v:310.32-312.28
+(define-fun |spi_sram_encoder_u 0| ((state |spi_sram_encoder_s|)) Bool (or (|spi_sram_encoder#40| state) (not true))) ; $assume$spi_sram_encoder.v:310$87
+(define-fun |spi_sram_encoder#41| ((state |spi_sram_encoder_s|)) Bool (not (or  (= ((_ extract 0 0) (|spi_sram_encoder#23| state)) #b1) (= ((_ extract 1 1) (|spi_sram_encoder#23| state)) #b1) (= ((_ extract 2 2) (|spi_sram_encoder#23| state)) #b1)))) ; $0$formal$spi_sram_encoder.v:308$9_CHECK[0:0]$93
+(define-fun |spi_sram_encoder#42| ((state |spi_sram_encoder_s|)) Bool (|spi_sram_encoder_is| state)) ; $0$formal$spi_sram_encoder.v:307$7_EN[0:0]$91
+; yosys-smt2-assume 1 spi_sram_encoder.v:308.12-308.37
+(define-fun |spi_sram_encoder_u 1| ((state |spi_sram_encoder_s|)) Bool (or (|spi_sram_encoder#41| state) (not (|spi_sram_encoder#42| state)))) ; $assume$spi_sram_encoder.v:308$86
+; yosys-smt2-assume 2 spi_sram_encoder.v:307.12-307.26
+(define-fun |spi_sram_encoder_u 2| ((state |spi_sram_encoder_s|)) Bool (or (|spi_sram_encoder#10| state) (not (|spi_sram_encoder#42| state)))) ; $assume$spi_sram_encoder.v:307$85
 ; yosys-smt2-anyseq spi_sram_encoder#43 1 $auto$setundef.cc:501:execute$480
 (declare-fun |spi_sram_encoder#43| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $auto$rtlil.cc:2811:Anyseq$481
-(define-fun |spi_sram_encoder#44| ((state |spi_sram_encoder_s|)) Bool (not (or  (|spi_sram_encoder#10| state) false))) ; $logic_not$spi_sram_encoder.v:322$63_Y
-(define-fun |spi_sram_encoder#45| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (bvnot (|spi_sram_encoder#9| state))) ; $eq$spi_sram_encoder.v:322$64_Y
-(define-fun |spi_sram_encoder#46| ((state |spi_sram_encoder_s|)) Bool (and (or  (|spi_sram_encoder#44| state) false) (or  (= ((_ extract 0 0) (|spi_sram_encoder#45| state)) #b1) false))) ; $logic_and$spi_sram_encoder.v:322$65_Y
-(define-fun |spi_sram_encoder#47| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#46| state) (ite (|spi_sram_encoder#25| state) #b1 #b0) (|spi_sram_encoder#43| state))) ; $0$formal$spi_sram_encoder.v:323$12_CHECK[0:0]$46
-(define-fun |spi_sram_encoder#48| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#46| state) #b1 #b0)) ; $0$formal$spi_sram_encoder.v:323$12_EN[0:0]$47
+(define-fun |spi_sram_encoder#44| ((state |spi_sram_encoder_s|)) Bool (not (or  (|spi_sram_encoder#10| state) false))) ; $logic_not$spi_sram_encoder.v:324$63_Y
+(define-fun |spi_sram_encoder#45| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (bvnot (|spi_sram_encoder#9| state))) ; $eq$spi_sram_encoder.v:324$64_Y
+(define-fun |spi_sram_encoder#46| ((state |spi_sram_encoder_s|)) Bool (and (or  (|spi_sram_encoder#44| state) false) (or  (= ((_ extract 0 0) (|spi_sram_encoder#45| state)) #b1) false))) ; $logic_and$spi_sram_encoder.v:324$65_Y
+(define-fun |spi_sram_encoder#47| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#46| state) (ite (|spi_sram_encoder#25| state) #b1 #b0) (|spi_sram_encoder#43| state))) ; $0$formal$spi_sram_encoder.v:325$12_CHECK[0:0]$46
+(define-fun |spi_sram_encoder#48| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#46| state) #b1 #b0)) ; $0$formal$spi_sram_encoder.v:325$12_EN[0:0]$47
 ; yosys-smt2-anyseq spi_sram_encoder#49 1 $auto$setundef.cc:501:execute$482
 (declare-fun |spi_sram_encoder#49| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $auto$rtlil.cc:2811:Anyseq$483
-(define-fun |spi_sram_encoder#50| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (bvnot (|spi_sram_encoder#1| state))) ; $eq$spi_sram_encoder.v:327$67_Y
-(define-fun |spi_sram_encoder#51| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#23| state) #b100)) ; $eq$spi_sram_encoder.v:326$66_Y
-(define-fun |spi_sram_encoder#52| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#51| state) (|spi_sram_encoder#50| state) (|spi_sram_encoder#49| state))) ; $0$formal$spi_sram_encoder.v:327$13_CHECK[0:0]$48
-(define-fun |spi_sram_encoder#53| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#51| state) #b1 #b0)) ; $0$formal$spi_sram_encoder.v:327$13_EN[0:0]$49
+(define-fun |spi_sram_encoder#50| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (bvnot (|spi_sram_encoder#1| state))) ; $eq$spi_sram_encoder.v:329$67_Y
+(define-fun |spi_sram_encoder#51| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#23| state) #b100)) ; $eq$spi_sram_encoder.v:328$66_Y
+(define-fun |spi_sram_encoder#52| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#51| state) (|spi_sram_encoder#50| state) (|spi_sram_encoder#49| state))) ; $0$formal$spi_sram_encoder.v:329$13_CHECK[0:0]$48
+(define-fun |spi_sram_encoder#53| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#51| state) #b1 #b0)) ; $0$formal$spi_sram_encoder.v:329$13_EN[0:0]$49
 ; yosys-smt2-anyseq spi_sram_encoder#54 1 $auto$setundef.cc:501:execute$486
 (declare-fun |spi_sram_encoder#54| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $auto$rtlil.cc:2811:Anyseq$487
 ; yosys-smt2-anyseq spi_sram_encoder#55 1 $auto$setundef.cc:501:execute$484
 (declare-fun |spi_sram_encoder#55| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $auto$rtlil.cc:2811:Anyseq$485
-(define-fun |spi_sram_encoder#56| ((state |spi_sram_encoder_s|)) Bool (distinct (|spi_sram_encoder#23| state) #b001)) ; $ne$spi_sram_encoder.v:337$74_Y
-(define-fun |spi_sram_encoder#57| ((state |spi_sram_encoder_s|)) Bool (distinct (|spi_sram_encoder#23| state) #b111)) ; $ne$spi_sram_encoder.v:337$75_Y
-(define-fun |spi_sram_encoder#58| ((state |spi_sram_encoder_s|)) Bool (and (or  (|spi_sram_encoder#56| state) false) (or  (|spi_sram_encoder#57| state) false))) ; $logic_and$spi_sram_encoder.v:337$76_Y
+(define-fun |spi_sram_encoder#56| ((state |spi_sram_encoder_s|)) Bool (distinct (|spi_sram_encoder#23| state) #b001)) ; $ne$spi_sram_encoder.v:339$74_Y
+(define-fun |spi_sram_encoder#57| ((state |spi_sram_encoder_s|)) Bool (distinct (|spi_sram_encoder#23| state) #b111)) ; $ne$spi_sram_encoder.v:339$75_Y
+(define-fun |spi_sram_encoder#58| ((state |spi_sram_encoder_s|)) Bool (and (or  (|spi_sram_encoder#56| state) false) (or  (|spi_sram_encoder#57| state) false))) ; $logic_and$spi_sram_encoder.v:339$76_Y
 (define-fun |spi_sram_encoder#59| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#58| state) (|spi_sram_encoder#20| state) (|spi_sram_encoder#55| state))) ; $procmux$138_Y
-(define-fun |spi_sram_encoder#60| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) (|spi_sram_encoder#59| state) (|spi_sram_encoder#54| state))) ; $0$formal$spi_sram_encoder.v:338$17_CHECK[0:0]$56
+(define-fun |spi_sram_encoder#60| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) (|spi_sram_encoder#59| state) (|spi_sram_encoder#54| state))) ; $0$formal$spi_sram_encoder.v:340$17_CHECK[0:0]$56
 (define-fun |spi_sram_encoder#61| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#58| state) #b1 #b0)) ; $procmux$134_Y
-(define-fun |spi_sram_encoder#62| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) (|spi_sram_encoder#61| state) #b0)) ; $auto$rtlil.cc:2218:Mux$667
+(define-fun |spi_sram_encoder#62| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) (|spi_sram_encoder#61| state) #b0)) ; $auto$rtlil.cc:2218:Mux$668
 ; yosys-smt2-anyseq spi_sram_encoder#63 1 $auto$setundef.cc:501:execute$490
 (declare-fun |spi_sram_encoder#63| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $auto$rtlil.cc:2811:Anyseq$491
 ; yosys-smt2-anyseq spi_sram_encoder#64 1 $auto$setundef.cc:501:execute$488
 (declare-fun |spi_sram_encoder#64| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $auto$rtlil.cc:2811:Anyseq$489
-(define-fun |spi_sram_encoder#65| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#28| state) (concat (|spi_sram_encoder#2| state) (|spi_sram_encoder#6| state)))) ; $eq$spi_sram_encoder.v:343$80_Y
-(define-fun |spi_sram_encoder#66| ((state |spi_sram_encoder_s|)) Bool (and (or  (= ((_ extract 0 0) (|spi_sram_encoder#45| state)) #b1) false) (or  (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1) false))) ; $logic_and$spi_sram_encoder.v:341$79_Y
+(define-fun |spi_sram_encoder#65| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#28| state) (concat (|spi_sram_encoder#2| state) (|spi_sram_encoder#6| state)))) ; $eq$spi_sram_encoder.v:345$80_Y
+(define-fun |spi_sram_encoder#66| ((state |spi_sram_encoder_s|)) Bool (and (or  (= ((_ extract 0 0) (|spi_sram_encoder#45| state)) #b1) false) (or  (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1) false))) ; $logic_and$spi_sram_encoder.v:343$79_Y
 (define-fun |spi_sram_encoder#67| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#66| state) (ite (|spi_sram_encoder#65| state) #b1 #b0) (|spi_sram_encoder#64| state))) ; $procmux$146_Y
-(define-fun |spi_sram_encoder#68| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) (|spi_sram_encoder#67| state) (|spi_sram_encoder#63| state))) ; $0$formal$spi_sram_encoder.v:342$18_CHECK[0:0]$58
+(define-fun |spi_sram_encoder#68| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) (|spi_sram_encoder#67| state) (|spi_sram_encoder#63| state))) ; $0$formal$spi_sram_encoder.v:344$18_CHECK[0:0]$58
 (define-fun |spi_sram_encoder#69| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#66| state) #b1 #b0)) ; $procmux$142_Y
-(define-fun |spi_sram_encoder#70| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) (|spi_sram_encoder#69| state) #b0)) ; $auto$rtlil.cc:2218:Mux$669
+(define-fun |spi_sram_encoder#70| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) (|spi_sram_encoder#69| state) #b0)) ; $auto$rtlil.cc:2218:Mux$670
 ; yosys-smt2-anyseq spi_sram_encoder#71 1 $auto$setundef.cc:501:execute$494
 (declare-fun |spi_sram_encoder#71| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $auto$rtlil.cc:2811:Anyseq$495
 ; yosys-smt2-anyseq spi_sram_encoder#72 1 $auto$setundef.cc:501:execute$492
 (declare-fun |spi_sram_encoder#72| (|spi_sram_encoder_s|) (_ BitVec 1)) ; $auto$rtlil.cc:2811:Anyseq$493
-(define-fun |spi_sram_encoder#73| ((state |spi_sram_encoder_s|)) Bool (not (or  (= ((_ extract 0 0) (|spi_sram_encoder#27| state)) #b1) false))) ; $logic_not$spi_sram_encoder.v:346$81_Y
-(define-fun |spi_sram_encoder#74| ((state |spi_sram_encoder_s|)) Bool (and (or  (|spi_sram_encoder#73| state) false) (or  (|spi_sram_encoder#41| state) false))) ; $logic_and$spi_sram_encoder.v:346$83_Y
+(define-fun |spi_sram_encoder#73| ((state |spi_sram_encoder_s|)) Bool (not (or  (= ((_ extract 0 0) (|spi_sram_encoder#27| state)) #b1) false))) ; $logic_not$spi_sram_encoder.v:348$81_Y
+(define-fun |spi_sram_encoder#74| ((state |spi_sram_encoder_s|)) Bool (and (or  (|spi_sram_encoder#73| state) false) (or  (|spi_sram_encoder#41| state) false))) ; $logic_and$spi_sram_encoder.v:348$83_Y
 (define-fun |spi_sram_encoder#75| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#74| state) (|spi_sram_encoder#9| state) (|spi_sram_encoder#72| state))) ; $procmux$154_Y
-(define-fun |spi_sram_encoder#76| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) (|spi_sram_encoder#75| state) (|spi_sram_encoder#71| state))) ; $0$formal$spi_sram_encoder.v:347$19_CHECK[0:0]$60
+(define-fun |spi_sram_encoder#76| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) (|spi_sram_encoder#75| state) (|spi_sram_encoder#71| state))) ; $0$formal$spi_sram_encoder.v:349$19_CHECK[0:0]$60
 (define-fun |spi_sram_encoder#77| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#74| state) #b1 #b0)) ; $procmux$150_Y
-(define-fun |spi_sram_encoder#78| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) (|spi_sram_encoder#77| state) #b0)) ; $auto$rtlil.cc:2218:Mux$671
-(define-fun |spi_sram_encoder#79| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#18| state) #b00100)) ; $eq$spi_sram_encoder.v:274$37_Y
+(define-fun |spi_sram_encoder#78| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) (|spi_sram_encoder#77| state) #b0)) ; $auto$rtlil.cc:2218:Mux$672
+(define-fun |spi_sram_encoder#79| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#18| state) #b00100)) ; $eq$spi_sram_encoder.v:276$37_Y
 (define-fun |spi_sram_encoder#80| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#79| state) #b000 #b000)) ; $procmux$353_Y
-(define-fun |spi_sram_encoder#81| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#16| state) #b00100)) ; $eq$spi_sram_encoder.v:213$28_Y
+(define-fun |spi_sram_encoder#81| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#16| state) #b00100)) ; $eq$spi_sram_encoder.v:214$28_Y
 (define-fun |spi_sram_encoder#82| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#81| state) #b000 #b000)) ; $procmux$358_Y
 (define-fun |spi_sram_encoder#83| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#11| state)) #b1) #b1 #b0)) ; $auto$wreduce.cc:454:run$479 [0]
 (define-fun |spi_sram_encoder#84| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#81| state) (concat #b10 (|spi_sram_encoder#83| state)) #b000)) ; $procmux$365_Y
 (define-fun |spi_sram_encoder#85| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#81| state) #b011 #b000)) ; $procmux$369_Y
-(define-fun |spi_sram_encoder#86| ((state |spi_sram_encoder_s|)) Bool (not (or  (|spi_sram_encoder#25| state) false))) ; $logic_not$spi_sram_encoder.v:178$26_Y
-(define-fun |spi_sram_encoder#87| ((state |spi_sram_encoder_s|)) Bool (and (or  (|spi_sram_encoder#14| state) false) (or  (|spi_sram_encoder#86| state) false))) ; $logic_and$spi_sram_encoder.v:178$27_Y
+(define-fun |spi_sram_encoder#86| ((state |spi_sram_encoder_s|)) Bool (not (or  (|spi_sram_encoder#25| state) false))) ; $logic_not$spi_sram_encoder.v:179$26_Y
+(define-fun |spi_sram_encoder#87| ((state |spi_sram_encoder_s|)) Bool (and (or  (|spi_sram_encoder#14| state) false) (or  (|spi_sram_encoder#86| state) false))) ; $logic_and$spi_sram_encoder.v:179$27_Y
 (define-fun |spi_sram_encoder#88| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#87| state) #b001 #b000)) ; $procmux$373_Y
 (define-fun |spi_sram_encoder#89| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b01000)) ; $procmux$377_CMP
 (define-fun |spi_sram_encoder#90| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#89| state) #b000 #b000)) ; $procmux$376_Y
@@ -246,24 +246,24 @@
 (define-fun |spi_sram_encoder#94| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#23| state) #b001)) ; $procmux$177_CMP
 (define-fun |spi_sram_encoder#95| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#23| state) #b111)) ; $procmux$242_CMP
 (define-fun |spi_sram_encoder#96| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#95| state) (|spi_sram_encoder#90| state) (ite (|spi_sram_encoder#41| state) (|spi_sram_encoder#88| state) (ite (|spi_sram_encoder#94| state) #b010 (ite (|spi_sram_encoder#93| state) (|spi_sram_encoder#85| state) (ite (|spi_sram_encoder#92| state) (|spi_sram_encoder#84| state) (ite (|spi_sram_encoder#91| state) (|spi_sram_encoder#82| state) (ite (|spi_sram_encoder#51| state) (|spi_sram_encoder#80| state) #b000)))))))) ; $procmux$355_Y
-(define-fun |spi_sram_encoder#97| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#41| state) #b1 #b0) (ite (|spi_sram_encoder#87| state) #b1 #b0)) #b10)) ; $auto$opt_dff.cc:217:make_patterns_logic$577
-(define-fun |spi_sram_encoder#98| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#91| state) #b1 #b0) (ite (|spi_sram_encoder#81| state) #b1 #b0)) #b10)) ; $auto$opt_dff.cc:217:make_patterns_logic$579
+(define-fun |spi_sram_encoder#97| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#41| state) #b1 #b0) (ite (|spi_sram_encoder#87| state) #b1 #b0)) #b10)) ; $auto$opt_dff.cc:217:make_patterns_logic$576
+(define-fun |spi_sram_encoder#98| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#91| state) #b1 #b0) (ite (|spi_sram_encoder#81| state) #b1 #b0)) #b10)) ; $auto$opt_dff.cc:217:make_patterns_logic$578
 (define-fun |spi_sram_encoder#99| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#92| state) #b1 #b0) (ite (|spi_sram_encoder#81| state) #b1 #b0)) #b10)) ; $auto$opt_dff.cc:217:make_patterns_logic$498
-(define-fun |spi_sram_encoder#100| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#93| state) #b1 #b0) (ite (|spi_sram_encoder#81| state) #b1 #b0)) #b10)) ; $auto$opt_dff.cc:217:make_patterns_logic$583
-(define-fun |spi_sram_encoder#101| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#51| state) #b1 #b0) (ite (|spi_sram_encoder#79| state) #b1 #b0)) #b10)) ; $auto$opt_dff.cc:217:make_patterns_logic$585
-(define-fun |spi_sram_encoder#102| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#51| state) (|spi_sram_encoder#41| state) (|spi_sram_encoder#91| state) (|spi_sram_encoder#92| state) (|spi_sram_encoder#93| state) (|spi_sram_encoder#94| state) (|spi_sram_encoder#95| state))) ; $auto$opt_dff.cc:217:make_patterns_logic$587
-(define-fun |spi_sram_encoder#103| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#89| state) #b1 #b0) (ite (|spi_sram_encoder#95| state) #b1 #b0)) #b01)) ; $auto$opt_dff.cc:217:make_patterns_logic$589
-(define-fun |spi_sram_encoder#104| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#97| state) (|spi_sram_encoder#98| state) (|spi_sram_encoder#99| state) (|spi_sram_encoder#100| state) (|spi_sram_encoder#101| state) (|spi_sram_encoder#102| state) (|spi_sram_encoder#103| state) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$591
-(define-fun |spi_sram_encoder#105| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#104| state) (|spi_sram_encoder#96| state) (|spi_sram_encoder#23| state))) ; $auto$rtlil.cc:2218:Mux$637
-(define-fun |spi_sram_encoder#106| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#10| state) #b111 (|spi_sram_encoder#105| state))) ; $auto$rtlil.cc:2218:Mux$639
-(define-fun |spi_sram_encoder#107| ((state |spi_sram_encoder_s|)) Bool (and  (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1) (|spi_sram_encoder#95| state) (|spi_sram_encoder#89| state))) ; $auto$opt_dff.cc:242:make_patterns_logic$618
-(define-fun |spi_sram_encoder#108| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#107| state) #b1 (|spi_sram_encoder#20| state))) ; $auto$rtlil.cc:2218:Mux$625
-(define-fun |spi_sram_encoder#109| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#10| state) #b0 (|spi_sram_encoder#108| state))) ; $auto$rtlil.cc:2218:Mux$627
-(define-fun |spi_sram_encoder#110| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (bvadd (|spi_sram_encoder#19| state) #b00001)) ; $add$spi_sram_encoder.v:155$25_Y
-(define-fun |spi_sram_encoder#111| ((state |spi_sram_encoder_s|)) Bool (and  (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1) (|spi_sram_encoder#95| state))) ; $auto$opt_dff.cc:242:make_patterns_logic$573
-(define-fun |spi_sram_encoder#112| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#111| state) (|spi_sram_encoder#110| state) (|spi_sram_encoder#19| state))) ; $auto$rtlil.cc:2218:Mux$641
-(define-fun |spi_sram_encoder#113| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#10| state) #b00000 (|spi_sram_encoder#112| state))) ; $auto$rtlil.cc:2218:Mux$643
-(define-fun |spi_sram_encoder#114| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (bvsub (|spi_sram_encoder#18| state) #b00100)) ; $sub$spi_sram_encoder.v:281$38_Y [4:0]
+(define-fun |spi_sram_encoder#100| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#93| state) #b1 #b0) (ite (|spi_sram_encoder#81| state) #b1 #b0)) #b10)) ; $auto$opt_dff.cc:217:make_patterns_logic$582
+(define-fun |spi_sram_encoder#101| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#51| state) #b1 #b0) (ite (|spi_sram_encoder#79| state) #b1 #b0)) #b10)) ; $auto$opt_dff.cc:217:make_patterns_logic$584
+(define-fun |spi_sram_encoder#102| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#51| state) (|spi_sram_encoder#41| state) (|spi_sram_encoder#91| state) (|spi_sram_encoder#92| state) (|spi_sram_encoder#93| state) (|spi_sram_encoder#94| state) (|spi_sram_encoder#95| state))) ; $auto$opt_dff.cc:217:make_patterns_logic$586
+(define-fun |spi_sram_encoder#103| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#89| state) #b1 #b0) (ite (|spi_sram_encoder#95| state) #b1 #b0)) #b01)) ; $auto$opt_dff.cc:217:make_patterns_logic$588
+(define-fun |spi_sram_encoder#104| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#97| state) (|spi_sram_encoder#98| state) (|spi_sram_encoder#99| state) (|spi_sram_encoder#100| state) (|spi_sram_encoder#101| state) (|spi_sram_encoder#102| state) (|spi_sram_encoder#103| state) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$590
+(define-fun |spi_sram_encoder#105| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#104| state) (|spi_sram_encoder#96| state) (|spi_sram_encoder#23| state))) ; $auto$rtlil.cc:2218:Mux$636
+(define-fun |spi_sram_encoder#106| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#10| state) #b111 (|spi_sram_encoder#105| state))) ; $auto$rtlil.cc:2218:Mux$638
+(define-fun |spi_sram_encoder#107| ((state |spi_sram_encoder_s|)) Bool (and  (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1) (|spi_sram_encoder#95| state) (|spi_sram_encoder#89| state))) ; $auto$opt_dff.cc:242:make_patterns_logic$617
+(define-fun |spi_sram_encoder#108| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#107| state) #b1 (|spi_sram_encoder#20| state))) ; $auto$rtlil.cc:2218:Mux$624
+(define-fun |spi_sram_encoder#109| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#10| state) #b0 (|spi_sram_encoder#108| state))) ; $auto$rtlil.cc:2218:Mux$626
+(define-fun |spi_sram_encoder#110| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (bvadd (|spi_sram_encoder#19| state) #b00001)) ; $add$spi_sram_encoder.v:156$25_Y
+(define-fun |spi_sram_encoder#111| ((state |spi_sram_encoder_s|)) Bool (and  (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1) (|spi_sram_encoder#95| state))) ; $auto$opt_dff.cc:242:make_patterns_logic$572
+(define-fun |spi_sram_encoder#112| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#111| state) (|spi_sram_encoder#110| state) (|spi_sram_encoder#19| state))) ; $auto$rtlil.cc:2218:Mux$640
+(define-fun |spi_sram_encoder#113| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#10| state) #b00000 (|spi_sram_encoder#112| state))) ; $auto$rtlil.cc:2218:Mux$642
+(define-fun |spi_sram_encoder#114| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (bvsub (|spi_sram_encoder#18| state) #b00100)) ; $sub$spi_sram_encoder.v:283$38_Y [4:0]
 (define-fun |spi_sram_encoder#115| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#79| state) #b00000 (|spi_sram_encoder#114| state))) ; $procmux$281_Y
 (define-fun |spi_sram_encoder#116| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (= ((_ extract 0 0) (|spi_sram_encoder#11| state)) #b1) #b00000 #b11000)) ; $procmux$287_Y
 (define-fun |spi_sram_encoder#117| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#81| state) (|spi_sram_encoder#116| state) #b00000)) ; $procmux$289_Y
@@ -273,78 +273,79 @@
 (define-fun |spi_sram_encoder#121| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#51| state) (|spi_sram_encoder#92| state))) ; $auto$opt_dff.cc:217:make_patterns_logic$502
 (define-fun |spi_sram_encoder#122| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (bvnot (ite (|spi_sram_encoder#10| state) #b1 #b0))) ; $auto$rtlil.cc:2121:Not$505
 (define-fun |spi_sram_encoder#123| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#119| state) (|spi_sram_encoder#99| state) (|spi_sram_encoder#120| state) (|spi_sram_encoder#121| state) (= ((_ extract 0 0) (|spi_sram_encoder#122| state)) #b1) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$506
-(define-fun |spi_sram_encoder#124| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#123| state) (|spi_sram_encoder#118| state) (|spi_sram_encoder#18| state))) ; $auto$rtlil.cc:2218:Mux$665
-(define-fun |spi_sram_encoder#125| ((state |spi_sram_encoder_s|)) Bool (and  (= ((_ extract 0 0) (|spi_sram_encoder#122| state)) #b1) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1) (|spi_sram_encoder#51| state))) ; $auto$opt_dff.cc:242:make_patterns_logic$511
-(define-fun |spi_sram_encoder#126| ((state |spi_sram_encoder_s|)) (_ BitVec 16) (ite (|spi_sram_encoder#125| state) (concat ((_ extract 11 0) (|spi_sram_encoder#17| state)) (concat (ite (|spi_sram_encoder#3| state) #b1 #b0) (concat (ite (|spi_sram_encoder#4| state) #b1 #b0) (concat (ite (|spi_sram_encoder#5| state) #b1 #b0) (ite (|spi_sram_encoder#7| state) #b1 #b0))))) (|spi_sram_encoder#17| state))) ; $auto$rtlil.cc:2218:Mux$663
-(define-fun |spi_sram_encoder#127| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (bvsub (|spi_sram_encoder#16| state) #b00100)) ; $sub$spi_sram_encoder.v:221$30_Y [4:0]
-(define-fun |spi_sram_encoder#128| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#81| state) #b00000 (|spi_sram_encoder#127| state))) ; $procmux$257_Y
-(define-fun |spi_sram_encoder#129| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (= ((_ extract 0 0) (|spi_sram_encoder#11| state)) #b1) #b10000 #b00000)) ; $procmux$263_Y
-(define-fun |spi_sram_encoder#130| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#81| state) (|spi_sram_encoder#129| state) (|spi_sram_encoder#127| state))) ; $procmux$265_Y
-(define-fun |spi_sram_encoder#131| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#81| state) #b11000 (|spi_sram_encoder#127| state))) ; $procmux$269_Y
-(define-fun |spi_sram_encoder#132| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#94| state) #b01000 (ite (|spi_sram_encoder#93| state) (|spi_sram_encoder#131| state) (ite (|spi_sram_encoder#92| state) (|spi_sram_encoder#130| state) (ite (|spi_sram_encoder#91| state) (|spi_sram_encoder#128| state) #b00000))))) ; $procmux$259_Y
-(define-fun |spi_sram_encoder#133| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#92| state) #b1 #b0) (concat (ite (|spi_sram_encoder#81| state) #b1 #b0) (|spi_sram_encoder#11| state))) #b110)) ; $auto$opt_dff.cc:217:make_patterns_logic$514
-(define-fun |spi_sram_encoder#134| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#91| state) #b1 #b0) (ite (|spi_sram_encoder#81| state) #b1 #b0)) #b11)) ; $auto$opt_dff.cc:217:make_patterns_logic$516
-(define-fun |spi_sram_encoder#135| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#91| state) (|spi_sram_encoder#92| state) (|spi_sram_encoder#93| state) (|spi_sram_encoder#94| state))) ; $auto$opt_dff.cc:217:make_patterns_logic$518
-(define-fun |spi_sram_encoder#136| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#133| state) (|spi_sram_encoder#134| state) (|spi_sram_encoder#135| state) (= ((_ extract 0 0) (|spi_sram_encoder#122| state)) #b1) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$522
-(define-fun |spi_sram_encoder#137| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#136| state) (|spi_sram_encoder#132| state) (|spi_sram_encoder#16| state))) ; $auto$rtlil.cc:2218:Mux$661
-(define-fun |spi_sram_encoder#138| ((state |spi_sram_encoder_s|)) (_ BitVec 20) (ite (|spi_sram_encoder#81| state) #b00000000000000000000 (concat ((_ extract 15 0) (|spi_sram_encoder#15| state)) #b0000))) ; $procmux$185_Y
-(define-fun |spi_sram_encoder#139| ((state |spi_sram_encoder_s|)) (_ BitVec 20) (ite (= ((_ extract 0 0) (|spi_sram_encoder#11| state)) #b1) (concat ((_ extract 11 0) (|spi_sram_encoder#12| state)) #b00000000) #b00000000000000000000)) ; $procmux$191_Y
-(define-fun |spi_sram_encoder#140| ((state |spi_sram_encoder_s|)) (_ BitVec 20) (ite (|spi_sram_encoder#81| state) (|spi_sram_encoder#139| state) (concat ((_ extract 15 0) (|spi_sram_encoder#15| state)) #b0000))) ; $procmux$193_Y
-(define-fun |spi_sram_encoder#141| ((state |spi_sram_encoder_s|)) (_ BitVec 20) (ite (|spi_sram_encoder#81| state) (concat #b0000 (|spi_sram_encoder#13| state)) (concat ((_ extract 15 0) (|spi_sram_encoder#15| state)) #b0000))) ; $procmux$197_Y
-(define-fun |spi_sram_encoder#142| ((state |spi_sram_encoder_s|)) (_ BitVec 17) (ite (|spi_sram_encoder#0| state) #b00000000000000000 #b10000000000000000)) ; $auto$wreduce.cc:454:run$478 [16:0]
-(define-fun |spi_sram_encoder#143| ((state |spi_sram_encoder_s|)) (_ BitVec 20) (ite (|spi_sram_encoder#94| state) (concat #b001 (|spi_sram_encoder#142| state)) (ite (|spi_sram_encoder#93| state) (|spi_sram_encoder#141| state) (ite (|spi_sram_encoder#92| state) (|spi_sram_encoder#140| state) (ite (|spi_sram_encoder#91| state) (|spi_sram_encoder#138| state) #b00000000000000000000))))) ; $procmux$187_Y
-(define-fun |spi_sram_encoder#144| ((state |spi_sram_encoder_s|)) (_ BitVec 20) (ite (|spi_sram_encoder#136| state) (|spi_sram_encoder#143| state) (|spi_sram_encoder#15| state))) ; $auto$rtlil.cc:2218:Mux$659
-(define-fun |spi_sram_encoder#145| ((state |spi_sram_encoder_s|)) Bool (and  (= ((_ extract 0 0) (|spi_sram_encoder#122| state)) #b1) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1) (|spi_sram_encoder#87| state) (|spi_sram_encoder#41| state))) ; $auto$opt_dff.cc:242:make_patterns_logic$559
-(define-fun |spi_sram_encoder#146| ((state |spi_sram_encoder_s|)) (_ BitVec 16) (ite (|spi_sram_encoder#145| state) (|spi_sram_encoder#26| state) (|spi_sram_encoder#13| state))) ; $auto$rtlil.cc:2218:Mux$645
-(define-fun |spi_sram_encoder#147| ((state |spi_sram_encoder_s|)) (_ BitVec 16) (ite (|spi_sram_encoder#145| state) (|spi_sram_encoder#22| state) (|spi_sram_encoder#12| state))) ; $auto$rtlil.cc:2218:Mux$647
-(define-fun |spi_sram_encoder#148| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#145| state) (ite (|spi_sram_encoder#0| state) #b1 #b0) (|spi_sram_encoder#11| state))) ; $auto$rtlil.cc:2218:Mux$649
-(define-fun |spi_sram_encoder#149| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#79| state) #b1 #b0)) ; $procmux$403_Y
-(define-fun |spi_sram_encoder#150| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#81| state) #b1 #b0)) ; $procmux$408_Y
-(define-fun |spi_sram_encoder#151| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#89| state) #b1 #b0)) ; $procmux$414_Y
-(define-fun |spi_sram_encoder#152| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#95| state) (|spi_sram_encoder#151| state) (ite (|spi_sram_encoder#94| state) #b0 (ite (|spi_sram_encoder#91| state) (|spi_sram_encoder#150| state) (ite (|spi_sram_encoder#51| state) (|spi_sram_encoder#149| state) #b0))))) ; $procmux$405_Y
-(define-fun |spi_sram_encoder#153| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#51| state) (|spi_sram_encoder#91| state) (|spi_sram_encoder#94| state) (|spi_sram_encoder#95| state))) ; $auto$opt_dff.cc:217:make_patterns_logic$612
-(define-fun |spi_sram_encoder#154| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#98| state) (|spi_sram_encoder#101| state) (|spi_sram_encoder#153| state) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$614
-(define-fun |spi_sram_encoder#155| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#154| state) (|spi_sram_encoder#152| state) (|spi_sram_encoder#9| state))) ; $auto$rtlil.cc:2218:Mux$629
-(define-fun |spi_sram_encoder#156| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#10| state) #b1 (|spi_sram_encoder#155| state))) ; $auto$rtlil.cc:2218:Mux$631
-(define-fun |spi_sram_encoder#157| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (bvnot (|spi_sram_encoder#8| state))) ; $not$spi_sram_encoder.v:142$22_Y
-(define-fun |spi_sram_encoder#158| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#10| state) #b0 (|spi_sram_encoder#157| state))) ; $auto$rtlil.cc:2218:Mux$673
-(define-fun |spi_sram_encoder#159| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#81| state) #b0 ((_ extract 16 16) (|spi_sram_encoder#15| state)))) ; $procmux$214_Y
-(define-fun |spi_sram_encoder#160| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#11| state)) #b1) ((_ extract 12 12) (|spi_sram_encoder#12| state)) #b0)) ; $procmux$220_Y
-(define-fun |spi_sram_encoder#161| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#81| state) (|spi_sram_encoder#160| state) ((_ extract 16 16) (|spi_sram_encoder#15| state)))) ; $procmux$222_Y
-(define-fun |spi_sram_encoder#162| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#81| state) #b0 ((_ extract 16 16) (|spi_sram_encoder#15| state)))) ; $procmux$226_Y
-(define-fun |spi_sram_encoder#163| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00111)) ; $procmux$234_CMP
-(define-fun |spi_sram_encoder#164| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00110)) ; $procmux$235_CMP
-(define-fun |spi_sram_encoder#165| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00101)) ; $procmux$236_CMP
-(define-fun |spi_sram_encoder#166| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00001)) ; $procmux$240_CMP
-(define-fun |spi_sram_encoder#167| ((state |spi_sram_encoder_s|)) Bool (not (or  (= ((_ extract 0 0) (|spi_sram_encoder#19| state)) #b1) (= ((_ extract 1 1) (|spi_sram_encoder#19| state)) #b1) (= ((_ extract 2 2) (|spi_sram_encoder#19| state)) #b1) (= ((_ extract 3 3) (|spi_sram_encoder#19| state)) #b1) (= ((_ extract 4 4) (|spi_sram_encoder#19| state)) #b1)))) ; $procmux$241_CMP
-(define-fun |spi_sram_encoder#168| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#163| state) (|spi_sram_encoder#164| state) (|spi_sram_encoder#165| state) (|spi_sram_encoder#166| state) (|spi_sram_encoder#167| state))) ; $auto$opt_reduce.cc:134:opt_mux$474
-(define-fun |spi_sram_encoder#169| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00100)) ; $procmux$237_CMP
-(define-fun |spi_sram_encoder#170| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00011)) ; $procmux$238_CMP
-(define-fun |spi_sram_encoder#171| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00010)) ; $procmux$239_CMP
-(define-fun |spi_sram_encoder#172| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#169| state) (|spi_sram_encoder#170| state) (|spi_sram_encoder#171| state))) ; $auto$opt_reduce.cc:134:opt_mux$476
-(define-fun |spi_sram_encoder#173| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#172| state) #b1 (ite (|spi_sram_encoder#168| state) #b0 #b0))) ; $procmux$233_Y
-(define-fun |spi_sram_encoder#174| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#95| state) (|spi_sram_encoder#173| state) (ite (|spi_sram_encoder#94| state) #b0 (ite (|spi_sram_encoder#93| state) (|spi_sram_encoder#162| state) (ite (|spi_sram_encoder#92| state) (|spi_sram_encoder#161| state) (ite (|spi_sram_encoder#91| state) (|spi_sram_encoder#159| state) #b0)))))) ; $procmux$216_Y
-(define-fun |spi_sram_encoder#175| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#172| state) #b1 #b0) (concat (ite (|spi_sram_encoder#95| state) #b1 #b0) (ite (|spi_sram_encoder#168| state) #b1 #b0))) #b010)) ; $auto$opt_dff.cc:217:make_patterns_logic$541
-(define-fun |spi_sram_encoder#176| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#91| state) (|spi_sram_encoder#92| state) (|spi_sram_encoder#93| state) (|spi_sram_encoder#94| state) (|spi_sram_encoder#95| state))) ; $auto$opt_dff.cc:217:make_patterns_logic$543
-(define-fun |spi_sram_encoder#177| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#133| state) (|spi_sram_encoder#134| state) (|spi_sram_encoder#175| state) (|spi_sram_encoder#176| state) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$545
-(define-fun |spi_sram_encoder#178| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#177| state) (|spi_sram_encoder#174| state) (|spi_sram_encoder#6| state))) ; $auto$rtlil.cc:2218:Mux$655
-(define-fun |spi_sram_encoder#179| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#10| state) #b1 (|spi_sram_encoder#178| state))) ; $auto$rtlil.cc:2218:Mux$657
-(define-fun |spi_sram_encoder#180| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#81| state) #b000 ((_ extract 19 17) (|spi_sram_encoder#15| state)))) ; $procmux$160_Y
-(define-fun |spi_sram_encoder#181| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (= ((_ extract 0 0) (|spi_sram_encoder#11| state)) #b1) ((_ extract 15 13) (|spi_sram_encoder#12| state)) #b000)) ; $procmux$166_Y
-(define-fun |spi_sram_encoder#182| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#81| state) (|spi_sram_encoder#181| state) ((_ extract 19 17) (|spi_sram_encoder#15| state)))) ; $procmux$168_Y
-(define-fun |spi_sram_encoder#183| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#81| state) #b000 ((_ extract 19 17) (|spi_sram_encoder#15| state)))) ; $procmux$172_Y
-(define-fun |spi_sram_encoder#184| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#94| state) #b000 (ite (|spi_sram_encoder#93| state) (|spi_sram_encoder#183| state) (ite (|spi_sram_encoder#92| state) (|spi_sram_encoder#182| state) (ite (|spi_sram_encoder#91| state) (|spi_sram_encoder#180| state) #b000))))) ; $procmux$162_Y
-(define-fun |spi_sram_encoder#185| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#133| state) (|spi_sram_encoder#134| state) (|spi_sram_encoder#135| state) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$554
-(define-fun |spi_sram_encoder#186| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#185| state) (|spi_sram_encoder#184| state) (|spi_sram_encoder#2| state))) ; $auto$rtlil.cc:2218:Mux$651
-(define-fun |spi_sram_encoder#187| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#10| state) #b111 (|spi_sram_encoder#186| state))) ; $auto$rtlil.cc:2218:Mux$653
-(define-fun |spi_sram_encoder#188| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#11| state)) #b1) #b0 #b0)) ; $procmux$388_Y
-(define-fun |spi_sram_encoder#189| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#81| state) (|spi_sram_encoder#188| state) #b0)) ; $procmux$390_Y
-(define-fun |spi_sram_encoder#190| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#87| state) #b1 #b0)) ; $procmux$394_Y
-(define-fun |spi_sram_encoder#191| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#41| state) (|spi_sram_encoder#190| state) (ite (|spi_sram_encoder#92| state) (|spi_sram_encoder#189| state) #b0))) ; $procmux$392_Y
-(define-fun |spi_sram_encoder#192| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#41| state) (|spi_sram_encoder#92| state))) ; $auto$opt_dff.cc:217:make_patterns_logic$601
-(define-fun |spi_sram_encoder#193| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#119| state) (|spi_sram_encoder#97| state) (|spi_sram_encoder#99| state) (|spi_sram_encoder#192| state) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$603
-(define-fun |spi_sram_encoder#194| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#193| state) (|spi_sram_encoder#191| state) (|spi_sram_encoder#1| state))) ; $auto$rtlil.cc:2218:Mux$633
-(define-fun |spi_sram_encoder#195| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#10| state) #b1 (|spi_sram_encoder#194| state))) ; $auto$rtlil.cc:2218:Mux$635
+(define-fun |spi_sram_encoder#124| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#123| state) (|spi_sram_encoder#118| state) (|spi_sram_encoder#18| state))) ; $auto$rtlil.cc:2218:Mux$666
+(define-fun |spi_sram_encoder#125| ((state |spi_sram_encoder_s|)) Bool (and  (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1) (|spi_sram_encoder#51| state))) ; $auto$opt_dff.cc:242:make_patterns_logic$510
+(define-fun |spi_sram_encoder#126| ((state |spi_sram_encoder_s|)) (_ BitVec 16) (ite (|spi_sram_encoder#125| state) (concat ((_ extract 11 0) (|spi_sram_encoder#17| state)) (concat (ite (|spi_sram_encoder#3| state) #b1 #b0) (concat (ite (|spi_sram_encoder#4| state) #b1 #b0) (concat (ite (|spi_sram_encoder#5| state) #b1 #b0) (ite (|spi_sram_encoder#7| state) #b1 #b0))))) (|spi_sram_encoder#17| state))) ; $auto$rtlil.cc:2218:Mux$662
+(define-fun |spi_sram_encoder#127| ((state |spi_sram_encoder_s|)) (_ BitVec 16) (ite (|spi_sram_encoder#10| state) #b0000000000000000 (|spi_sram_encoder#126| state))) ; $auto$rtlil.cc:2218:Mux$664
+(define-fun |spi_sram_encoder#128| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (bvsub (|spi_sram_encoder#16| state) #b00100)) ; $sub$spi_sram_encoder.v:223$30_Y [4:0]
+(define-fun |spi_sram_encoder#129| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#81| state) #b00000 (|spi_sram_encoder#128| state))) ; $procmux$257_Y
+(define-fun |spi_sram_encoder#130| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (= ((_ extract 0 0) (|spi_sram_encoder#11| state)) #b1) #b10000 #b00000)) ; $procmux$263_Y
+(define-fun |spi_sram_encoder#131| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#81| state) (|spi_sram_encoder#130| state) (|spi_sram_encoder#128| state))) ; $procmux$265_Y
+(define-fun |spi_sram_encoder#132| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#81| state) #b11000 (|spi_sram_encoder#128| state))) ; $procmux$269_Y
+(define-fun |spi_sram_encoder#133| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#94| state) #b01000 (ite (|spi_sram_encoder#93| state) (|spi_sram_encoder#132| state) (ite (|spi_sram_encoder#92| state) (|spi_sram_encoder#131| state) (ite (|spi_sram_encoder#91| state) (|spi_sram_encoder#129| state) #b00000))))) ; $procmux$259_Y
+(define-fun |spi_sram_encoder#134| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#92| state) #b1 #b0) (concat (ite (|spi_sram_encoder#81| state) #b1 #b0) (|spi_sram_encoder#11| state))) #b110)) ; $auto$opt_dff.cc:217:make_patterns_logic$513
+(define-fun |spi_sram_encoder#135| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#91| state) #b1 #b0) (ite (|spi_sram_encoder#81| state) #b1 #b0)) #b11)) ; $auto$opt_dff.cc:217:make_patterns_logic$515
+(define-fun |spi_sram_encoder#136| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#91| state) (|spi_sram_encoder#92| state) (|spi_sram_encoder#93| state) (|spi_sram_encoder#94| state))) ; $auto$opt_dff.cc:217:make_patterns_logic$517
+(define-fun |spi_sram_encoder#137| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#134| state) (|spi_sram_encoder#135| state) (|spi_sram_encoder#136| state) (= ((_ extract 0 0) (|spi_sram_encoder#122| state)) #b1) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$521
+(define-fun |spi_sram_encoder#138| ((state |spi_sram_encoder_s|)) (_ BitVec 5) (ite (|spi_sram_encoder#137| state) (|spi_sram_encoder#133| state) (|spi_sram_encoder#16| state))) ; $auto$rtlil.cc:2218:Mux$660
+(define-fun |spi_sram_encoder#139| ((state |spi_sram_encoder_s|)) (_ BitVec 20) (ite (|spi_sram_encoder#81| state) #b00000000000000000000 (concat ((_ extract 15 0) (|spi_sram_encoder#15| state)) #b0000))) ; $procmux$185_Y
+(define-fun |spi_sram_encoder#140| ((state |spi_sram_encoder_s|)) (_ BitVec 20) (ite (= ((_ extract 0 0) (|spi_sram_encoder#11| state)) #b1) (concat ((_ extract 11 0) (|spi_sram_encoder#12| state)) #b00000000) #b00000000000000000000)) ; $procmux$191_Y
+(define-fun |spi_sram_encoder#141| ((state |spi_sram_encoder_s|)) (_ BitVec 20) (ite (|spi_sram_encoder#81| state) (|spi_sram_encoder#140| state) (concat ((_ extract 15 0) (|spi_sram_encoder#15| state)) #b0000))) ; $procmux$193_Y
+(define-fun |spi_sram_encoder#142| ((state |spi_sram_encoder_s|)) (_ BitVec 20) (ite (|spi_sram_encoder#81| state) (concat #b000 (concat (|spi_sram_encoder#13| state) #b0)) (concat ((_ extract 15 0) (|spi_sram_encoder#15| state)) #b0000))) ; $procmux$197_Y
+(define-fun |spi_sram_encoder#143| ((state |spi_sram_encoder_s|)) (_ BitVec 17) (ite (|spi_sram_encoder#0| state) #b00000000000000000 #b10000000000000000)) ; $auto$wreduce.cc:454:run$478 [16:0]
+(define-fun |spi_sram_encoder#144| ((state |spi_sram_encoder_s|)) (_ BitVec 20) (ite (|spi_sram_encoder#94| state) (concat #b001 (|spi_sram_encoder#143| state)) (ite (|spi_sram_encoder#93| state) (|spi_sram_encoder#142| state) (ite (|spi_sram_encoder#92| state) (|spi_sram_encoder#141| state) (ite (|spi_sram_encoder#91| state) (|spi_sram_encoder#139| state) #b00000000000000000000))))) ; $procmux$187_Y
+(define-fun |spi_sram_encoder#145| ((state |spi_sram_encoder_s|)) (_ BitVec 20) (ite (|spi_sram_encoder#137| state) (|spi_sram_encoder#144| state) (|spi_sram_encoder#15| state))) ; $auto$rtlil.cc:2218:Mux$658
+(define-fun |spi_sram_encoder#146| ((state |spi_sram_encoder_s|)) Bool (and  (= ((_ extract 0 0) (|spi_sram_encoder#122| state)) #b1) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1) (|spi_sram_encoder#87| state) (|spi_sram_encoder#41| state))) ; $auto$opt_dff.cc:242:make_patterns_logic$558
+(define-fun |spi_sram_encoder#147| ((state |spi_sram_encoder_s|)) (_ BitVec 16) (ite (|spi_sram_encoder#146| state) (|spi_sram_encoder#26| state) (|spi_sram_encoder#13| state))) ; $auto$rtlil.cc:2218:Mux$644
+(define-fun |spi_sram_encoder#148| ((state |spi_sram_encoder_s|)) (_ BitVec 16) (ite (|spi_sram_encoder#146| state) (|spi_sram_encoder#22| state) (|spi_sram_encoder#12| state))) ; $auto$rtlil.cc:2218:Mux$646
+(define-fun |spi_sram_encoder#149| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#146| state) (ite (|spi_sram_encoder#0| state) #b1 #b0) (|spi_sram_encoder#11| state))) ; $auto$rtlil.cc:2218:Mux$648
+(define-fun |spi_sram_encoder#150| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#79| state) #b1 #b0)) ; $procmux$403_Y
+(define-fun |spi_sram_encoder#151| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#81| state) #b1 #b0)) ; $procmux$408_Y
+(define-fun |spi_sram_encoder#152| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#89| state) #b1 #b0)) ; $procmux$414_Y
+(define-fun |spi_sram_encoder#153| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#95| state) (|spi_sram_encoder#152| state) (ite (|spi_sram_encoder#94| state) #b0 (ite (|spi_sram_encoder#91| state) (|spi_sram_encoder#151| state) (ite (|spi_sram_encoder#51| state) (|spi_sram_encoder#150| state) #b0))))) ; $procmux$405_Y
+(define-fun |spi_sram_encoder#154| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#51| state) (|spi_sram_encoder#91| state) (|spi_sram_encoder#94| state) (|spi_sram_encoder#95| state))) ; $auto$opt_dff.cc:217:make_patterns_logic$611
+(define-fun |spi_sram_encoder#155| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#98| state) (|spi_sram_encoder#101| state) (|spi_sram_encoder#154| state) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$613
+(define-fun |spi_sram_encoder#156| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#155| state) (|spi_sram_encoder#153| state) (|spi_sram_encoder#9| state))) ; $auto$rtlil.cc:2218:Mux$628
+(define-fun |spi_sram_encoder#157| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#10| state) #b1 (|spi_sram_encoder#156| state))) ; $auto$rtlil.cc:2218:Mux$630
+(define-fun |spi_sram_encoder#158| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (bvnot (|spi_sram_encoder#8| state))) ; $not$spi_sram_encoder.v:143$22_Y
+(define-fun |spi_sram_encoder#159| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#10| state) #b0 (|spi_sram_encoder#158| state))) ; $auto$rtlil.cc:2218:Mux$674
+(define-fun |spi_sram_encoder#160| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#81| state) #b0 ((_ extract 16 16) (|spi_sram_encoder#15| state)))) ; $procmux$214_Y
+(define-fun |spi_sram_encoder#161| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#11| state)) #b1) ((_ extract 12 12) (|spi_sram_encoder#12| state)) #b0)) ; $procmux$220_Y
+(define-fun |spi_sram_encoder#162| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#81| state) (|spi_sram_encoder#161| state) ((_ extract 16 16) (|spi_sram_encoder#15| state)))) ; $procmux$222_Y
+(define-fun |spi_sram_encoder#163| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#81| state) #b0 ((_ extract 16 16) (|spi_sram_encoder#15| state)))) ; $procmux$226_Y
+(define-fun |spi_sram_encoder#164| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00111)) ; $procmux$234_CMP
+(define-fun |spi_sram_encoder#165| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00110)) ; $procmux$235_CMP
+(define-fun |spi_sram_encoder#166| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00101)) ; $procmux$236_CMP
+(define-fun |spi_sram_encoder#167| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00001)) ; $procmux$240_CMP
+(define-fun |spi_sram_encoder#168| ((state |spi_sram_encoder_s|)) Bool (not (or  (= ((_ extract 0 0) (|spi_sram_encoder#19| state)) #b1) (= ((_ extract 1 1) (|spi_sram_encoder#19| state)) #b1) (= ((_ extract 2 2) (|spi_sram_encoder#19| state)) #b1) (= ((_ extract 3 3) (|spi_sram_encoder#19| state)) #b1) (= ((_ extract 4 4) (|spi_sram_encoder#19| state)) #b1)))) ; $procmux$241_CMP
+(define-fun |spi_sram_encoder#169| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#164| state) (|spi_sram_encoder#165| state) (|spi_sram_encoder#166| state) (|spi_sram_encoder#167| state) (|spi_sram_encoder#168| state))) ; $auto$opt_reduce.cc:134:opt_mux$474
+(define-fun |spi_sram_encoder#170| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00100)) ; $procmux$237_CMP
+(define-fun |spi_sram_encoder#171| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00011)) ; $procmux$238_CMP
+(define-fun |spi_sram_encoder#172| ((state |spi_sram_encoder_s|)) Bool (= (|spi_sram_encoder#19| state) #b00010)) ; $procmux$239_CMP
+(define-fun |spi_sram_encoder#173| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#170| state) (|spi_sram_encoder#171| state) (|spi_sram_encoder#172| state))) ; $auto$opt_reduce.cc:134:opt_mux$476
+(define-fun |spi_sram_encoder#174| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#173| state) #b1 (ite (|spi_sram_encoder#169| state) #b0 #b0))) ; $procmux$233_Y
+(define-fun |spi_sram_encoder#175| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#95| state) (|spi_sram_encoder#174| state) (ite (|spi_sram_encoder#94| state) #b0 (ite (|spi_sram_encoder#93| state) (|spi_sram_encoder#163| state) (ite (|spi_sram_encoder#92| state) (|spi_sram_encoder#162| state) (ite (|spi_sram_encoder#91| state) (|spi_sram_encoder#160| state) #b0)))))) ; $procmux$216_Y
+(define-fun |spi_sram_encoder#176| ((state |spi_sram_encoder_s|)) Bool (distinct (concat (ite (|spi_sram_encoder#173| state) #b1 #b0) (concat (ite (|spi_sram_encoder#95| state) #b1 #b0) (ite (|spi_sram_encoder#169| state) #b1 #b0))) #b010)) ; $auto$opt_dff.cc:217:make_patterns_logic$540
+(define-fun |spi_sram_encoder#177| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#91| state) (|spi_sram_encoder#92| state) (|spi_sram_encoder#93| state) (|spi_sram_encoder#94| state) (|spi_sram_encoder#95| state))) ; $auto$opt_dff.cc:217:make_patterns_logic$542
+(define-fun |spi_sram_encoder#178| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#134| state) (|spi_sram_encoder#135| state) (|spi_sram_encoder#176| state) (|spi_sram_encoder#177| state) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$544
+(define-fun |spi_sram_encoder#179| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#178| state) (|spi_sram_encoder#175| state) (|spi_sram_encoder#6| state))) ; $auto$rtlil.cc:2218:Mux$654
+(define-fun |spi_sram_encoder#180| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#10| state) #b1 (|spi_sram_encoder#179| state))) ; $auto$rtlil.cc:2218:Mux$656
+(define-fun |spi_sram_encoder#181| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#81| state) #b000 ((_ extract 19 17) (|spi_sram_encoder#15| state)))) ; $procmux$160_Y
+(define-fun |spi_sram_encoder#182| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (= ((_ extract 0 0) (|spi_sram_encoder#11| state)) #b1) ((_ extract 15 13) (|spi_sram_encoder#12| state)) #b000)) ; $procmux$166_Y
+(define-fun |spi_sram_encoder#183| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#81| state) (|spi_sram_encoder#182| state) ((_ extract 19 17) (|spi_sram_encoder#15| state)))) ; $procmux$168_Y
+(define-fun |spi_sram_encoder#184| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#81| state) #b000 ((_ extract 19 17) (|spi_sram_encoder#15| state)))) ; $procmux$172_Y
+(define-fun |spi_sram_encoder#185| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#94| state) #b000 (ite (|spi_sram_encoder#93| state) (|spi_sram_encoder#184| state) (ite (|spi_sram_encoder#92| state) (|spi_sram_encoder#183| state) (ite (|spi_sram_encoder#91| state) (|spi_sram_encoder#181| state) #b000))))) ; $procmux$162_Y
+(define-fun |spi_sram_encoder#186| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#134| state) (|spi_sram_encoder#135| state) (|spi_sram_encoder#136| state) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$553
+(define-fun |spi_sram_encoder#187| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#186| state) (|spi_sram_encoder#185| state) (|spi_sram_encoder#2| state))) ; $auto$rtlil.cc:2218:Mux$650
+(define-fun |spi_sram_encoder#188| ((state |spi_sram_encoder_s|)) (_ BitVec 3) (ite (|spi_sram_encoder#10| state) #b111 (|spi_sram_encoder#187| state))) ; $auto$rtlil.cc:2218:Mux$652
+(define-fun |spi_sram_encoder#189| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (= ((_ extract 0 0) (|spi_sram_encoder#11| state)) #b1) #b0 #b0)) ; $procmux$388_Y
+(define-fun |spi_sram_encoder#190| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#81| state) (|spi_sram_encoder#189| state) #b0)) ; $procmux$390_Y
+(define-fun |spi_sram_encoder#191| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#87| state) #b1 #b0)) ; $procmux$394_Y
+(define-fun |spi_sram_encoder#192| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#41| state) (|spi_sram_encoder#191| state) (ite (|spi_sram_encoder#92| state) (|spi_sram_encoder#190| state) #b0))) ; $procmux$392_Y
+(define-fun |spi_sram_encoder#193| ((state |spi_sram_encoder_s|)) Bool (or  (|spi_sram_encoder#41| state) (|spi_sram_encoder#92| state))) ; $auto$opt_dff.cc:217:make_patterns_logic$600
+(define-fun |spi_sram_encoder#194| ((state |spi_sram_encoder_s|)) Bool (and  (|spi_sram_encoder#119| state) (|spi_sram_encoder#97| state) (|spi_sram_encoder#99| state) (|spi_sram_encoder#193| state) (= ((_ extract 0 0) (|spi_sram_encoder#8| state)) #b1))) ; $auto$opt_dff.cc:242:make_patterns_logic$602
+(define-fun |spi_sram_encoder#195| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#194| state) (|spi_sram_encoder#192| state) (|spi_sram_encoder#1| state))) ; $auto$rtlil.cc:2218:Mux$632
+(define-fun |spi_sram_encoder#196| ((state |spi_sram_encoder_s|)) (_ BitVec 1) (ite (|spi_sram_encoder#10| state) #b1 (|spi_sram_encoder#195| state))) ; $auto$rtlil.cc:2218:Mux$634
 (define-fun |spi_sram_encoder_a| ((state |spi_sram_encoder_s|)) Bool (and
   (|spi_sram_encoder_a 0| state)
   (|spi_sram_encoder_a 1| state)
@@ -359,43 +360,43 @@
 ))
 (define-fun |spi_sram_encoder_i| ((state |spi_sram_encoder_s|)) Bool (and
   (= (= ((_ extract 0 0) (|spi_sram_encoder#21| state)) #b1) false) ; f_past_valid
-  (= (= ((_ extract 0 0) (|spi_sram_encoder#29| state)) #b1) false) ; $formal$spi_sram_encoder.v:347$19_EN
-  (= (= ((_ extract 0 0) (|spi_sram_encoder#31| state)) #b1) false) ; $formal$spi_sram_encoder.v:342$18_EN
-  (= (= ((_ extract 0 0) (|spi_sram_encoder#33| state)) #b1) false) ; $formal$spi_sram_encoder.v:338$17_EN
-  (= (|spi_sram_encoder#39| state) false) ; $formal$spi_sram_encoder.v:332$14_EN
-  (= (= ((_ extract 0 0) (|spi_sram_encoder#35| state)) #b1) false) ; $formal$spi_sram_encoder.v:327$13_EN
-  (= (= ((_ extract 0 0) (|spi_sram_encoder#37| state)) #b1) false) ; $formal$spi_sram_encoder.v:323$12_EN
+  (= (= ((_ extract 0 0) (|spi_sram_encoder#29| state)) #b1) false) ; $formal$spi_sram_encoder.v:349$19_EN
+  (= (= ((_ extract 0 0) (|spi_sram_encoder#31| state)) #b1) false) ; $formal$spi_sram_encoder.v:344$18_EN
+  (= (= ((_ extract 0 0) (|spi_sram_encoder#33| state)) #b1) false) ; $formal$spi_sram_encoder.v:340$17_EN
+  (= (|spi_sram_encoder#39| state) false) ; $formal$spi_sram_encoder.v:334$14_EN
+  (= (= ((_ extract 0 0) (|spi_sram_encoder#35| state)) #b1) false) ; $formal$spi_sram_encoder.v:329$13_EN
+  (= (= ((_ extract 0 0) (|spi_sram_encoder#37| state)) #b1) false) ; $formal$spi_sram_encoder.v:325$12_EN
 ))
 (define-fun |spi_sram_encoder_h| ((state |spi_sram_encoder_s|)) Bool true)
 (define-fun |spi_sram_encoder_t| ((state |spi_sram_encoder_s|) (next_state |spi_sram_encoder_s|)) Bool (and
-  (= (|spi_sram_encoder#47| state) (|spi_sram_encoder#38| next_state)) ; $procdff$444 $formal$spi_sram_encoder.v:323$12_CHECK
-  (= (|spi_sram_encoder#48| state) (|spi_sram_encoder#37| next_state)) ; $procdff$445 $formal$spi_sram_encoder.v:323$12_EN
-  (= (|spi_sram_encoder#52| state) (|spi_sram_encoder#36| next_state)) ; $procdff$446 $formal$spi_sram_encoder.v:327$13_CHECK
-  (= (|spi_sram_encoder#53| state) (|spi_sram_encoder#35| next_state)) ; $procdff$447 $formal$spi_sram_encoder.v:327$13_EN
-  (= (|spi_sram_encoder#60| state) (|spi_sram_encoder#34| next_state)) ; $procdff$454 $formal$spi_sram_encoder.v:338$17_CHECK
-  (= (|spi_sram_encoder#62| state) (|spi_sram_encoder#33| next_state)) ; $auto$opt_dff.cc:702:run$623 $formal$spi_sram_encoder.v:338$17_EN
-  (= (|spi_sram_encoder#68| state) (|spi_sram_encoder#32| next_state)) ; $procdff$456 $formal$spi_sram_encoder.v:342$18_CHECK
-  (= (|spi_sram_encoder#70| state) (|spi_sram_encoder#31| next_state)) ; $auto$opt_dff.cc:702:run$622 $formal$spi_sram_encoder.v:342$18_EN
-  (= (|spi_sram_encoder#76| state) (|spi_sram_encoder#30| next_state)) ; $procdff$458 $formal$spi_sram_encoder.v:347$19_CHECK
-  (= (|spi_sram_encoder#78| state) (|spi_sram_encoder#29| next_state)) ; $auto$opt_dff.cc:702:run$621 $formal$spi_sram_encoder.v:347$19_EN
-  (= (concat (|spi_sram_encoder#2| state) (|spi_sram_encoder#6| state)) (|spi_sram_encoder#28| next_state)) ; $procdff$440 $past$spi_sram_encoder.v:343$5$0
-  (= (ite (|spi_sram_encoder#10| state) #b1 #b0) (|spi_sram_encoder#27| next_state)) ; $procdff$441 $past$spi_sram_encoder.v:346$6$0
-  (= (|spi_sram_encoder#106| state) (|spi_sram_encoder#23| next_state)) ; $auto$opt_dff.cc:764:run$593 \current_state
+  (= (|spi_sram_encoder#47| state) (|spi_sram_encoder#38| next_state)) ; $procdff$444 $formal$spi_sram_encoder.v:325$12_CHECK
+  (= (|spi_sram_encoder#48| state) (|spi_sram_encoder#37| next_state)) ; $procdff$445 $formal$spi_sram_encoder.v:325$12_EN
+  (= (|spi_sram_encoder#52| state) (|spi_sram_encoder#36| next_state)) ; $procdff$446 $formal$spi_sram_encoder.v:329$13_CHECK
+  (= (|spi_sram_encoder#53| state) (|spi_sram_encoder#35| next_state)) ; $procdff$447 $formal$spi_sram_encoder.v:329$13_EN
+  (= (|spi_sram_encoder#60| state) (|spi_sram_encoder#34| next_state)) ; $procdff$454 $formal$spi_sram_encoder.v:340$17_CHECK
+  (= (|spi_sram_encoder#62| state) (|spi_sram_encoder#33| next_state)) ; $auto$opt_dff.cc:702:run$622 $formal$spi_sram_encoder.v:340$17_EN
+  (= (|spi_sram_encoder#68| state) (|spi_sram_encoder#32| next_state)) ; $procdff$456 $formal$spi_sram_encoder.v:344$18_CHECK
+  (= (|spi_sram_encoder#70| state) (|spi_sram_encoder#31| next_state)) ; $auto$opt_dff.cc:702:run$621 $formal$spi_sram_encoder.v:344$18_EN
+  (= (|spi_sram_encoder#76| state) (|spi_sram_encoder#30| next_state)) ; $procdff$458 $formal$spi_sram_encoder.v:349$19_CHECK
+  (= (|spi_sram_encoder#78| state) (|spi_sram_encoder#29| next_state)) ; $auto$opt_dff.cc:702:run$620 $formal$spi_sram_encoder.v:349$19_EN
+  (= (concat (|spi_sram_encoder#2| state) (|spi_sram_encoder#6| state)) (|spi_sram_encoder#28| next_state)) ; $procdff$440 $past$spi_sram_encoder.v:345$5$0
+  (= (ite (|spi_sram_encoder#10| state) #b1 #b0) (|spi_sram_encoder#27| next_state)) ; $procdff$441 $past$spi_sram_encoder.v:348$6$0
+  (= (|spi_sram_encoder#106| state) (|spi_sram_encoder#23| next_state)) ; $auto$opt_dff.cc:764:run$592 \current_state
   (= #b1 (|spi_sram_encoder#21| next_state)) ; $procdff$437 \f_past_valid
-  (= (|spi_sram_encoder#109| state) (|spi_sram_encoder#20| next_state)) ; $auto$opt_dff.cc:764:run$620 \initialized
-  (= (|spi_sram_encoder#113| state) (|spi_sram_encoder#19| next_state)) ; $auto$opt_dff.cc:764:run$575 \initializing_step
+  (= (|spi_sram_encoder#109| state) (|spi_sram_encoder#20| next_state)) ; $auto$opt_dff.cc:764:run$619 \initialized
+  (= (|spi_sram_encoder#113| state) (|spi_sram_encoder#19| next_state)) ; $auto$opt_dff.cc:764:run$574 \initializing_step
   (= (|spi_sram_encoder#124| state) (|spi_sram_encoder#18| next_state)) ; $auto$opt_dff.cc:764:run$508 \input_bits_left
-  (= (|spi_sram_encoder#126| state) (|spi_sram_encoder#17| next_state)) ; $auto$opt_dff.cc:764:run$513 \input_buffer
-  (= (|spi_sram_encoder#137| state) (|spi_sram_encoder#16| next_state)) ; $auto$opt_dff.cc:764:run$524 \output_bits_left
-  (= (|spi_sram_encoder#144| state) (|spi_sram_encoder#15| next_state)) ; $auto$opt_dff.cc:764:run$536 \output_buffer [19:0]
-  (= (|spi_sram_encoder#146| state) (|spi_sram_encoder#13| next_state)) ; $auto$opt_dff.cc:764:run$571 \request_address
-  (= (|spi_sram_encoder#147| state) (|spi_sram_encoder#12| next_state)) ; $auto$opt_dff.cc:764:run$566 \request_data_out
-  (= (|spi_sram_encoder#148| state) (|spi_sram_encoder#11| next_state)) ; $auto$opt_dff.cc:764:run$561 \request_write
-  (= (|spi_sram_encoder#156| state) (|spi_sram_encoder#9| next_state)) ; $auto$opt_dff.cc:764:run$616 \sram_cs_n
-  (= (|spi_sram_encoder#158| state) (|spi_sram_encoder#8| next_state)) ; $auto$opt_dff.cc:702:run$606 \sram_sck
-  (= (|spi_sram_encoder#179| state) (|spi_sram_encoder#6| next_state)) ; $auto$opt_dff.cc:764:run$547 \output_buffer [20]
-  (= (|spi_sram_encoder#187| state) (|spi_sram_encoder#2| next_state)) ; $auto$opt_dff.cc:764:run$556 \output_buffer [23:21]
-  (= (|spi_sram_encoder#195| state) (|spi_sram_encoder#1| next_state)) ; $auto$opt_dff.cc:764:run$605 \sram_sio_oe
+  (= (|spi_sram_encoder#127| state) (|spi_sram_encoder#17| next_state)) ; $auto$opt_dff.cc:764:run$512 \input_buffer
+  (= (|spi_sram_encoder#138| state) (|spi_sram_encoder#16| next_state)) ; $auto$opt_dff.cc:764:run$523 \output_bits_left
+  (= (|spi_sram_encoder#145| state) (|spi_sram_encoder#15| next_state)) ; $auto$opt_dff.cc:764:run$535 \output_buffer [19:0]
+  (= (|spi_sram_encoder#147| state) (|spi_sram_encoder#13| next_state)) ; $auto$opt_dff.cc:764:run$570 \request_address
+  (= (|spi_sram_encoder#148| state) (|spi_sram_encoder#12| next_state)) ; $auto$opt_dff.cc:764:run$565 \request_data_out
+  (= (|spi_sram_encoder#149| state) (|spi_sram_encoder#11| next_state)) ; $auto$opt_dff.cc:764:run$560 \request_write
+  (= (|spi_sram_encoder#157| state) (|spi_sram_encoder#9| next_state)) ; $auto$opt_dff.cc:764:run$615 \sram_cs_n
+  (= (|spi_sram_encoder#159| state) (|spi_sram_encoder#8| next_state)) ; $auto$opt_dff.cc:702:run$605 \sram_sck
+  (= (|spi_sram_encoder#180| state) (|spi_sram_encoder#6| next_state)) ; $auto$opt_dff.cc:764:run$546 \output_buffer [20]
+  (= (|spi_sram_encoder#188| state) (|spi_sram_encoder#2| next_state)) ; $auto$opt_dff.cc:764:run$555 \output_buffer [23:21]
+  (= (|spi_sram_encoder#196| state) (|spi_sram_encoder#1| next_state)) ; $auto$opt_dff.cc:764:run$604 \sram_sio_oe
 )) ; end of module spi_sram_encoder
 ; yosys-smt2-topmod spi_sram_encoder
 ; end of yosys output

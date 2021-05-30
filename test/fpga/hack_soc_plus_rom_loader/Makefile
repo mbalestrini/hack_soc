@@ -1,10 +1,10 @@
-PROJECT = test_hack_soc_with_rom
+PROJECT = fpga_hack_soc_plus_rom_loader
 PROJECT_SOURCES = ../../../src
 SOURCES = src/*.v $(PROJECT_SOURCES)/*.v 
 ICEBREAKER_DEVICE = up5k
 ICEBREAKER_PIN_DEF = icebreaker.pcf
 ICEBREAKER_PACKAGE = sg48
-ICEBREAKER_FREQUENCY_TEST = 20
+ICEBREAKER_FREQUENCY_TEST = 12
 BUILD_PATH = build
 SEED = 1
 
@@ -15,7 +15,7 @@ show_synth_%: src/%.v
 %.json: $(SOURCES)
 	rm -rf build/
 	mkdir build/ 
-	yosys -l $(BUILD_PATH)/yosys.log -p 'synth_ice40 -top test_hack_soc_with_rom -json $(BUILD_PATH)/$(PROJECT).json' $(SOURCES)
+	yosys -l $(BUILD_PATH)/yosys.log -p 'synth_ice40 -top fpga_hack_soc_plus_rom_loader -json $(BUILD_PATH)/$(PROJECT).json' $(SOURCES)
 
 %.asc: %.json $(ICEBREAKER_PIN_DEF) 
 	nextpnr-ice40 -l $(BUILD_PATH)/nextpnr.log --seed $(SEED) --freq $(ICEBREAKER_FREQUENCY_TEST) --package $(ICEBREAKER_PACKAGE) --$(ICEBREAKER_DEVICE) --asc $(BUILD_PATH)/$@ --pcf $(ICEBREAKER_PIN_DEF) --json $(BUILD_PATH)/$<
@@ -29,7 +29,8 @@ prog: $(PROJECT).bin
 	iceprog.exe $(BUILD_PATH)/$<
 
 lint:
-	verible-verilog-lint src/*v --rules_config verible.rules 
+	verilator --Wall --lint-only src/*v
+#	 verible-verilog-lint src/*v --rules_config verible.rules 
 
 clean:
 	rm -rf build/*bin build/*log build/*json build/*asc

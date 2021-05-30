@@ -84,10 +84,11 @@ assign rom_sio3_i = rom_sio3;
 
 
 
-
+wire hack_external_reset = 0;
 hack_soc soc(
 	.clk(clk),
 	.reset(reset),
+	.hack_external_reset(hack_external_reset),
 
 	/** RAM: qspi serial sram **/
 	.ram_cs_n(ram_cs_n),
@@ -117,7 +118,16 @@ hack_soc soc(
 	.rom_sio0_o(rom_sio0_o), // sram_si_sio0
 	.rom_sio1_o(rom_sio1_o), // sram_so_sio1
 	.rom_sio2_o(rom_sio2_o), // sram_sio2
-	.rom_sio3_o(rom_sio3_o) // sram_hold_n_sio3
+	.rom_sio3_o(rom_sio3_o), // sram_hold_n_sio3
+
+
+	// ROM LOADING LINES
+	.rom_loader_load(0)
+	// .rom_loader_reset(0),
+	// .rom_loader_data,
+	// .rom_loader_ack,
+	// .rom_loader_load_received,
+
 	);
 
 

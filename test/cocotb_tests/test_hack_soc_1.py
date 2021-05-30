@@ -18,6 +18,7 @@ async def test_hack_soc(dut):
     clock = Clock(dut.clk, 10, units="us")
     cocotb.fork(clock.start())
 
+    dut.hack_external_reset = 0
     dut.rom_sio0_i = 0
     dut.rom_sio1_i = 0
     dut.rom_sio2_i = 0

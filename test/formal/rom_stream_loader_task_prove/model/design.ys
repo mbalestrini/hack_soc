@@ -1,0 +1,14 @@
+# running in formal/rom_stream_loader_task_prove/src/
+read -formal rom_stream_loader.v
+prep -top rom_stream_loader
+
+memory_nordff
+async2sync
+chformal -assume -early
+chformal -live -fair -cover -remove
+opt_clean
+setundef -anyseq
+opt -keepdc -fast
+check
+hierarchy -simcheck
+write_ilang ../model/design.il

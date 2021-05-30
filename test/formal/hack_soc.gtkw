@@ -1,0 +1,31 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Sat May 29 15:30:57 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/hack_soc_task_cover/engine_0/trace0.vcd"
+[dumpfile_mtime] "Sat May 29 15:30:12 2021"
+[dumpfile_size] 69410
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/hack_soc.gtkw"
+[timestart] 0
+[size] 1920 1147
+[pos] -1 -1
+*-7.072009 590 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] hack_soc.
+[sst_width] 213
+[signals_width] 243
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+hack_soc.clk
+hack_soc.reset
+hack_soc.hack_clk
+hack_soc.hack_reset
+hack_soc.hack_wait_clocks[1:0]
+hack_soc.ram_sck
+hack_soc.ram_encoder_0.request
+hack_soc.ram_encoder_0.sram_cs_n
+hack_soc.ram_encoder_0.initialized
+@23
+hack_soc.ram_encoder_0.sio_o[3:0]
+[pattern_trace] 1
+[pattern_trace] 0

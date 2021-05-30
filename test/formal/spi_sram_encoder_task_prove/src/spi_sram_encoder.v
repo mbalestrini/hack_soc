@@ -85,7 +85,6 @@ reg [4:0] initializing_step;
 
 
 reg [ADDRESS_WIDTH-1:0] request_address;
-reg [WORD_WIDTH-1:0] request_data_in;
 reg [WORD_WIDTH-1:0] request_data_out;
 reg request_write;
 
@@ -135,6 +134,8 @@ always @(posedge clk) begin
 
 		// set output to 1 to keep HOLD_N high during initialization
 		output_buffer[OUTPUT_BUFFER_WIDTH-1:OUTPUT_BUFFER_WIDTH-4] <= 4'b1111;
+		
+		input_buffer <= 0;
 
 		sram_sck <= 0;
 	end else begin
@@ -179,7 +180,7 @@ always @(posedge clk) begin
 							current_state <= state_start;
 
 							// save request
-							request_address <= { {(SRAM_ADDRESS_WIDTH-ADDRESS_WIDTH){1'b0}}, address};
+							request_address <= address;
 							request_write <= write_enable;
 							request_data_out <= data_out;
 
@@ -213,7 +214,8 @@ always @(posedge clk) begin
 						if(output_bits_left == BITS_PER_CLK) begin
 							current_state <= state_address;			
 							// Load Address
-							output_buffer <= {request_address, {(OUTPUT_BUFFER_WIDTH-SRAM_ADDRESS_WIDTH){1'b0}}};
+							// As we read 2 bytes for every HACK memory address, we multiply by 2 before sending it to the 23LC1024
+							output_buffer <= { {(OUTPUT_BUFFER_WIDTH-ADDRESS_WIDTH-1){1'b0}}, request_address[ADDRESS_WIDTH-1:0] , 1'b0};
 							output_bits_left <= SRAM_ADDRESS_WIDTH;
 						end else begin
 							// Output next bits

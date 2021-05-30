@@ -1,0 +1,119 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Sun May 30 02:50:12 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_plus_rom_loader.vcd"
+[dumpfile_mtime] "Sun May 30 02:49:42 2021"
+[dumpfile_size] 3908300
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_plus_rom_loader.gtwk"
+[timestart] 0
+[size] 1920 1147
+[pos] -1 -1
+*-31.000000 235690000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test_hack_soc_plus_rom_loader.
+[treeopen] test_hack_soc_plus_rom_loader.soc.
+[sst_width] 226
+[signals_width] 366
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@22
+test_hack_soc_plus_rom_loader.soc.debug_gpio[15:0]
+@28
+test_hack_soc_plus_rom_loader.clk
+test_hack_soc_plus_rom_loader.reset
+test_hack_soc_plus_rom_loader.soc.hack_clk
+test_hack_soc_plus_rom_loader.soc.hack_reset
+test_hack_soc_plus_rom_loader.hack_external_reset
+@800200
+-HACK_SOC
+@22
+test_hack_soc_plus_rom_loader.soc.hack_pc[14:0]
+test_hack_soc_plus_rom_loader.soc.hack_instruction[15:0]
+test_hack_soc_plus_rom_loader.soc.hack_addressM[14:0]
+test_hack_soc_plus_rom_loader.soc.hack_outM[15:0]
+test_hack_soc_plus_rom_loader.soc.hack_inM[15:0]
+@28
+test_hack_soc_plus_rom_loader.soc.hack_writeM
+test_hack_soc_plus_rom_loader.soc.rom_write_enable
+@23
+test_hack_soc_plus_rom_loader.soc.gpio[15:0]
+@1000200
+-HACK_SOC
+@28
+test_hack_soc_plus_rom_loader.run_file_to_rom
+test_hack_soc_plus_rom_loader.soc.rom_loader_request
+@22
+test_hack_soc_plus_rom_loader.soc.rom_loader_output_address[14:0]
+test_hack_soc_plus_rom_loader.soc.rom_loader_output_data[15:0]
+@28
+test_hack_soc_plus_rom_loader.file_to_rom.rom_loader_ack
+test_hack_soc_plus_rom_loader.file_to_rom.done_loading
+@2028
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_sram_encoder_states.gtkw
+test_hack_soc_plus_rom_loader.soc.rom_encoder_0.current_state[2:0]
+@800200
+-ROM_DATA
+@22
+test_hack_soc_plus_rom_loader.rom.MemoryByte00000[7:0]
+test_hack_soc_plus_rom_loader.rom.MemoryByte00001[7:0]
+test_hack_soc_plus_rom_loader.rom.MemoryByte00002[7:0]
+test_hack_soc_plus_rom_loader.rom.MemoryByte00003[7:0]
+test_hack_soc_plus_rom_loader.rom.MemoryByte00004[7:0]
+test_hack_soc_plus_rom_loader.rom.MemoryByte00005[7:0]
+test_hack_soc_plus_rom_loader.rom.MemoryByte00006[7:0]
+test_hack_soc_plus_rom_loader.rom.MemoryByte00007[7:0]
+test_hack_soc_plus_rom_loader.rom.MemoryByte00008[7:0]
+test_hack_soc_plus_rom_loader.rom.MemoryByte00009[7:0]
+@1000200
+-ROM_DATA
+@800200
+-ROM
+@28
+test_hack_soc_plus_rom_loader.rom.CS_N
+test_hack_soc_plus_rom_loader.rom.RESET
+test_hack_soc_plus_rom_loader.rom.InstructionEQIO
+test_hack_soc_plus_rom_loader.rom.InstructionWRITE
+test_hack_soc_plus_rom_loader.rom.InstructionREAD
+@1000200
+-ROM
+@800200
+-RAM_DATA
+@c00022
+#{test_hack_soc_plus_rom_loader.ram.MemoryByte[00000:00001][7:0]} (0)test_hack_soc_plus_rom_loader.ram.MemoryByte00000[7:0] (1)test_hack_soc_plus_rom_loader.ram.MemoryByte00000[7:0] (2)test_hack_soc_plus_rom_loader.ram.MemoryByte00000[7:0] (3)test_hack_soc_plus_rom_loader.ram.MemoryByte00000[7:0] (4)test_hack_soc_plus_rom_loader.ram.MemoryByte00000[7:0] (5)test_hack_soc_plus_rom_loader.ram.MemoryByte00000[7:0] (6)test_hack_soc_plus_rom_loader.ram.MemoryByte00000[7:0] (7)test_hack_soc_plus_rom_loader.ram.MemoryByte00000[7:0] (0)test_hack_soc_plus_rom_loader.ram.MemoryByte00001[7:0] (1)test_hack_soc_plus_rom_loader.ram.MemoryByte00001[7:0] (2)test_hack_soc_plus_rom_loader.ram.MemoryByte00001[7:0] (3)test_hack_soc_plus_rom_loader.ram.MemoryByte00001[7:0] (4)test_hack_soc_plus_rom_loader.ram.MemoryByte00001[7:0] (5)test_hack_soc_plus_rom_loader.ram.MemoryByte00001[7:0] (6)test_hack_soc_plus_rom_loader.ram.MemoryByte00001[7:0] (7)test_hack_soc_plus_rom_loader.ram.MemoryByte00001[7:0]
+@22
+test_hack_soc_plus_rom_loader.ram.MemoryByte00000[7:0]
+test_hack_soc_plus_rom_loader.ram.MemoryByte00001[7:0]
+@1401200
+-group_end
+@c00022
+#{test_hack_soc_plus_rom_loader.ram.MemoryByte[00002:00003][7:0]} (0)test_hack_soc_plus_rom_loader.ram.MemoryByte00002[7:0] (1)test_hack_soc_plus_rom_loader.ram.MemoryByte00002[7:0] (2)test_hack_soc_plus_rom_loader.ram.MemoryByte00002[7:0] (3)test_hack_soc_plus_rom_loader.ram.MemoryByte00002[7:0] (4)test_hack_soc_plus_rom_loader.ram.MemoryByte00002[7:0] (5)test_hack_soc_plus_rom_loader.ram.MemoryByte00002[7:0] (6)test_hack_soc_plus_rom_loader.ram.MemoryByte00002[7:0] (7)test_hack_soc_plus_rom_loader.ram.MemoryByte00002[7:0] (0)test_hack_soc_plus_rom_loader.ram.MemoryByte00003[7:0] (1)test_hack_soc_plus_rom_loader.ram.MemoryByte00003[7:0] (2)test_hack_soc_plus_rom_loader.ram.MemoryByte00003[7:0] (3)test_hack_soc_plus_rom_loader.ram.MemoryByte00003[7:0] (4)test_hack_soc_plus_rom_loader.ram.MemoryByte00003[7:0] (5)test_hack_soc_plus_rom_loader.ram.MemoryByte00003[7:0] (6)test_hack_soc_plus_rom_loader.ram.MemoryByte00003[7:0] (7)test_hack_soc_plus_rom_loader.ram.MemoryByte00003[7:0]
+@22
+test_hack_soc_plus_rom_loader.ram.MemoryByte00002[7:0]
+test_hack_soc_plus_rom_loader.ram.MemoryByte00003[7:0]
+@1401200
+-group_end
+@c00022
+#{test_hack_soc_plus_rom_loader.ram.MemoryByte[00004:00005][7:0]} (0)test_hack_soc_plus_rom_loader.ram.MemoryByte00004[7:0] (1)test_hack_soc_plus_rom_loader.ram.MemoryByte00004[7:0] (2)test_hack_soc_plus_rom_loader.ram.MemoryByte00004[7:0] (3)test_hack_soc_plus_rom_loader.ram.MemoryByte00004[7:0] (4)test_hack_soc_plus_rom_loader.ram.MemoryByte00004[7:0] (5)test_hack_soc_plus_rom_loader.ram.MemoryByte00004[7:0] (6)test_hack_soc_plus_rom_loader.ram.MemoryByte00004[7:0] (7)test_hack_soc_plus_rom_loader.ram.MemoryByte00004[7:0] (0)test_hack_soc_plus_rom_loader.ram.MemoryByte00005[7:0] (1)test_hack_soc_plus_rom_loader.ram.MemoryByte00005[7:0] (2)test_hack_soc_plus_rom_loader.ram.MemoryByte00005[7:0] (3)test_hack_soc_plus_rom_loader.ram.MemoryByte00005[7:0] (4)test_hack_soc_plus_rom_loader.ram.MemoryByte00005[7:0] (5)test_hack_soc_plus_rom_loader.ram.MemoryByte00005[7:0] (6)test_hack_soc_plus_rom_loader.ram.MemoryByte00005[7:0] (7)test_hack_soc_plus_rom_loader.ram.MemoryByte00005[7:0]
+@22
+test_hack_soc_plus_rom_loader.ram.MemoryByte00004[7:0]
+test_hack_soc_plus_rom_loader.ram.MemoryByte00005[7:0]
+@1401200
+-group_end
+@c00022
+#{test_hack_soc_plus_rom_loader.ram.MemoryByte[00006:00007][7:0]} (0)test_hack_soc_plus_rom_loader.ram.MemoryByte00006[7:0] (1)test_hack_soc_plus_rom_loader.ram.MemoryByte00006[7:0] (2)test_hack_soc_plus_rom_loader.ram.MemoryByte00006[7:0] (3)test_hack_soc_plus_rom_loader.ram.MemoryByte00006[7:0] (4)test_hack_soc_plus_rom_loader.ram.MemoryByte00006[7:0] (5)test_hack_soc_plus_rom_loader.ram.MemoryByte00006[7:0] (6)test_hack_soc_plus_rom_loader.ram.MemoryByte00006[7:0] (7)test_hack_soc_plus_rom_loader.ram.MemoryByte00006[7:0] (0)test_hack_soc_plus_rom_loader.ram.MemoryByte00007[7:0] (1)test_hack_soc_plus_rom_loader.ram.MemoryByte00007[7:0] (2)test_hack_soc_plus_rom_loader.ram.MemoryByte00007[7:0] (3)test_hack_soc_plus_rom_loader.ram.MemoryByte00007[7:0] (4)test_hack_soc_plus_rom_loader.ram.MemoryByte00007[7:0] (5)test_hack_soc_plus_rom_loader.ram.MemoryByte00007[7:0] (6)test_hack_soc_plus_rom_loader.ram.MemoryByte00007[7:0] (7)test_hack_soc_plus_rom_loader.ram.MemoryByte00007[7:0]
+@22
+test_hack_soc_plus_rom_loader.ram.MemoryByte00006[7:0]
+test_hack_soc_plus_rom_loader.ram.MemoryByte00007[7:0]
+@1401200
+-group_end
+@c00022
+#{test_hack_soc_plus_rom_loader.ram.MemoryByte[00008:00009][7:0]} (0)test_hack_soc_plus_rom_loader.ram.MemoryByte00008[7:0] (1)test_hack_soc_plus_rom_loader.ram.MemoryByte00008[7:0] (2)test_hack_soc_plus_rom_loader.ram.MemoryByte00008[7:0] (3)test_hack_soc_plus_rom_loader.ram.MemoryByte00008[7:0] (4)test_hack_soc_plus_rom_loader.ram.MemoryByte00008[7:0] (5)test_hack_soc_plus_rom_loader.ram.MemoryByte00008[7:0] (6)test_hack_soc_plus_rom_loader.ram.MemoryByte00008[7:0] (7)test_hack_soc_plus_rom_loader.ram.MemoryByte00008[7:0] (0)test_hack_soc_plus_rom_loader.ram.MemoryByte00009[7:0] (1)test_hack_soc_plus_rom_loader.ram.MemoryByte00009[7:0] (2)test_hack_soc_plus_rom_loader.ram.MemoryByte00009[7:0] (3)test_hack_soc_plus_rom_loader.ram.MemoryByte00009[7:0] (4)test_hack_soc_plus_rom_loader.ram.MemoryByte00009[7:0] (5)test_hack_soc_plus_rom_loader.ram.MemoryByte00009[7:0] (6)test_hack_soc_plus_rom_loader.ram.MemoryByte00009[7:0] (7)test_hack_soc_plus_rom_loader.ram.MemoryByte00009[7:0]
+@22
+test_hack_soc_plus_rom_loader.ram.MemoryByte00008[7:0]
+test_hack_soc_plus_rom_loader.ram.MemoryByte00009[7:0]
+@1401200
+-group_end
+@1000200
+-RAM_DATA
+[pattern_trace] 1
+[pattern_trace] 0

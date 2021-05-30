@@ -1,0 +1,15 @@
+[options]
+mode prove
+depth 60
+
+
+
+[engines]
+smtbmc
+
+[script]
+read -formal rom_stream_loader.v
+prep -top rom_stream_loader
+
+[files]
+../src/rom_stream_loader.v

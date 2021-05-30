@@ -24,8 +24,10 @@ async def test_spi_sram_encoder(dut):
 
 
     # WRITE TO SRAM
+    HACK_ADDRESS = 0xABCD
+    SRAM_MAPPED_ADDRESS = (HACK_ADDRESS<<1) 
 
-    dut.address = 0xABCD
+    dut.address = HACK_ADDRESS
     dut.data_out = 0x5432
     dut.request = 1
     dut.write_enable = 1
@@ -46,30 +48,29 @@ async def test_spi_sram_encoder(dut):
     # READ INSTRUCTION LOW NIBBLE
     assert(dut.sio_o==2)
 
-
     await ClockCycles(dut.clk, 2)
     # ADDRESS BITS [23:20]
-    assert(dut.sio_o==0x0)
+    assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>20) & 0xf))
 
     await ClockCycles(dut.clk, 2)
     # ADDRESS BITS [19:16]
-    assert(dut.sio_o==0x0)
+    assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>16) & 0xf))
 
     await ClockCycles(dut.clk, 2)
     # ADDRESS BITS [15:12]
-    assert(dut.sio_o==0xA)
+    assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>12) & 0xf))
 
     await ClockCycles(dut.clk, 2)
     # ADDRESS BITS [11:8]
-    assert(dut.sio_o==0xB)
+    assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>8) & 0xf))
 
     await ClockCycles(dut.clk, 2)
     # ADDRESS BITS [7:4]
-    assert(dut.sio_o==0xC)
+    assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>4) & 0xf))
 
     await ClockCycles(dut.clk, 2)
     # ADDRESS BITS [3:0]
-    assert(dut.sio_o==0xD)
+    assert(dut.sio_o==((SRAM_MAPPED_ADDRESS) & 0xf))
 
     
     await ClockCycles(dut.clk, 2)
@@ -99,6 +100,8 @@ async def test_spi_sram_encoder(dut):
 
 
     # READ FROM SRAM
+    HACK_ADDRESS = 0xFEDC
+    SRAM_MAPPED_ADDRESS = (HACK_ADDRESS<<1) 
 
     dut.address = 0xFEDC
     dut.request = 1
@@ -122,27 +125,27 @@ async def test_spi_sram_encoder(dut):
 	
     await ClockCycles(dut.clk, 2)
     # ADDRESS BITS [23:20]
-    assert(dut.sio_o==0)
+    assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>20) & 0xf))
 
     await ClockCycles(dut.clk, 2)
     # ADDRESS BITS [19:16]
-    assert(dut.sio_o==0)
+    assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>16) & 0xf))
 
     await ClockCycles(dut.clk, 2)
     # ADDRESS BITS [15:12]
-    assert(dut.sio_o==0xF)
+    assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>12) & 0xf))
 
     await ClockCycles(dut.clk, 2)
     # ADDRESS BITS [11:8]
-    assert(dut.sio_o==0xE)
+    assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>8) & 0xf))
 
     await ClockCycles(dut.clk, 2)
     # ADDRESS BITS [7:4]
-    assert(dut.sio_o==0xD)
+    assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>4) & 0xf))
 
     await ClockCycles(dut.clk, 2)
     # ADDRESS BITS [3:0]
-    assert(dut.sio_o==0xC)
+    assert(dut.sio_o==((SRAM_MAPPED_ADDRESS) & 0xf))
 
 
     # DUMMY BYTE

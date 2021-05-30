@@ -1,0 +1,58 @@
+SBY  0:06:06 [formal/hack_soc_task_cover] Removing directory 'formal/hack_soc_task_cover'.
+SBY  0:06:06 [formal/hack_soc_task_cover] Copy '../src/rom_stream_loader.v' to 'formal/hack_soc_task_cover/src/rom_stream_loader.v'.
+SBY  0:06:06 [formal/hack_soc_task_cover] Copy '../src/dmux8way.v' to 'formal/hack_soc_task_cover/src/dmux8way.v'.
+SBY  0:06:06 [formal/hack_soc_task_cover] Copy '../src/hack_alu.v' to 'formal/hack_soc_task_cover/src/hack_alu.v'.
+SBY  0:06:06 [formal/hack_soc_task_cover] Copy '../src/hack_clock.v' to 'formal/hack_soc_task_cover/src/hack_clock.v'.
+SBY  0:06:06 [formal/hack_soc_task_cover] Copy '../src/hack_cpu.v' to 'formal/hack_soc_task_cover/src/hack_cpu.v'.
+SBY  0:06:06 [formal/hack_soc_task_cover] Copy '../src/hack_soc.v' to 'formal/hack_soc_task_cover/src/hack_soc.v'.
+SBY  0:06:06 [formal/hack_soc_task_cover] Copy '../src/pc.v' to 'formal/hack_soc_task_cover/src/pc.v'.
+SBY  0:06:06 [formal/hack_soc_task_cover] Copy '../src/register.v' to 'formal/hack_soc_task_cover/src/register.v'.
+SBY  0:06:06 [formal/hack_soc_task_cover] Copy '../src/spi_sram_encoder.v' to 'formal/hack_soc_task_cover/src/spi_sram_encoder.v'.
+SBY  0:06:06 [formal/hack_soc_task_cover] Copy '../src/includes/params.v' to 'formal/hack_soc_task_cover/src/includes/params.v'.
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: smtbmc
+SBY  0:06:06 [formal/hack_soc_task_cover] base: starting process "cd formal/hack_soc_task_cover/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY  0:06:06 [formal/hack_soc_task_cover] base: finished (returncode=0)
+SBY  0:06:06 [formal/hack_soc_task_cover] smt2: starting process "cd formal/hack_soc_task_cover/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY  0:06:06 [formal/hack_soc_task_cover] smt2: finished (returncode=0)
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: starting process "cd formal/hack_soc_task_cover; yosys-smtbmc --presat --unroll -c --noprogress -t 60  --append 0 --dump-vcd engine_0/trace%.vcd --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Solver: yices
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 0..
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 1..
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 2..
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 3..
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 4..
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 5..
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 6..
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 7..
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 8..
+SBY  0:06:06 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 9..
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 10..
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 11..
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 12..
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:00  Checking cover reachability in step 13..
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:01  Checking cover reachability in step 14..
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:01  Checking cover reachability in step 15..
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:01  Checking cover reachability in step 16..
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:01  Checking cover reachability in step 17..
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:01  Checking cover reachability in step 18..
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:01  Checking cover reachability in step 19..
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:01  Checking cover reachability in step 20..
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:01  Reached cover statement at COVER_RAM_INIT in step 20.
+SBY  0:06:07 [formal/hack_soc_task_cover] engine_0: ##   0:00:01  Writing trace to VCD file: engine_0/trace0.vcd
+SBY  0:06:08 [formal/hack_soc_task_cover] engine_0: ##   0:00:01  Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY  0:06:08 [formal/hack_soc_task_cover] engine_0: ##   0:00:01  Writing trace to constraints file: engine_0/trace0.smtc
+SBY  0:06:08 [formal/hack_soc_task_cover] engine_0: ##   0:00:01  Checking cover reachability in step 20..
+SBY  0:06:08 [formal/hack_soc_task_cover] engine_0: ##   0:00:02  Checking cover reachability in step 21..
+SBY  0:06:08 [formal/hack_soc_task_cover] engine_0: ##   0:00:02  Reached cover statement at COVER_HACK_CLOCK_START in step 21.
+SBY  0:06:08 [formal/hack_soc_task_cover] engine_0: ##   0:00:02  Writing trace to VCD file: engine_0/trace1.vcd
+SBY  0:06:08 [formal/hack_soc_task_cover] engine_0: ##   0:00:02  Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY  0:06:08 [formal/hack_soc_task_cover] engine_0: ##   0:00:02  Writing trace to constraints file: engine_0/trace1.smtc
+SBY  0:06:08 [formal/hack_soc_task_cover] engine_0: ##   0:00:02  Status: passed
+SBY  0:06:08 [formal/hack_soc_task_cover] engine_0: finished (returncode=0)
+SBY  0:06:08 [formal/hack_soc_task_cover] engine_0: Status returned by engine: pass
+SBY  0:06:08 [formal/hack_soc_task_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:02 (2)
+SBY  0:06:08 [formal/hack_soc_task_cover] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:03 (3)
+SBY  0:06:08 [formal/hack_soc_task_cover] summary: engine_0 (smtbmc) returned pass
+SBY  0:06:08 [formal/hack_soc_task_cover] summary: trace: formal/hack_soc_task_cover/engine_0/trace0.vcd
+SBY  0:06:08 [formal/hack_soc_task_cover] summary: trace: formal/hack_soc_task_cover/engine_0/trace1.vcd
+SBY  0:06:08 [formal/hack_soc_task_cover] DONE (PASS, rc=0)

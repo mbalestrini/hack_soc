@@ -1,0 +1,33 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Sat May 29 14:39:09 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/rom_stream_loader_task_prove/engine_0/trace_induct.vcd"
+[dumpfile_mtime] "Sat May 29 14:37:08 2021"
+[dumpfile_size] 13042
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/rom_stream_loader.gtkw"
+[timestart] 0
+[size] 1920 1147
+[pos] -1 -1
+*-6.641659 321 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 213
+[signals_width] 305
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+rom_stream_loader.reset
+rom_stream_loader.clk
+rom_stream_loader.rom_initialized
+rom_stream_loader.rom_busy
+rom_stream_loader.rom_request
+rom_stream_loader.writing
+rom_stream_loader.ack
+@22
+rom_stream_loader.input_data[15:0]
+rom_stream_loader.output_data[15:0]
+@23
+rom_stream_loader.current_address[15:0]
+@22
+rom_stream_loader.output_address[15:0]
+[pattern_trace] 1
+[pattern_trace] 0

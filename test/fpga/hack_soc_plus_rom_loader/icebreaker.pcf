@@ -25,14 +25,14 @@ set_io -nowarn FLASH_IO3  13
 
 
 # PMOD 1A
-set_io -nowarn RAM_CS_N        4
-set_io -nowarn RAM_SCK        	2
+set_io -nowarn ROM_CS_N        4
+set_io -nowarn ROM_SCK        	2
 set_io -nowarn P1A3       		47
 set_io -nowarn P1A4       		45
-set_io -nowarn RAM_SIO0        3
-set_io -nowarn RAM_SIO1       	48
-set_io -nowarn RAM_SIO2       	46
-set_io -nowarn RAM_SIO3      	44
+set_io -nowarn ROM_SIO0        3
+set_io -nowarn ROM_SIO1       	48
+set_io -nowarn ROM_SIO2       	46
+set_io -nowarn ROM_SIO3      	44
 
 
 # PMOD 1A
