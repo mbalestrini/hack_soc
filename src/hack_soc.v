@@ -3,6 +3,7 @@
 
 module hack_soc (
 	input clk,
+	input display_clk,
 	input reset,
 	input hack_external_reset,
 
@@ -38,6 +39,13 @@ module hack_soc (
 	output rom_sio3_o, // sram_hold_n_sio3
 
 
+	// ** DISPLAY ** //
+	output display_hsync,
+	output display_vsync,
+	output display_rgb,
+
+
+	// GPIO
 	output reg [HACK_GPIO_WIDTH-1:0] gpio,
 
 	// ROM LOADING LINES
@@ -202,6 +210,30 @@ spi_sram_encoder #(	.WORD_WIDTH(INSTRUCTION_WIDTH), .ADDRESS_WIDTH(ROM_ADDRESS_W
 			.sram_sio2_o(rom_sio2_o), 
 			.sram_sio3_o(rom_sio3_o) 
 		);
+
+
+
+// VIDEO GENERATOR
+wire [9:0] display_hpos;
+wire [9:0] display_vpos;
+wire display_active;
+wire reset_display = reset;
+// assign display_rgb = display_hpos[2] || display_vpos[2];
+assign display_rgb = (display_hpos[2] || display_vpos[2]) && gpio[8];
+video_signal_generator_640x480 video_generator_1 (
+	//i_clk,           // base clock
+	.i_pix_stb(display_clk),       // pixel clock strobe
+	.i_rst(reset_display),           // reset: restarts frame
+	.o_hs(display_hsync),           // horizontal sync
+	.o_vs(display_vsync),           // vertical sync
+	// .o_blanking(),     // high during blanking interval
+	.o_active(display_active),       // high during active pixel drawing
+	// .o_screenend(),    // high for one tick at the end of screen
+	// .o_animate(),      // high for one tick at end of active drawing
+	.o_x(display_hpos),      // current pixel x position
+	.o_y(display_vpos)       // current pixel y position
+);
+
 
 
 

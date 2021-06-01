@@ -1,0 +1,32 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Mon May 31 14:33:02 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/video_signal_generator_640x480_task_cover/engine_0/trace0.vcd"
+[dumpfile_mtime] "Mon May 31 14:32:35 2021"
+[dumpfile_size] 5151
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/video_signal_generator_640x480.gtkw"
+[timestart] 0
+[size] 1920 1147
+[pos] -1 -1
+*-5.676424 110 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 213
+[signals_width] 193
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+video_signal_generator_640x480.i_rst
+video_signal_generator_640x480.i_pix_stb
+video_signal_generator_640x480.o_hs
+video_signal_generator_640x480.o_vs
+@24
+video_signal_generator_640x480.h_count[9:0]
+video_signal_generator_640x480.v_count[9:0]
+@28
+video_signal_generator_640x480.o_active
+video_signal_generator_640x480.o_animate
+video_signal_generator_640x480.o_blanking
+@29
+video_signal_generator_640x480.o_trigger_read
+[pattern_trace] 1
+[pattern_trace] 0

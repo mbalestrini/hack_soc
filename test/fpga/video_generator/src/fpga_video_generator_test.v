@@ -1,0 +1,146 @@
+`default_nettype none
+`timescale 1ns/10ps
+
+module fpga_video_generator_test (
+	input EXTERNAL_CLK, 
+	input RESET_N,
+
+	output ROM_CS_N,
+	output ROM_SCK,
+	inout ROM_SIO0,
+	inout ROM_SIO1,
+	inout ROM_SIO2,
+	inout ROM_SIO3,
+
+	output RAM_CS_N,
+	output RAM_SCK,
+	inout RAM_SIO0,
+	inout RAM_SIO1,
+	inout RAM_SIO2,
+	inout RAM_SIO3,
+
+	output LED1,
+	output LED2,
+	output LED3,
+	output LED4,
+	output LED5,
+
+	output LEDR_N,
+	output LEDG_N,
+
+	input BTN1,
+	input BTN2,
+	input BTN3,
+
+
+	output P1A3, 
+	output P1A4,
+	output P1B3,
+
+	output FLASH_SCK, 
+	output FLASH_SSB,
+	output FLASH_IO0,
+	output FLASH_IO1,
+	output FLASH_IO2,
+	output FLASH_IO3
+
+	);
+
+
+
+wire debounced_btn1;
+wire strobe_btn1;
+debounce #(.NUMBER_STABLE_CYCLES(40)) mod_debouncer_btn1 (
+	.clk(clk),
+    .reset(reset),
+    .button(BTN1),
+    .debounced(debounced_btn1),
+    .strobe(strobe_btn1)
+    );
+
+wire debounced_btn2;
+wire strobe_btn2;
+debounce #(.NUMBER_STABLE_CYCLES(40)) mod_debouncer_btn2 (
+	.clk(clk),
+    .reset(reset),
+    .button(BTN2),
+    .debounced(debounced_btn2),
+    .strobe(strobe_btn2)
+    );
+
+
+
+
+wire video_clk_25Mhz;
+
+// 25.125 MHz clock
+wire video_clk_pll_locked;
+pll_12___25_125 pll_1 (
+        .clock_in(EXTERNAL_CLK),
+        .clock_out(video_clk_25Mhz),
+        .locked(video_clk_pll_locked)
+        );
+
+
+wire clk = video_clk_25Mhz;
+// wire clk = EXTERNAL_CLK;
+wire reset = ~RESET_N ;//|| !video_clk_pll_locked;
+
+
+wire hsync;
+wire vsync;
+wire [9:0] hpos;
+wire [9:0] vpos;
+wire display_active;
+
+wire reset_video = reset || debounced_btn2;
+
+video_generator_640x480 video_generator_1 (
+
+	//i_clk,           // base clock
+	.i_pix_stb(video_clk_25Mhz),       // pixel clock strobe
+	.i_rst(reset_video),           // reset: restarts frame
+
+	.o_hs(hsync),           // horizontal sync
+	.o_vs(vsync),           // vertical sync
+
+	// .o_blanking(),     // high during blanking interval
+	.o_active(display_active),       // high during active pixel drawing
+	// .o_screenend(),    // high for one tick at the end of screen
+	// .o_animate(),      // high for one tick at end of active drawing
+	.o_x(hpos),      // current pixel x position
+	.o_y(vpos)       // current pixel y position
+);
+
+
+wire rgb = hpos[2] || vpos[2];
+
+
+// assign {LED5, LED4, LED3, LED2} = debug_gpio[3:0];
+assign {LED5, LED4, LED3, LED2, LED1} = {hsync, vsync, vpos[0], hpos[0],  display_active} ;
+assign LEDR_N = some_test;
+// assign LEDG_N = ~rom_loader_load;
+
+reg some_test;
+
+assign P1A3 = hsync;
+assign P1A4 = vsync;
+assign P1B3 = rgb;
+
+assign FLASH_SSB = hsync;
+assign FLASH_SCK = vsync;
+assign FLASH_IO0 = rgb;
+assign FLASH_IO1 = rgb;
+// assign FLASH_IO2 = gpio[4];
+// assign FLASH_IO3 = gpio[5];
+
+// assign LED1 = debug_pc[0];
+// assign {LED2, LED3, LED4, LED5} = debug_pc[3:0];
+
+always @(posedge clk ) begin
+	if(strobe_btn1) begin
+		some_test = ~some_test;
+	end	
+end
+
+endmodule

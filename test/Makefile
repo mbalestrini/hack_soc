@@ -18,7 +18,10 @@ all_formal:
 	make formal_rom_stream_loader 	
 	$(call colorecho,"\n\n\n***** TEST: formal_hack_soc ****\n")
 	make formal_hack_soc
+	$(call colorecho,"\n\n\n***** TEST: formal_spi_video_ram_prove ****\n")
+	make formal_spi_video_ram_prove
 	$(call colorecho,"\n***** FORMAL TESTS FINISHED ****\n") 
+	
 
 all_cocotb:
 	$(call colorecho,"\n***** COCOTB SIM TESTS STARTING ****\n") 
@@ -67,6 +70,25 @@ formal_hack_soc_cover:
 	sby -f formal/hack_soc.sby task_cover
 formal_hack_soc_prove:
 	sby -f formal/hack_soc.sby task_prove
+
+
+formal_spi_video_ram:
+	sby -f formal/spi_video_ram.sby
+formal_spi_video_ram_cover:
+	sby -f formal/spi_video_ram.sby task_cover
+formal_spi_video_ram_prove:
+	sby -f formal/spi_video_ram.sby task_prove
+
+
+
+# FORMAL but just for analyzing signals, not to proove because it takes too many steps
+formal_video_generator:
+	sby -f formal/video_signal_generator_640x480.sby
+formal_video_generator_cover:
+	sby -f formal/video_signal_generator_640x480.sby task_cover
+formal_video_generator_prove:
+	sby -f formal/video_signal_generator_640x480.sby task_prove
+
 
 
 

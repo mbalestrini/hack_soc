@@ -1,0 +1,22 @@
+[tasks]
+task_cover
+task_prove
+
+[options]
+task_prove: mode prove
+task_prove: depth 60
+
+task_cover: mode cover
+task_cover: depth 60
+task_cover: append 20
+
+
+[engines]
+smtbmc
+
+[script]
+read -formal video_signal_generator_640x480.v
+prep -top video_signal_generator_640x480
+
+[files]
+../src/video_signal_generator_640x480.v

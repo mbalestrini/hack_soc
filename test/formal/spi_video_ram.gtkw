@@ -1,0 +1,72 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Tue Jun  1 00:06:55 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/spi_video_ram_task_cover/engine_0/trace0.vcd"
+[dumpfile_mtime] "Tue Jun  1 00:03:03 2021"
+[dumpfile_size] 94751
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/spi_video_ram.gtkw"
+[timestart] 0
+[size] 1920 1147
+[pos] -9 -23
+*-7.676424 1700 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 261
+[signals_width] 330
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+spi_video_ram.clk
+spi_video_ram.reset
+spi_video_ram.half_freq_clk
+spi_video_ram.quarter_freq_clk
+spi_video_ram.quarter_freq_clk_rise_edge
+@800200
+-from display
+@28
+spi_video_ram.display_trigger_read
+spi_video_ram.display_active
+@24
+spi_video_ram.display_vpos[9:0]
+spi_video_ram.display_hpos[9:0]
+spi_video_ram.h_count[9:0]
+spi_video_ram.v_count[9:0]
+@1000200
+-from display
+@28
+spi_video_ram.start_read
+spi_video_ram.busy
+@2029
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_states.gtkw
+spi_video_ram.current_state[2:0]
+@22
+spi_video_ram.line_read_address[23:0]
+@24
+spi_video_ram.input_buffer[3:0]
+@28
+spi_video_ram.temp_pixel_index[1:0]
+spi_video_ram.pixel_out
+@22
+spi_video_ram.output_buffer[23:0]
+@28
+spi_video_ram.sram_sck
+spi_video_ram.sram_sio_oe
+@c00022
+#{spi_video_ram.sram_sio[3:0]_o} spi_video_ram.sram_sio3_o spi_video_ram.sram_sio2_o spi_video_ram.sram_sio1_o spi_video_ram.sram_sio0_o
+@28
+spi_video_ram.sram_sio0_o
+spi_video_ram.sram_sio1_o
+spi_video_ram.sram_sio2_o
+spi_video_ram.sram_sio3_o
+@1401200
+-group_end
+@c00022
+#{spi_video_ram.sram_sio[3:0]_i} spi_video_ram.sram_sio3_i spi_video_ram.sram_sio2_i spi_video_ram.sram_sio1_i spi_video_ram.sram_sio0_i
+@28
+spi_video_ram.sram_sio0_i
+spi_video_ram.sram_sio1_i
+spi_video_ram.sram_sio2_i
+spi_video_ram.sram_sio3_i
+@1401200
+-group_end
+[pattern_trace] 1
+[pattern_trace] 0

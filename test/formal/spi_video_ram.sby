@@ -1,0 +1,22 @@
+[tasks]
+task_cover
+task_prove
+
+[options]
+task_prove: mode prove
+task_prove: depth 200
+
+task_cover: mode cover
+task_cover: depth 150
+task_cover: append 200
+
+
+[engines]
+smtbmc
+
+[script]
+read -formal spi_video_ram.v
+prep -top spi_video_ram
+
+[files]
+../src/spi_video_ram.v
