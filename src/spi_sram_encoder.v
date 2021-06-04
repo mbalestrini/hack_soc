@@ -125,7 +125,7 @@ always @(posedge clk) begin
 
 	if (reset) begin
 		// reset
-		current_state <= state_set_SQI_mode;		
+		current_state <= state_reset;		
 
 		initialized <= 1'b0;
 		sram_cs_n <= 1'b1;				
@@ -146,6 +146,28 @@ always @(posedge clk) begin
 		if(sram_sck==1'b1) begin
 			/* verilator lint_off CASEINCOMPLETE */
 			case (current_state) 
+
+				state_reset:
+					begin
+						if(sram_cs_n==1'b1) 
+							sram_cs_n <= 1'b0;								
+						
+						initializing_step <= initializing_step + 1;
+
+						// Send reset instruction
+						case (initializing_step)
+							0: output_buffer <= {`INS_RSTIO, {(OUTPUT_BUFFER_WIDTH-SRAM_INSTRUCTION_WIDTH){1'b0}}};
+							1: output_buffer <= output_buffer << BITS_PER_CLK;
+							default: 
+								begin
+									current_state <= state_set_SQI_mode;
+									sram_cs_n <= 1'b1;
+									initializing_step <= 0;
+								end
+
+						endcase
+
+					end
 				
 				state_set_SQI_mode:
 					begin
@@ -198,7 +220,7 @@ always @(posedge clk) begin
 						current_state <= state_instruction;
 
 						// fill the buffer with the instruction data
-						if(write_enable) begin
+						if(request_write) begin
 							output_buffer <= {`INS_WRITE, {(OUTPUT_BUFFER_WIDTH-SRAM_INSTRUCTION_WIDTH){1'b0}}};
 							output_bits_left <= SRAM_INSTRUCTION_WIDTH;
 						end else begin
@@ -264,6 +286,10 @@ always @(posedge clk) begin
 							// Output next bits
 							output_buffer <= output_buffer << BITS_PER_CLK;
 							output_bits_left <= output_bits_left - BITS_PER_CLK;							
+
+							// On write I should also output the value we just wrote
+							input_buffer <= request_data_out;
+
 						end					
 					end
 
@@ -336,7 +362,7 @@ end
 
  			COVER_INITIALIZED: cover(initialized);
 
- 			if(current_state!=state_start && current_state!=state_set_SQI_mode) begin
+ 			if(current_state!=state_reset && current_state!=state_start && current_state!=state_set_SQI_mode) begin
  				ASSERT_INITILIZED: assert(initialized);
  			end
 
@@ -348,7 +374,13 @@ end
 	 		if(!$past(reset) && current_state==state_idle) begin
 				ASSERT_SRAM_OFF_ON_IDLE:
 					assert(sram_cs_n==1'b1);
+
+				if(!reset && $past(current_state)==state_write) begin
+					ASSERT_OUTPUT_EQUAL_INPUT_ON_WRITE: assert(data_in==request_data_out);
+				end
 			end
+
+			
 	 	end
  		
     end

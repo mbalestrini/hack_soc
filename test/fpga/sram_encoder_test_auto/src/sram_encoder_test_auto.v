@@ -16,12 +16,14 @@ module sram_encoder_test_auto #(
 	inout SRAM_SIO2,
 	inout SRAM_SIO3,
 
+	output LEDR_N,
+	output LEDG_N
 
-	output LED1,
-	output LED2,
-	output LED3,
-	output LED4,
-	output LED5
+	// output LED1,
+	// output LED2,
+	// output LED3,
+	// output LED4,
+	// output LED5
 
 	);
 
@@ -129,11 +131,14 @@ assign sram_sio3_i = SRAM_SIO3;
 
 
 
-assign LED1 = last_operation==op_error;
-assign LED2 = initialized;
-assign LED3 = busy;
-assign LED4 = (hack_outM==hack_inM);
-assign LED5 = hack_addressM[15];
+// assign LED1 = last_operation==op_error;
+// assign LED2 = initialized;
+// assign LED3 = busy;
+// assign LED4 = (hack_outM==hack_inM);
+// assign LED5 = hack_addressM[15];
+
+assign LEDR_N = !(last_operation==op_error);
+assign LEDG_N = !initialized || hack_addressM[15];
 
 reg tmp;
 
@@ -189,7 +194,7 @@ always @(posedge clk ) begin
 
 				op_read:
 					begin
-						if(was_busy && hack_outM!=hack_inM) begin
+						if(/*was_busy &&*/ hack_outM!=hack_inM) begin
 							last_operation <= op_error;
 							request <= 0;
 						end else begin
@@ -220,7 +225,7 @@ always @(posedge clk ) begin
 			endcase
 		end
 
-
+		
 		prev_btn_request <= debounced_btn_request;
 
 		if(debounced_btn_request && prev_btn_request==0) begin

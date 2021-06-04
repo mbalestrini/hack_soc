@@ -1,0 +1,189 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Wed Jun  2 22:39:54 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_program.vcd"
+[dumpfile_mtime] "Wed Jun  2 22:38:51 2021"
+[dumpfile_size] 2580538
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_program.gtwk"
+[timestart] 0
+[size] 1920 1147
+[pos] -1 -1
+*-31.000000 270000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test_hack_soc_program.
+[treeopen] test_hack_soc_program.soc.
+[sst_width] 252
+[signals_width] 465
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+test_hack_soc_program.clk
+test_hack_soc_program.reset
+test_hack_soc_program.soc.video_generator_1.i_rst
+test_hack_soc_program.file_to_rom.done_loading
+test_hack_soc_program.soc.hack_clk
+test_hack_soc_program.soc.hack_reset
+@c00024
+test_hack_soc_program.soc.hack_pc[14:0]
+@28
+(0)test_hack_soc_program.soc.hack_pc[14:0]
+(1)test_hack_soc_program.soc.hack_pc[14:0]
+(2)test_hack_soc_program.soc.hack_pc[14:0]
+(3)test_hack_soc_program.soc.hack_pc[14:0]
+(4)test_hack_soc_program.soc.hack_pc[14:0]
+(5)test_hack_soc_program.soc.hack_pc[14:0]
+(6)test_hack_soc_program.soc.hack_pc[14:0]
+(7)test_hack_soc_program.soc.hack_pc[14:0]
+(8)test_hack_soc_program.soc.hack_pc[14:0]
+(9)test_hack_soc_program.soc.hack_pc[14:0]
+(10)test_hack_soc_program.soc.hack_pc[14:0]
+(11)test_hack_soc_program.soc.hack_pc[14:0]
+(12)test_hack_soc_program.soc.hack_pc[14:0]
+(13)test_hack_soc_program.soc.hack_pc[14:0]
+(14)test_hack_soc_program.soc.hack_pc[14:0]
+@1401200
+-group_end
+@c00028
+test_hack_soc_program.soc.hack_instruction[15:0]
+@28
+(0)test_hack_soc_program.soc.hack_instruction[15:0]
+(1)test_hack_soc_program.soc.hack_instruction[15:0]
+(2)test_hack_soc_program.soc.hack_instruction[15:0]
+(3)test_hack_soc_program.soc.hack_instruction[15:0]
+(4)test_hack_soc_program.soc.hack_instruction[15:0]
+(5)test_hack_soc_program.soc.hack_instruction[15:0]
+(6)test_hack_soc_program.soc.hack_instruction[15:0]
+(7)test_hack_soc_program.soc.hack_instruction[15:0]
+(8)test_hack_soc_program.soc.hack_instruction[15:0]
+(9)test_hack_soc_program.soc.hack_instruction[15:0]
+(10)test_hack_soc_program.soc.hack_instruction[15:0]
+(11)test_hack_soc_program.soc.hack_instruction[15:0]
+(12)test_hack_soc_program.soc.hack_instruction[15:0]
+(13)test_hack_soc_program.soc.hack_instruction[15:0]
+(14)test_hack_soc_program.soc.hack_instruction[15:0]
+(15)test_hack_soc_program.soc.hack_instruction[15:0]
+@1401200
+-group_end
+@22
+test_hack_soc_program.soc.hack_addressM[14:0]
+test_hack_soc_program.soc.hack_outM[15:0]
+test_hack_soc_program.soc.hack_inM[15:0]
+@28
+test_hack_soc_program.soc.hack_writeM
+@24
+test_hack_soc_program.soc.cpu.areg_out[15:0]
+@22
+test_hack_soc_program.soc.cpu.dreg_out[15:0]
+test_hack_soc_program.soc.gpio[15:0]
+@800200
+-RAM_MEM
+@c00022
+#{test_hack_soc_program.ram.MemoryByte[00000:00001][7:0]} (0)test_hack_soc_program.ram.MemoryByte00000[7:0] (1)test_hack_soc_program.ram.MemoryByte00000[7:0] (2)test_hack_soc_program.ram.MemoryByte00000[7:0] (3)test_hack_soc_program.ram.MemoryByte00000[7:0] (4)test_hack_soc_program.ram.MemoryByte00000[7:0] (5)test_hack_soc_program.ram.MemoryByte00000[7:0] (6)test_hack_soc_program.ram.MemoryByte00000[7:0] (7)test_hack_soc_program.ram.MemoryByte00000[7:0] (0)test_hack_soc_program.ram.MemoryByte00001[7:0] (1)test_hack_soc_program.ram.MemoryByte00001[7:0] (2)test_hack_soc_program.ram.MemoryByte00001[7:0] (3)test_hack_soc_program.ram.MemoryByte00001[7:0] (4)test_hack_soc_program.ram.MemoryByte00001[7:0] (5)test_hack_soc_program.ram.MemoryByte00001[7:0] (6)test_hack_soc_program.ram.MemoryByte00001[7:0] (7)test_hack_soc_program.ram.MemoryByte00001[7:0]
+@22
+test_hack_soc_program.ram.MemoryByte00000[7:0]
+test_hack_soc_program.ram.MemoryByte00001[7:0]
+@1401200
+-group_end
+@c00022
+#{test_hack_soc_program.ram.MemoryByte[00002:00003][7:0]} (0)test_hack_soc_program.ram.MemoryByte00002[7:0] (1)test_hack_soc_program.ram.MemoryByte00002[7:0] (2)test_hack_soc_program.ram.MemoryByte00002[7:0] (3)test_hack_soc_program.ram.MemoryByte00002[7:0] (4)test_hack_soc_program.ram.MemoryByte00002[7:0] (5)test_hack_soc_program.ram.MemoryByte00002[7:0] (6)test_hack_soc_program.ram.MemoryByte00002[7:0] (7)test_hack_soc_program.ram.MemoryByte00002[7:0] (0)test_hack_soc_program.ram.MemoryByte00003[7:0] (1)test_hack_soc_program.ram.MemoryByte00003[7:0] (2)test_hack_soc_program.ram.MemoryByte00003[7:0] (3)test_hack_soc_program.ram.MemoryByte00003[7:0] (4)test_hack_soc_program.ram.MemoryByte00003[7:0] (5)test_hack_soc_program.ram.MemoryByte00003[7:0] (6)test_hack_soc_program.ram.MemoryByte00003[7:0] (7)test_hack_soc_program.ram.MemoryByte00003[7:0]
+@22
+test_hack_soc_program.ram.MemoryByte00002[7:0]
+test_hack_soc_program.ram.MemoryByte00003[7:0]
+@1401200
+-group_end
+@c00022
+#{test_hack_soc_program.ram.MemoryByte[00004:00005][7:0]} (0)test_hack_soc_program.ram.MemoryByte00004[7:0] (1)test_hack_soc_program.ram.MemoryByte00004[7:0] (2)test_hack_soc_program.ram.MemoryByte00004[7:0] (3)test_hack_soc_program.ram.MemoryByte00004[7:0] (4)test_hack_soc_program.ram.MemoryByte00004[7:0] (5)test_hack_soc_program.ram.MemoryByte00004[7:0] (6)test_hack_soc_program.ram.MemoryByte00004[7:0] (7)test_hack_soc_program.ram.MemoryByte00004[7:0] (0)test_hack_soc_program.ram.MemoryByte00005[7:0] (1)test_hack_soc_program.ram.MemoryByte00005[7:0] (2)test_hack_soc_program.ram.MemoryByte00005[7:0] (3)test_hack_soc_program.ram.MemoryByte00005[7:0] (4)test_hack_soc_program.ram.MemoryByte00005[7:0] (5)test_hack_soc_program.ram.MemoryByte00005[7:0] (6)test_hack_soc_program.ram.MemoryByte00005[7:0] (7)test_hack_soc_program.ram.MemoryByte00005[7:0]
+@22
+test_hack_soc_program.ram.MemoryByte00004[7:0]
+test_hack_soc_program.ram.MemoryByte00005[7:0]
+@1401200
+-group_end
+@c00022
+#{test_hack_soc_program.ram.MemoryByte[00006:00007][7:0]} (0)test_hack_soc_program.ram.MemoryByte00006[7:0] (1)test_hack_soc_program.ram.MemoryByte00006[7:0] (2)test_hack_soc_program.ram.MemoryByte00006[7:0] (3)test_hack_soc_program.ram.MemoryByte00006[7:0] (4)test_hack_soc_program.ram.MemoryByte00006[7:0] (5)test_hack_soc_program.ram.MemoryByte00006[7:0] (6)test_hack_soc_program.ram.MemoryByte00006[7:0] (7)test_hack_soc_program.ram.MemoryByte00006[7:0] (0)test_hack_soc_program.ram.MemoryByte00007[7:0] (1)test_hack_soc_program.ram.MemoryByte00007[7:0] (2)test_hack_soc_program.ram.MemoryByte00007[7:0] (3)test_hack_soc_program.ram.MemoryByte00007[7:0] (4)test_hack_soc_program.ram.MemoryByte00007[7:0] (5)test_hack_soc_program.ram.MemoryByte00007[7:0] (6)test_hack_soc_program.ram.MemoryByte00007[7:0] (7)test_hack_soc_program.ram.MemoryByte00007[7:0]
+@22
+test_hack_soc_program.ram.MemoryByte00006[7:0]
+test_hack_soc_program.ram.MemoryByte00007[7:0]
+@1401200
+-group_end
+@c00022
+#{test_hack_soc_program.ram.MemoryByte[00008:00009][7:0]} (0)test_hack_soc_program.ram.MemoryByte00008[7:0] (1)test_hack_soc_program.ram.MemoryByte00008[7:0] (2)test_hack_soc_program.ram.MemoryByte00008[7:0] (3)test_hack_soc_program.ram.MemoryByte00008[7:0] (4)test_hack_soc_program.ram.MemoryByte00008[7:0] (5)test_hack_soc_program.ram.MemoryByte00008[7:0] (6)test_hack_soc_program.ram.MemoryByte00008[7:0] (7)test_hack_soc_program.ram.MemoryByte00008[7:0] (0)test_hack_soc_program.ram.MemoryByte00009[7:0] (1)test_hack_soc_program.ram.MemoryByte00009[7:0] (2)test_hack_soc_program.ram.MemoryByte00009[7:0] (3)test_hack_soc_program.ram.MemoryByte00009[7:0] (4)test_hack_soc_program.ram.MemoryByte00009[7:0] (5)test_hack_soc_program.ram.MemoryByte00009[7:0] (6)test_hack_soc_program.ram.MemoryByte00009[7:0] (7)test_hack_soc_program.ram.MemoryByte00009[7:0]
+@22
+test_hack_soc_program.ram.MemoryByte00008[7:0]
+test_hack_soc_program.ram.MemoryByte00009[7:0]
+@1401200
+-group_end
+@1000200
+-RAM_MEM
+@2028
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_sram_encoder_states.gtkw
+test_hack_soc_program.soc.ram_encoder_0.current_state[2:0]
+@22
+test_hack_soc_program.soc.ram_encoder_0.request_address[14:0]
+@28
+test_hack_soc_program.soc.ram_encoder_0.request_write
+@22
+test_hack_soc_program.soc.ram_encoder_0.data_out[15:0]
+test_hack_soc_program.soc.ram_encoder_0.data_in[15:0]
+@800200
+-ROM_MEM
+@c00022
+#{test_hack_soc_program.rom.MemoryByte[00000:00001][7:0]} (0)test_hack_soc_program.rom.MemoryByte00000[7:0] (1)test_hack_soc_program.rom.MemoryByte00000[7:0] (2)test_hack_soc_program.rom.MemoryByte00000[7:0] (3)test_hack_soc_program.rom.MemoryByte00000[7:0] (4)test_hack_soc_program.rom.MemoryByte00000[7:0] (5)test_hack_soc_program.rom.MemoryByte00000[7:0] (6)test_hack_soc_program.rom.MemoryByte00000[7:0] (7)test_hack_soc_program.rom.MemoryByte00000[7:0] (0)test_hack_soc_program.rom.MemoryByte00001[7:0] (1)test_hack_soc_program.rom.MemoryByte00001[7:0] (2)test_hack_soc_program.rom.MemoryByte00001[7:0] (3)test_hack_soc_program.rom.MemoryByte00001[7:0] (4)test_hack_soc_program.rom.MemoryByte00001[7:0] (5)test_hack_soc_program.rom.MemoryByte00001[7:0] (6)test_hack_soc_program.rom.MemoryByte00001[7:0] (7)test_hack_soc_program.rom.MemoryByte00001[7:0]
+@22
+test_hack_soc_program.rom.MemoryByte00000[7:0]
+test_hack_soc_program.rom.MemoryByte00001[7:0]
+@1401200
+-group_end
+@c00022
+#{test_hack_soc_program.rom.MemoryByte[00002:00003][7:0]} (0)test_hack_soc_program.rom.MemoryByte00002[7:0] (1)test_hack_soc_program.rom.MemoryByte00002[7:0] (2)test_hack_soc_program.rom.MemoryByte00002[7:0] (3)test_hack_soc_program.rom.MemoryByte00002[7:0] (4)test_hack_soc_program.rom.MemoryByte00002[7:0] (5)test_hack_soc_program.rom.MemoryByte00002[7:0] (6)test_hack_soc_program.rom.MemoryByte00002[7:0] (7)test_hack_soc_program.rom.MemoryByte00002[7:0] (0)test_hack_soc_program.rom.MemoryByte00003[7:0] (1)test_hack_soc_program.rom.MemoryByte00003[7:0] (2)test_hack_soc_program.rom.MemoryByte00003[7:0] (3)test_hack_soc_program.rom.MemoryByte00003[7:0] (4)test_hack_soc_program.rom.MemoryByte00003[7:0] (5)test_hack_soc_program.rom.MemoryByte00003[7:0] (6)test_hack_soc_program.rom.MemoryByte00003[7:0] (7)test_hack_soc_program.rom.MemoryByte00003[7:0]
+@22
+test_hack_soc_program.rom.MemoryByte00002[7:0]
+test_hack_soc_program.rom.MemoryByte00003[7:0]
+@1401200
+-group_end
+@c00022
+#{test_hack_soc_program.rom.MemoryByte[00004:00005][7:0]} (0)test_hack_soc_program.rom.MemoryByte00004[7:0] (1)test_hack_soc_program.rom.MemoryByte00004[7:0] (2)test_hack_soc_program.rom.MemoryByte00004[7:0] (3)test_hack_soc_program.rom.MemoryByte00004[7:0] (4)test_hack_soc_program.rom.MemoryByte00004[7:0] (5)test_hack_soc_program.rom.MemoryByte00004[7:0] (6)test_hack_soc_program.rom.MemoryByte00004[7:0] (7)test_hack_soc_program.rom.MemoryByte00004[7:0] (0)test_hack_soc_program.rom.MemoryByte00005[7:0] (1)test_hack_soc_program.rom.MemoryByte00005[7:0] (2)test_hack_soc_program.rom.MemoryByte00005[7:0] (3)test_hack_soc_program.rom.MemoryByte00005[7:0] (4)test_hack_soc_program.rom.MemoryByte00005[7:0] (5)test_hack_soc_program.rom.MemoryByte00005[7:0] (6)test_hack_soc_program.rom.MemoryByte00005[7:0] (7)test_hack_soc_program.rom.MemoryByte00005[7:0]
+@22
+test_hack_soc_program.rom.MemoryByte00004[7:0]
+test_hack_soc_program.rom.MemoryByte00005[7:0]
+@1401200
+-group_end
+@c00022
+#{test_hack_soc_program.rom.MemoryByte[00006:00007][7:0]} (0)test_hack_soc_program.rom.MemoryByte00006[7:0] (1)test_hack_soc_program.rom.MemoryByte00006[7:0] (2)test_hack_soc_program.rom.MemoryByte00006[7:0] (3)test_hack_soc_program.rom.MemoryByte00006[7:0] (4)test_hack_soc_program.rom.MemoryByte00006[7:0] (5)test_hack_soc_program.rom.MemoryByte00006[7:0] (6)test_hack_soc_program.rom.MemoryByte00006[7:0] (7)test_hack_soc_program.rom.MemoryByte00006[7:0] (0)test_hack_soc_program.rom.MemoryByte00007[7:0] (1)test_hack_soc_program.rom.MemoryByte00007[7:0] (2)test_hack_soc_program.rom.MemoryByte00007[7:0] (3)test_hack_soc_program.rom.MemoryByte00007[7:0] (4)test_hack_soc_program.rom.MemoryByte00007[7:0] (5)test_hack_soc_program.rom.MemoryByte00007[7:0] (6)test_hack_soc_program.rom.MemoryByte00007[7:0] (7)test_hack_soc_program.rom.MemoryByte00007[7:0]
+@22
+test_hack_soc_program.rom.MemoryByte00006[7:0]
+test_hack_soc_program.rom.MemoryByte00007[7:0]
+@1401200
+-group_end
+@c00022
+#{test_hack_soc_program.rom.MemoryByte[00008:00009][7:0]} (0)test_hack_soc_program.rom.MemoryByte00008[7:0] (1)test_hack_soc_program.rom.MemoryByte00008[7:0] (2)test_hack_soc_program.rom.MemoryByte00008[7:0] (3)test_hack_soc_program.rom.MemoryByte00008[7:0] (4)test_hack_soc_program.rom.MemoryByte00008[7:0] (5)test_hack_soc_program.rom.MemoryByte00008[7:0] (6)test_hack_soc_program.rom.MemoryByte00008[7:0] (7)test_hack_soc_program.rom.MemoryByte00008[7:0] (0)test_hack_soc_program.rom.MemoryByte00009[7:0] (1)test_hack_soc_program.rom.MemoryByte00009[7:0] (2)test_hack_soc_program.rom.MemoryByte00009[7:0] (3)test_hack_soc_program.rom.MemoryByte00009[7:0] (4)test_hack_soc_program.rom.MemoryByte00009[7:0] (5)test_hack_soc_program.rom.MemoryByte00009[7:0] (6)test_hack_soc_program.rom.MemoryByte00009[7:0] (7)test_hack_soc_program.rom.MemoryByte00009[7:0]
+@22
+test_hack_soc_program.rom.MemoryByte00008[7:0]
+test_hack_soc_program.rom.MemoryByte00009[7:0]
+@1401200
+-group_end
+@1000200
+-ROM_MEM
+@2028
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_sram_encoder_states.gtkw
+test_hack_soc_program.soc.rom_encoder_0.current_state[2:0]
+@22
+test_hack_soc_program.soc.rom_encoder_0.request_address[14:0]
+@28
+test_hack_soc_program.soc.rom_encoder_0.request_write
+@c00200
+-VIDEO
+@28
+test_hack_soc_program.soc.video_generator_1.i_rst
+test_hack_soc_program.soc.video_generator_1.o_active
+test_hack_soc_program.display_hsync
+test_hack_soc_program.display_vsync
+test_hack_soc_program.display_rgb
+test_hack_soc_program.soc.video_generator_1.i_pix_stb
+test_hack_soc_program.soc.video_generator_1.o_trigger_read
+@22
+test_hack_soc_program.soc.video_generator_1.h_count[9:0]
+test_hack_soc_program.soc.video_generator_1.v_count[9:0]
+@1401200
+-VIDEO
+[pattern_trace] 1
+[pattern_trace] 0

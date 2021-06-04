@@ -32,12 +32,14 @@ async def test_spi_video_with_23LC1024(dut):
 
 
     # y = 0
-    for y in range(0,2):
+    for y in range(0,530):
+        print("y", y, "dut.video_generator_1.v_count ", int(dut.video_generator_1.v_count), "line_read_address", int(dut.spi_video_ram_1.line_read_address))
         await RisingEdge(dut.display_active)
         await ClockCycles(dut.clk, 1)
         for x in range(0,511):
-            print(x,y, y*64 + (x//8), ( 7- (x%8) ), bin(video_ram_data[y*64 + (x//8)]), dut.pixel_value)
-            assert(   (video_ram_data[y*64 + (x//8)]>>( 7- (x%8) )&1)  == dut.pixel_value)
+            # print(x,y, y*64 + (x//8), ( 7- (x%8) ), bin(video_ram_data[y*64 + (x//8)]), dut.pixel_value)
+            if(y<256):
+                assert(   (video_ram_data[y*64 + (x//8)]>>( 7- (x%8) )&1)  == dut.pixel_value)
             await ClockCycles(dut.clk, 1)
 
     await ClockCycles(dut.clk, 2000)

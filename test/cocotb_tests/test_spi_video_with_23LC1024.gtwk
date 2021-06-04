@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Tue Jun  1 04:36:39 2021
+[*] Tue Jun  1 18:22:13 2021
 [*]
 [dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_spi_video_with_23LC1024.vcd"
-[dumpfile_mtime] "Tue Jun  1 04:35:48 2021"
-[dumpfile_size] 111450
+[dumpfile_mtime] "Tue Jun  1 18:16:17 2021"
+[dumpfile_size] 51309908
 [savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_spi_video_with_23LC1024.gtwk"
-[timestart] 9235500000
+[timestart] 1760600000000
 [size] 1920 1147
-[pos] -9 -23
-*-26.000000 9448500000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -1 -1
+*-35.000000 1165810000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test_spi_video_with_23LC1024.
 [sst_width] 272
 [signals_width] 335
@@ -21,6 +21,7 @@ test_spi_video_with_23LC1024.reset
 @800200
 -DISPLAY
 @28
+[color] 3
 test_spi_video_with_23LC1024.display_active
 test_spi_video_with_23LC1024.display_vsync
 test_spi_video_with_23LC1024.display_hsync
@@ -32,9 +33,7 @@ test_spi_video_with_23LC1024.display_trigger_read
 @1000200
 -DISPLAY
 @28
-test_spi_video_with_23LC1024.ram.CS_N
 test_spi_video_with_23LC1024.pixel_value
-test_spi_video_with_23LC1024.spi_video_ram_1.sram_sck
 @2028
 ^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_states.gtkw
 test_spi_video_with_23LC1024.spi_video_ram_1.current_state[2:0]
@@ -51,14 +50,14 @@ test_spi_video_with_23LC1024.spi_video_ram_1.sram_sio2_i
 test_spi_video_with_23LC1024.spi_video_ram_1.sram_sio3_i
 @1401200
 -group_end
-@800022
+@c00022
 #{test_spi_video_with_23LC1024.spi_video_ram_1.sram_sio[3:0]_o} test_spi_video_with_23LC1024.spi_video_ram_1.sram_sio3_o test_spi_video_with_23LC1024.spi_video_ram_1.sram_sio2_o test_spi_video_with_23LC1024.spi_video_ram_1.sram_sio1_o test_spi_video_with_23LC1024.spi_video_ram_1.sram_sio0_o
 @28
 test_spi_video_with_23LC1024.spi_video_ram_1.sram_sio0_o
 test_spi_video_with_23LC1024.spi_video_ram_1.sram_sio1_o
 test_spi_video_with_23LC1024.spi_video_ram_1.sram_sio2_o
 test_spi_video_with_23LC1024.spi_video_ram_1.sram_sio3_o
-@1001200
+@1401200
 -group_end
 @c00022
 test_spi_video_with_23LC1024.spi_video_ram_1.input_buffer[3:0]
@@ -76,25 +75,49 @@ test_spi_video_with_23LC1024.spi_video_ram_1.quarter_freq_clk_fall_edge
 test_spi_video_with_23LC1024.spi_video_ram_1.sram_sio_oe
 @800200
 -SRAM
+@28
+test_spi_video_with_23LC1024.spi_video_ram_1.sram_sck
+test_spi_video_with_23LC1024.ram.CS_N
+test_spi_video_with_23LC1024.ram.SO_OE
 @22
 test_spi_video_with_23LC1024.ram.ClockCounter[31:0]
 @28
 test_spi_video_with_23LC1024.ram.OutputEnable1
 test_spi_video_with_23LC1024.ram.OutputEnable2
-@29
 test_spi_video_with_23LC1024.ram.OutputEnable3
-@28
 test_spi_video_with_23LC1024.ram.IOMode[1:0]
 test_spi_video_with_23LC1024.ram.SO_Enable
-test_spi_video_with_23LC1024.ram.SO_OE
 @22
 test_spi_video_with_23LC1024.ram.SO_DO[3:0]
 test_spi_video_with_23LC1024.ram.AddrRegister[16:0]
 @28
 test_spi_video_with_23LC1024.ram.InstructionREAD
-@22
+@c00022
 test_spi_video_with_23LC1024.ram.DataShifterI[7:0]
+@28
+(0)test_spi_video_with_23LC1024.ram.DataShifterI[7:0]
+(1)test_spi_video_with_23LC1024.ram.DataShifterI[7:0]
+(2)test_spi_video_with_23LC1024.ram.DataShifterI[7:0]
+(3)test_spi_video_with_23LC1024.ram.DataShifterI[7:0]
+(4)test_spi_video_with_23LC1024.ram.DataShifterI[7:0]
+(5)test_spi_video_with_23LC1024.ram.DataShifterI[7:0]
+(6)test_spi_video_with_23LC1024.ram.DataShifterI[7:0]
+(7)test_spi_video_with_23LC1024.ram.DataShifterI[7:0]
+@1401200
+-group_end
+@800023
 test_spi_video_with_23LC1024.ram.DataShifterO[7:0]
+@29
+(0)test_spi_video_with_23LC1024.ram.DataShifterO[7:0]
+(1)test_spi_video_with_23LC1024.ram.DataShifterO[7:0]
+(2)test_spi_video_with_23LC1024.ram.DataShifterO[7:0]
+(3)test_spi_video_with_23LC1024.ram.DataShifterO[7:0]
+(4)test_spi_video_with_23LC1024.ram.DataShifterO[7:0]
+(5)test_spi_video_with_23LC1024.ram.DataShifterO[7:0]
+(6)test_spi_video_with_23LC1024.ram.DataShifterO[7:0]
+(7)test_spi_video_with_23LC1024.ram.DataShifterO[7:0]
+@1001201
+-group_end
 @c00022
 #{test_spi_video_with_23LC1024.ram.MemoryByte[00009:00000][7:0]} (7)test_spi_video_with_23LC1024.ram.MemoryByte00009[7:0] (6)test_spi_video_with_23LC1024.ram.MemoryByte00009[7:0] (5)test_spi_video_with_23LC1024.ram.MemoryByte00009[7:0] (4)test_spi_video_with_23LC1024.ram.MemoryByte00009[7:0] (3)test_spi_video_with_23LC1024.ram.MemoryByte00009[7:0] (2)test_spi_video_with_23LC1024.ram.MemoryByte00009[7:0] (1)test_spi_video_with_23LC1024.ram.MemoryByte00009[7:0] (0)test_spi_video_with_23LC1024.ram.MemoryByte00009[7:0] (7)test_spi_video_with_23LC1024.ram.MemoryByte00008[7:0] (6)test_spi_video_with_23LC1024.ram.MemoryByte00008[7:0] (5)test_spi_video_with_23LC1024.ram.MemoryByte00008[7:0] (4)test_spi_video_with_23LC1024.ram.MemoryByte00008[7:0] (3)test_spi_video_with_23LC1024.ram.MemoryByte00008[7:0] (2)test_spi_video_with_23LC1024.ram.MemoryByte00008[7:0] (1)test_spi_video_with_23LC1024.ram.MemoryByte00008[7:0] (0)test_spi_video_with_23LC1024.ram.MemoryByte00008[7:0] (7)test_spi_video_with_23LC1024.ram.MemoryByte00007[7:0] (6)test_spi_video_with_23LC1024.ram.MemoryByte00007[7:0] (5)test_spi_video_with_23LC1024.ram.MemoryByte00007[7:0] (4)test_spi_video_with_23LC1024.ram.MemoryByte00007[7:0] (3)test_spi_video_with_23LC1024.ram.MemoryByte00007[7:0] (2)test_spi_video_with_23LC1024.ram.MemoryByte00007[7:0] (1)test_spi_video_with_23LC1024.ram.MemoryByte00007[7:0] (0)test_spi_video_with_23LC1024.ram.MemoryByte00007[7:0] (7)test_spi_video_with_23LC1024.ram.MemoryByte00006[7:0] (6)test_spi_video_with_23LC1024.ram.MemoryByte00006[7:0] (5)test_spi_video_with_23LC1024.ram.MemoryByte00006[7:0] (4)test_spi_video_with_23LC1024.ram.MemoryByte00006[7:0] (3)test_spi_video_with_23LC1024.ram.MemoryByte00006[7:0] (2)test_spi_video_with_23LC1024.ram.MemoryByte00006[7:0] (1)test_spi_video_with_23LC1024.ram.MemoryByte00006[7:0] (0)test_spi_video_with_23LC1024.ram.MemoryByte00006[7:0] (7)test_spi_video_with_23LC1024.ram.MemoryByte00005[7:0] (6)test_spi_video_with_23LC1024.ram.MemoryByte00005[7:0] (5)test_spi_video_with_23LC1024.ram.MemoryByte00005[7:0] (4)test_spi_video_with_23LC1024.ram.MemoryByte00005[7:0] (3)test_spi_video_with_23LC1024.ram.MemoryByte00005[7:0] (2)test_spi_video_with_23LC1024.ram.MemoryByte00005[7:0] (1)test_spi_video_with_23LC1024.ram.MemoryByte00005[7:0] (0)test_spi_video_with_23LC1024.ram.MemoryByte00005[7:0] (7)test_spi_video_with_23LC1024.ram.MemoryByte00004[7:0] (6)test_spi_video_with_23LC1024.ram.MemoryByte00004[7:0] (5)test_spi_video_with_23LC1024.ram.MemoryByte00004[7:0] (4)test_spi_video_with_23LC1024.ram.MemoryByte00004[7:0] (3)test_spi_video_with_23LC1024.ram.MemoryByte00004[7:0] (2)test_spi_video_with_23LC1024.ram.MemoryByte00004[7:0] (1)test_spi_video_with_23LC1024.ram.MemoryByte00004[7:0] (0)test_spi_video_with_23LC1024.ram.MemoryByte00004[7:0] (7)test_spi_video_with_23LC1024.ram.MemoryByte00003[7:0] (6)test_spi_video_with_23LC1024.ram.MemoryByte00003[7:0] (5)test_spi_video_with_23LC1024.ram.MemoryByte00003[7:0] (4)test_spi_video_with_23LC1024.ram.MemoryByte00003[7:0] (3)test_spi_video_with_23LC1024.ram.MemoryByte00003[7:0] (2)test_spi_video_with_23LC1024.ram.MemoryByte00003[7:0] (1)test_spi_video_with_23LC1024.ram.MemoryByte00003[7:0] (0)test_spi_video_with_23LC1024.ram.MemoryByte00003[7:0] (7)test_spi_video_with_23LC1024.ram.MemoryByte00002[7:0] (6)test_spi_video_with_23LC1024.ram.MemoryByte00002[7:0] (5)test_spi_video_with_23LC1024.ram.MemoryByte00002[7:0] (4)test_spi_video_with_23LC1024.ram.MemoryByte00002[7:0] (3)test_spi_video_with_23LC1024.ram.MemoryByte00002[7:0] (2)test_spi_video_with_23LC1024.ram.MemoryByte00002[7:0] (1)test_spi_video_with_23LC1024.ram.MemoryByte00002[7:0] (0)test_spi_video_with_23LC1024.ram.MemoryByte00002[7:0] (7)test_spi_video_with_23LC1024.ram.MemoryByte00001[7:0] (6)test_spi_video_with_23LC1024.ram.MemoryByte00001[7:0] (5)test_spi_video_with_23LC1024.ram.MemoryByte00001[7:0] (4)test_spi_video_with_23LC1024.ram.MemoryByte00001[7:0] (3)test_spi_video_with_23LC1024.ram.MemoryByte00001[7:0] (2)test_spi_video_with_23LC1024.ram.MemoryByte00001[7:0] (1)test_spi_video_with_23LC1024.ram.MemoryByte00001[7:0] (0)test_spi_video_with_23LC1024.ram.MemoryByte00001[7:0] (7)test_spi_video_with_23LC1024.ram.MemoryByte00000[7:0] (6)test_spi_video_with_23LC1024.ram.MemoryByte00000[7:0] (5)test_spi_video_with_23LC1024.ram.MemoryByte00000[7:0] (4)test_spi_video_with_23LC1024.ram.MemoryByte00000[7:0] (3)test_spi_video_with_23LC1024.ram.MemoryByte00000[7:0] (2)test_spi_video_with_23LC1024.ram.MemoryByte00000[7:0] (1)test_spi_video_with_23LC1024.ram.MemoryByte00000[7:0] (0)test_spi_video_with_23LC1024.ram.MemoryByte00000[7:0]
 @22

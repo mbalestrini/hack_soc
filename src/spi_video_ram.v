@@ -52,6 +52,8 @@ module spi_video_ram (
 	output  pixel_out,
 	
 
+    output initialized, 
+
     // Serial SRAM nets 
 	output reg sram_cs_n,
 	output wire sram_sck,
@@ -189,7 +191,9 @@ assign sram_sck = current_state!=state_read_line ? half_freq_clk : quarter_freq_
 // end
 
 wire [1:0] temp_pixel_index = ~(display_hpos[1:0]);
-wire pixel_out = input_buffer[temp_pixel_index];
+// wire pixel_out = display_vpos[1:0]
+
+wire pixel_out = display_vpos < HACK_SCREEN_HEIGHT && display_hpos < HACK_SCREEN_WIDTH ? input_buffer[temp_pixel_index] : display_vpos[3] || display_hpos[3];
 // always @(posedge clk ) begin
 //     pixel_out <= input_buffer[temp_pixel_index];
 // end
@@ -198,7 +202,7 @@ wire pixel_out = input_buffer[temp_pixel_index];
 always @(posedge clk ) begin
     if(reset) begin
 
-        current_state <= state_set_SQI_mode;
+        current_state <= state_reset;
         
         initialized <= 1'b0;
 		sram_cs_n <= 1'b1;				
@@ -217,6 +221,28 @@ always @(posedge clk ) begin
        if(half_freq_clk) begin
 			/* verilator lint_off CASEINCOMPLETE */
            case(current_state)
+              state_reset:
+                begin
+                    if(sram_cs_n==1'b1) 
+                        sram_cs_n <= 1'b0;								
+                    
+                    initializing_step <= initializing_step + 1;
+
+                    // Send reset instruction
+                    case (initializing_step)
+                        0: output_buffer <= {`INS_RSTIO, {(OUTPUT_BUFFER_WIDTH-SRAM_INSTRUCTION_WIDTH){1'b0}}};
+                        1: output_buffer <= output_buffer << BITS_PER_CLK;
+                        default: 
+                            begin
+                                current_state <= state_set_SQI_mode;
+                                sram_cs_n <= 1'b1;
+                                initializing_step <= 0;
+                            end
+
+                    endcase
+
+                end
+
             state_set_SQI_mode: begin
                 // Enable device
                 if(sram_cs_n==1'b1)
@@ -247,7 +273,9 @@ always @(posedge clk ) begin
                 if(!busy && start_read) begin                    
                     current_state <= state_start_read_line;                        
                     // Enable output GPIO
-                    sram_sio_oe <= 1'b1;                    
+                    sram_sio_oe <= 1'b1; 
+                    //line_read_address = display_vpos * h40;
+                    line_read_address <= {display_vpos, 6'b0};
                 end
             end
 
@@ -335,13 +363,14 @@ always @(posedge clk ) begin
 
 
        end else begin
+			/* verilator lint_off CASEINCOMPLETE */
            case (current_state)
                 state_read_dummy_bytes: begin
 
-                    if(input_nibbles_left == 1) begin                    
-                        current_state = state_read_line;
+                    if(input_nibbles_left == 0) begin                    
+                        current_state <= state_read_line;
                         input_buffer <= {sram_sio3_i, sram_sio2_i, sram_sio1_i, sram_sio0_i};
-                        input_nibbles_left <= INPUT_NIBBLES_PER_LINE;    
+                        input_nibbles_left <= INPUT_NIBBLES_PER_LINE + 1;    
                     end else begin
                         input_nibbles_left <= input_nibbles_left - 1;
                     end                
@@ -349,6 +378,7 @@ always @(posedge clk ) begin
 
                 
                 state_read_line: begin
+                    // input_buffer = display_vpos[3:0];
                     input_buffer <= {sram_sio3_i, sram_sio2_i, sram_sio1_i, sram_sio0_i};
 
                     if(quarter_x) begin
@@ -359,21 +389,18 @@ always @(posedge clk ) begin
                             // sram deselected
                             sram_cs_n <= 1'b1;
 
-                            // Prepare address for next read
-                            // line_read_address = line_read_address + bytes_per_line (64)
-                            line_read_address <= line_read_address + 'h40;
-                            // Restart addresses after last hask screen line
-                            if(display_vpos==HACK_SCREEN_HEIGHT) begin
-                                line_read_address <= 0;
-                            end
-                            
                         end else begin
                             input_nibbles_left <= input_nibbles_left - 1;
                         end
                     end
                 end
+
+
+                
                 
            endcase
+			/* verilator lint_on CASEINCOMPLETE */
+
        end
 
     end    
@@ -426,7 +453,8 @@ end
 
     initial begin
         assume(reset);        
-        assume(line_read_address=='h40);
+        assume(line_read_address==display_vpos*'h40);
+        // assume(line_read_address=='h40);
         assume(display_trigger_read==0);
         assume(current_state==state_set_SQI_mode);
         // assume(h_count == 150);
@@ -515,7 +543,9 @@ end
 	 				assert($past(sio_o)==sio_o); 			
 	 		end
 
-
+            
+            // COVER_RESTART_LINE_ADDRESS: cover($past(line_read_address)!=0 && line_read_address==0);
+                
             // COVER_START_READ: cover(start_read);
 
             COVER_START_READ_LINE: cover(current_state==state_start_read_line);
@@ -527,10 +557,21 @@ end
 
         if($fell(reset)) begin
 			initial_reset_passed <= 1;
+
+            assume(display_vpos==0);
+            assume(display_hpos==0);
+            assume(line_read_address==display_vpos*'h40);
+
+
 		end
 
 
 		if(initial_reset_passed) begin
+            if(display_vpos < HACK_SCREEN_HEIGHT) begin
+                ASSERT_LINE_READ_ADDRESS: assert(line_read_address==display_vpos * 'h40);
+            end
+
+            // COVER_RESTART_LINE_ADDRESS: cover($past(line_read_address)!=0 && line_read_address==0);
         end
 
     end

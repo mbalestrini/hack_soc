@@ -5,19 +5,9 @@ module fpga_video_generator_test (
 	input EXTERNAL_CLK, 
 	input RESET_N,
 
-	output ROM_CS_N,
-	output ROM_SCK,
-	inout ROM_SIO0,
-	inout ROM_SIO1,
-	inout ROM_SIO2,
-	inout ROM_SIO3,
 
-	output RAM_CS_N,
-	output RAM_SCK,
-	inout RAM_SIO0,
-	inout RAM_SIO1,
-	inout RAM_SIO2,
-	inout RAM_SIO3,
+	output VRAM_SCK, 
+	output ROM_SCK,	
 
 	output LED1,
 	output LED2,
@@ -33,16 +23,9 @@ module fpga_video_generator_test (
 	input BTN3,
 
 
-	output P1A3, 
-	output P1A4,
-	output P1B3,
-
-	output FLASH_SCK, 
-	output FLASH_SSB,
-	output FLASH_IO0,
-	output FLASH_IO1,
-	output FLASH_IO2,
-	output FLASH_IO3
+	output HSYNC, 
+	output VSYNC,
+	output RGB
 
 	);
 
@@ -70,25 +53,44 @@ debounce #(.NUMBER_STABLE_CYCLES(40)) mod_debouncer_btn2 (
 
 
 
+assign VRAM_SCK = 0;
+assign ROM_SCK = 0;
 
-wire video_clk_25Mhz;
 
-// 25.125 MHz clock
+
+// // 25.125 MHz clock
+// wire video_clk_25Mhz;
+// wire clk = video_clk_25Mhz;
+// wire video_clk_pll_locked;
+// pll_12___25_125 pll_1 (
+//         .clock_in(EXTERNAL_CLK),
+//         .clock_out(video_clk_25Mhz),
+//         .locked(video_clk_pll_locked)
+//         );
+
+
+
+
+// 31.5 MHz clock
+wire video_clk_315Mhz;
+wire clk = video_clk_315Mhz;
 wire video_clk_pll_locked;
-pll_12___25_125 pll_1 (
+pll_12___31_5 pll_1 (
         .clock_in(EXTERNAL_CLK),
-        .clock_out(video_clk_25Mhz),
+        .clock_out(video_clk_315Mhz),
         .locked(video_clk_pll_locked)
         );
 
 
-wire clk = video_clk_25Mhz;
+
+
+
 // wire clk = EXTERNAL_CLK;
 wire reset = ~RESET_N ;//|| !video_clk_pll_locked;
 
 
-wire hsync;
-wire vsync;
+// wire hsync;
+// wire vsync;
 wire [9:0] hpos;
 wire [9:0] vpos;
 wire display_active;
@@ -98,11 +100,11 @@ wire reset_video = reset || debounced_btn2;
 video_generator_640x480 video_generator_1 (
 
 	//i_clk,           // base clock
-	.i_pix_stb(video_clk_25Mhz),       // pixel clock strobe
+	.i_pix_stb(clk),       // pixel clock strobe
 	.i_rst(reset_video),           // reset: restarts frame
 
-	.o_hs(hsync),           // horizontal sync
-	.o_vs(vsync),           // vertical sync
+	.o_hs(HSYNC),           // horizontal sync
+	.o_vs(VSYNC),           // vertical sync
 
 	// .o_blanking(),     // high during blanking interval
 	.o_active(display_active),       // high during active pixel drawing
@@ -113,24 +115,18 @@ video_generator_640x480 video_generator_1 (
 );
 
 
-wire rgb = hpos[2] || vpos[2];
+wire RGB = ( (hpos[0] & ~BTN1) || (vpos[0] & ~BTN2)) & HSYNC & VSYNC;
+
 
 
 // assign {LED5, LED4, LED3, LED2} = debug_gpio[3:0];
-assign {LED5, LED4, LED3, LED2, LED1} = {hsync, vsync, vpos[0], hpos[0],  display_active} ;
+assign {LED5, LED4, LED3, LED2, LED1} = {HSYNC, VSYNC, vpos[0], hpos[0],  display_active} ;
 assign LEDR_N = some_test;
 // assign LEDG_N = ~rom_loader_load;
 
 reg some_test;
 
-assign P1A3 = hsync;
-assign P1A4 = vsync;
-assign P1B3 = rgb;
 
-assign FLASH_SSB = hsync;
-assign FLASH_SCK = vsync;
-assign FLASH_IO0 = rgb;
-assign FLASH_IO1 = rgb;
 // assign FLASH_IO2 = gpio[4];
 // assign FLASH_IO3 = gpio[5];
 

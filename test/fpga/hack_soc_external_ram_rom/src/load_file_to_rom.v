@@ -3,9 +3,10 @@
 
 module load_file_to_rom
     #(
-        parameter BYTE_COUNT = 24,
+        parameter BYTE_COUNT = 100,
         // parameter ROM_FILE = "hack_programs/gpio_counter.hack",        
-        parameter ROM_FILE = "hack_programs/test_assignment_and_jump.hack",        
+        // parameter ROM_FILE = "hack_programs/test_assignment_and_jump.hack",        
+        parameter ROM_FILE = "",        
         parameter DATA_WIDTH = 16
     )(
     input clk, 
@@ -41,7 +42,7 @@ assign rom_loader_data = merged_output_data;
 
 reg was_running;
 initial begin
-    // if(ROM_FILE!="")
+    if(ROM_FILE)
          $readmemb(ROM_FILE, file_data);               
 end
 

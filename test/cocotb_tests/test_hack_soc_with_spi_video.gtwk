@@ -1,0 +1,163 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Wed Jun  2 01:24:33 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_with_spi_video.vcd"
+[dumpfile_mtime] "Tue Jun  1 23:51:02 2021"
+[dumpfile_size] 2387764
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_with_spi_video.gtwk"
+[timestart] 0
+[size] 1920 1147
+[pos] -1 -1
+*-27.000000 230000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test_hack_soc_with_spi_video.
+[treeopen] test_hack_soc_with_spi_video.soc.
+[sst_width] 252
+[signals_width] 315
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+test_hack_soc_with_spi_video.clk
+test_hack_soc_with_spi_video.reset
+test_hack_soc_with_spi_video.soc.hack_clk
+test_hack_soc_with_spi_video.soc.hack_reset
+@22
+test_hack_soc_with_spi_video.soc.hack_pc[14:0]
+test_hack_soc_with_spi_video.soc.hack_instruction[15:0]
+test_hack_soc_with_spi_video.file_to_rom.rom_loader_data[15:0]
+test_hack_soc_with_spi_video.soc.rom_encoder_0.data_out[15:0]
+@28
+test_hack_soc_with_spi_video.run_file_to_rom
+test_hack_soc_with_spi_video.done_loading_rom
+test_hack_soc_with_spi_video.soc.display_trigger_read
+test_hack_soc_with_spi_video.soc.vram_initialized
+@2028
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_states.gtkw
+test_hack_soc_with_spi_video.soc.spi_video_ram_1.current_state[2:0]
+@22
+test_hack_soc_with_spi_video.soc.spi_video_ram_1.input_buffer[3:0]
+@c00200
+-VIDEO_OUT
+@28
+test_hack_soc_with_spi_video.HSYNC
+test_hack_soc_with_spi_video.VSYNC
+test_hack_soc_with_spi_video.RGB
+@1401200
+-VIDEO_OUT
+@c00200
+-RAM
+@28
+test_hack_soc_with_spi_video.ram_cs_n
+test_hack_soc_with_spi_video.ram_sck
+test_hack_soc_with_spi_video.ram_sio0
+test_hack_soc_with_spi_video.ram_sio0_i
+test_hack_soc_with_spi_video.ram_sio0_o
+test_hack_soc_with_spi_video.ram_sio1
+test_hack_soc_with_spi_video.ram_sio1_i
+test_hack_soc_with_spi_video.ram_sio1_o
+test_hack_soc_with_spi_video.ram_sio2
+test_hack_soc_with_spi_video.ram_sio2_i
+test_hack_soc_with_spi_video.ram_sio2_o
+test_hack_soc_with_spi_video.ram_sio3
+test_hack_soc_with_spi_video.ram_sio3_i
+test_hack_soc_with_spi_video.ram_sio3_o
+test_hack_soc_with_spi_video.ram_sio_oe
+@1401200
+-RAM
+@c00200
+-ROM
+@28
+test_hack_soc_with_spi_video.rom_cs_n
+test_hack_soc_with_spi_video.rom_sck
+test_hack_soc_with_spi_video.rom_sio0
+test_hack_soc_with_spi_video.rom_sio0_i
+test_hack_soc_with_spi_video.rom_sio0_o
+test_hack_soc_with_spi_video.rom_sio1
+test_hack_soc_with_spi_video.rom_sio1_i
+test_hack_soc_with_spi_video.rom_sio1_o
+test_hack_soc_with_spi_video.rom_sio2
+test_hack_soc_with_spi_video.rom_sio2_i
+test_hack_soc_with_spi_video.rom_sio2_o
+test_hack_soc_with_spi_video.rom_sio3
+test_hack_soc_with_spi_video.rom_sio3_i
+test_hack_soc_with_spi_video.rom_sio3_o
+test_hack_soc_with_spi_video.rom_sio_oe
+@1401200
+-ROM
+@c00200
+-VRAM
+@28
+test_hack_soc_with_spi_video.vram_cs_n
+test_hack_soc_with_spi_video.vram_sck
+test_hack_soc_with_spi_video.vram_sio0
+test_hack_soc_with_spi_video.vram_sio0_i
+test_hack_soc_with_spi_video.vram_sio0_o
+test_hack_soc_with_spi_video.vram_sio1
+test_hack_soc_with_spi_video.vram_sio1_i
+test_hack_soc_with_spi_video.vram_sio1_o
+test_hack_soc_with_spi_video.vram_sio2
+test_hack_soc_with_spi_video.vram_sio2_i
+test_hack_soc_with_spi_video.vram_sio2_o
+test_hack_soc_with_spi_video.vram_sio3
+test_hack_soc_with_spi_video.vram_sio3_i
+test_hack_soc_with_spi_video.vram_sio3_o
+test_hack_soc_with_spi_video.vram_sio_oe
+@1401200
+-VRAM
+@c00200
+-23lc1024_VRAM
+@22
+test_hack_soc_with_spi_video.vram.AddrRegister[16:0]
+@28
+test_hack_soc_with_spi_video.vram.CS_N
+test_hack_soc_with_spi_video.vram.IOMode[1:0]
+@22
+test_hack_soc_with_spi_video.vram.ClockCounter[31:0]
+test_hack_soc_with_spi_video.vram.DataShifterI[7:0]
+test_hack_soc_with_spi_video.vram.DataShifterO[7:0]
+@28
+test_hack_soc_with_spi_video.vram.InstructionRDMR
+test_hack_soc_with_spi_video.vram.OutputEnable1
+test_hack_soc_with_spi_video.vram.OutputEnable2
+test_hack_soc_with_spi_video.vram.OutputEnable3
+test_hack_soc_with_spi_video.vram.RESET
+test_hack_soc_with_spi_video.vram.SCK
+test_hack_soc_with_spi_video.vram.SO_Enable
+@1401200
+-23lc1024_VRAM
+@800200
+-23lc1024_ROM
+@28
+test_hack_soc_with_spi_video.rom.CS_N
+test_hack_soc_with_spi_video.rom.SCK
+@22
+test_hack_soc_with_spi_video.rom.AddrRegister[16:0]
+test_hack_soc_with_spi_video.rom.ClockCounter[31:0]
+test_hack_soc_with_spi_video.rom.DataShifterI[7:0]
+test_hack_soc_with_spi_video.rom.DataShifterO[7:0]
+@28
+test_hack_soc_with_spi_video.rom.IOMode[1:0]
+test_hack_soc_with_spi_video.rom.SO_OE
+test_hack_soc_with_spi_video.rom.InstructionREAD
+test_hack_soc_with_spi_video.rom.InstructionWRITE
+@1000200
+-23lc1024_ROM
+@800200
+-enoder_ROM
+@29
+test_hack_soc_with_spi_video.soc.rom_encoder_0.initialized
+@2028
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_states.gtkw
+test_hack_soc_with_spi_video.soc.rom_encoder_0.current_state[2:0]
+@22
+test_hack_soc_with_spi_video.soc.rom_encoder_0.request_address[14:0]
+@28
+test_hack_soc_with_spi_video.soc.rom_encoder_0.request_write
+test_hack_soc_with_spi_video.soc.rom_encoder_0.request
+@22
+test_hack_soc_with_spi_video.soc.rom_encoder_0.data_out[15:0]
+test_hack_soc_with_spi_video.soc.rom_encoder_0.data_in[15:0]
+@1000200
+-enoder_ROM
+[pattern_trace] 1
+[pattern_trace] 0

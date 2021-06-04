@@ -39,6 +39,24 @@ module hack_soc (
 	output rom_sio3_o, // sram_hold_n_sio3
 
 
+
+	// ** VRAM: qspi serial sram **/
+	output vram_cs_n,
+	output vram_sck,
+	output vram_sio_oe, // output enable the SIO lines
+	// SIO as inputs from SRAM	
+	input vram_sio0_i, // sram_si_sio0 
+	input vram_sio1_i, // sram_so_sio1
+	input vram_sio2_i, // sram_sio2
+	input vram_sio3_i, // sram_hold_n_sio3
+	// SIO as outputs to SRAM
+	output vram_sio0_o, // sram_si_sio0
+	output vram_sio1_o, // sram_so_sio1
+	output vram_sio2_o, // sram_sio2
+	output vram_sio3_o, // sram_hold_n_sio3
+
+
+
 	// ** DISPLAY ** //
 	output display_hsync,
 	output display_vsync,
@@ -70,6 +88,7 @@ module hack_soc (
 `define ADDRESS_KEYBOARD 'h6000
 `define ADDRESS_GPIO 'h6001
 
+`define READ_TRIGGER_BEFORE_ACTIVE_CLKS 28
 
 reg [1:0] hack_wait_clocks;
 wire rom_loading_process;
@@ -213,14 +232,55 @@ spi_sram_encoder #(	.WORD_WIDTH(INSTRUCTION_WIDTH), .ADDRESS_WIDTH(ROM_ADDRESS_W
 
 
 
+
+
+wire pixel_value;
+wire vram_initialized;
+
+spi_video_ram spi_video_ram_1 (
+    .clk(clk),
+	.reset(reset), 	
+
+    .display_trigger_read(display_trigger_read),
+    .display_active(display_active),
+    .display_hpos(display_hpos),
+    .display_vpos(display_vpos),
+	.pixel_out(pixel_value),
+	
+	.initialized(vram_initialized), 
+
+    // Serial SRAM nets 
+	.sram_cs_n(vram_cs_n),
+	.sram_sck(vram_sck),
+
+	.sram_sio_oe(vram_sio_oe), // output enable the SIO lines
+	// SIO as inputs from SRAM	
+	.sram_sio0_i(vram_sio0_i), // sram_si_sio0 
+	.sram_sio1_i(vram_sio1_i), // sram_so_sio1
+	.sram_sio2_i(vram_sio2_i), // sram_sio2
+	.sram_sio3_i(vram_sio3_i), // sram_hold_n_sio3
+	// SIO as outputs to SRAM
+	.sram_sio0_o(vram_sio0_o), // sram_si_sio0
+	.sram_sio1_o(vram_sio1_o), // sram_so_sio1
+	.sram_sio2_o(vram_sio2_o), // sram_sio2
+	.sram_sio3_o(vram_sio3_o) // sram_hold_n_sio3
+
+);
+
+
+
+
+
 // VIDEO GENERATOR
 wire [9:0] display_hpos;
 wire [9:0] display_vpos;
 wire display_active;
-wire reset_display = reset;
+wire display_trigger_read;
+wire reset_display = hack_reset; //reset;
 // assign display_rgb = display_hpos[2] || display_vpos[2];
-assign display_rgb = (display_hpos[2] || display_vpos[2]) && gpio[8];
-video_signal_generator_640x480 video_generator_1 (
+video_signal_generator_640x480 #(
+	.READ_TRIGGER_BEFORE_ACTIVE_CLKS(`READ_TRIGGER_BEFORE_ACTIVE_CLKS))
+	video_generator_1 (
 	//i_clk,           // base clock
 	.i_pix_stb(display_clk),       // pixel clock strobe
 	.i_rst(reset_display),           // reset: restarts frame
@@ -231,7 +291,8 @@ video_signal_generator_640x480 video_generator_1 (
 	// .o_screenend(),    // high for one tick at the end of screen
 	// .o_animate(),      // high for one tick at end of active drawing
 	.o_x(display_hpos),      // current pixel x position
-	.o_y(display_vpos)       // current pixel y position
+	.o_y(display_vpos),       // current pixel y position
+	.o_trigger_read(display_trigger_read)
 );
 
 
@@ -247,7 +308,7 @@ assign rom_request = rom_loading_process ? rom_loader_request : hack_rom_request
 assign rom_address = rom_loading_process ? rom_loader_output_address : hack_pc;
 assign rom_write_enable = (rom_loading_process);// && rom_loader_request);
 
-
+assign display_rgb = pixel_value & display_hsync & display_vsync;
 
 always @(posedge clk ) begin
 	if(reset) begin

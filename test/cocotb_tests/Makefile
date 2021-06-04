@@ -48,6 +48,22 @@ test_spi_video_with_23LC1024:
 	MODULE=test_spi_video_with_23LC1024 vvp -M $$(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus sim_build/sim.vvp
 
 
+test_hack_soc_with_spi_video:
+	rm -rf sim_build/
+	mkdir sim_build/
+	iverilog -o sim_build/sim.vvp -s test_hack_soc_with_spi_video -s dump -g2012 -I $(PROJECT_SOURCE_PATH) $(PROJECT_SOURCE_PATH)/*.v dump_hack_soc_with_spi_video.v test_hack_soc_with_spi_video.v load_pattern_to_rom.v load_file_to_rom.v rom_23LC1024.v ../imported_modules/23LC1024.v 
+	MODULE=test_hack_soc_with_spi_video vvp -M $$(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus sim_build/sim.vvp
+
+
+test_hack_soc_program:
+	rm -rf sim_build/
+	mkdir sim_build/
+	iverilog -o sim_build/sim.vvp -s test_hack_soc_program -s dump -g2012 -I $(PROJECT_SOURCE_PATH) $(PROJECT_SOURCE_PATH)/*.v dump_hack_soc_program.v test_hack_soc_program.v load_file_to_rom.v rom_23LC1024.v ../imported_modules/23LC1024.v 
+	MODULE=test_hack_soc_program vvp -M $$(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus sim_build/sim.vvp
+
+
+
+
 
 show_sram_encoder:
 	gtkwave test_spi_sram_encoder.vcd test_spi_sram_encoder.gtwk
@@ -71,3 +87,12 @@ show_hack_soc_plus_rom_loader:
 
 show_spi_video_with_23LC1024:
 	gtkwave test_spi_video_with_23LC1024.vcd test_spi_video_with_23LC1024.gtwk	
+
+show_hack_soc_with_spi_video:
+	gtkwave test_hack_soc_with_spi_video.vcd test_hack_soc_with_spi_video.gtwk	
+
+
+show_hack_soc_program:
+	gtkwave test_hack_soc_program.vcd test_hack_soc_program.gtwk	
+
+

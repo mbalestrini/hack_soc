@@ -33,12 +33,24 @@ module video_generator_640x480 (
     // Vertical Freq.    59.940 Hz
     // Frame Time          16.7 ms
 
-    localparam H_BACK_PORCH_CLOCKS = 48;
-    localparam H_SYNC_CLOCKS = 96;
+
+
+    // 640x480 @ 75
+    localparam H_BACK_PORCH_CLOCKS = 120;
+    localparam H_SYNC_CLOCKS = 64;
     localparam H_FRONT_PORCH_CLOCKS = 16;
-    localparam V_BACK_PORCH_LINES = 33;//1;
-    localparam V_SYNC_LINES = 2;
-    localparam V_FRONT_PORCH = 10;//26;    
+    localparam V_BACK_PORCH_LINES = 16;//1;
+    localparam V_SYNC_LINES = 3;
+    localparam V_FRONT_PORCH = 1;//26;    
+    
+
+    // 640x480 @ 60
+    // localparam H_BACK_PORCH_CLOCKS = 48;
+    // localparam H_SYNC_CLOCKS = 96;
+    // localparam H_FRONT_PORCH_CLOCKS = 16;
+    // localparam V_BACK_PORCH_LINES = 33;//1;
+    // localparam V_SYNC_LINES = 2;
+    // localparam V_FRONT_PORCH = 10;//26;    
     
     localparam HS_STA = H_FRONT_PORCH_CLOCKS;              // horizontal sync start
     localparam HS_END = H_FRONT_PORCH_CLOCKS + H_SYNC_CLOCKS;         // horizontal sync end

@@ -30,22 +30,24 @@ module fpga_hack_soc_external_ram_rom (
 
 	input BTN1,
 	input BTN2,
-	input BTN3,
-
-
-	output FLASH_SCK, 
-	output FLASH_SSB,
-	output FLASH_IO0,
-	output FLASH_IO1,
-	output FLASH_IO2,
-	output FLASH_IO3
+	input BTN3
+	
+	// ,
+	// output FLASH_SSB,
+	// output FLASH_SCK, 
+	// output FLASH_IO0,
+	// output FLASH_IO1,
+	// output FLASH_IO2,
+	// output FLASH_IO3
 
 	);
 
 
 
 // localparam  ROM_FILE = "hack_programs/test_assignment_and_jump.hack";
-localparam	FILE_LINES = 24;
+localparam  ROM_FILE = "../../hack_programs/FIllMemAndCheck_to5.hack8"; 
+// localparam  ROM_FILE = "../../hack_programs/test_assignment_and_jump.hack8"; 
+localparam	FILE_LINES = 100;
 localparam  INSTRUCTION_WIDTH = 16;
 localparam  ROM_ADDRESS_WIDTH = 16;
 localparam HACK_GPIO_WIDTH = 16;
@@ -103,8 +105,8 @@ pll_12_40 pll_1 (
 */
 
 // wire clk;
-// wire clk = EXTERNAL_CLK;
-wire clk = (~slow_clock_pause & slow_clock_counter[14]) || debounced_btn2;
+wire clk = EXTERNAL_CLK;
+// wire clk = (~slow_clock_pause & slow_clock_counter[14]);// || debounced_btn2;
 wire reset = ~RESET_N;
 // wire reset = !RESET_N || !pll_locked;
 
@@ -125,7 +127,7 @@ wire file_to_rom_loader_load;
 wire [INSTRUCTION_WIDTH-1:0] file_to_rom_loader_data;
 load_file_to_rom #(
         .BYTE_COUNT(FILE_LINES),
-        // .ROM_FILE(ROM_FILE),
+        .ROM_FILE(ROM_FILE),
         .DATA_WIDTH(INSTRUCTION_WIDTH)
     ) file_to_rom (
 
@@ -204,11 +206,14 @@ assign rom_sio3_i = ROM_SIO3;
 
 
 
-reg hack_external_reset;
+wire hack_external_reset;
 wire [HACK_GPIO_WIDTH-1:0] gpio;
+
+wire [15:0] debug_pc;
 
 hack_soc soc(
 	.clk(clk),
+	.display_clk(clk),
 	.reset(reset),
 
 	.hack_external_reset(hack_external_reset),
@@ -255,19 +260,27 @@ hack_soc soc(
 
 
 	// GPIO
-	.gpio(gpio)
+	.gpio(gpio),
+
+
+	// DEBUG	
+	.debug_pc(debug_pc)
+
 
 	);
 
 
+assign hack_external_reset = !ready_to_start | debounced_btn2;
+
+reg ready_to_start;
 
 always @(posedge clk) begin
     if(reset) begin
         run_file_to_rom <= 0;
-		hack_external_reset <= 1;
+		ready_to_start <= 0;
     end else begin
 		if(done_loading_rom) begin
-			hack_external_reset <= 0;
+			ready_to_start <= 1;
 			run_file_to_rom <= 0;
 		end else if(!run_file_to_rom) begin
         	run_file_to_rom <= 1;
@@ -280,14 +293,14 @@ end
 assign {LED5, LED4, LED3, LED2} = gpio[3:0];
 assign LEDR_N = ~done_loading_rom;
 assign LEDG_N = ~rom_loader_load;
-assign LED1 = hack_external_reset;
+assign LED1 = !ready_to_start | debug_pc[0];
 
-assign FLASH_SSB = gpio[0];
-assign FLASH_SCK = gpio[1];
-assign FLASH_IO0 = gpio[2];
-assign FLASH_IO1 = gpio[3];
-assign FLASH_IO2 = gpio[4];
-assign FLASH_IO3 = gpio[5];
+// assign FLASH_SSB = debug_pc[0];
+// assign FLASH_SCK = debug_pc[1];
+// assign FLASH_IO0 = debug_pc[2];
+// assign FLASH_IO1 = debug_pc[3];
+// assign FLASH_IO2 = debug_pc[4];
+// assign FLASH_IO3 = debug_pc[5];
 
 // assign LED1 = debug_pc[0];
 // assign {LED2, LED3, LED4, LED5} = debug_pc[3:0];
