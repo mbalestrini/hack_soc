@@ -47,6 +47,12 @@ test_spi_video_with_23LC1024:
 	iverilog -o sim_build/sim.vvp -s test_spi_video_with_23LC1024 -s dump -g2012 -I $(PROJECT_SOURCE_PATH) $(PROJECT_SOURCE_PATH)/*.v dump_test_spi_video_with_23LC1024.v test_spi_video_with_23LC1024.v load_file_to_rom.v rom_23LC1024.v ../imported_modules/23LC1024.v 
 	MODULE=test_spi_video_with_23LC1024 vvp -M $$(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus sim_build/sim.vvp
 
+test_spi_video_2_with_23LC1024:
+	rm -rf sim_build/
+	mkdir sim_build/
+	iverilog -o sim_build/sim.vvp -s test_spi_video_2_with_23LC1024 -s dump -g2012 -I $(PROJECT_SOURCE_PATH) $(PROJECT_SOURCE_PATH)/*.v dump_test_spi_video_2_with_23LC1024.v test_spi_video_2_with_23LC1024.v load_file_to_rom.v rom_23LC1024.v ../imported_modules/23LC1024.v 
+	MODULE=test_spi_video_2_with_23LC1024 vvp -M $$(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus sim_build/sim.vvp
+
 
 test_hack_soc_with_spi_video:
 	rm -rf sim_build/
@@ -87,6 +93,10 @@ show_hack_soc_plus_rom_loader:
 
 show_spi_video_with_23LC1024:
 	gtkwave test_spi_video_with_23LC1024.vcd test_spi_video_with_23LC1024.gtwk	
+
+
+show_spi_video_2_with_23LC1024:
+	gtkwave test_spi_video_2_with_23LC1024.vcd test_spi_video_2_with_23LC1024.gtwk	
 
 show_hack_soc_with_spi_video:
 	gtkwave test_hack_soc_with_spi_video.vcd test_hack_soc_with_spi_video.gtwk	

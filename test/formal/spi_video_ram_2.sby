@@ -1,0 +1,23 @@
+[tasks]
+task_cover
+task_prove
+
+[options]
+task_prove: mode bmc
+task_prove: depth 90
+task_prove: multiclock on
+
+task_cover: mode cover
+task_cover: depth 200
+task_cover: append 50
+task_cover: multiclock on
+
+[engines]
+smtbmc
+
+[script]
+read -formal spi_video_ram_2.v
+prep -top spi_video_ram_2
+
+[files]
+../src/spi_video_ram_2.v

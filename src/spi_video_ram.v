@@ -1,43 +1,8 @@
 `default_nettype none
 `timescale 1ns/10ps
 
-// Boceto:
-
- // Entrada de escrituras (que vienen de HACK)
-
-// Entradas de indices y marcadores de video para saber cuando empezar a leer una linea?
-
-// Inicializar modo QSI
-
-// Buffer FIFO de escritura (8 registros? [16 bits de address + 16 bits de data])
 
 // Mienstras no esta leyendo la linea puede escribir. deberia cortas a tiempos para empezar antes que se necesite el primer dato
-
-// Sincronizacion de tiempos entre lectura de la memoria y salida del video?
-//     (Correr al RAM con clock de video / 4? en modo QSI eso haria que fueran a la misma velocidad el video y los bits que van saliendo)
-//     (La memoria deberia leer asi los proximos 4 bits)
-
-// Podria hacer que lea a clock de video / 4 y que escriba a clock de video / 2 (no puedo /1 porque 25.1MHz es mucho para la 23lc1024)
-//                                 ~6.2MHz                                  ~12.5MHz
-
-
-
-
-
-// Lectura 
-//     instruccion lectura
-//     address de inicio de linea
-//     1 dummy bytes
-//     128 lecturas de 4 bits cada una
-
-// Que trigger iniciaria la Lectura?
-
-
-// Escritura
-//     Si no se dan las condiciones para el trigger de lectura:
-//         Recorre la FIFO
-//             Escritura de data 16 bits en address
-
 
 
 module spi_video_ram (

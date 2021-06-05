@@ -1,0 +1,87 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Sat Jun  5 18:43:11 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_spi_video_2_with_23LC1024.vcd"
+[dumpfile_mtime] "Sat Jun  5 18:41:52 2021"
+[dumpfile_size] 53247045
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_spi_video_2_with_23LC1024.gtwk"
+[timestart] 2085800000000
+[size] 1920 1147
+[pos] -1 -1
+*-36.000000 2228420000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test_spi_video_2_with_23LC1024.
+[sst_width] 282
+[signals_width] 278
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+test_spi_video_2_with_23LC1024.clk
+test_spi_video_2_with_23LC1024.reset
+test_spi_video_2_with_23LC1024.spi_video_ram_1.initialized
+test_spi_video_2_with_23LC1024.spi_video_ram_1.busy
+test_spi_video_2_with_23LC1024.spi_video_ram_1.display_trigger_read
+test_spi_video_2_with_23LC1024.video_generator_1.o_active
+@25
+test_spi_video_2_with_23LC1024.video_generator_1.o_x[9:0]
+@24
+test_spi_video_2_with_23LC1024.video_generator_1.o_y[9:0]
+@28
+test_spi_video_2_with_23LC1024.spi_video_ram_1.current_state[2:0]
+@24
+test_spi_video_2_with_23LC1024.spi_video_ram_1.state_sram_clk_counter[8:0]
+@28
+test_spi_video_2_with_23LC1024.spi_video_ram_1.sram_sio_oe
+@c00022
+#{test_spi_video_2_with_23LC1024.sram_sio[3:0]_o} test_spi_video_2_with_23LC1024.sram_sio3_o test_spi_video_2_with_23LC1024.sram_sio2_o test_spi_video_2_with_23LC1024.sram_sio1_o test_spi_video_2_with_23LC1024.sram_sio0_o
+@28
+test_spi_video_2_with_23LC1024.sram_sio0_o
+test_spi_video_2_with_23LC1024.sram_sio1_o
+test_spi_video_2_with_23LC1024.sram_sio2_o
+test_spi_video_2_with_23LC1024.sram_sio3_o
+test_spi_video_2_with_23LC1024.spi_video_ram_1.display_trigger_read
+test_spi_video_2_with_23LC1024.spi_video_ram_1.start_read
+@1401200
+-group_end
+@28
+test_spi_video_2_with_23LC1024.spi_video_ram_1.pixel_out
+@22
+test_spi_video_2_with_23LC1024.spi_video_ram_1.line_read_address[23:0]
+@c00022
+test_spi_video_2_with_23LC1024.spi_video_ram_1.read_value[3:0]
+@28
+(0)test_spi_video_2_with_23LC1024.spi_video_ram_1.read_value[3:0]
+(1)test_spi_video_2_with_23LC1024.spi_video_ram_1.read_value[3:0]
+(2)test_spi_video_2_with_23LC1024.spi_video_ram_1.read_value[3:0]
+(3)test_spi_video_2_with_23LC1024.spi_video_ram_1.read_value[3:0]
+@1401200
+-group_end
+@c00022
+#{test_spi_video_2_with_23LC1024.spi_video_ram_1.sram_sio[3:0]_i} test_spi_video_2_with_23LC1024.spi_video_ram_1.sram_sio3_i test_spi_video_2_with_23LC1024.spi_video_ram_1.sram_sio2_i test_spi_video_2_with_23LC1024.spi_video_ram_1.sram_sio1_i test_spi_video_2_with_23LC1024.spi_video_ram_1.sram_sio0_i
+@28
+test_spi_video_2_with_23LC1024.spi_video_ram_1.sram_sio0_i
+test_spi_video_2_with_23LC1024.spi_video_ram_1.sram_sio1_i
+test_spi_video_2_with_23LC1024.spi_video_ram_1.sram_sio2_i
+test_spi_video_2_with_23LC1024.spi_video_ram_1.sram_sio3_i
+@1401200
+-group_end
+@28
+test_spi_video_2_with_23LC1024.sram_sck
+test_spi_video_2_with_23LC1024.sram_cs_n
+@c00200
+-RAM
+@22
+test_spi_video_2_with_23LC1024.ram.MemoryByte00000[7:0]
+test_spi_video_2_with_23LC1024.ram.MemoryByte00001[7:0]
+test_spi_video_2_with_23LC1024.ram.MemoryByte00002[7:0]
+test_spi_video_2_with_23LC1024.ram.MemoryByte00003[7:0]
+test_spi_video_2_with_23LC1024.ram.MemoryByte00004[7:0]
+test_spi_video_2_with_23LC1024.ram.MemoryByte00005[7:0]
+test_spi_video_2_with_23LC1024.ram.MemoryByte00006[7:0]
+test_spi_video_2_with_23LC1024.ram.MemoryByte00007[7:0]
+test_spi_video_2_with_23LC1024.ram.MemoryByte00008[7:0]
+test_spi_video_2_with_23LC1024.ram.MemoryByte00009[7:0]
+@1401200
+-RAM
+[pattern_trace] 1
+[pattern_trace] 0

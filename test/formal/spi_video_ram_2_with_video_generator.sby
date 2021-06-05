@@ -1,0 +1,30 @@
+[tasks]
+task_cover
+task_prove
+
+[options]
+task_prove: mode bmc
+task_prove: depth 500
+task_prove: multiclock on
+
+
+task_cover: mode cover
+task_cover: depth 60
+task_cover: multiclock on
+task_cover: append 50
+
+
+[engines]
+smtbmc
+
+[script]
+read -formal spi_video_ram_2_with_video_generator.v
+read -sv spi_video_ram_2.v video_signal_generator_640x480.v
+prep -top spi_video_ram_2_with_video_generator
+
+[files]
+./formal/spi_video_ram_2_with_video_generator.v
+../src/spi_video_ram_2.v
+../src/video_signal_generator_640x480.v
+
+

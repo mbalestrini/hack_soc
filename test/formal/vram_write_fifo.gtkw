@@ -1,0 +1,47 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Fri Jun  4 02:50:29 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/vram_write_fifo_task_prove/engine_0/trace.vcd"
+[dumpfile_mtime] "Fri Jun  4 02:44:25 2021"
+[dumpfile_size] 2667
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/vram_write_fifo.gtkw"
+[timestart] 0
+[size] 1920 1147
+[pos] -1 -1
+*-5.072009 19 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 213
+[signals_width] 243
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+vram_write_fifo.clk
+vram_write_fifo.reset
+vram_write_fifo.full
+vram_write_fifo.empty
+@24
+vram_write_fifo.items_count[2:0]
+@28
+vram_write_fifo.write_request
+vram_write_fifo.read_request
+@800029
+vram_write_fifo.read_pointer[2:0]
+@29
+(0)vram_write_fifo.read_pointer[2:0]
+(1)vram_write_fifo.read_pointer[2:0]
+(2)vram_write_fifo.read_pointer[2:0]
+@1001201
+-group_end
+@800028
+vram_write_fifo.write_pointer[2:0]
+@28
+(0)vram_write_fifo.write_pointer[2:0]
+(1)vram_write_fifo.write_pointer[2:0]
+(2)vram_write_fifo.write_pointer[2:0]
+@1001200
+-group_end
+@28
+vram_write_fifo.underrun
+vram_write_fifo.overrun
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,36 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Tue Jun  1 00:33:54 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_spi_video_with_23LC1024.vcd"
+[dumpfile_mtime] "Tue Jun  1 00:31:13 2021"
+[dumpfile_size] 18377
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_spi_video_with_23LC1024.gtkw"
+[timestart] 0
+[size] 1920 1147
+[pos] -269 -269
+*-29.000000 445000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 283
+[signals_width] 227
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+test_spi_video_with_23LC1024.clk
+test_spi_video_with_23LC1024.reset
+@800200
+-DISPLAY
+@28
+test_spi_video_with_23LC1024.display_active
+@22
+test_spi_video_with_23LC1024.display_hpos[9:0]
+test_spi_video_with_23LC1024.display_vpos[9:0]
+@28
+test_spi_video_with_23LC1024.display_hsync
+test_spi_video_with_23LC1024.display_vsync
+test_spi_video_with_23LC1024.display_trigger_read
+@1000200
+-DISPLAY
+@29
+test_spi_video_with_23LC1024.pixel_value
+[pattern_trace] 1
+[pattern_trace] 0

@@ -80,7 +80,6 @@ formal_spi_video_ram_prove:
 	sby -f formal/spi_video_ram.sby task_prove
 
 
-
 # FORMAL but just for analyzing signals, not to proove because it takes too many steps
 formal_video_generator:
 	sby -f formal/video_signal_generator_640x480.sby
@@ -88,6 +87,36 @@ formal_video_generator_cover:
 	sby -f formal/video_signal_generator_640x480.sby task_cover
 formal_video_generator_prove:
 	sby -f formal/video_signal_generator_640x480.sby task_prove
+
+
+
+formal_vram_write_fifo:
+	sby -f formal/vram_write_fifo.sby
+formal_vram_write_fifo_cover:
+	sby -f formal/vram_write_fifo.sby task_cover
+formal_vram_write_fifo_prove:
+	sby -f formal/vram_write_fifo.sby task_prove
+
+
+
+formal_spi_video_ram_2:
+	sby -f formal/spi_video_ram_2.sby
+formal_spi_video_ram_2_cover:
+	sby -f formal/spi_video_ram_2.sby task_cover
+formal_spi_video_ram_2_prove:
+	sby -f formal/spi_video_ram_2.sby task_prove
+
+
+formal_spi_video_ram_2_with_video_generator:
+	sby -f formal/spi_video_ram_2_with_video_generator.sby
+formal_spi_video_ram_2_with_video_generator_cover:
+	sby -f formal/spi_video_ram_2_with_video_generator.sby task_cover
+formal_spi_video_ram_2_with_video_generator_prove:
+	sby -f formal/spi_video_ram_2_with_video_generator.sby task_prove
+
+
+
+
 
 
 

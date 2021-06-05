@@ -1,0 +1,40 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Sat Jun  5 20:10:46 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/spi_video_ram_2_with_video_generator_task_prove/engine_0/trace.vcd"
+[dumpfile_mtime] "Sat Jun  5 20:10:43 2021"
+[dumpfile_size] 44783
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/formal/spi_video_ram_2_with_video_generator.gtkw"
+[timestart] 0
+[size] 1920 1147
+[pos] -1 -1
+*-8.238303 40 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] spi_video_ram_2_with_video_generator.
+[sst_width] 213
+[signals_width] 269
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+spi_video_ram_2_with_video_generator.clk
+spi_video_ram_2_with_video_generator.reset
+spi_video_ram_2_with_video_generator.vram_initialized
+spi_video_ram_2_with_video_generator.display_active
+spi_video_ram_2_with_video_generator.display_trigger_read
+@24
+spi_video_ram_2_with_video_generator.display_hpos[9:0]
+spi_video_ram_2_with_video_generator.display_vpos[9:0]
+@28
+spi_video_ram_2_with_video_generator.sram_cs_n
+spi_video_ram_2_with_video_generator.sram_sck
+spi_video_ram_2_with_video_generator.spi_video_ram_1.current_state[2:0]
+@24
+spi_video_ram_2_with_video_generator.spi_video_ram_1.state_counter[10:0]
+spi_video_ram_2_with_video_generator.spi_video_ram_1.state_sram_clk_counter[8:0]
+@28
+spi_video_ram_2_with_video_generator.spi_video_ram_1.sram_sio_oe
+spi_video_ram_2_with_video_generator.spi_video_ram_1.start_read
+@29
+spi_video_ram_2_with_video_generator.spi_video_ram_1.busy
+[pattern_trace] 1
+[pattern_trace] 0
