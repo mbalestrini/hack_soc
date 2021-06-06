@@ -11,12 +11,18 @@ module spi_video_ram_2 (
     output reg initialized, 
 
     
-    // READ REQUESTS
-    input display_trigger_read,
+    // VIDEO VRAM READ
+    input [9:0] clks_before_active,
     input display_active,
     input [9:0] display_hpos,
     input [9:0] display_vpos,
 	output  pixel_out,
+
+
+    // HACK VRAM WRITE
+    input [WORD_WIDTH-1:0] hack_outM,
+    input [RAM_ADDRESS_WIDTH-1:0] hack_addressM,
+    input hack_writeM,
 
 
     // Serial SRAM nets 
@@ -54,17 +60,17 @@ module spi_video_ram_2 (
 `define SDIMODE   2'b01                                 // SDI I/O mode
 `define SQIMODE   2'b10                                 // SQI I/O mode 
 
+`include "includes/params.v"
 
 // 23LC1024 Address width
-localparam SRAM_ADDRESS_WIDTH = 24;
-localparam HACK_SCREEN_WIDTH = 512;
-localparam HACK_SCREEN_HEIGHT = 256;
+localparam CLKS_BEFORE_TRIGGER = 42;  // 26 if we use the fast version of the read instruction  
+// localparam SRAM_ADDRESS_WIDTH = 24;
 localparam OUTPUT_BUFFER_WIDTH = SRAM_ADDRESS_WIDTH;
 localparam INPUT_BUFFER_WIDTH = 4;
 localparam SRAM_INSTRUCTION_WIDTH = 8;
 localparam BITS_PER_CLK = 4;
 `ifndef FORMAL
-localparam INPUT_NIBBLES_PER_LINE = (HACK_SCREEN_WIDTH/4);
+localparam INPUT_NIBBLES_PER_LINE = (HACK_SCREEN_WIDTH>>2);
 `else
 localparam INPUT_NIBBLES_PER_LINE = 3;
 `endif
@@ -74,22 +80,53 @@ localparam QSI_INSTRUCTION_CLKS = 2;
 localparam QSI_ADDRESS_CLKS = 6;
 localparam QSI_READ_DUMMY_CLKS = 2;
 localparam QSI_READ_LINE_CLKS = INPUT_NIBBLES_PER_LINE;
+localparam QSI_WRITE_WORD_CLKS = WORD_WIDTH>>2;
 localparam READ_LINE_TOTAL_CLKS = QSI_INSTRUCTION_CLKS + QSI_ADDRESS_CLKS + QSI_READ_DUMMY_CLKS + QSI_READ_LINE_CLKS;
-
-
+localparam WRITE_WORD_TOTAL_CLKS = QSI_INSTRUCTION_CLKS + QSI_ADDRESS_CLKS + QSI_WRITE_WORD_CLKS;
 
 
 // states
 localparam [2:0]
-	state_idle 			= 3'b000,
-	state_read			= 3'b001,
-	state_read_instruction 	= 3'b010,
-	state_read_address 		= 3'b011,
-	state_read_line		= 3'b100,
-	state_read_dummy_bytes 		= 3'b101,	
-	state_reset 		= 3'b110,
-	state_set_SQI_mode 	= 3'b111
+	state_reset 		= 3'b000,
+	state_set_SQI_mode 	= 3'b001,
+    state_idle 			= 3'b010,
+    state_read			= 3'b011,
+    state_write         = 3'b100
+	
 	;
+
+
+wire fifo_empty;
+wire fifo_full;
+
+reg fifo_read_request;
+wire [RAM_ADDRESS_WIDTH-1:0] fifo_out_address;
+wire [WORD_WIDTH-1:0] fifo_out_data;
+
+reg fifo_write_request;
+reg [RAM_ADDRESS_WIDTH-1:0] fifo_in_address;
+reg [WORD_WIDTH-1:0] fifo_in_data;
+
+vram_write_fifo #(.DATA_WIDTH(WORD_WIDTH), .ADDRESS_WIDTH(RAM_ADDRESS_WIDTH)) 
+    write_fifo (
+        .clk(clk), 
+        .reset(reset),
+
+        .read_request(fifo_read_request),
+        .read_address(fifo_out_address),
+        .read_data(fifo_out_data),
+
+        .write_request(fifo_write_request),
+        .write_address(fifo_in_address),
+        .write_data(fifo_in_data),
+
+        // .items_count(),
+        .full(fifo_full),
+        .empty(fifo_empty)
+        // .overrun(),
+        // .underrun()
+);
+
 
 
 
@@ -106,19 +143,11 @@ reg sram_sck_fall_edge;
 reg [OUTPUT_BUFFER_WIDTH-1:0] output_buffer;
 reg [$clog2(OUTPUT_BUFFER_WIDTH):0] buffer_index;
 
-reg [INPUT_BUFFER_WIDTH-1:0] input_buffer;
-
-
 reg start_read;
-always @(posedge clk ) begin
-    if(reset) begin
-        start_read <= 0;
-    end else begin
-        if(!busy && display_vpos<HACK_SCREEN_HEIGHT) begin
-            start_read <= display_trigger_read;
-        end
-    end
-end
+wire display_trigger_read = (clks_before_active==CLKS_BEFORE_TRIGGER);
+
+wire write_to_sram_ready = !busy && !fifo_empty;
+
 
 wire [SRAM_ADDRESS_WIDTH-1:0] line_read_address = {display_vpos, 6'b0};
 wire [1:0] temp_pixel_index = ~(display_hpos[1:0]);
@@ -162,11 +191,24 @@ always @(posedge clk ) begin
                 end else if(!busy && start_read) begin
                     current_state <= state_read;
                     state_counter <= 0;
+
+                end else if(write_to_sram_ready) begin
+                    current_state <= state_write;
+                    state_counter <= 0;
                 end
             end
+
             state_read: begin
-                // Finish reading
+                // Finish reading?
                 if(state_sram_clk_counter==READ_LINE_TOTAL_CLKS) begin
+                    current_state <= state_idle;
+                    state_counter <= 0;
+                end
+            end
+
+            state_write: begin
+                // Finish writing?
+                if(state_sram_clk_counter==WRITE_WORD_TOTAL_CLKS) begin
                     current_state <= state_idle;
                     state_counter <= 0;
                 end
@@ -195,6 +237,39 @@ always @(output_buffer or buffer_index) begin
     end
 end
 
+// ** start_read ** //
+always @(posedge clk ) begin
+    if(reset) begin
+        start_read <= 0;
+    end else begin
+        if(!busy && display_vpos<HACK_SCREEN_HEIGHT) begin
+            start_read <= display_trigger_read;
+        end
+    end
+end
+
+
+// ** fifo_read_request ** //
+always @(posedge clk) begin
+    fifo_read_request <= 0;
+    if(current_state==state_idle && write_to_sram_ready) begin
+       fifo_read_request <= 1; 
+    end    
+end
+
+
+
+// ** fifo_write_request, fifo_in_data, fifo_in_address ** //
+always @(posedge clk) begin
+    fifo_write_request <= 0;
+    if(hack_writeM && !fifo_full) begin
+        fifo_in_data <= hack_outM;
+        fifo_in_address <= hack_addressM;
+        fifo_write_request <= 1; 
+    end    
+end
+
+
 
 // ** sram_sio_oe ** //
 always @(posedge clk ) begin
@@ -222,6 +297,7 @@ always @(posedge clk ) begin
             end
         end    
 
+        /* verilator lint_off CASEINCOMPLETE */
         case (current_state)
             state_reset: begin
                 if(state_sram_clk_counter==0) begin
@@ -249,12 +325,32 @@ always @(posedge clk ) begin
                end
             end
 
+            state_write: begin
+                if(state_sram_clk_counter==0) begin
+                    // instruction
+                    output_buffer <= {`INS_WRITE, {(OUTPUT_BUFFER_WIDTH-SRAM_INSTRUCTION_WIDTH){1'b0}}};
+                    buffer_index <= OUTPUT_BUFFER_WIDTH-1;
+                end else if(state_sram_clk_counter==QSI_INSTRUCTION_CLKS) begin
+                    // address
+                    // As we read 2 bytes for every HACK memory address, we multiply by 2 before sending it to the 23LC1024
+                    output_buffer <= { {(OUTPUT_BUFFER_WIDTH-RAM_ADDRESS_WIDTH-1){1'b0}}, fifo_out_address , 1'b0};              
+                    buffer_index <= OUTPUT_BUFFER_WIDTH-1;
+                end else if(state_sram_clk_counter==(QSI_INSTRUCTION_CLKS + QSI_ADDRESS_CLKS)) begin
+                    // data
+                    output_buffer <= { fifo_out_data,  {(OUTPUT_BUFFER_WIDTH-WORD_WIDTH){1'b0}}};
+                    buffer_index <= OUTPUT_BUFFER_WIDTH-1;
+                end
+            end
+
         endcase
+
+        /* verilator lint_on CASEINCOMPLETE */
+
     end
 end
 
 
-reg [3:0] read_value;
+reg [INPUT_BUFFER_WIDTH-1:0] read_value;
 // ** input_buffer ** //
 always @(posedge clk ) begin
     if(current_state==state_read) begin
@@ -406,12 +502,12 @@ end
 
 
 
-        if((h_count+READ_TRIGGER_BEFORE_ACTIVE_CLKS == HA_STA) && (v_count <= ACTIVE_LINES - 1)) begin            
-        // if(~(( (h_count+10) == 160) | (v_count > 480 - 1))) begin
-            assume(display_trigger_read)   ;
-        end else begin
-            assume(display_trigger_read==0)   ;
-        end
+        // if((h_count+READ_TRIGGER_BEFORE_ACTIVE_CLKS == HA_STA) && (v_count <= ACTIVE_LINES - 1)) begin            
+        // // if(~(( (h_count+10) == 160) | (v_count > 480 - 1))) begin
+        //     assume(display_trigger_read)   ;
+        // end else begin
+        //     assume(display_trigger_read==0)   ;
+        // end
 
 
         if(f_past_valid) begin            

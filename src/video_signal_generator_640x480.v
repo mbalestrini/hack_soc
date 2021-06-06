@@ -2,9 +2,7 @@
 `timescale 1ns/10ps
 
 
-module video_signal_generator_640x480 #(
-        parameter READ_TRIGGER_BEFORE_ACTIVE_CLKS = 28
-        )(
+module video_signal_generator_640x480 (
         input wire i_clk,           // base clock
         input wire i_pix_stb,       // pixel clock strobe
         input wire i_rst,           // reset: restarts frame
@@ -19,7 +17,7 @@ module video_signal_generator_640x480 #(
         output wire [9:0] o_x,      // current pixel x position
         output wire [9:0] o_y,       // current pixel y position
 
-        output wire o_trigger_read
+        output wire [9:0] o_clks_before_active
     );
     
     localparam H_PIXELS = 640;
@@ -96,7 +94,9 @@ module video_signal_generator_640x480 #(
     // animate: high for one tick at the end of the final active pixel line
     assign o_animate = ((v_count == VA_END - 1) & (h_count == LINE));
 
-    assign o_trigger_read = (( (h_count+READ_TRIGGER_BEFORE_ACTIVE_CLKS) == HA_STA) & (v_count <= V_LINES - 1)); 
+    // assign o_trigger_read = (( (h_count+READ_TRIGGER_BEFORE_ACTIVE_CLKS) == HA_STA) & (v_count <= V_LINES - 1)); 
+
+    assign o_clks_before_active = HA_STA >= h_count ? HA_STA - h_count : 0;
 
 
     always @ (posedge i_pix_stb)
@@ -156,7 +156,9 @@ module video_signal_generator_640x480 #(
             // COVER_HSYNC_FALL: cover($fell(o_hs));
             
             // COVER_ANIMATE_RISE: cover($rose(o_animate));
-            COVER_TRIGGER_READ: cover($rose(o_trigger_read));
+            // COVER_TRIGGER_READ: cover($rose(o_trigger_read));
+
+            COVER_CLOCKS_BEFORE_ACTIVE: cover(o_clks_before_active==0);
         end
 
         
@@ -165,7 +167,10 @@ module video_signal_generator_640x480 #(
 		end
 
 		if(initial_reset_passed) begin
-           
+            
+            assert(o_clks_before_active <= HA_STA && o_clks_before_active >=0 );
+
+
              // cover(o_hs);
             // cover(o_vs);
             // cover(h_count==(LINE-1));

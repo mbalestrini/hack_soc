@@ -85,10 +85,9 @@ module hack_soc (
 `include "includes/params.v"
 
 
-`define ADDRESS_KEYBOARD 'h6000
-`define ADDRESS_GPIO 'h6001
 
-`define READ_TRIGGER_BEFORE_ACTIVE_CLKS 28
+
+// `define READ_TRIGGER_BEFORE_ACTIVE_CLKS 28
 
 reg [1:0] hack_wait_clocks;
 wire rom_loading_process;
@@ -237,17 +236,28 @@ spi_sram_encoder #(	.WORD_WIDTH(INSTRUCTION_WIDTH), .ADDRESS_WIDTH(ROM_ADDRESS_W
 wire pixel_value;
 wire vram_initialized;
 
-spi_video_ram spi_video_ram_1 (
+wire vram_write = hack_clk_strobe && hack_writeM & (hack_addressM>=HACK_ADDRESS_VRAM_START) & (hack_addressM <= HACK_ADDRESS_VRAM_END);
+wire [RAM_ADDRESS_WIDTH-1:0] vram_write_address = hack_addressM-HACK_ADDRESS_VRAM_START;
+spi_video_ram_2 spi_video_ram_1 (
     .clk(clk),
 	.reset(reset), 	
 
-    .display_trigger_read(display_trigger_read),
+	.initialized(vram_initialized), 
+
+
+    // VIDEO VRAM READ
+    .clks_before_active(display_clks_before_active),
     .display_active(display_active),
     .display_hpos(display_hpos),
     .display_vpos(display_vpos),
 	.pixel_out(pixel_value),
 	
-	.initialized(vram_initialized), 
+
+    // HACK VRAM WRITE
+	.hack_outM(hack_outM),
+    .hack_addressM(vram_write_address),
+    .hack_writeM(vram_write),
+
 
     // Serial SRAM nets 
 	.sram_cs_n(vram_cs_n),
@@ -275,12 +285,10 @@ spi_video_ram spi_video_ram_1 (
 wire [9:0] display_hpos;
 wire [9:0] display_vpos;
 wire display_active;
-wire display_trigger_read;
+wire [9:0] display_clks_before_active;
 wire reset_display = hack_reset; //reset;
 // assign display_rgb = display_hpos[2] || display_vpos[2];
-video_signal_generator_640x480 #(
-	.READ_TRIGGER_BEFORE_ACTIVE_CLKS(`READ_TRIGGER_BEFORE_ACTIVE_CLKS))
-	video_generator_1 (
+video_signal_generator_640x480 video_generator_1 (
 	//i_clk,           // base clock
 	.i_pix_stb(display_clk),       // pixel clock strobe
 	.i_rst(reset_display),           // reset: restarts frame
@@ -292,7 +300,7 @@ video_signal_generator_640x480 #(
 	// .o_animate(),      // high for one tick at end of active drawing
 	.o_x(display_hpos),      // current pixel x position
 	.o_y(display_vpos),       // current pixel y position
-	.o_trigger_read(display_trigger_read)
+	.o_clks_before_active(display_clks_before_active)
 );
 
 
@@ -333,10 +341,10 @@ end
 // assign cpu_vram_address = (cpu_addressM - 'h4000);
 
 // assign cpu_inM = (cpu_addressM < 'h4000) ? ram_data_out : ((cpu_addressM < 'h6000) ? vram_data_to_cpu : keyboardCode); 
-assign hack_inM = (hack_addressM < 'h4000) ? ram_data_out :
-					(hack_addressM < 'h6000) ? ram_data_out /*VRAM en realidad*/ :
-					(hack_addressM == `ADDRESS_KEYBOARD) ? 0 /*keyboard*/ :
-					(hack_addressM == `ADDRESS_GPIO) ? gpio :
+assign hack_inM = (hack_addressM < HACK_ADDRESS_VRAM_START) ? ram_data_out :
+					(hack_addressM < HACK_ADDRESS_KEYBOARD) ? ram_data_out /*VRAM en realidad*/ :
+					(hack_addressM == HACK_ADDRESS_KEYBOARD) ? 0 /*keyboard*/ :
+					(hack_addressM == HACK_ADDRESS_GPIO) ? gpio :
 					0;
 
 
@@ -345,7 +353,7 @@ always @(posedge hack_clk) begin
 	if(hack_reset) begin
 		gpio <= 0;
 	end else begin
-		if(hack_addressM==`ADDRESS_GPIO && hack_writeM) begin
+		if(hack_addressM==HACK_ADDRESS_GPIO && hack_writeM) begin
 			gpio <= hack_outM;
 		end
 	end

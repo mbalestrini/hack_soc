@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Sat Jun  5 18:43:11 2021
+[*] Sun Jun  6 01:39:41 2021
 [*]
 [dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_spi_video_2_with_23LC1024.vcd"
-[dumpfile_mtime] "Sat Jun  5 18:41:52 2021"
-[dumpfile_size] 53247045
+[dumpfile_mtime] "Sun Jun  6 01:39:20 2021"
+[dumpfile_size] 23876
 [savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_spi_video_2_with_23LC1024.gtwk"
-[timestart] 2085800000000
+[timestart] 0
 [size] 1920 1147
 [pos] -1 -1
-*-36.000000 2228420000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-28.000000 1640000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test_spi_video_2_with_23LC1024.
 [sst_width] 282
 [signals_width] 278
@@ -21,10 +21,12 @@ test_spi_video_2_with_23LC1024.reset
 test_spi_video_2_with_23LC1024.spi_video_ram_1.initialized
 test_spi_video_2_with_23LC1024.spi_video_ram_1.busy
 test_spi_video_2_with_23LC1024.spi_video_ram_1.display_trigger_read
+@23
+test_spi_video_2_with_23LC1024.video_generator_1.o_clks_before_active[9:0]
+@28
 test_spi_video_2_with_23LC1024.video_generator_1.o_active
-@25
-test_spi_video_2_with_23LC1024.video_generator_1.o_x[9:0]
 @24
+test_spi_video_2_with_23LC1024.video_generator_1.o_x[9:0]
 test_spi_video_2_with_23LC1024.video_generator_1.o_y[9:0]
 @28
 test_spi_video_2_with_23LC1024.spi_video_ram_1.current_state[2:0]

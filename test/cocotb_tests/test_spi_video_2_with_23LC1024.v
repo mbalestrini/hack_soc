@@ -23,10 +23,9 @@ wire [9:0] display_hpos;
 wire [9:0] display_vpos;
 wire display_active;
 wire reset_display = reset;
-wire display_trigger_read;
+wire [9:0] display_clks_before_active;
 // assign display_rgb = display_hpos[2] || display_vpos[2];
-video_signal_generator_640x480 #(.READ_TRIGGER_BEFORE_ACTIVE_CLKS(42 /*26*/)) 
-    video_generator_1 (
+video_signal_generator_640x480 video_generator_1 (
         //i_clk,           // base clock
         .i_pix_stb(display_clk),       // pixel clock strobe
         .i_rst(reset_display),           // reset: restarts frame
@@ -39,7 +38,7 @@ video_signal_generator_640x480 #(.READ_TRIGGER_BEFORE_ACTIVE_CLKS(42 /*26*/))
         .o_x(display_hpos),      // current pixel x position
         .o_y(display_vpos)  ,     // current pixel y position
 
-        .o_trigger_read(display_trigger_read)
+        .o_clks_before_active(display_clks_before_active)
 );
 
 
@@ -105,7 +104,7 @@ spi_video_ram_2 spi_video_ram_1 (
 	.reset(reset), 	
 
 
-    .display_trigger_read(display_trigger_read),
+    .clks_before_active(display_clks_before_active),
     .display_active(display_active),
     .display_hpos(display_hpos),
     .display_vpos(display_vpos),

@@ -19,6 +19,8 @@ module vram_write_fifo #(
     input [DATA_WIDTH-1:0] write_data,
 
     output reg [FIFO_INDEX_WIDTH-1:0] items_count,
+    output reg full,
+    output reg empty,
     output reg overrun,
     output reg underrun
 );
@@ -29,9 +31,6 @@ reg [(DATA_WIDTH + ADDRESS_WIDTH)-1:0] fifo_mem [0:(1<<FIFO_INDEX_WIDTH)-1];
 reg [FIFO_INDEX_WIDTH-1:0] write_pointer;
 reg [FIFO_INDEX_WIDTH-1:0] read_pointer;
 wire [FIFO_INDEX_WIDTH-1:0] next_pointer;
-
-reg full;
-reg empty;
 
 
 assign	next_pointer = write_pointer + 1'b1;
@@ -68,9 +67,9 @@ always @(posedge clk ) begin
 end
 
 // ** read_address & read_data ** //
-always @(posedge clk ) begin
-    {read_address, read_data} <= fifo_mem[read_pointer];    
-end
+//always @(posedge clk ) begin
+assign {read_address, read_data} = fifo_mem[read_pointer];    
+//end
 
 // ** fifo_mem ** //
 always @(posedge clk ) begin
