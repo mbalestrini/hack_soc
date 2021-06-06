@@ -151,7 +151,7 @@ wire write_to_sram_ready = !busy && !fifo_empty;
 
 wire [SRAM_ADDRESS_WIDTH-1:0] line_read_address = {display_vpos, 6'b0};
 wire [1:0] temp_pixel_index = ~(display_hpos[1:0]);
-wire pixel_out = display_vpos < HACK_SCREEN_HEIGHT && display_hpos < HACK_SCREEN_WIDTH ? read_value[temp_pixel_index] : display_vpos[3] || display_hpos[3];
+wire pixel_out = display_vpos < HACK_SCREEN_HEIGHT && display_hpos < HACK_SCREEN_WIDTH ? ~read_value[temp_pixel_index] : display_vpos[3] || display_hpos[3];
 
 
 assign busy = (current_state!=state_idle);

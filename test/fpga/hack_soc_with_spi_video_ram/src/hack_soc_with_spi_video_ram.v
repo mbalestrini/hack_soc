@@ -12,12 +12,12 @@ module hack_soc_with_spi_video_ram (
 	inout ROM_SIO2,
 	inout ROM_SIO3,
 
-	// output RAM_CS_N,
-	// output RAM_SCK,
-	// inout RAM_SIO0,
-	// inout RAM_SIO1,
-	// inout RAM_SIO2,
-	// inout RAM_SIO3,
+	output RAM_CS_N,
+	output RAM_SCK,
+	inout RAM_SIO0,
+	inout RAM_SIO1,
+	inout RAM_SIO2,
+	inout RAM_SIO3,
 
 
 	output VRAM_CS_N,
@@ -59,8 +59,15 @@ wire RAM_SIO3;
 // localparam  ROM_FILE = "hack_programs/test_assignment_and_jump.hack";
 // localparam  ROM_FILE = "video_rom_files/test_patterns.txt";
 // localparam  ROM_FILE = "hack_programs/gpio_counter.hack";
-localparam  ROM_FILE = "../../../hack_programs/FIllMemAndCheck_to5.hack8";
-localparam	FILE_LINES = 257;
+// localparam  ROM_FILE = "../../../hack_programs/FIllMemAndCheck_to5.hack8";
+// localparam  ROM_FILE = "../../../hack_programs/FillVram_to16390.hack8";
+// localparam  ROM_FILE = "../../../hack_programs/FillVram_to24574.hack8";
+// localparam  ROM_FILE = "../../../hack_programs/Pong.hack8";
+// localparam  ROM_FILE = "../../../hack_programs/some_pre_game_test.hack8"; //250
+// localparam  ROM_FILE = "../../../hack_programs/beatles_by_Diogo.hack8"; //31980
+localparam  ROM_FILE = "../../../hack_programs/terminal2.hack8"; //973
+localparam	FILE_LINES = 973; //250; //96;
+
 localparam  INSTRUCTION_WIDTH = 16;
 localparam  ROM_ADDRESS_WIDTH = 16;
 localparam HACK_GPIO_WIDTH = 16;
@@ -131,17 +138,6 @@ pll_12___25_125 pll_1 (
 //         .clock_out(video_clk_31Mhz),
 //         .locked(video_clk_pll_locked)
 //         );
-
-
-/*
-// 40 MHz clock
-wire pll_locked;
-pll_12_40 pll_1 (
-        .clock_in(EXTERNAL_CLK),
-        .clock_out(clk),
-        .locked(pll_locked)
-        );
-*/
 
 // wire clk;
 // wire clk = EXTERNAL_CLK;
@@ -289,33 +285,15 @@ wire vram_sio1_o;
 wire vram_sio2_o;
 wire vram_sio3_o;
 
-// assign VRAM_SIO0 =  ~done_loading_rom ? ROM_SIO0 : (vram_sio_oe ? vram_sio0_o : 1'bZ);
-// assign vram_sio0_i = ~done_loading_rom ? ROM_SIO0 : VRAM_SIO0;
-// assign VRAM_SIO1 = ~done_loading_rom ? ROM_SIO1 : (vram_sio_oe ? vram_sio1_o : 1'bZ);
-// assign vram_sio1_i = ~done_loading_rom ? ROM_SIO1 : VRAM_SIO1;
-// assign VRAM_SIO2 = ~done_loading_rom ? ROM_SIO2 : (vram_sio_oe ? vram_sio2_o : 1'bZ);
-// assign vram_sio2_i = ~done_loading_rom ? ROM_SIO2 : VRAM_SIO2;
-// assign VRAM_SIO3 = ~done_loading_rom ? ROM_SIO3 : (vram_sio_oe ? vram_sio3_o : 1'bZ);
-// assign vram_sio3_i = ~done_loading_rom ? ROM_SIO3 : VRAM_SIO3;
+assign VRAM_SIO0 = (vram_sio_oe ? vram_sio0_o : 1'bZ);
+assign vram_sio0_i = VRAM_SIO0;
+assign VRAM_SIO1 = (vram_sio_oe ? vram_sio1_o : 1'bZ);
+assign vram_sio1_i = VRAM_SIO1;
+assign VRAM_SIO2 = (vram_sio_oe ? vram_sio2_o : 1'bZ);
+assign vram_sio2_i = VRAM_SIO2;
+assign VRAM_SIO3 = (vram_sio_oe ? vram_sio3_o : 1'bZ);
+assign vram_sio3_i = VRAM_SIO3;
 
-
-
-
-assign VRAM_SIO0 =  ~done_loading_rom ? ROM_SIO0 : (vram_sio_oe ? vram_sio0_o : 1'bZ);
-assign vram_sio0_i = ~done_loading_rom ? ROM_SIO0 : VRAM_SIO0;
-assign VRAM_SIO1 = ~done_loading_rom ? ROM_SIO1 : (vram_sio_oe ? vram_sio1_o : 1'bZ);
-assign vram_sio1_i = ~done_loading_rom ? ROM_SIO1 : VRAM_SIO1;
-assign VRAM_SIO2 = ~done_loading_rom ? ROM_SIO2 : (vram_sio_oe ? vram_sio2_o : 1'bZ);
-assign vram_sio2_i = ~done_loading_rom ? ROM_SIO2 : VRAM_SIO2;
-assign VRAM_SIO3 = ~done_loading_rom ? ROM_SIO3 : (vram_sio_oe ? vram_sio3_o : 1'bZ);
-assign vram_sio3_i = ~done_loading_rom ? ROM_SIO3 : VRAM_SIO3;
-
-
-wire hack_vram_cs_n;
-wire hack_vram_sck;
-
-assign VRAM_CS_N = ~done_loading_rom ? ROM_CS_N : hack_vram_cs_n;
-assign VRAM_SCK = ~done_loading_rom ? ROM_SCK : hack_vram_sck;
 
 
 wire hack_external_reset;
@@ -361,8 +339,8 @@ hack_soc soc(
 
 
 	/** VRAM: qspi serial sram **/
-	.vram_cs_n(hack_vram_cs_n),
-	.vram_sck(hack_vram_sck),
+	.vram_cs_n(VRAM_CS_N),
+	.vram_sck(VRAM_SCK),
 	.vram_sio_oe(vram_sio_oe), // output enable the SIO lines
 	// SIO as inputs from SRAM	
 	.vram_sio0_i(vram_sio0_i), // sram_si_sio0 
@@ -405,8 +383,9 @@ hack_soc soc(
 
 
 wire display_rgb;
-assign RGB = BTN1 ? ~display_rgb & HSYNC & VSYNC : 
-			(BTN3 ? 1 & HSYNC & VSYNC : display_rgb & HSYNC & VSYNC);
+// assign RGB = BTN1 ? ~display_rgb & HSYNC & VSYNC : 
+// 			(BTN3 ? 1 & HSYNC & VSYNC : display_rgb & HSYNC & VSYNC);
+assign RGB = display_rgb;
 
 assign hack_external_reset = !ready_to_start | debounced_btn3;
 
@@ -430,8 +409,9 @@ end
 
 // assign {LED5, LED4, LED3, LED2} = debug_gpio[3:0];
 // assign {LED5, LED4, LED3, LED2} = gpio[3:0];
-assign LEDR_N = ~done_loading_rom;
-assign LEDG_N = ~rom_loader_load;
+
+assign LEDR_N = ~gpio[0];
+assign LEDG_N = ~gpio[1];
 // assign LED1 = !ready_to_start | debug_pc[0];
 
 // assign FLASH_SSB = gpio[0];

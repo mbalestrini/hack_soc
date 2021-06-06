@@ -19,8 +19,8 @@ module vram_write_fifo #(
     input [DATA_WIDTH-1:0] write_data,
 
     output reg [FIFO_INDEX_WIDTH-1:0] items_count,
-    output reg full,
-    output reg empty,
+    output wire full,
+    output wire empty,
     output reg overrun,
     output reg underrun
 );

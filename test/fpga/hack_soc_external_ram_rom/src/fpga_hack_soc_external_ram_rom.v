@@ -45,7 +45,9 @@ module fpga_hack_soc_external_ram_rom (
 
 
 // localparam  ROM_FILE = "hack_programs/test_assignment_and_jump.hack";
-localparam  ROM_FILE = "../../hack_programs/FIllMemAndCheck_to5.hack8"; 
+// localparam  ROM_FILE = "../../hack_programs/FIllMemAndCheck_to5.hack8"; 
+// localparam  ROM_FILE = "../../hack_programs/FillVram_to16390.hack8"; 
+localparam  ROM_FILE = "../../hack_programs/FillVram_to24574.hack8"; 
 // localparam  ROM_FILE = "../../hack_programs/test_assignment_and_jump.hack8"; 
 localparam	FILE_LINES = 100;
 localparam  INSTRUCTION_WIDTH = 16;
@@ -290,10 +292,14 @@ always @(posedge clk) begin
 end
 
 // assign {LED5, LED4, LED3, LED2} = debug_gpio[3:0];
-assign {LED5, LED4, LED3, LED2} = gpio[3:0];
-assign LEDR_N = ~done_loading_rom;
-assign LEDG_N = ~rom_loader_load;
-assign LED1 = !ready_to_start | debug_pc[0];
+// assign {LED5, LED4, LED3, LED2} = gpio[3:0];
+// assign LEDR_N = ~done_loading_rom;
+// assign LEDG_N = ~rom_loader_load;
+// assign LED1 = !ready_to_start | debug_pc[0];
+
+assign LEDR_N = ~gpio[0];
+assign LEDG_N = ~gpio[1];
+
 
 // assign FLASH_SSB = debug_pc[0];
 // assign FLASH_SCK = debug_pc[1];

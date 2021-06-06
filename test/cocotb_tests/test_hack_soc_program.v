@@ -10,8 +10,8 @@ module test_hack_soc_program (
 
 // localparam  ROM_FILE = "../hack_programs/test_assignment_and_jump.hack8";
 // localparam  ROM_FILE = "../hack_programs/FIllMemAndCheck_to5.hack8";
-// localparam  ROM_FILE = "../hack_programs/FillVram_to16390.hack8";
-localparam  ROM_FILE = "../hack_programs/FillVram_to24574.hack8";
+localparam  ROM_FILE = "../hack_programs/FillVram_to16390.hack8";
+// localparam  ROM_FILE = "../hack_programs/FillVram_to24574.hack8";
 
 localparam	FILE_LINES = 100;
 localparam  INSTRUCTION_WIDTH = 16;

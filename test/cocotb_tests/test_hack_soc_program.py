@@ -21,7 +21,7 @@ async def test_hack_soc_program(dut):
     await reset(dut)
 
 
-    await ClockCycles(dut.soc.hack_clk, 12000)
+    await ClockCycles(dut.soc.hack_clk, 2000)
 
 
     # # Program to loaded in ROM: test_assignment_and_jump.hack

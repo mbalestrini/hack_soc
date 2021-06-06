@@ -4,5 +4,5 @@
 
 # ctx.addClock("EXTERNAL_CLK", 12)
 # ctx.addClock("video_clk_25Mhz", 25)
-ctx.addClock("clk", 25.1)
+ctx.addClock("clk", 15) #25.1)
 ctx.addClock("soc.hack_clk", 2)

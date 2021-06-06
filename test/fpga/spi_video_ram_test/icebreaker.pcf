@@ -25,14 +25,14 @@ set_io -nowarn HSYNC  13 #FLASH_IO3
 
 
 # PMOD 1A
-set_io -nowarn SRAM_SIO0   4
+#set_io -nowarn SRAM_SIO0   4
 #set_io -nowarn P1A2       2
 #set_io -nowarn P1A3       47
-set_io -nowarn SRAM_SCK    45
-set_io -nowarn SRAM_SIO3   3
-set_io -nowarn SRAM_CS_N   48
-set_io -nowarn SRAM_SIO1   46
-set_io -nowarn SRAM_SIO2   44
+#set_io -nowarn SRAM_SCK    45
+#set_io -nowarn SRAM_SIO3   3
+#set_io -nowarn SRAM_CS_N   48
+#set_io -nowarn SRAM_SIO1   46
+#set_io -nowarn SRAM_SIO2   44
 
 
 # PMOD 1A
@@ -68,12 +68,12 @@ set_io -nowarn P1B10      28
 #set_io -nowarn P2_10      18
 
 # PMOD 2
-#set_io -nowarn SRAM_SCK        27 
-#set_io -nowarn SRAM_CS_N       25
-#set_io -nowarn SRAM_SIO1       21
-#set_io -nowarn SRAM_SIO2       19
-#set_io -nowarn SRAM_SIO3       26
-#set_io -nowarn SRAM_SIO0       23
+set_io -nowarn SRAM_SCK        27 
+set_io -nowarn SRAM_CS_N       25
+set_io -nowarn SRAM_SIO1       21
+set_io -nowarn SRAM_SIO2       19
+set_io -nowarn SRAM_SIO3       26
+set_io -nowarn SRAM_SIO0       23
 #set_io -nowarn P2_9       20
 #set_io -nowarn BTN_REQUEST 20
 #set_io -nowarn P2_10      18

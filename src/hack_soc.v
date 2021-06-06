@@ -309,7 +309,7 @@ video_signal_generator_640x480 video_generator_1 (
 
 
 assign rom_loading_process = rom_loader_load;
-assign hack_reset = hack_external_reset || (hack_wait_clocks!=0) || reset || !ram_initialized || !rom_initialized;
+assign hack_reset = hack_external_reset || (hack_wait_clocks!=0) || reset || !ram_initialized || !rom_initialized || !vram_initialized;
 assign ram_request = !hack_reset && !ram_busy && hack_clk && hack_clk_strobe;
 assign hack_rom_request = !rom_busy && hack_clk && hack_clk_strobe;
 assign rom_request = rom_loading_process ? rom_loader_request : hack_rom_request;
@@ -341,9 +341,26 @@ end
 // assign cpu_vram_address = (cpu_addressM - 'h4000);
 
 // assign cpu_inM = (cpu_addressM < 'h4000) ? ram_data_out : ((cpu_addressM < 'h6000) ? vram_data_to_cpu : keyboardCode); 
+reg [WORD_WIDTH-1:0] TEST_KEYBOARD;
+always @(posedge hack_clk) begin
+	if(reset) begin
+		TEST_KEYBOARD <= 97;
+	end else begin
+		TEST_KEYBOARD <= TEST_KEYBOARD + 1;
+		if(TEST_KEYBOARD>100) begin
+			TEST_KEYBOARD <= 97;
+		end
+		// if(TEST_KEYBOARD==0) begin
+		// 	TEST_KEYBOARD <= 97;
+		// end else begin
+		// 	TEST_KEYBOARD <= 0;
+		// end
+	end
+end
+
 assign hack_inM = (hack_addressM < HACK_ADDRESS_VRAM_START) ? ram_data_out :
 					(hack_addressM < HACK_ADDRESS_KEYBOARD) ? ram_data_out /*VRAM en realidad*/ :
-					(hack_addressM == HACK_ADDRESS_KEYBOARD) ? 0 /*keyboard*/ :
+					(hack_addressM == HACK_ADDRESS_KEYBOARD) ? TEST_KEYBOARD /*keyboard*/ :
 					(hack_addressM == HACK_ADDRESS_GPIO) ? gpio :
 					0;
 
