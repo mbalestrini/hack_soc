@@ -12,7 +12,7 @@ module spi_video_ram_2 (
 
     
     // VIDEO VRAM READ
-    input [9:0] clks_before_active,
+    input signed [9:0] clks_before_active,
     input display_active,
     input [9:0] display_hpos,
     input [9:0] display_vpos,
@@ -20,8 +20,9 @@ module spi_video_ram_2 (
 
 
     // HACK VRAM WRITE
+    input hack_clk_rise_edge,
     input [WORD_WIDTH-1:0] hack_outM,
-    input [RAM_ADDRESS_WIDTH-1:0] hack_addressM,
+    input [VRAM_ADDRESS_WIDTH-1:0] hack_addressM,
     input hack_writeM,
 
 
@@ -63,7 +64,7 @@ module spi_video_ram_2 (
 `include "includes/params.v"
 
 // 23LC1024 Address width
-localparam CLKS_BEFORE_TRIGGER = 42;  // 26 if we use the fast version of the read instruction  
+localparam signed CLKS_BEFORE_TRIGGER = 46; //42;  // 26? if we use the fast version of the read instruction  
 // localparam SRAM_ADDRESS_WIDTH = 24;
 localparam OUTPUT_BUFFER_WIDTH = SRAM_ADDRESS_WIDTH;
 localparam INPUT_BUFFER_WIDTH = 4;
@@ -81,7 +82,7 @@ localparam QSI_ADDRESS_CLKS = 6;
 localparam QSI_READ_DUMMY_CLKS = 2;
 localparam QSI_READ_LINE_CLKS = INPUT_NIBBLES_PER_LINE;
 localparam QSI_WRITE_WORD_CLKS = WORD_WIDTH>>2;
-localparam READ_LINE_TOTAL_CLKS = QSI_INSTRUCTION_CLKS + QSI_ADDRESS_CLKS + QSI_READ_DUMMY_CLKS + QSI_READ_LINE_CLKS;
+localparam READ_LINE_TOTAL_CLKS = QSI_INSTRUCTION_CLKS + QSI_ADDRESS_CLKS + QSI_READ_DUMMY_CLKS + QSI_READ_LINE_CLKS + 1;
 localparam WRITE_WORD_TOTAL_CLKS = QSI_INSTRUCTION_CLKS + QSI_ADDRESS_CLKS + QSI_WRITE_WORD_CLKS;
 
 
@@ -100,14 +101,14 @@ wire fifo_empty;
 wire fifo_full;
 
 reg fifo_read_request;
-wire [RAM_ADDRESS_WIDTH-1:0] fifo_out_address;
+wire [VRAM_ADDRESS_WIDTH-1:0] fifo_out_address;
 wire [WORD_WIDTH-1:0] fifo_out_data;
 
 reg fifo_write_request;
-reg [RAM_ADDRESS_WIDTH-1:0] fifo_in_address;
+reg [VRAM_ADDRESS_WIDTH-1:0] fifo_in_address;
 reg [WORD_WIDTH-1:0] fifo_in_data;
 
-vram_write_fifo #(.DATA_WIDTH(WORD_WIDTH), .ADDRESS_WIDTH(RAM_ADDRESS_WIDTH)) 
+vram_write_fifo #(.DATA_WIDTH(WORD_WIDTH), .ADDRESS_WIDTH(VRAM_ADDRESS_WIDTH)) 
     write_fifo (
         .clk(clk), 
         .reset(reset),
@@ -144,14 +145,31 @@ reg [OUTPUT_BUFFER_WIDTH-1:0] output_buffer;
 reg [$clog2(OUTPUT_BUFFER_WIDTH):0] buffer_index;
 
 reg start_read;
-wire display_trigger_read = (clks_before_active==CLKS_BEFORE_TRIGGER);
-
-wire write_to_sram_ready = !busy && !fifo_empty;
 
 
-wire [SRAM_ADDRESS_WIDTH-1:0] line_read_address = {display_vpos, 6'b0};
+
+
+wire is_active_hack_line = ( display_vpos >= HACK_SCREEN_V_OFFSET ) && (display_vpos< (HACK_SCREEN_V_OFFSET+HACK_SCREEN_HEIGHT));
+wire is_active_hack_col = (display_hpos >= HACK_SCREEN_H_OFFSET) && (display_hpos < (HACK_SCREEN_H_OFFSET+HACK_SCREEN_WIDTH));
+// wire display_trigger_read = is_active_hack_line && (clks_before_active==CLKS_BEFORE_TRIGGER);
+wire display_trigger_read = is_active_hack_line && (clks_before_active==(CLKS_BEFORE_TRIGGER-HACK_SCREEN_H_OFFSET));
+
+wire write_to_sram_ready = !busy && !fifo_empty && ($signed(clks_before_active)>$signed(CLKS_BEFORE_TRIGGER-HACK_SCREEN_H_OFFSET+24) );
+
+wire [SRAM_ADDRESS_WIDTH-1:0] line_read_address = {display_vpos-HACK_SCREEN_V_OFFSET, 6'b0};
 wire [1:0] temp_pixel_index = ~(display_hpos[1:0]);
-wire pixel_out = display_vpos < HACK_SCREEN_HEIGHT && display_hpos < HACK_SCREEN_WIDTH ? ~read_value[temp_pixel_index] : display_vpos[3] || display_hpos[3];
+// Squares background:
+// wire background = display_vpos[3] || display_hpos[3]
+// Frame background:
+wire background =   (
+                    (display_vpos==(HACK_SCREEN_V_OFFSET-1) & display_hpos[0]) || 
+                    (display_vpos==(HACK_SCREEN_HEIGHT+HACK_SCREEN_V_OFFSET) & ~display_hpos[0]) || 
+                    (display_hpos==(HACK_SCREEN_H_OFFSET-1) & display_vpos[0]) || 
+                    (display_hpos==(HACK_SCREEN_H_OFFSET+HACK_SCREEN_WIDTH) & ~display_vpos[0])
+                    );
+// wire background = 0;
+
+wire pixel_out = display_active & (is_active_hack_line & is_active_hack_col) ? ~read_value[temp_pixel_index] : background;
 
 
 assign busy = (current_state!=state_idle);
@@ -242,7 +260,7 @@ always @(posedge clk ) begin
     if(reset) begin
         start_read <= 0;
     end else begin
-        if(!busy && display_vpos<HACK_SCREEN_HEIGHT) begin
+        if(!busy) begin
             start_read <= display_trigger_read;
         end
     end
@@ -262,7 +280,7 @@ end
 // ** fifo_write_request, fifo_in_data, fifo_in_address ** //
 always @(posedge clk) begin
     fifo_write_request <= 0;
-    if(hack_writeM && !fifo_full) begin
+    if(hack_clk_rise_edge && hack_writeM && !fifo_full) begin
         fifo_in_data <= hack_outM;
         fifo_in_address <= hack_addressM;
         fifo_write_request <= 1; 
@@ -333,11 +351,18 @@ always @(posedge clk ) begin
                 end else if(state_sram_clk_counter==QSI_INSTRUCTION_CLKS) begin
                     // address
                     // As we read 2 bytes for every HACK memory address, we multiply by 2 before sending it to the 23LC1024
-                    output_buffer <= { {(OUTPUT_BUFFER_WIDTH-RAM_ADDRESS_WIDTH-1){1'b0}}, fifo_out_address , 1'b0};              
+                    output_buffer <= { {(OUTPUT_BUFFER_WIDTH-VRAM_ADDRESS_WIDTH-1){1'b0}}, fifo_out_address , 1'b0};              
                     buffer_index <= OUTPUT_BUFFER_WIDTH-1;
                 end else if(state_sram_clk_counter==(QSI_INSTRUCTION_CLKS + QSI_ADDRESS_CLKS)) begin
                     // data
-                    output_buffer <= { fifo_out_data,  {(OUTPUT_BUFFER_WIDTH-WORD_WIDTH){1'b0}}};
+                    // output_buffer <= { fifo_out_data,  {(OUTPUT_BUFFER_WIDTH-WORD_WIDTH){1'b0}}};
+                    
+                    // Temporal solution to invert the data word for screen, so we can read it in order while filling the screen (because HACK expects the first pixel to be on data[0] instead of data[15])
+                    output_buffer <= { 
+                        fifo_out_data[0], fifo_out_data[1], fifo_out_data[2], fifo_out_data[3], fifo_out_data[4], fifo_out_data[5], fifo_out_data[6], fifo_out_data[7], 
+                        fifo_out_data[8], fifo_out_data[9], fifo_out_data[10], fifo_out_data[11], fifo_out_data[12], fifo_out_data[13], fifo_out_data[14], fifo_out_data[15],
+                        {(OUTPUT_BUFFER_WIDTH-WORD_WIDTH){1'b0}}};
+
                     buffer_index <= OUTPUT_BUFFER_WIDTH-1;
                 end
             end

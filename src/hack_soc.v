@@ -71,13 +71,13 @@ module hack_soc (
 	input rom_loader_load,
 	input [INSTRUCTION_WIDTH-1:0] rom_loader_data,
 	output rom_loader_ack,
-	output rom_loader_load_received,
+	output rom_loader_load_received
 
 	// DEBUG nets
-	output [ROM_ADDRESS_WIDTH-1:0] debug_pc,
-	output [RAM_ADDRESS_WIDTH-1:0] debug_addressM,
-	output [INSTRUCTION_WIDTH-1:0] debug_instruction,
-	output reg [WORD_WIDTH-1:0] debug_gpio
+	// output [ROM_ADDRESS_WIDTH-1:0] debug_pc,
+	// output [RAM_ADDRESS_WIDTH-1:0] debug_addressM,
+	// output [INSTRUCTION_WIDTH-1:0] debug_instruction,
+	// output reg [WORD_WIDTH-1:0] debug_gpio
 
 	);
 
@@ -237,7 +237,7 @@ wire pixel_value;
 wire vram_initialized;
 
 wire vram_write = hack_clk_strobe && hack_writeM & (hack_addressM>=HACK_ADDRESS_VRAM_START) & (hack_addressM <= HACK_ADDRESS_VRAM_END);
-wire [RAM_ADDRESS_WIDTH-1:0] vram_write_address = hack_addressM-HACK_ADDRESS_VRAM_START;
+wire [VRAM_ADDRESS_WIDTH-1:0] vram_write_address = hack_addressM[VRAM_ADDRESS_WIDTH-1:0];// -HACK_ADDRESS_VRAM_START;
 spi_video_ram_2 spi_video_ram_1 (
     .clk(clk),
 	.reset(reset), 	
@@ -246,7 +246,7 @@ spi_video_ram_2 spi_video_ram_1 (
 
 
     // VIDEO VRAM READ
-    .clks_before_active(display_clks_before_active),
+	.clks_before_active(display_clks_before_active),
     .display_active(display_active),
     .display_hpos(display_hpos),
     .display_vpos(display_vpos),
@@ -254,6 +254,7 @@ spi_video_ram_2 spi_video_ram_1 (
 	
 
     // HACK VRAM WRITE
+	.hack_clk_rise_edge(hack_clk_strobe & hack_clk),
 	.hack_outM(hack_outM),
     .hack_addressM(vram_write_address),
     .hack_writeM(vram_write),
@@ -342,14 +343,24 @@ end
 
 // assign cpu_inM = (cpu_addressM < 'h4000) ? ram_data_out : ((cpu_addressM < 'h6000) ? vram_data_to_cpu : keyboardCode); 
 reg [WORD_WIDTH-1:0] TEST_KEYBOARD;
+reg [14:0] TEST_KBD_DELAY;
+reg TEST_TOGGLE_KBD;
 always @(posedge hack_clk) begin
 	if(reset) begin
 		TEST_KEYBOARD <= 97;
+		TEST_KBD_DELAY <= 0;
+		TEST_TOGGLE_KBD <= 0;
 	end else begin
-		TEST_KEYBOARD <= TEST_KEYBOARD + 1;
-		if(TEST_KEYBOARD>100) begin
-			TEST_KEYBOARD <= 97;
+		TEST_KBD_DELAY <= TEST_KBD_DELAY + 1;
+
+		if(TEST_KBD_DELAY==0) begin
+			TEST_TOGGLE_KBD <= ~TEST_TOGGLE_KBD;			
+			TEST_KEYBOARD <= TEST_KEYBOARD + 1;
+			if(TEST_KEYBOARD>98) begin
+				TEST_KEYBOARD <= 97;
+			end	
 		end
+		
 		// if(TEST_KEYBOARD==0) begin
 		// 	TEST_KEYBOARD <= 97;
 		// end else begin
@@ -360,7 +371,7 @@ end
 
 assign hack_inM = (hack_addressM < HACK_ADDRESS_VRAM_START) ? ram_data_out :
 					(hack_addressM < HACK_ADDRESS_KEYBOARD) ? ram_data_out /*VRAM en realidad*/ :
-					(hack_addressM == HACK_ADDRESS_KEYBOARD) ? TEST_KEYBOARD /*keyboard*/ :
+					(hack_addressM == HACK_ADDRESS_KEYBOARD) ? TEST_KEYBOARD & { WORD_WIDTH{TEST_TOGGLE_KBD}}  /*keyboard*/ :
 					(hack_addressM == HACK_ADDRESS_GPIO) ? gpio :
 					0;
 
@@ -377,16 +388,16 @@ always @(posedge hack_clk) begin
 end
 
 
-always @(posedge hack_clk ) begin
-	if(hack_reset) begin
-		debug_gpio <= 0;	
-	end else begin
-		if(hack_addressM==1 && hack_writeM) begin
-			debug_gpio <= hack_outM;
-		end
-	end
+// always @(posedge hack_clk ) begin
+// 	if(hack_reset) begin
+// 		debug_gpio <= 0;	
+// 	end else begin
+// 		if(hack_addressM==1 && hack_writeM) begin
+// 			debug_gpio <= hack_outM;
+// 		end
+// 	end
 	
-end
+// end
 
 
 // TEST
@@ -397,9 +408,9 @@ end
 
 
 // DEBUG
-assign debug_pc = hack_pc;
-assign debug_addressM = hack_addressM;
-assign debug_instruction = hack_instruction;
+// assign debug_pc = hack_pc;
+// assign debug_addressM = hack_addressM;
+// assign debug_instruction = hack_instruction;
 
 /*
 device_mgr hack_device_mgr

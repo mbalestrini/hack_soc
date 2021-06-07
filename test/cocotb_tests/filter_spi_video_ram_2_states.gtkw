@@ -1,0 +1,9 @@
+000 reset
+001 set_SQI_mode
+010 state_idle
+011 state_read
+100 state_write
+101 INVALID
+110 INVALID
+111 INVALID
+

@@ -17,7 +17,7 @@ module video_signal_generator_640x480 (
         output wire [9:0] o_x,      // current pixel x position
         output wire [9:0] o_y,       // current pixel y position
 
-        output wire [9:0] o_clks_before_active
+        output wire signed [9:0] o_clks_before_active
     );
     
     localparam H_PIXELS = 640;
@@ -96,7 +96,8 @@ module video_signal_generator_640x480 (
 
     // assign o_trigger_read = (( (h_count+READ_TRIGGER_BEFORE_ACTIVE_CLKS) == HA_STA) & (v_count <= V_LINES - 1)); 
 
-    assign o_clks_before_active = HA_STA >= h_count ? HA_STA - h_count : 0;
+    // assign o_clks_before_active = HA_STA >= h_count ? HA_STA - h_count : 0;
+    assign o_clks_before_active = HA_STA - h_count;
 
 
     always @ (posedge i_pix_stb)

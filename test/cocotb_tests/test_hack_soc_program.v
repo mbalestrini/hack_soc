@@ -10,8 +10,10 @@ module test_hack_soc_program (
 
 // localparam  ROM_FILE = "../hack_programs/test_assignment_and_jump.hack8";
 // localparam  ROM_FILE = "../hack_programs/FIllMemAndCheck_to5.hack8";
-localparam  ROM_FILE = "../hack_programs/FillVram_to16390.hack8";
+// localparam  ROM_FILE = "../hack_programs/FillVram_to16390.hack8";
 // localparam  ROM_FILE = "../hack_programs/FillVram_to24574.hack8";
+localparam  ROM_FILE = "../hack_programs/dibuja_esquinas_sin_clear.hack8";
+
 
 localparam	FILE_LINES = 100;
 localparam  INSTRUCTION_WIDTH = 16;
@@ -165,7 +167,7 @@ assign vram_sio3_i = vram_sio3;
 
 
 
-wire hack_external_reset;
+reg hack_external_reset;
 
 wire display_hsync;
 wire display_vsync;
@@ -255,8 +257,10 @@ hack_soc soc(
 	);
 
 
+always @(posedge clk ) begin
+	hack_external_reset <= !ready_to_start;
+end
 
-assign hack_external_reset = !ready_to_start;
 
 reg ready_to_start;
 

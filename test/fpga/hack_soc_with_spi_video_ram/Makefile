@@ -16,11 +16,13 @@ show_synth_%: src/%.v
 %.json: $(SOURCES)
 	rm -rf build/
 	mkdir build/ 
-	yosys -l $(BUILD_PATH)/yosys.log -p 'synth_ice40 -top hack_soc_with_spi_video_ram -json $(BUILD_PATH)/$(PROJECT).json' $(SOURCES)
+	yosys -l $(BUILD_PATH)/yosys.log -p 'synth_ice40 -dsp -abc2 -top hack_soc_with_spi_video_ram -json $(BUILD_PATH)/$(PROJECT).json' $(SOURCES)
+#	yosys -l $(BUILD_PATH)/yosys.log -p 'synth_ice40 -top hack_soc_with_spi_video_ram -json $(BUILD_PATH)/$(PROJECT).json' $(SOURCES)
 
 %.asc: %.json $(ICEBREAKER_PIN_DEF) 
 #--pre-pack $(ICEBREAKER_PREPACK_FILE)
 	nextpnr-ice40 -l $(BUILD_PATH)/nextpnr.log --seed $(SEED) --pre-pack $(ICEBREAKER_PREPACK_FILE) --freq $(ICEBREAKER_FREQUENCY_TEST) --package $(ICEBREAKER_PACKAGE) --$(ICEBREAKER_DEVICE) --asc $(BUILD_PATH)/$@ --pcf $(ICEBREAKER_PIN_DEF) --json $(BUILD_PATH)/$<  
+#	nextpnr-ice40 -l $(BUILD_PATH)/nextpnr.log --randomize-seed --pre-pack $(ICEBREAKER_PREPACK_FILE) --freq $(ICEBREAKER_FREQUENCY_TEST) --package $(ICEBREAKER_PACKAGE) --$(ICEBREAKER_DEVICE) --asc $(BUILD_PATH)/$@ --pcf $(ICEBREAKER_PIN_DEF) --json $(BUILD_PATH)/$<  
 
 %.bin: %.asc
 	icepack $(BUILD_PATH)/$< $(BUILD_PATH)/$@
