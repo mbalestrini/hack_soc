@@ -10,10 +10,10 @@ def nibble_dut_sio(dut):
 async def reset(dut):
     dut.reset  <= 1
     await ClockCycles(dut.clk, 5)
-    dut.reset <= 0;
+    dut.reset <= 0
     
     # Wait initialization
-    await ClockCycles(dut.clk, 21)
+    #await ClockCycles(dut.clk, 30)
     
     
     #await ClockCycles(dut.clk, 20)
@@ -27,6 +27,8 @@ async def test_encoder_with_23LC2014_tb(dut):
     dut.hack_outM = 0    
     await reset(dut)
   
+    await(RisingEdge(dut.initialized))
+    
 
     # *** WRITE TO SRAM ***
     dut.hack_addressM = 0xFEDC
@@ -34,7 +36,9 @@ async def test_encoder_with_23LC2014_tb(dut):
     dut.hack_outM = 0x1234
     dut.request = 1
 
-    await ClockCycles(dut.clk, 2)
+    await(RisingEdge(dut.busy))
+    await(ClockCycles(dut.clk, 1))
+
     # assert(dut.busy)      
     
     dut.request = 0

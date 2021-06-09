@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Mon May 24 18:39:12 2021
+[*] Tue Jun  8 22:48:48 2021
 [*]
 [dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_encoder_with_23LC2014_tb.vcd"
-[dumpfile_mtime] "Mon May 24 18:37:04 2021"
-[dumpfile_size] 14239
+[dumpfile_mtime] "Tue Jun  8 22:48:09 2021"
+[dumpfile_size] 12214
 [savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_encoder_with_23LC2014_tb.gtkw"
 [timestart] 0
 [size] 1920 1147
-[pos] -1 -1
-*-28.000000 253000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -9 -23
+*-28.000000 577000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] encoder_with_23LC2014_tb.
 [treeopen] encoder_with_23LC2014_tb._spi_sram_encoder.
 [sst_width] 323
@@ -22,8 +22,10 @@ encoder_with_23LC2014_tb.initialized
 encoder_with_23LC2014_tb.reset
 @22
 encoder_with_23LC2014_tb._spi_sram_encoder.initializing_step[4:0]
-@28
+@2028
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_sram_encoder_states.gtkw
 encoder_with_23LC2014_tb._spi_sram_encoder.current_state[2:0]
+@28
 encoder_with_23LC2014_tb._spi_sram_encoder.clk
 @22
 encoder_with_23LC2014_tb.hack_addressM[15:0]
@@ -44,9 +46,8 @@ encoder_with_23LC2014_tb._spi_sram_encoder.sio_i[3:0]
 @28
 encoder_with_23LC2014_tb.sram_sio0
 encoder_with_23LC2014_tb.sram_sio1
-@23
-encoder_with_23LC2014_tb.hack_inM[15:0]
 @22
+encoder_with_23LC2014_tb.hack_inM[15:0]
 encoder_with_23LC2014_tb._23ml1024.AddrRegister[16:0]
 @28
 encoder_with_23LC2014_tb._23ml1024.CS_N
@@ -70,5 +71,22 @@ encoder_with_23LC2014_tb._23ml1024.Hold
 encoder_with_23LC2014_tb._23ml1024.InstructionEQIO
 encoder_with_23LC2014_tb._23ml1024.InstructionEDIO
 encoder_with_23LC2014_tb._23ml1024.InstructionRSTIO
+encoder_with_23LC2014_tb._23ml1024.InstructionWRITE
+encoder_with_23LC2014_tb._23ml1024.InstructionRDMR
+@c00201
+-MEM
+@22
+encoder_with_23LC2014_tb._23ml1024.MemoryByte00000[7:0]
+encoder_with_23LC2014_tb._23ml1024.MemoryByte00001[7:0]
+encoder_with_23LC2014_tb._23ml1024.MemoryByte00002[7:0]
+encoder_with_23LC2014_tb._23ml1024.MemoryByte00003[7:0]
+encoder_with_23LC2014_tb._23ml1024.MemoryByte00004[7:0]
+encoder_with_23LC2014_tb._23ml1024.MemoryByte00005[7:0]
+encoder_with_23LC2014_tb._23ml1024.MemoryByte00006[7:0]
+encoder_with_23LC2014_tb._23ml1024.MemoryByte00007[7:0]
+encoder_with_23LC2014_tb._23ml1024.MemoryByte00008[7:0]
+encoder_with_23LC2014_tb._23ml1024.MemoryByte00009[7:0]
+@1401201
+-MEM
 [pattern_trace] 1
 [pattern_trace] 0

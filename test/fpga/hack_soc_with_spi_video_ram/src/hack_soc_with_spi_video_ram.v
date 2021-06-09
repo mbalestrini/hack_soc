@@ -65,12 +65,10 @@ wire RAM_SIO3;
 // localparam  ROM_FILE = "../../../hack_programs/Pong.hack8";
 // localparam  ROM_FILE = "../../../hack_programs/some_pre_game_test.hack8"; //250
 // localparam  ROM_FILE = "../../../hack_programs/beatles_by_Diogo.hack8"; //31980
-// localparam  ROM_FILE = "../../../hack_programs/terminal2.hack8"; //973
+localparam  ROM_FILE = "../../../hack_programs/terminal2.hack8", FILE_LINES = 973;
 // localparam  ROM_FILE = "../../../hack_programs/fill_screen_on_key.hack8"; //101
-localparam  ROM_FILE = "../../../hack_programs/dibuja_esquinas.hack8"; //110
-
-
-localparam	FILE_LINES = 110; //250; //96;
+// localparam  ROM_FILE = "../../../hack_programs/dibuja_esquinas.hack8", FILE_LINES = 110;
+// localparam	FILE_LINES = 973; //250; //96;
 
 localparam  INSTRUCTION_WIDTH = 16;
 localparam  ROM_ADDRESS_WIDTH = 16;
@@ -409,6 +407,38 @@ always @(posedge clk) begin
     end
     
 end
+
+
+
+
+
+// reg [WORD_WIDTH-1:0] TEST_KEYBOARD;
+// reg [14:0] TEST_KBD_DELAY;
+// reg TEST_TOGGLE_KBD;
+// always @(posedge hack_clk) begin
+// 	if(reset) begin
+// 		TEST_KEYBOARD <= 97;
+// 		TEST_KBD_DELAY <= 0;
+// 		TEST_TOGGLE_KBD <= 0;
+// 	end else begin
+// 		TEST_KBD_DELAY <= TEST_KBD_DELAY + 1;
+
+// 		if(TEST_KBD_DELAY==0) begin
+// 			TEST_TOGGLE_KBD <= ~TEST_TOGGLE_KBD;			
+// 			TEST_KEYBOARD <= TEST_KEYBOARD + 1;
+// 			if(TEST_KEYBOARD>98) begin
+// 				TEST_KEYBOARD <= 97;
+// 			end	
+// 		end
+		
+// 		// if(TEST_KEYBOARD==0) begin
+// 		// 	TEST_KEYBOARD <= 97;
+// 		// end else begin
+// 		// 	TEST_KEYBOARD <= 0;
+// 		// end
+// 	end
+// end
+
 
 
 // assign {LED5, LED4, LED3, LED2} = debug_gpio[3:0];

@@ -63,8 +63,12 @@ module hack_soc (
 	output display_rgb,
 
 
-	// GPIO
+	// ** KEYBOARD ** //
+	input [7:0] keycode,
+
+	// ** GPIO ** //
 	output reg [HACK_GPIO_WIDTH-1:0] gpio,
+
 
 	// ROM LOADING LINES
 	input rom_loader_reset,
@@ -85,9 +89,6 @@ module hack_soc (
 `include "includes/params.v"
 
 
-
-
-// `define READ_TRIGGER_BEFORE_ACTIVE_CLKS 28
 
 reg [1:0] hack_wait_clocks;
 wire rom_loading_process;
@@ -133,10 +134,12 @@ wire rom_loader_load_received;
 wire rom_loader_request;
 wire [INSTRUCTION_WIDTH-1:0] rom_loader_output_data;
 wire [ROM_ADDRESS_WIDTH-1:0] rom_loader_output_address;
+
+wire combined_rom_loader_reset = reset | rom_loader_reset;
 rom_stream_loader #(.DATA_WIDTH(INSTRUCTION_WIDTH), .ADDRESS_WIDTH(ROM_ADDRESS_WIDTH)) 
 	rom_loader(
 		.clk(clk),
-		.reset(rom_loader_reset),
+		.reset(combined_rom_loader_reset),
 		// Loader nets
 		.load(rom_loader_load),
 		.input_data(rom_loader_data),
@@ -157,6 +160,7 @@ wire ram_request;
 // outputs from spi_sram_encoder
 wire ram_busy;
 wire ram_initialized;
+wire ram_write_enable;
 wire [WORD_WIDTH-1:0] ram_data_out;
 spi_sram_encoder #(	.WORD_WIDTH(WORD_WIDTH), .ADDRESS_WIDTH(RAM_ADDRESS_WIDTH) )
 		ram_encoder_0
@@ -169,7 +173,7 @@ spi_sram_encoder #(	.WORD_WIDTH(WORD_WIDTH), .ADDRESS_WIDTH(RAM_ADDRESS_WIDTH) )
 			.initialized(ram_initialized),
 			
 			.address(hack_addressM),
-			.write_enable(hack_writeM),
+			.write_enable(ram_write_enable),
 			.data_in(ram_data_out),
 			.data_out(hack_outM),
 
@@ -235,9 +239,8 @@ spi_sram_encoder #(	.WORD_WIDTH(INSTRUCTION_WIDTH), .ADDRESS_WIDTH(ROM_ADDRESS_W
 
 wire pixel_value;
 wire vram_initialized;
-
-wire vram_write = hack_clk_strobe && hack_writeM & (hack_addressM>=HACK_ADDRESS_VRAM_START) & (hack_addressM <= HACK_ADDRESS_VRAM_END);
-wire [VRAM_ADDRESS_WIDTH-1:0] vram_write_address = hack_addressM[VRAM_ADDRESS_WIDTH-1:0];// -HACK_ADDRESS_VRAM_START;
+wire vram_write_enable;
+wire [VRAM_ADDRESS_WIDTH-1:0] vram_write_address;
 spi_video_ram_2 spi_video_ram_1 (
     .clk(clk),
 	.reset(reset), 	
@@ -257,7 +260,7 @@ spi_video_ram_2 spi_video_ram_1 (
 	.hack_clk_rise_edge(hack_clk_strobe & hack_clk),
 	.hack_outM(hack_outM),
     .hack_addressM(vram_write_address),
-    .hack_writeM(vram_write),
+    .hack_writeM(vram_write_enable),
 
 
     // Serial SRAM nets 
@@ -308,16 +311,38 @@ video_signal_generator_640x480 video_generator_1 (
 
 
 
+// ** Memory Address Mapping ** //
+wire mapping_is_ram_address = hack_addressM < HACK_ADDRESS_VRAM_START;
+wire mapping_is_vram_address = (hack_addressM >= HACK_ADDRESS_VRAM_START) && (hack_addressM <= HACK_ADDRESS_VRAM_END);
+wire mapping_is_ram_or_vram_address = hack_addressM <= HACK_ADDRESS_VRAM_END;
+wire mapping_is_keyboard_address = (hack_addressM==HACK_ADDRESS_KEYBOARD);
+wire mapping_is_gpio_address = (hack_addressM==HACK_ADDRESS_GPIO);
+
+
+assign ram_request = !hack_reset && ram_initialized && !ram_busy && hack_clk_strobe && hack_clk;
+assign hack_rom_request = rom_initialized && !rom_busy && hack_clk_strobe && hack_clk;
+assign rom_request = rom_loading_process ? rom_loader_request : hack_rom_request;
+
+assign rom_write_enable = (rom_loading_process);// && rom_loader_request);
+assign ram_write_enable = hack_clk_strobe && hack_writeM && mapping_is_ram_or_vram_address;
+assign vram_write_enable = hack_clk_strobe && hack_writeM && mapping_is_vram_address;
+
+assign rom_address = rom_loading_process ? rom_loader_output_address : hack_pc;
+assign vram_write_address = hack_addressM[VRAM_ADDRESS_WIDTH-1:0];
+
+assign hack_inM = (mapping_is_ram_or_vram_address) ? ram_data_out : /* ram & vram */
+					(hack_addressM == HACK_ADDRESS_KEYBOARD) ? { (WORD_WIDTH=8){1'b0}, keycode  /*keyboard*/ :
+					(hack_addressM == HACK_ADDRESS_GPIO) ? gpio : /* GPIO */
+					0;
+
 
 assign rom_loading_process = rom_loader_load;
 assign hack_reset = hack_external_reset || (hack_wait_clocks!=0) || reset || !ram_initialized || !rom_initialized || !vram_initialized;
-assign ram_request = !hack_reset && !ram_busy && hack_clk && hack_clk_strobe;
-assign hack_rom_request = !rom_busy && hack_clk && hack_clk_strobe;
-assign rom_request = rom_loading_process ? rom_loader_request : hack_rom_request;
-assign rom_address = rom_loading_process ? rom_loader_output_address : hack_pc;
-assign rom_write_enable = (rom_loading_process);// && rom_loader_request);
+
 
 assign display_rgb = pixel_value & display_hsync & display_vsync;
+
+
 
 always @(posedge clk ) begin
 	if(reset) begin
@@ -335,46 +360,6 @@ end
 
 
 
-// Memory mapping
-// assign ram_load = (write_memory && cpu_addressM<'h4000) ? 1 : 0;
-// assign vram_load = (write_memory && cpu_addressM>='h4000 && cpu_addressM<'h6000) ? 1 : 0;
-// Translate cpu address to vram address:
-// assign cpu_vram_address = (cpu_addressM - 'h4000);
-
-// assign cpu_inM = (cpu_addressM < 'h4000) ? ram_data_out : ((cpu_addressM < 'h6000) ? vram_data_to_cpu : keyboardCode); 
-reg [WORD_WIDTH-1:0] TEST_KEYBOARD;
-reg [14:0] TEST_KBD_DELAY;
-reg TEST_TOGGLE_KBD;
-always @(posedge hack_clk) begin
-	if(reset) begin
-		TEST_KEYBOARD <= 97;
-		TEST_KBD_DELAY <= 0;
-		TEST_TOGGLE_KBD <= 0;
-	end else begin
-		TEST_KBD_DELAY <= TEST_KBD_DELAY + 1;
-
-		if(TEST_KBD_DELAY==0) begin
-			TEST_TOGGLE_KBD <= ~TEST_TOGGLE_KBD;			
-			TEST_KEYBOARD <= TEST_KEYBOARD + 1;
-			if(TEST_KEYBOARD>98) begin
-				TEST_KEYBOARD <= 97;
-			end	
-		end
-		
-		// if(TEST_KEYBOARD==0) begin
-		// 	TEST_KEYBOARD <= 97;
-		// end else begin
-		// 	TEST_KEYBOARD <= 0;
-		// end
-	end
-end
-
-assign hack_inM = (hack_addressM < HACK_ADDRESS_VRAM_START) ? ram_data_out :
-					(hack_addressM < HACK_ADDRESS_KEYBOARD) ? ram_data_out /*VRAM en realidad*/ :
-					(hack_addressM == HACK_ADDRESS_KEYBOARD) ? TEST_KEYBOARD & { WORD_WIDTH{TEST_TOGGLE_KBD}}  /*keyboard*/ :
-					(hack_addressM == HACK_ADDRESS_GPIO) ? gpio :
-					0;
-
 
 // GPIO
 always @(posedge hack_clk) begin
@@ -388,38 +373,6 @@ always @(posedge hack_clk) begin
 end
 
 
-// always @(posedge hack_clk ) begin
-// 	if(hack_reset) begin
-// 		debug_gpio <= 0;	
-// 	end else begin
-// 		if(hack_addressM==1 && hack_writeM) begin
-// 			debug_gpio <= hack_outM;
-// 		end
-// 	end
-	
-// end
-
-
-// TEST
-// assign hack_instruction = hack_pc==0 ? 16'b0000000000000000 :
-// 						hack_pc==1 ? 16'b1111110111010000 :
-// 						hack_pc==2 ? 16'b1110001100001000 :
-// 						16'b1110101010000111;
-
-
-// DEBUG
-// assign debug_pc = hack_pc;
-// assign debug_addressM = hack_addressM;
-// assign debug_instruction = hack_instruction;
-
-/*
-device_mgr hack_device_mgr
-spi_sram_encoder ram
-spi_sram_encoder rom
-spi_sram_encoder vram
-
-*/
-
 
 
 
@@ -429,25 +382,61 @@ spi_sram_encoder vram
     reg f_past_valid = 0;
 	reg initial_reset_passed = 0;
 
-    // start in reset
+	
+	// start in reset
     initial assume(reset);
+	initial assume(rom_loader_load==0);
+	initial assume(hack_wait_clocks==2);
+		
+
+    // The clock toggles.
+    reg last_clk = 1'b0;
+    always @($global_clock) begin
+        assume (clk == !last_clk);
+        last_clk <= clk;
+
+		f_past_valid <= 1;
+
+		// Disable loading ROMs formal verification for now
+		assume(rom_loader_load==0);
+        assume(hack_external_reset==0);
+
+
+		if(f_past_valid) begin
+			if(initial_reset_passed) begin
+				assume(rom_loader_reset==0);				
+				assume(reset==0);								
+			end
+		end
+    end
+
+
+
+
+	always @(negedge clk) begin
+		
+    end
+
+
 
     always @(posedge clk) begin 
-    	f_past_valid <= 1;
-
-		if($fell(reset)) begin
-			initial_reset_passed <= 1;
-		end
-
 		if(initial_reset_passed) begin
 
+			//assume(reset==0);
+
 			COVER_RAM_INIT: cover(ram_initialized);
+			COVER_ROM_INIT: cover(rom_initialized);
+			COVER_VRAM_INIT: cover(vram_initialized);
 
 			ASSERT_WAIT_CLOCK_BOUNDARIES: assert(hack_wait_clocks<=2);	
 
 			if(!ram_initialized) begin
 				ASSERT_RAM_REQUESTS_ON_INIT: assert(ram_request==0);
 			end
+			if(!rom_initialized) begin
+				ASSERT_ROM_REQUESTS_ON_INIT: assert(rom_request==0);
+			end
+
 
 			if($past(ram_request) && !hack_reset && $rose(hack_clk)) begin
 				ASSERT_RAM_CLK_SYNCHRO: assert($rose(ram_sck));
@@ -455,11 +444,11 @@ spi_sram_encoder vram
 		end
 	
 		if(f_past_valid) begin
-			COVER_HACK_CLOCK_START: cover($rose(hack_clk));	
+			COVER_HACK_CLOCK_START: cover($rose(hack_clk));			
+			if($fell(reset)) begin
+				initial_reset_passed <= 1;
+			end			
 		end
-		
-
-		
 
     end
 

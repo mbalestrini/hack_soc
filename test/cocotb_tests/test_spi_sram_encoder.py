@@ -8,7 +8,7 @@ async def reset(dut):
     await ClockCycles(dut.clk, 5)
     dut.reset <= 0;
     
-    await ClockCycles(dut.clk, 21)
+    await ClockCycles(dut.clk, 30)
     assert(dut.initialized==1)
     
 
@@ -34,7 +34,9 @@ async def test_spi_sram_encoder(dut):
 
 
     await ClockCycles(dut.clk, 2)
-    assert(dut.busy)    
+    await(RisingEdge(dut.busy))
+    await ClockCycles(dut.clk, 1)
+    # assert(dut.busy)    
 
     dut.request = 0
 

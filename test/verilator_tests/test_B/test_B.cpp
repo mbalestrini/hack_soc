@@ -20,6 +20,8 @@ VerilatedVcdC *tracer = NULL;
 int tick_count = 0;
 
 
+double sc_time_stamp() { return 0; }
+
 void tick(void) {
 	// Increment our own internal time reference
 	tick_count++;
@@ -74,14 +76,19 @@ int main(int argc, char ** argv)
 	top->reset = 1;
 	tick();	
 	tick();	
+	tick();	
+	tick();	
+	tick();	
 	top->reset = 0;
 	tick();	
 
-	for (int i = 0; i < 30; ++i) {
-		std::cout << "1000 clocks simulated" << std::endl;
-		for (int i = 0; i < 1000; ++i) {		
+	for (int i = 0; i < 100; ++i) {
+		std::cout << "10000 clocks simulated" << std::endl;
+		for (int i = 0; i < 10000; ++i) {		
 			tick();
-			
+			if(top->display_vsync==0) {
+				std::cout << "VSYNC" << std::endl;
+			}		
 		}		
 	}
 	

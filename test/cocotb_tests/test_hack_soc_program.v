@@ -248,10 +248,10 @@ hack_soc soc(
 
 
 	// GPIO
-	.gpio(gpio),
+	.gpio(gpio)
 
 	// DEBUG	
-	.debug_pc(debug_pc)
+	// .debug_pc(debug_pc)
 
 
 	);

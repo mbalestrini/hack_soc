@@ -14,7 +14,8 @@
 
 
 PROJECT = test_B
-PROJECT_SOURCES = ../../../src
+PROJECT_INCLUDE_SOURCES = ../../../src
+SOURCES = 23LC1024.v load_file_to_rom.v
 
 
 define colorecho
@@ -29,14 +30,14 @@ all:
 
 $(PROJECT): $(PROJECT).v $(PROJECT).cpp
 	$(call colorecho,"Generating verilator files")  
-	verilator -Wall -cc $@.v -I$(PROJECT_SOURCES) --exe $@.cpp --trace 
+	verilator -cc $@.v $(SOURCES) -I$(PROJECT_INCLUDE_SOURCES) --exe $@.cpp --trace -Wno-fatal
 	$(call colorecho,"Compiling verilator files") 
 	make -j -C obj_dir -f V$@.mk V$@ && \
 	mv obj_dir/V$@ ./ && \
 	./V$@
 
 lint: 
-	verilator --lint-only -Wall -cc $(PROJECT).v -I$(PROJECT_SOURCES) 
+	verilator --lint-only -Wall -cc $(PROJECT).v -I$(PROJECT_INCLUDE_SOURCES) 
 
 show_$(PROJECT): traces/$(PROJECT).vcd
 	gtkwave $< traces/$(PROJECT).gtkw

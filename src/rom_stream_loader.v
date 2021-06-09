@@ -95,7 +95,8 @@ end
 			//COVER_RESTART_ADDRESS: cover($past(current_address)!=0 && $rose(reset) && rom_busy);
 			COVER_RESTART_ADDRESS: cover($past(current_address)!=0 && current_address==0);
 			
-			assume($past(rom_initialized) && rom_initialized);
+			if($past(rom_initialized)) 
+				assume(rom_initialized);
 
 			if(load_recevied) begin
 				ASSERT_LOAD_RECEVIED: assert($past(rom_receive_ready));

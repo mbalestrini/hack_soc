@@ -22,8 +22,7 @@ wire display_active;
 wire reset_display = reset;
 wire display_trigger_read;
 // assign display_rgb = display_hpos[2] || display_vpos[2];
-video_signal_generator_640x480 #(.READ_TRIGGER_BEFORE_ACTIVE_CLKS(26 /*42*/)) 
-    video_generator_1 (
+video_signal_generator_640x480 video_generator_1 (
         //i_clk,           // base clock
         .i_pix_stb(display_clk),       // pixel clock strobe
         .i_rst(reset_display),           // reset: restarts frame

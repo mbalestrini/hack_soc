@@ -21,7 +21,7 @@ module spi_sram_encoder #(
 
 	// Serial SRAM nets 
 	output reg sram_cs_n,
-	output reg sram_sck,
+	output sram_sck,
 
 	output reg sram_sio_oe, // output enable the SIO lines
 	// SIO as inputs from SRAM	
@@ -95,6 +95,9 @@ reg [INPUT_BUFFER_WIDTH-1:0] input_buffer;
 reg [$clog2(INPUT_BUFFER_WIDTH + INPUT_DUMMY_WIDTH)-1:0] input_bits_left;
 
 
+reg toggled_sram_sck;
+
+assign sram_sck = ~sram_cs_n & toggled_sram_sck;
 
 // aliases
 // wire sio0 = sram_si_sio0;
@@ -107,6 +110,7 @@ wire [3:0] sio_o = output_buffer[OUTPUT_BUFFER_WIDTH-1:OUTPUT_BUFFER_WIDTH-4];
 // assign sio_o = next_output_data;
 
 
+
 assign {sram_sio3_o, sram_sio2_o, sram_sio1_o, sram_sio0_o} = sio_o;
 
 assign busy = (current_state!=state_idle);
@@ -116,7 +120,7 @@ assign busy = (current_state!=state_idle);
 assign data_in = input_buffer;
 
 
-// reg sram_sck;
+
 
 
 always @(posedge clk) begin
@@ -137,13 +141,13 @@ always @(posedge clk) begin
 		
 		input_buffer <= 0;
 
-		sram_sck <= 0;
+		toggled_sram_sck <= 0;
 	end else begin
 	
-		sram_sck <= ~sram_sck;
+		toggled_sram_sck <= ~toggled_sram_sck;
 
 		// Active transfer states, hapenning at the falling edge sram_clk	
-		if(sram_sck==1'b1) begin
+		if(toggled_sram_sck==1'b1) begin
 			/* verilator lint_off CASEINCOMPLETE */
 			case (current_state) 
 
@@ -339,7 +343,7 @@ end
 
     	f_past_valid <= 1;
 
-		// if(f_past_valid && !$past(reset) && !busy && $past(sram_sck==1)) begin
+		// if(f_past_valid && !$past(reset) && !busy && $past(toggled_sram_sck==1)) begin
 		// 	request <= 1'b1;
 		// end else begin 
 		// 	request <= 1'b0;
@@ -366,7 +370,7 @@ end
  				ASSERT_INITILIZED: assert(initialized);
  			end
 
-	 		if(sram_cs_n==1'b0 && sram_sck==1'b1) begin
+	 		if(sram_cs_n==1'b0 && toggled_sram_sck==1'b1) begin
 	 			ASSERT_SRAM_INPUT_SET_BEFORE_CLOCK: 
 	 				assert($past(sio_o)==sio_o); 			
 	 		end

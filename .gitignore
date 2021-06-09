@@ -13,5 +13,6 @@ development_tests/
 test/formal/*task*/
 _next_commit_message_.txt
 obj_dir
+*.vvp
 
 

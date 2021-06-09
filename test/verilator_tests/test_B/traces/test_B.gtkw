@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Fri May 28 14:43:13 2021
+[*] Tue Jun  8 19:02:05 2021
 [*]
 [dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/verilator_tests/test_B/traces/test_B.vcd"
-[dumpfile_mtime] "Fri May 28 14:41:11 2021"
-[dumpfile_size] 122553
+[dumpfile_mtime] "Tue Jun  8 19:00:23 2021"
+[dumpfile_size] 508642198
 [savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/verilator_tests/test_B/traces/test_B.gtkw"
-[timestart] 8
+[timestart] 13909000
 [size] 1920 1147
-[pos] -1 -1
-*-10.000000 1616 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -9 -23
+*-19.000000 5250000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] TOP.
 [treeopen] TOP.test_B.
 [treeopen] TOP.test_B.soc.
@@ -25,19 +25,95 @@ TOP.test_B.soc.hack_reset
 @22
 TOP.test_B.soc.hack_pc[14:0]
 TOP.test_B.soc.hack_instruction[15:0]
-@23
 TOP.test_B.soc.hack_addressM[14:0]
-@22
 TOP.test_B.soc.hack_outM[15:0]
 TOP.test_B.soc.hack_inM[15:0]
 @28
 TOP.test_B.soc.hack_writeM
+@22
+TOP.test_B.soc.cpu.areg_out[15:0]
+TOP.test_B.soc.cpu.dreg_out[15:0]
+TOP.test_B.gpio[15:0]
+@28
 TOP.test_B.soc.ram_request
 TOP.test_B.soc.ram_cs_n
 TOP.test_B.soc.rom_request
-TOP.rom_sio0
-TOP.rom_sio1
-TOP.rom_sio2
-TOP.rom_sio3
+@22
+TOP.test_B.soc.rom_encoder_0.request_address[14:0]
+TOP.test_B.soc.rom_encoder_0.input_bits_left[4:0]
+@28
+TOP.test_B.rom.CS_N
+TOP.test_B.rom.SCK
+@22
+TOP.test_B.rom.AddrRegister[16:0]
+TOP.test_B.rom.DataShifterO[7:0]
+TOP.test_B.rom.SO_DO[3:0]
+TOP.test_B.rom.InstRegister[7:0]
+@28
+TOP.test_B.rom.InstructionEQIO
+TOP.test_B.rom.InstructionREAD
+TOP.test_B.rom.InstructionWRITE
+@22
+TOP.test_B.rom.ClockCounter[31:0]
+@c00200
+-RAM
+@22
+TOP.test_B.ram.MemoryByte00000[7:0]
+TOP.test_B.ram.MemoryByte00001[7:0]
+TOP.test_B.ram.MemoryByte00002[7:0]
+TOP.test_B.ram.MemoryByte00003[7:0]
+TOP.test_B.ram.MemoryByte00004[7:0]
+TOP.test_B.ram.MemoryByte00005[7:0]
+TOP.test_B.ram.MemoryByte00006[7:0]
+TOP.test_B.ram.MemoryByte00007[7:0]
+TOP.test_B.ram.MemoryByte00008[7:0]
+TOP.test_B.ram.MemoryByte00009[7:0]
+@1401200
+-RAM
+@c00200
+-VRAM
+@22
+TOP.test_B.vram.MemoryByte00000[7:0]
+TOP.test_B.vram.MemoryByte00001[7:0]
+TOP.test_B.vram.MemoryByte00002[7:0]
+TOP.test_B.vram.MemoryByte00003[7:0]
+TOP.test_B.vram.MemoryByte00004[7:0]
+TOP.test_B.vram.MemoryByte00005[7:0]
+TOP.test_B.vram.MemoryByte00006[7:0]
+TOP.test_B.vram.MemoryByte00007[7:0]
+TOP.test_B.vram.MemoryByte00008[7:0]
+TOP.test_B.vram.MemoryByte00009[7:0]
+@1401200
+-VRAM
+@c00200
+-ROM
+@22
+TOP.test_B.rom.MemoryByte00000[7:0]
+TOP.test_B.rom.MemoryByte00001[7:0]
+TOP.test_B.rom.MemoryByte00002[7:0]
+TOP.test_B.rom.MemoryByte00003[7:0]
+TOP.test_B.rom.MemoryByte00004[7:0]
+TOP.test_B.rom.MemoryByte00005[7:0]
+TOP.test_B.rom.MemoryByte00006[7:0]
+TOP.test_B.rom.MemoryByte00007[7:0]
+TOP.test_B.rom.MemoryByte00008[7:0]
+TOP.test_B.rom.MemoryByte00009[7:0]
+@1401200
+-ROM
+@800200
+-Video
+@28
+TOP.display_rgb
+TOP.display_hsync
+TOP.display_vsync
+@24
+TOP.test_B.soc.video_generator_1.o_x[9:0]
+TOP.test_B.soc.video_generator_1.o_y[9:0]
+@25
+TOP.test_B.soc.video_generator_1.h_count[9:0]
+@24
+TOP.test_B.soc.video_generator_1.v_count[9:0]
+@1000200
+-Video
 [pattern_trace] 1
 [pattern_trace] 0
