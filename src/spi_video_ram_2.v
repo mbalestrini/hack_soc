@@ -169,7 +169,9 @@ wire background =   (
                     );
 // wire background = 0;
 
-wire pixel_out = display_active & (is_active_hack_line & is_active_hack_col) ? ~read_value[temp_pixel_index] : background;
+wire pixel_out = display_active ? 
+                (is_active_hack_line & is_active_hack_col) ? ~read_value[temp_pixel_index] : background
+                : 0;
 
 
 assign busy = (current_state!=state_idle);

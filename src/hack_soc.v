@@ -331,7 +331,7 @@ assign rom_address = rom_loading_process ? rom_loader_output_address : hack_pc;
 assign vram_write_address = hack_addressM[VRAM_ADDRESS_WIDTH-1:0];
 
 assign hack_inM = (mapping_is_ram_or_vram_address) ? ram_data_out : /* ram & vram */
-					(hack_addressM == HACK_ADDRESS_KEYBOARD) ? { (WORD_WIDTH=8){1'b0}, keycode  /*keyboard*/ :
+					(hack_addressM == HACK_ADDRESS_KEYBOARD) ? { {(WORD_WIDTH-8){1'b0}}, keycode} :  /*keyboard*/
 					(hack_addressM == HACK_ADDRESS_GPIO) ? gpio : /* GPIO */
 					0;
 
@@ -340,7 +340,7 @@ assign rom_loading_process = rom_loader_load;
 assign hack_reset = hack_external_reset || (hack_wait_clocks!=0) || reset || !ram_initialized || !rom_initialized || !vram_initialized;
 
 
-assign display_rgb = pixel_value & display_hsync & display_vsync;
+assign display_rgb = display_active ? pixel_value : 0 ;
 
 
 

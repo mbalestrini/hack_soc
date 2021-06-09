@@ -70,6 +70,7 @@ localparam  ROM_FILE = "../../../hack_programs/terminal2.hack8", FILE_LINES = 97
 // localparam  ROM_FILE = "../../../hack_programs/dibuja_esquinas.hack8", FILE_LINES = 110;
 // localparam	FILE_LINES = 973; //250; //96;
 
+localparam WORD_WIDTH = 16;
 localparam  INSTRUCTION_WIDTH = 16;
 localparam  ROM_ADDRESS_WIDTH = 16;
 localparam HACK_GPIO_WIDTH = 16;
@@ -301,6 +302,7 @@ assign vram_sio3_i = VRAM_SIO3;
 wire hack_external_reset;
 wire [HACK_GPIO_WIDTH-1:0] gpio;
 // wire [15:0] debug_pc;
+wire keycode;
 
 hack_soc soc(
 	.clk(clk),
@@ -373,8 +375,11 @@ hack_soc soc(
 	.rom_loader_load_received(rom_loader_load_received),
 
 
+	// Keyboard
+	.keycode(keycode),
+
 	// GPIO
-	.gpio(gpio),
+	.gpio(gpio)
 
 
 	// DEBUG	
@@ -410,34 +415,21 @@ end
 
 
 
+assign keycode = TEST_KEYBOARD[7:0];
 
-
-// reg [WORD_WIDTH-1:0] TEST_KEYBOARD;
-// reg [14:0] TEST_KBD_DELAY;
-// reg TEST_TOGGLE_KBD;
-// always @(posedge hack_clk) begin
-// 	if(reset) begin
-// 		TEST_KEYBOARD <= 97;
-// 		TEST_KBD_DELAY <= 0;
-// 		TEST_TOGGLE_KBD <= 0;
-// 	end else begin
-// 		TEST_KBD_DELAY <= TEST_KBD_DELAY + 1;
-
-// 		if(TEST_KBD_DELAY==0) begin
-// 			TEST_TOGGLE_KBD <= ~TEST_TOGGLE_KBD;			
-// 			TEST_KEYBOARD <= TEST_KEYBOARD + 1;
-// 			if(TEST_KEYBOARD>98) begin
-// 				TEST_KEYBOARD <= 97;
-// 			end	
-// 		end
-		
-// 		// if(TEST_KEYBOARD==0) begin
-// 		// 	TEST_KEYBOARD <= 97;
-// 		// end else begin
-// 		// 	TEST_KEYBOARD <= 0;
-// 		// end
-// 	end
-// end
+reg [WORD_WIDTH-1:0] TEST_KEYBOARD;
+always @(posedge clk) begin
+	if(reset) begin
+		TEST_KEYBOARD <= 97;
+	end else begin
+		if(strobe_btn1) begin
+			TEST_KEYBOARD <= TEST_KEYBOARD + 1;
+			if(TEST_KEYBOARD>98) begin
+				TEST_KEYBOARD <= 97;
+			end	
+		end
+	end
+end
 
 
 

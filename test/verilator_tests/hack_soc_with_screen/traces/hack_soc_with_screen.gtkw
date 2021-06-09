@@ -1,0 +1,39 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Wed Jun  9 02:04:19 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/verilator_tests/hack_soc_with_screen/traces/hack_soc_with_screen.vcd"
+[dumpfile_mtime] "Wed Jun  9 02:03:42 2021"
+[dumpfile_size] 250560616
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/verilator_tests/hack_soc_with_screen/traces/hack_soc_with_screen.gtkw"
+[timestart] 5232610
+[size] 1920 1147
+[pos] -1 -1
+*-12.000000 5247120 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] TOP.
+[treeopen] TOP.hack_soc_with_screen.
+[treeopen] TOP.hack_soc_with_screen.soc.
+[sst_width] 423
+[signals_width] 294
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+TOP.hack_soc_with_screen.clk
+TOP.reset
+TOP.hack_soc_with_screen.soc.hack_clk
+@800200
+-display
+@28
+TOP.display_hsync
+TOP.display_vsync
+TOP.display_rgb
+TOP.hack_soc_with_screen.soc.display_active
+@29
+TOP.hack_soc_with_screen.soc.spi_video_ram_1.pixel_out
+@24
+TOP.hack_soc_with_screen.soc.video_generator_1.h_count[9:0]
+TOP.hack_soc_with_screen.soc.video_generator_1.v_count[9:0]
+@1000200
+-display
+[pattern_trace] 1
+[pattern_trace] 0
