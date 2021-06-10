@@ -126,11 +126,10 @@ wire clk = video_clk_25Mhz;
 wire reset = !RESET_N || !video_clk_pll_locked;
 
 // ROM Loading Lines
-wire rom_loader_reset;
 wire rom_loader_load;
 wire [INSTRUCTION_WIDTH-1:0] rom_loader_data;
 wire rom_loader_ack;
-wire rom_loader_load_received;
+wire rom_loader_sck;
 
 
 
@@ -153,11 +152,10 @@ load_file_to_rom #(
     .done_loading(done_loading_rom),
 
     // Control lines
-    .rom_loader_reset(rom_loader_reset),
     .rom_loader_load(rom_loader_load),
+	.rom_loader_sck(rom_loader_sck),
     .rom_loader_data(rom_loader_data),
     .rom_loader_ack(rom_loader_ack),
-    .rom_loader_load_received(rom_loader_load_received)
 );
 
 
@@ -270,13 +268,12 @@ hack_soc soc(
 
 	// ROM LOADING LINES
 	// inputs
-	.rom_loader_reset(rom_loader_reset),
 	.rom_loader_load(rom_loader_load),
+	.rom_loader_sck(rom_loader_sck),
 	.rom_loader_data(rom_loader_data),
 	// outputs
 	.rom_loader_ack(rom_loader_ack),
-	.rom_loader_load_received(rom_loader_load_received),
-
+	
 
 	// GPIO
 	.gpio(gpio)

@@ -31,7 +31,6 @@ async def test_rom_loader_with_spi_encoder(dut):
     for i in range(0,20):
         output_data.append(1-i)
 
-    dut.manual_rom_loader_reset <= 1
     dut.manual_rom_loader_load <= 0
     dut.manual_rom_loader_data <= 0
     dut.manual_test <= 0
@@ -39,6 +38,7 @@ async def test_rom_loader_with_spi_encoder(dut):
 
     await reset(dut)
 
+    print("Started AUTOMATIC (INTERNAL VERIOG LOAD) TEST")
 
     # AUTOMATIC (INTERNAL VERIOG LOAD) TEST    
     await with_timeout(RisingEdge(dut.file_to_rom_done), 250, "ms")
@@ -53,12 +53,13 @@ async def test_rom_loader_with_spi_encoder(dut):
 
 
 
+    print("Started MANUAL TEST")
     # MANUAL TEST
     dut.manual_test <= 1
     await ClockCycles(dut.clk, 10)
 
 
-    dut.manual_rom_loader_reset <= 0
+    #dut.manual_rom_loader_reset <= 0
     await ClockCycles(dut.clk, 1)
     
     if(dut.rom_initialized==0):
@@ -67,58 +68,52 @@ async def test_rom_loader_with_spi_encoder(dut):
     await ClockCycles(dut.clk, 1)
     
 
+    # Start loading ROM 
+    dut.manual_rom_loader_load <= 1
+
     # Write first batch
     for value in output_data:
-        dut.manual_rom_loader_load <= 1
         dut.manual_rom_loader_data <= value
+        dut.manual_rom_loader_sck <= 1
         await ClockCycles(dut.clk, 1)
         await with_timeout(RisingEdge(dut.rom_loader_ack), 250, "ms")
-        dut.manual_rom_loader_load <= 0
+        dut.manual_rom_loader_sck <= 0
+        # dut.manual_rom_loader_load <= 0
         await ClockCycles(dut.clk, 1)
         
-    
+    # dut.manual_rom_loader_load <= 0
+    await ClockCycles(dut.clk, 1)
 
-    # await RisingEdge(dut.rom_loader_ack)
-    
-    # idx = 0
-    # for value in output_data:
-    #     assert(dut.rom.MemoryBlock[idx] == ((value>>8) & 0xff))
-    #     assert(dut.rom.MemoryBlock[idx+1] == (value & 0xff))
-    #     idx = idx + 2
-
-
+    print(" first batch written")
     await ClockCycles(dut.clk, 30)
 
     # Write second batch    
-    for value in output_data:
-        dut.manual_rom_loader_load <= 1
+    for value in output_data:        
         dut.manual_rom_loader_data <= value
+        dut.manual_rom_loader_sck <= 1
+
         await ClockCycles(dut.clk, 1)
         await with_timeout(RisingEdge(dut.rom_loader_ack), 250, "ms")
+        dut.manual_rom_loader_sck <= 0
         # await RisingEdge(dut.rom_loader_ack)
-        dut.manual_rom_loader_load <= 0
         await ClockCycles(dut.clk, 1)
         
+    # Stop loading ROM 
+    dut.manual_rom_loader_load <= 0
+    await ClockCycles(dut.clk, 2)
+    print(" second batch written")
 
+
+
+    print(" starting bach check")
     # Check correct data written
     idx = 0
     for x in range(0,2):
         for value in output_data:
+            
             assert(dut.rom.MemoryBlock[idx] == ((value>>8) & 0xff))
             assert(dut.rom.MemoryBlock[idx+1] == (value & 0xff))
             idx = idx + 2
-
-    # assert(dut.rom.MemoryBlock[0]==output_data[0])
-    # assert(dut.rom.MemoryByte00001==output_data[1])
-
-    # assert(dut.rom.MemoryByte00002==output_data[2])
-    # assert(dut.rom.MemoryByte00003==output_data[3])
-
-    # assert(dut.rom.MemoryByte00004==output_data[4])
-    # assert(dut.rom.MemoryByte00005==output_data[5])
-
-    # assert(dut.rom.MemoryByte00006==output_data[6])
-    # assert(dut.rom.MemoryByte00007==output_data[7])
 
 
     await ClockCycles(dut.clk, 100)

@@ -14,11 +14,11 @@ module load_file_to_rom
     output reg done_loading,
 
     // Control lines
-    output reg rom_loader_reset,
     output reg rom_loader_load,
     output [DATA_WIDTH-1:0] rom_loader_data,
-    input rom_loader_ack, 
-    input rom_loader_load_received
+    output reg rom_loader_sck,
+    input rom_loader_ack
+    
 
 );
 
@@ -47,42 +47,37 @@ end
 always @(posedge clk ) begin
     if(reset) begin
         was_running <= 0;
-        rom_loader_reset <= 0;
         rom_loader_load <= 0;
         file_idx <= 0;
         done_loading <= 0;
+        rom_loader_sck <= 0;
     end else begin
         was_running <= run;
         
+
         if(run) begin
             if(!was_running) begin
-                // reset rom loader
-                rom_loader_reset <= 1;
-                done_loading <= 0;
-                
+                done_loading <= 0;                
                 rom_loader_load <= 1;
-
-            end else begin
-                rom_loader_reset <= 0;
-                
-                // rom_loader_load <= 1;
+                rom_loader_sck <= 1;
+            end else begin                
 
                 if(!done_loading) begin
-                    
-                    if(rom_loader_load_received) begin
+                    rom_loader_sck <= 1;
+
+                    if(rom_loader_ack) begin
+                        rom_loader_sck <= 0; 
+
                         // Prepare next byte    
                         if(file_idx<BYTE_COUNT) begin
                             // rom_loader_data <= merged_output_data;//file_data[file_idx];                            
                             file_idx <= file_idx + 2;
-                        end else begin
+                        end else begin                            
                             // Stop sending data after this one
                             rom_loader_load <= 0;
+                            done_loading <= 1;
                         end
-                    end else if(rom_loader_ack && file_idx>=BYTE_COUNT) begin
-                        done_loading <= 1;
-                        rom_loader_load <= 0;
                     end
-                
                     
                 end
 

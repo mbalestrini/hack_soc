@@ -11,7 +11,7 @@ module rom_stream_loader#(
 	// Loader nets
 	input load,
     input [DATA_WIDTH-1:0] input_data,
-	output load_recevied,
+	input sck,
 	output ack,
 
 
@@ -27,44 +27,64 @@ module rom_stream_loader#(
 reg writing;
 reg [ADDRESS_WIDTH-1:0] current_address;
 reg ack;
-reg load_recevied;
 wire rom_receive_ready;
-
+wire request_written;
+reg wait_fall_clk;
+reg was_loading;
 
 assign output_address = current_address;
 assign rom_receive_ready = !rom_busy && rom_initialized;
+assign request_written = was_loading & writing & ~rom_busy;
 
 always @(posedge clk) begin
-
 	if(reset) begin
-		current_address <= {ADDRESS_WIDTH{1'b0}};
-		ack <= 1'b0;
+		was_loading <= 1'b0;
+	end else if(load) begin
+		was_loading <= 1'b1;
+	end else begin		
+		was_loading <= 1'b0;
+	end
+end
+
+
+always @(posedge clk) begin
+	if(reset) begin
+		wait_fall_clk <= 1'b0;
+	end else if((wait_fall_clk && !sck) || !load) begin
+		wait_fall_clk <= 1'b0;
+	end else if(rom_request) begin
+		wait_fall_clk <= 1'b1;
+	end
+end
+
+
+always @(posedge clk) begin
+	ack <= 1'b0;
+	if(load && !was_loading) begin
+		// Reset address on new load
+		current_address <= {ADDRESS_WIDTH{1'b0}};			
+	end else if(request_written) begin
+		// Advance ROM address
+		current_address <= current_address + 1'b1;	
+		ack <= 1'b1;		
+	end	
+end
+
+always @(posedge clk) begin
+	if(reset) begin		
 		rom_request <= 1'b0;
-		writing <= 1'b0;
-		load_recevied <= 1'b0;
+		writing <= 1'b0;		
 	end else begin
-
-		ack <= 1'b0;
-		load_recevied <= 1'b0;
-		
-
-		if(rom_request) begin
-			if(rom_busy) begin
-				rom_request <= 1'b0;
-				writing <= 1'b1;				
-			end 
-		end else if(writing) begin
-			if(!rom_busy) begin
-				// Finished writing to ROM
-				writing <= 1'b0;
-				ack <= 1'b1;
-				// Advance ROM address
-				current_address <= current_address + 1'b1;
-			end
-		end else if(load && rom_receive_ready) begin
+		// Wait for the rom_busy signal to know that the write started
+		if(rom_request & rom_busy) begin
+			rom_request <= 1'b0;
+			writing <= 1'b1;						
+		end else if(request_written) begin
+			// Finished writing to ROM
+			writing <= 1'b0;			
+		end else if(load && !writing && rom_receive_ready && !wait_fall_clk && sck) begin
 			output_data <= input_data;
 			rom_request <= 1'b1;	
-			load_recevied <= 1'b1;		
 		end
 	end
 	
@@ -78,6 +98,8 @@ end
     // start in reset
     initial assume(reset);
     initial assume(current_address==0);
+	initial assume(was_loading==0);
+		
     always @(posedge clk) begin 
 
 		
@@ -88,7 +110,7 @@ end
 			COVER_WRITING: cover(writing);
 			COVER_REQUEST: cover(rom_request);
 			COVER_ACK: cover(ack);
-			COVER_LOAD_RECEIVED: cover(load_recevied);
+			
 
 			COVER_FEW_WRITES: cover(current_address == 'h7);
 
@@ -98,10 +120,11 @@ end
 			if($past(rom_initialized)) 
 				assume(rom_initialized);
 
-			if(load_recevied) begin
-				ASSERT_LOAD_RECEVIED: assert($past(rom_receive_ready));
+			if(!$past(rom_receive_ready)) begin
+				ASSERT_ROM_REQUEST_WHEN_READY: assert(!rom_request);
 			end
 			
+
 			if($past(ack) && !ack) begin
 				assume($changed(input_data));//!=$past(input_data));
 			end
@@ -116,7 +139,7 @@ end
 				assume($past(rom_busy,2) && $past(rom_busy,3) && $past(rom_busy,4) && $past(rom_busy,5));
 			end
 
-			if(!$past(reset) && !reset && ($past(current_address)!='hffff) && $changed(current_address)) begin
+			if(!$past(reset) && !reset && (load && !was_loading) && ($past(current_address)!='hffff) && $changed(current_address)) begin
 				ASSERT_ADDRESS_INCREMENT: assert(current_address == ($past(current_address)+1));
 			end
 
@@ -125,10 +148,10 @@ end
 			end
 
 			if(!rom_initialized) begin
-				ASSERT_ROM_NOT_INITIALIZED: assert(!writing && !rom_request && !ack);
+				ASSERT_ROM_NOT_INITIALIZED: assert(!writing && !rom_request);
 			end
 
-			if(writing || rom_request || ack) begin
+			if(!reset && (writing || rom_request)) begin
 				ASSERT_ROM_INITIALIZED: assert(rom_initialized);
 			end
 			

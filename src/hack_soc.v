@@ -71,11 +71,11 @@ module hack_soc (
 
 
 	// ROM LOADING LINES
-	input rom_loader_reset,
 	input rom_loader_load,
+	input rom_loader_sck,
 	input [INSTRUCTION_WIDTH-1:0] rom_loader_data,
-	output rom_loader_ack,
-	output rom_loader_load_received
+	output rom_loader_ack
+	
 
 	// DEBUG nets
 	// output [ROM_ADDRESS_WIDTH-1:0] debug_pc,
@@ -126,25 +126,23 @@ hack_cpu cpu(
 
 
 
-wire rom_loader_reset;
 wire rom_loader_load;
 wire [INSTRUCTION_WIDTH-1:0] rom_loader_data;
+wire rom_loader_sck;
 wire rom_loader_ack;
-wire rom_loader_load_received;
 wire rom_loader_request;
 wire [INSTRUCTION_WIDTH-1:0] rom_loader_output_data;
 wire [ROM_ADDRESS_WIDTH-1:0] rom_loader_output_address;
 
-wire combined_rom_loader_reset = reset | rom_loader_reset;
 rom_stream_loader #(.DATA_WIDTH(INSTRUCTION_WIDTH), .ADDRESS_WIDTH(ROM_ADDRESS_WIDTH)) 
 	rom_loader(
 		.clk(clk),
-		.reset(combined_rom_loader_reset),
+		.reset(reset),
 		// Loader nets
 		.load(rom_loader_load),
 		.input_data(rom_loader_data),
+		.sck(rom_loader_sck),
 		.ack(rom_loader_ack),
-		.load_recevied(rom_loader_load_received),
 		// ROM nets
 		.rom_busy(rom_busy),
 		.rom_initialized(rom_initialized),
@@ -404,7 +402,6 @@ end
 
 		if(f_past_valid) begin
 			if(initial_reset_passed) begin
-				assume(rom_loader_reset==0);				
 				assume(reset==0);								
 			end
 		end

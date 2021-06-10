@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Sat May 29 20:32:05 2021
+[*] Thu Jun 10 21:04:37 2021
 [*]
 [dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_rom_loader_with_spi_encoder.vcd"
-[dumpfile_mtime] "Sat May 29 20:31:41 2021"
-[dumpfile_size] 188341
+[dumpfile_mtime] "Thu Jun 10 21:02:36 2021"
+[dumpfile_size] 918402
 [savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_rom_loader_with_spi_encoder.gtwk"
 [timestart] 0
 [size] 1920 1147
-[pos] -9 -23
-*-32.000000 15220000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -1 -1
+*-31.000000 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test_rom_loader_with_spi_encoder.
 [sst_width] 350
 [signals_width] 333
@@ -20,19 +20,19 @@ test_rom_loader_with_spi_encoder.clk
 test_rom_loader_with_spi_encoder.sram_sck
 test_rom_loader_with_spi_encoder.reset
 test_rom_loader_with_spi_encoder.manual_test
-@29
 test_rom_loader_with_spi_encoder.file_to_rom.run
-@28
 test_rom_loader_with_spi_encoder.file_to_rom.done_loading
 test_rom_loader_with_spi_encoder.rom_busy
 test_rom_loader_with_spi_encoder.rom_initialized
+@29
 [color] 2
 test_rom_loader_with_spi_encoder.rom_loader.load
+@28
+test_rom_loader_with_spi_encoder.rom_loader.sck
 @22
 test_rom_loader_with_spi_encoder.rom_loader_data[15:0]
 @28
 test_rom_loader_with_spi_encoder.rom_loader_request
-test_rom_loader_with_spi_encoder.rom_loader_reset
 @22
 test_rom_loader_with_spi_encoder._spi_sram_encoder.data_out[15:0]
 test_rom_loader_with_spi_encoder.rom_loader_output_address[15:0]

@@ -6,8 +6,8 @@ module test_rom_loader_with_spi_encoder(
     input reset,
     input clk,
 
-    input manual_rom_loader_reset,
     input manual_rom_loader_load,
+    input manual_rom_loader_sck,
     input [INSTRUCTION_WIDTH-1:0] manual_rom_loader_data,
     output rom_loader_ack,
 
@@ -20,7 +20,7 @@ parameter ROM_ADDRESS_WIDTH = 16;
 
 
 // Control lines
-wire rom_loader_reset;
+wire rom_loader_sck;
 wire rom_loader_load;
 wire [INSTRUCTION_WIDTH-1:0] rom_loader_data;
 wire rom_loader_ack;
@@ -32,8 +32,8 @@ reg rom_loading_process;
 
 wire run_file_to_rom;
 wire file_to_rom_done;
-wire file_to_rom_loader_reset;
 wire file_to_rom_loader_load;
+wire file_to_rom_loader_sck;
 wire [INSTRUCTION_WIDTH-1:0] file_to_rom_loader_data;
 
 
@@ -50,11 +50,10 @@ load_file_to_rom #(
     .done_loading(file_to_rom_done),
 
     // Control lines
-    .rom_loader_reset(file_to_rom_loader_reset),
     .rom_loader_load(file_to_rom_loader_load),
     .rom_loader_data(file_to_rom_loader_data),
-    .rom_loader_ack(rom_loader_ack),
-    .rom_loader_load_received(rom_loader_load_received)
+    .rom_loader_sck(file_to_rom_loader_sck),
+    .rom_loader_ack(rom_loader_ack)
 );
 
 
@@ -64,16 +63,15 @@ load_file_to_rom #(
 wire rom_loader_request;
 wire [INSTRUCTION_WIDTH-1:0] rom_loader_output_data;
 wire [ROM_ADDRESS_WIDTH-1:0] rom_loader_output_address;
-wire rom_loader_load_received;
 rom_stream_loader #(.DATA_WIDTH(INSTRUCTION_WIDTH), .ADDRESS_WIDTH(ROM_ADDRESS_WIDTH)) 
 	rom_loader(
 		.clk(clk),
-		.reset(rom_loader_reset),
+		.reset(reset),
 		// Loader nets
 		.load(rom_loader_load),
 		.input_data(rom_loader_data),
+        .sck(rom_loader_sck),
 		.ack(rom_loader_ack),
-        .load_recevied(rom_loader_load_received),
 
 		// ROM nets
 		.rom_busy(rom_busy),
@@ -166,9 +164,9 @@ M23LC1024 rom (
     .RESET(reset));
     
 
-assign rom_loader_reset = reset || (manual_test ? manual_rom_loader_reset : file_to_rom_loader_reset);
 assign rom_loader_load =  manual_test ? manual_rom_loader_load : file_to_rom_loader_load;
 assign rom_loader_data = manual_test ? manual_rom_loader_data : file_to_rom_loader_data;
+assign rom_loader_sck = manual_test ? manual_rom_loader_sck : file_to_rom_loader_sck;
 
 assign rom_write_enable = (rom_loading_process);// && rom_loader_request);
 assign run_file_to_rom = !manual_test && rom_loading_process ;

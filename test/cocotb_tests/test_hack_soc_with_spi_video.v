@@ -27,11 +27,10 @@ localparam  ROM_ADDRESS_WIDTH = 16;
 
 
 // ROM Loading Lines
-wire rom_loader_reset;
 wire rom_loader_load;
 wire [INSTRUCTION_WIDTH-1:0] rom_loader_data;
+wire rom_loader_sck;
 wire rom_loader_ack;
-wire rom_loader_load_received;
 
 
 
@@ -62,8 +61,6 @@ reg run_file_to_rom;
 // );
 
 wire done_loading_rom;
-wire file_to_rom_loader_reset;
-wire file_to_rom_loader_load;
 wire [INSTRUCTION_WIDTH-1:0] file_to_rom_loader_data;
 load_pattern_to_rom #(
         .WORDS_TO_LOAD(256),
@@ -77,11 +74,10 @@ load_pattern_to_rom #(
     .done_loading(done_loading_rom),
 
     // Control lines
-    .rom_loader_reset(rom_loader_reset),
     .rom_loader_load(rom_loader_load),
+	.rom_loader_sck(rom_loader_sck),
     .rom_loader_data(rom_loader_data),
-    .rom_loader_ack(rom_loader_ack),
-    .rom_loader_load_received(rom_loader_load_received)
+    .rom_loader_ack(rom_loader_ack)
 );
 
 
@@ -283,12 +279,11 @@ hack_soc soc(
 
 	// ROM LOADING LINES
 	// inputs
-	.rom_loader_reset(rom_loader_reset),
 	.rom_loader_load(rom_loader_load),
+	.rom_loader_sck(rom_loader_sck),
 	.rom_loader_data(rom_loader_data),
 	// outputs
-	.rom_loader_ack(rom_loader_ack),
-	.rom_loader_load_received(rom_loader_load_received)
+	.rom_loader_ack(rom_loader_ack)
 	
 	);
 
