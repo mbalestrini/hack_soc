@@ -335,7 +335,7 @@ assign hack_inM = (mapping_is_ram_or_vram_address) ? ram_data_out : /* ram & vra
 
 
 assign rom_loading_process = rom_loader_load;
-assign hack_reset = hack_external_reset || (hack_wait_clocks!=0) || reset || !ram_initialized || !rom_initialized || !vram_initialized;
+assign hack_reset = rom_loading_process || hack_external_reset || (hack_wait_clocks!=0) || reset || !ram_initialized || !rom_initialized || !vram_initialized;
 
 
 assign display_rgb = display_active ? pixel_value : 0 ;
@@ -347,7 +347,7 @@ always @(posedge clk ) begin
 		hack_wait_clocks <= 2;
 	end else begin
 
-		if(hack_external_reset) begin
+		if(hack_external_reset || rom_loading_process) begin
 			hack_wait_clocks <= 2;
 		end else if(hack_wait_clocks!=0 && hack_clk_strobe && hack_clk) begin 
 			hack_wait_clocks <= hack_wait_clocks - 2'b1;

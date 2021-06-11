@@ -18,7 +18,8 @@ M=D
 // Loop forever incrementing Memory[6]=Memory[6]+1
 @6
 M=0
+(LOOP)
 @6
 M=M+1
-@8
+@LOOP
 0;JMP

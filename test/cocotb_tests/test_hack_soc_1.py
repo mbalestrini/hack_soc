@@ -28,7 +28,7 @@ async def test_hack_soc(dut):
     dut.ram_sio1_i = 0
     dut.ram_sio2_i = 1
     dut.ram_sio3_i = 0
-
+    dut.rom_loader_load = 0
 
     await reset(dut)
 
