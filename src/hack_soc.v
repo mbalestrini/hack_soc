@@ -91,11 +91,10 @@ module hack_soc (
 
 
 reg [1:0] hack_wait_clocks;
-wire rom_loading_process;
+reg rom_loading_process;
+
 
 wire hack_clk_strobe;
-
-
 hack_clock hack_clock_0(
 	.clk(clk),
 	.reset(reset),
@@ -334,13 +333,21 @@ assign hack_inM = (mapping_is_ram_or_vram_address) ? ram_data_out : /* ram & vra
 					0;
 
 
-assign rom_loading_process = rom_loader_load;
 assign hack_reset = rom_loading_process || hack_external_reset || (hack_wait_clocks!=0) || reset || !ram_initialized || !rom_initialized || !vram_initialized;
 
 
 assign display_rgb = display_active ? pixel_value : 0 ;
 
 
+always @(posedge clk ) begin
+	if(rom_loader_load) begin
+		if(hack_reset || (hack_clk_strobe && hack_clk)) begin
+			rom_loading_process <= 1'b1;
+		end
+	end else begin
+		rom_loading_process <= 1'b0;
+	end
+end
 
 always @(posedge clk ) begin
 	if(reset) begin

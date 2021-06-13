@@ -208,7 +208,7 @@ always @(posedge clk ) begin
                 if(!initialized) begin
                     current_state <= state_set_SQI_mode;
                     state_counter <= 0;
-                end else if(!busy && start_read) begin
+                end else if(start_read) begin
                     current_state <= state_read;
                     state_counter <= 0;
 

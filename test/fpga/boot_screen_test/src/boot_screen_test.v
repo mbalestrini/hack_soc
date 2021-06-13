@@ -100,7 +100,7 @@ module boot_logo(
 	output pixel
 );
 
-localparam SCALE = 2;
+localparam SCALE = 1;
 localparam LOGO_WIDTH = 16*SCALE;
 localparam LOGO_HEIGHT = 19*SCALE;
 localparam LOGO_START_H = (640-LOGO_WIDTH)/2;

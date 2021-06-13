@@ -1,10 +1,10 @@
-// Set first word of the screen to 0x5555
+// Set first word of the screen to 0x53ED
 @21485
 D=A
 @16384
 M=D
 
-// Set Memory[4] = 0x5555
+// Set Memory[4] = 0x53ED
 @4
 M=D
 
