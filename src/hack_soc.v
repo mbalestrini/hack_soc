@@ -138,7 +138,7 @@ rom_stream_loader #(.DATA_WIDTH(INSTRUCTION_WIDTH), .ADDRESS_WIDTH(ROM_ADDRESS_W
 		.clk(clk),
 		.reset(reset),
 		// Loader nets
-		.load(rom_loader_load),
+		.load(rom_loading_process), //rom_loader_load),
 		.input_data(rom_loader_data),
 		.sck(rom_loader_sck),
 		.ack(rom_loader_ack),
