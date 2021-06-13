@@ -321,8 +321,8 @@ assign hack_rom_request = rom_initialized && !rom_busy && hack_clk_strobe && hac
 assign rom_request = rom_loading_process ? rom_loader_request : hack_rom_request;
 
 assign rom_write_enable = (rom_loading_process);// && rom_loader_request);
-assign ram_write_enable = hack_clk_strobe && hack_writeM && mapping_is_ram_or_vram_address;
-assign vram_write_enable = hack_clk_strobe && hack_writeM && mapping_is_vram_address;
+assign ram_write_enable = !hack_reset && hack_clk_strobe && hack_writeM && mapping_is_ram_or_vram_address;
+assign vram_write_enable = !hack_reset && hack_clk_strobe && hack_writeM && mapping_is_vram_address;
 
 assign rom_address = rom_loading_process ? rom_loader_output_address : hack_pc;
 assign vram_write_address = hack_addressM[VRAM_ADDRESS_WIDTH-1:0];
