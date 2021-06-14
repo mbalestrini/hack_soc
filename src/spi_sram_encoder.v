@@ -15,7 +15,7 @@ module spi_sram_encoder #(
 	// Parallel memory nets 
 	input wire [ADDRESS_WIDTH-1:0] address,
 	input wire write_enable,
-	output wire [WORD_WIDTH-1:0] data_in,
+	output reg [WORD_WIDTH-1:0] data_in,
 	input wire [WORD_WIDTH-1:0] data_out,
 
 
@@ -117,10 +117,6 @@ assign busy = (current_state!=state_idle);
 
 
 
-assign data_in = input_buffer;
-
-
-
 
 
 always @(posedge clk) begin
@@ -140,6 +136,7 @@ always @(posedge clk) begin
 		output_buffer[OUTPUT_BUFFER_WIDTH-1:OUTPUT_BUFFER_WIDTH-4] <= 4'b1111;
 		
 		input_buffer <= 0;
+		data_in <= 0;
 
 		toggled_sram_sck <= 0;
 	end else begin
@@ -283,6 +280,9 @@ always @(posedge clk) begin
 						if(output_bits_left == BITS_PER_CLK) begin
 							current_state <= state_idle;
 
+							// On write I should also output the value we just wrote
+							data_in <= request_data_out;
+
 							// sram deselected
 							sram_cs_n <= 1'b1;
 							
@@ -291,9 +291,7 @@ always @(posedge clk) begin
 							output_buffer <= output_buffer << BITS_PER_CLK;
 							output_bits_left <= output_bits_left - BITS_PER_CLK;							
 
-							// On write I should also output the value we just wrote
-							input_buffer <= request_data_out;
-
+							
 						end					
 					end
 
@@ -304,6 +302,9 @@ always @(posedge clk) begin
 
 						// Last bits of data?
 						if(input_bits_left == BITS_PER_CLK) begin
+
+							data_in <= {input_buffer[INPUT_BUFFER_WIDTH-BITS_PER_CLK-1:0] , sio_i};
+
 							current_state <= state_idle;
 
 							// sram deselected
