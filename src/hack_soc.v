@@ -159,6 +159,16 @@ wire ram_busy;
 wire ram_initialized;
 wire ram_write_enable;
 wire [WORD_WIDTH-1:0] ram_data_out;
+
+reg synch_hack_writeM;
+reg [WORD_WIDTH-1:0] synch_hack_outM;
+
+always @(posedge hack_clk ) begin
+	synch_hack_writeM <= hack_writeM;
+	synch_hack_outM <= hack_outM;
+end
+
+
 spi_sram_encoder #(	.WORD_WIDTH(WORD_WIDTH), .ADDRESS_WIDTH(RAM_ADDRESS_WIDTH) )
 		ram_encoder_0
 		(
@@ -172,7 +182,7 @@ spi_sram_encoder #(	.WORD_WIDTH(WORD_WIDTH), .ADDRESS_WIDTH(RAM_ADDRESS_WIDTH) )
 			.address(hack_addressM),
 			.write_enable(ram_write_enable),
 			.data_in(ram_data_out),
-			.data_out(hack_outM),
+			.data_out(synch_hack_outM),
 
 			.sram_cs_n(ram_cs_n),
 			.sram_sck(ram_sck),
@@ -199,6 +209,9 @@ wire rom_busy;
 wire rom_initialized;
 wire rom_write_enable;
 // wire [INSTRUCTION_WIDTH-1:0] rom_data_out = {INSTRUCTION_WIDTH{1'b0}};
+
+
+
 spi_sram_encoder #(	.WORD_WIDTH(INSTRUCTION_WIDTH), .ADDRESS_WIDTH(ROM_ADDRESS_WIDTH) )
 		rom_encoder_0
 		(
@@ -321,7 +334,7 @@ assign hack_rom_request = rom_initialized && !rom_busy && hack_clk_strobe && hac
 assign rom_request = rom_loading_process ? rom_loader_request : hack_rom_request;
 
 assign rom_write_enable = (rom_loading_process);// && rom_loader_request);
-assign ram_write_enable = !hack_reset && hack_clk_strobe && hack_writeM && mapping_is_ram_or_vram_address;
+assign ram_write_enable = !hack_reset && synch_hack_writeM && mapping_is_ram_or_vram_address;
 assign vram_write_enable = !hack_reset && hack_clk_strobe && hack_writeM && mapping_is_vram_address;
 
 assign rom_address = rom_loading_process ? rom_loader_output_address : hack_pc;

@@ -71,6 +71,12 @@ always @(posedge clk) begin
 end
 
 always @(posedge clk) begin
+	output_data <= input_data;
+
+
+end
+
+always @(posedge clk) begin
 	if(reset) begin		
 		rom_request <= 1'b0;
 		writing <= 1'b0;		
@@ -83,7 +89,6 @@ always @(posedge clk) begin
 			// Finished writing to ROM
 			writing <= 1'b0;			
 		end else if(load && !writing && rom_receive_ready && !wait_fall_clk && sck) begin
-			output_data <= input_data;
 			rom_request <= 1'b1;	
 		end
 	end

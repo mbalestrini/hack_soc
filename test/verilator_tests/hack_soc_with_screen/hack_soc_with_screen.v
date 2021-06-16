@@ -18,10 +18,15 @@ module hack_soc_with_screen (
 
 // localparam  ROM_FILE = "../hack_programs/test_assignment_and_jump.hack8";
 // localparam  ROM_FILE = "../../hack_programs/FIllMemAndCheck_to5.hack8";
-localparam  ROM_FILE = "../../hack_programs/terminal2.hack8", FILE_LINES = 1000;
 // localparam  ROM_FILE = "../hack_programs/FillVram_to16390.hack8";
 // localparam  ROM_FILE = "../hack_programs/FillVram_to24574.hack8";
 //  localparam  ROM_FILE = "../../hack_programs/dibuja_esquinas_sin_clear.hack8", FILE_LINES = 110;
+//localparam  ROM_FILE = "../../hack_programs/terminal2.hack8", FILE_LINES = 1000;
+// localparam  ROM_FILE = "../../hack_programs/beatles_by_Diogo.hack8", FILE_LINES = 31981;
+// localparam  ROM_FILE = "../../hack_programs/beatles_by_Diogo_loop.hack8", FILE_LINES = 31981;
+ localparam  ROM_FILE = "../../hack_programs/Pong.hack8", FILE_LINES = 54967;
+
+
 // localparam	FILE_LINES = 100;
 
 localparam  INSTRUCTION_WIDTH = 16;
@@ -30,11 +35,10 @@ localparam HACK_GPIO_WIDTH = 16;
 
 
 // ROM Loading Lines
-wire rom_loader_reset;
 wire rom_loader_load;
+wire rom_loader_sck;
 wire [INSTRUCTION_WIDTH-1:0] rom_loader_data;
 wire rom_loader_ack;
-wire rom_loader_load_received;
 
 
 
@@ -57,11 +61,11 @@ load_file_to_rom #(
     .done_loading(done_loading_rom),
 
     // Control lines
-    .rom_loader_reset(rom_loader_reset),
     .rom_loader_load(rom_loader_load),
+    .rom_loader_sck(rom_loader_sck),
     .rom_loader_data(rom_loader_data),
-    .rom_loader_ack(rom_loader_ack),
-    .rom_loader_load_received(rom_loader_load_received)
+    .rom_loader_ack(rom_loader_ack)
+
 );
 
 
@@ -219,13 +223,13 @@ hack_soc soc(
 
 	// ROM LOADING LINES
 	// inputs
-	.rom_loader_reset(rom_loader_reset),
 	.rom_loader_load(rom_loader_load),
 	.rom_loader_data(rom_loader_data),
+	.rom_loader_sck(rom_loader_sck),
 	// outputs
 	.rom_loader_ack(rom_loader_ack),
-	.rom_loader_load_received(rom_loader_load_received),
-
+	
+	
 
 	// Keyboard
 	.keycode(keycode),

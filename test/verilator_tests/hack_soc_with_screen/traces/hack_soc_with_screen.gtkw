@@ -1,18 +1,19 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Wed Jun  9 02:04:19 2021
+[*] Mon Jun 14 11:37:07 2021
 [*]
 [dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/verilator_tests/hack_soc_with_screen/traces/hack_soc_with_screen.vcd"
-[dumpfile_mtime] "Wed Jun  9 02:03:42 2021"
-[dumpfile_size] 250560616
+[dumpfile_mtime] "Mon Jun 14 11:30:07 2021"
+[dumpfile_size] 853629054
 [savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/verilator_tests/hack_soc_with_screen/traces/hack_soc_with_screen.gtkw"
-[timestart] 5232610
+[timestart] 7407880
 [size] 1920 1147
 [pos] -1 -1
-*-12.000000 5247120 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-13.000000 7416710 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] TOP.
 [treeopen] TOP.hack_soc_with_screen.
 [treeopen] TOP.hack_soc_with_screen.soc.
+[treeopen] TOP.hack_soc_with_screen.soc.spi_video_ram_1.
 [sst_width] 423
 [signals_width] 294
 [sst_expanded] 1
@@ -21,6 +22,29 @@
 TOP.hack_soc_with_screen.clk
 TOP.reset
 TOP.hack_soc_with_screen.soc.hack_clk
+TOP.hack_soc_with_screen.soc.hack_reset
+@22
+TOP.hack_soc_with_screen.soc.hack_pc[14:0]
+@24
+TOP.hack_soc_with_screen.soc.hack_instruction[15:0]
+@22
+TOP.hack_soc_with_screen.soc.cpu.addressM[14:0]
+@28
+TOP.hack_soc_with_screen.soc.hack_writeM
+@2029
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_2_states.gtkw
+TOP.hack_soc_with_screen.soc.spi_video_ram_1.current_state[2:0]
+@24
+TOP.hack_soc_with_screen.soc.spi_video_ram_1.state_sram_clk_counter[8:0]
+TOP.hack_soc_with_screen.soc.spi_video_ram_1.state_counter[10:0]
+@28
+TOP.hack_soc_with_screen.soc.spi_video_ram_1.fifo_full
+TOP.hack_soc_with_screen.soc.spi_video_ram_1.fifo_empty
+@22
+TOP.hack_soc_with_screen.soc.spi_video_ram_1.write_fifo.items_count[7:0]
+@28
+TOP.hack_soc_with_screen.soc.spi_video_ram_1.fifo_read_request
+TOP.hack_soc_with_screen.soc.spi_video_ram_1.fifo_write_request
 @800200
 -display
 @28
@@ -28,9 +52,10 @@ TOP.display_hsync
 TOP.display_vsync
 TOP.display_rgb
 TOP.hack_soc_with_screen.soc.display_active
-@29
 TOP.hack_soc_with_screen.soc.spi_video_ram_1.pixel_out
 @24
+TOP.hack_soc_with_screen.soc.video_generator_1.o_x[9:0]
+TOP.hack_soc_with_screen.soc.video_generator_1.o_y[9:0]
 TOP.hack_soc_with_screen.soc.video_generator_1.h_count[9:0]
 TOP.hack_soc_with_screen.soc.video_generator_1.v_count[9:0]
 @1000200

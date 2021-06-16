@@ -36,66 +36,66 @@ async def test_hack_soc(dut):
 
     #1110 0011 0000 1000
 
-    # WAIT RAM READ
-    while dut.ram_encoder_0.current_state!=0b100 :
-        await ClockCycles(dut.clk, 1)
-    # dummy byte
-    await ClockCycles(dut.clk, 3)
-    # first nibble
-    dut.ram_sio0_i = 0
-    dut.ram_sio1_i = 0
-    dut.ram_sio2_i = 1
-    dut.ram_sio3_i = 0
+    # # WAIT RAM READ
+    # while dut.ram_encoder_0.current_state!=0b011 :
+    #     await ClockCycles(dut.clk, 1)
+    # # dummy byte
+    # await ClockCycles(dut.clk, 3)
+    # # first nibble
+    # dut.ram_sio0_i = 0
+    # dut.ram_sio1_i = 0
+    # dut.ram_sio2_i = 1
+    # dut.ram_sio3_i = 0
 
-    dut.rom_sio0_i = 0
-    dut.rom_sio1_i = 0
-    dut.rom_sio2_i = 1
-    dut.rom_sio3_i = 0
+    # dut.rom_sio0_i = 0
+    # dut.rom_sio1_i = 0
+    # dut.rom_sio2_i = 1
+    # dut.rom_sio3_i = 0
     
-    await ClockCycles(dut.clk, 2)
-    # second nibble
-    dut.ram_sio0_i = 1
-    dut.ram_sio1_i = 1
-    dut.ram_sio2_i = 0
-    dut.ram_sio3_i = 0
+    # await ClockCycles(dut.clk, 2)
+    # # second nibble
+    # dut.ram_sio0_i = 1
+    # dut.ram_sio1_i = 1
+    # dut.ram_sio2_i = 0
+    # dut.ram_sio3_i = 0
     
-    dut.rom_sio0_i = 0
-    dut.rom_sio1_i = 0
-    dut.rom_sio2_i = 0
-    dut.rom_sio3_i = 0
+    # dut.rom_sio0_i = 0
+    # dut.rom_sio1_i = 0
+    # dut.rom_sio2_i = 0
+    # dut.rom_sio3_i = 0
     
-    await ClockCycles(dut.clk, 2)
-    # third nibble
-    dut.ram_sio0_i = 0
-    dut.ram_sio1_i = 1
-    dut.ram_sio2_i = 0
-    dut.ram_sio3_i = 0
+    # await ClockCycles(dut.clk, 2)
+    # # third nibble
+    # dut.ram_sio0_i = 0
+    # dut.ram_sio1_i = 1
+    # dut.ram_sio2_i = 0
+    # dut.ram_sio3_i = 0
     
-    dut.rom_sio0_i = 0
-    dut.rom_sio1_i = 0
-    dut.rom_sio2_i = 0
-    dut.rom_sio3_i = 0
+    # dut.rom_sio0_i = 0
+    # dut.rom_sio1_i = 0
+    # dut.rom_sio2_i = 0
+    # dut.rom_sio3_i = 0
     
-    await ClockCycles(dut.clk, 2)
-    # fourth nibble
-    dut.ram_sio0_i = 1
-    dut.ram_sio1_i = 0
-    dut.ram_sio2_i = 0
-    dut.ram_sio3_i = 0
+    # await ClockCycles(dut.clk, 2)
+    # # fourth nibble
+    # dut.ram_sio0_i = 1
+    # dut.ram_sio1_i = 0
+    # dut.ram_sio2_i = 0
+    # dut.ram_sio3_i = 0
     
-    dut.rom_sio0_i = 0
-    dut.rom_sio1_i = 0
-    dut.rom_sio2_i = 0
-    dut.rom_sio3_i = 0
+    # dut.rom_sio0_i = 0
+    # dut.rom_sio1_i = 0
+    # dut.rom_sio2_i = 0
+    # dut.rom_sio3_i = 0
     
 
 
-    await FallingEdge(dut.ram_busy)
+    # await FallingEdge(dut.ram_busy)
 
-    dut.rom_sio0_i = 0
-    dut.rom_sio1_i = 0
-    dut.rom_sio2_i = 0
-    dut.rom_sio3_i = 0
+    # dut.rom_sio0_i = 0
+    # dut.rom_sio1_i = 0
+    # dut.rom_sio2_i = 0
+    # dut.rom_sio3_i = 0
     
 
 

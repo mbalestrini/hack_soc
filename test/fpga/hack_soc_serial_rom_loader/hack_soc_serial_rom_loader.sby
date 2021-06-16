@@ -1,0 +1,40 @@
+[tasks]
+task_cover
+task_prove
+
+[options]
+task_prove: mode prove
+task_prove: depth 60
+
+task_cover: mode cover
+task_cover: depth 120
+
+
+[engines]
+smtbmc
+
+[script]
+read -formal hack_soc_serial_rom_loader.v
+read -sv debounce.v pll_12___25_125.v uart.v hack_soc.v dmux8way.v hack_alu.v hack_clock.v hack_cpu.v pc.v register.v spi_sram_encoder.v rom_stream_loader.v video_signal_generator_640x480.v spi_video_ram_2.v vram_write_fifo.v
+prep -top hack_soc_serial_rom_loader
+
+[files]
+src/hack_soc_serial_rom_loader.v
+src/debounce.v  
+formal_src/pll_12___25_125.v
+src/uart.v
+../../../src/rom_stream_loader.v
+../../../src/dmux8way.v
+../../../src/hack_alu.v
+../../../src/hack_clock.v
+../../../src/hack_cpu.v
+../../../src/hack_soc.v
+../../../src/pc.v
+../../../src/register.v
+../../../src/spi_sram_encoder.v
+../../../src/video_signal_generator_640x480.v
+../../../src/spi_video_ram_2.v
+../../../src/vram_write_fifo.v
+includes/params.v ../../../src/includes/params.v 
+
+

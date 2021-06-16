@@ -164,12 +164,12 @@ int main(int argc, char ** argv)
 	Verilated::commandArgs(argc, argv);
 	top = new Vhack_soc_with_screen;
 
-	
-	// Verilated::traceEverOn(true);
-	// tracer = new VerilatedVcdC;
-	// top->trace(tracer, 99); 
-	// tracer->open(TRACE_FILE);
-
+	/*
+	Verilated::traceEverOn(true);
+	tracer = new VerilatedVcdC;
+	top->trace(tracer, 99); 
+	tracer->open(TRACE_FILE);
+	//*/
 
 	top->reset = 1;
 	tick();	

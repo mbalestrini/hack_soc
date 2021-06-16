@@ -1,17 +1,18 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Sat May 29 00:09:33 2021
+[*] Mon Jun 14 18:07:34 2021
 [*]
 [dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_spi_sram_encoder.vcd"
-[dumpfile_mtime] "Sat May 29 00:01:11 2021"
-[dumpfile_size] 2959
+[dumpfile_mtime] "Mon Jun 14 18:05:06 2021"
+[dumpfile_size] 7149
 [savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_spi_sram_encoder.gtwk"
 [timestart] 0
 [size] 1920 1147
-[pos] -9 -23
-*-26.000000 320000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
-[sst_width] 213
-[signals_width] 264
+[pos] -1 -1
+*-28.000000 1015000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] spi_sram_encoder.
+[sst_width] 315
+[signals_width] 359
 [sst_expanded] 1
 [sst_vpaned_height] 344
 @28
@@ -26,21 +27,32 @@ spi_sram_encoder.request
 spi_sram_encoder.sram_sck
 @28
 spi_sram_encoder.sram_cs_n
-@22
-spi_sram_encoder.sio_o[3:0]
-@28
 spi_sram_encoder.sram_sio_oe
-@22
-spi_sram_encoder.sio_i[3:0]
 @2028
-^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_sram_encoder_states.gtkw
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_2_states.gtkw
 spi_sram_encoder.current_state[2:0]
 @22
+spi_sram_encoder.address[15:0]
 spi_sram_encoder.request_address[15:0]
+spi_sram_encoder.request_data_out[15:0]
 spi_sram_encoder.output_buffer[23:0]
+spi_sram_encoder.input_buffer[15:0]
 spi_sram_encoder.data_in[15:0]
-spi_sram_encoder.input_bits_left[4:0]
 @28
 spi_sram_encoder.initialized
+@22
+spi_sram_encoder.state_counter[6:0]
+@24
+spi_sram_encoder.state_sram_clk_counter[4:0]
+@28
+spi_sram_encoder.transfer_mode[1:0]
+spi_sram_encoder.sram_sio0_o
+spi_sram_encoder.sram_sio1_o
+spi_sram_encoder.sram_sio2_o
+spi_sram_encoder.sram_sio3_o
+spi_sram_encoder.sram_sio0_i
+spi_sram_encoder.sram_sio1_i
+spi_sram_encoder.sram_sio2_i
+spi_sram_encoder.sram_sio3_i
 [pattern_trace] 1
 [pattern_trace] 0

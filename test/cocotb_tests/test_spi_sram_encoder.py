@@ -16,9 +16,9 @@ async def reset(dut):
 @cocotb.test()
 async def test_spi_sram_encoder(dut):	
     clock = Clock(dut.clk, 10, units="us")
-    sram_clock = Clock(dut.sram_sck, 20, units="us")
+    # sram_clock = Clock(dut.sram_sck, 20, units="us")
     cocotb.fork(clock.start())
-    cocotb.fork(sram_clock.start())
+    # cocotb.fork(sram_clock.start())
     dut.request = 0
     await reset(dut)
 
@@ -29,69 +29,71 @@ async def test_spi_sram_encoder(dut):
 
     dut.address = HACK_ADDRESS
     dut.data_out = 0x5432
+    await ClockCycles(dut.clk, 1)
+
     dut.request = 1
     dut.write_enable = 1
 
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.clk, 1)
     await(RisingEdge(dut.busy))
     await ClockCycles(dut.clk, 1)
     # assert(dut.busy)    
 
     dut.request = 0
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.sram_sck, 1)
     # sram chip selected
     assert(dut.sram_cs_n==0)
-    # READ INSTRUCTION HIGH NIBBLE
+    # WRITE INSTRUCTION HIGH NIBBLE
     assert(dut.sio_o==0)
     
-    await ClockCycles(dut.clk, 2)
-    # READ INSTRUCTION LOW NIBBLE
+    await ClockCycles(dut.sram_sck, 1)
+    # WRITE INSTRUCTION LOW NIBBLE
     assert(dut.sio_o==2)
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.sram_sck, 1)
     # ADDRESS BITS [23:20]
     assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>20) & 0xf))
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.sram_sck, 1)
     # ADDRESS BITS [19:16]
     assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>16) & 0xf))
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.sram_sck, 1)
     # ADDRESS BITS [15:12]
     assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>12) & 0xf))
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.sram_sck, 1)
     # ADDRESS BITS [11:8]
     assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>8) & 0xf))
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.sram_sck, 1)
     # ADDRESS BITS [7:4]
     assert(dut.sio_o==((SRAM_MAPPED_ADDRESS>>4) & 0xf))
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.sram_sck, 1)
     # ADDRESS BITS [3:0]
     assert(dut.sio_o==((SRAM_MAPPED_ADDRESS) & 0xf))
 
     
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.sram_sck, 1)
     # DATA BITS [15:12]
     assert(dut.sio_o==0x5)
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.sram_sck, 1)
     # DATA BITS [11:8]
     assert(dut.sio_o==0x4)
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.sram_sck, 1)
     # DATA BITS [7:4]
     assert(dut.sio_o==0x3)
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.sram_sck, 1)
     # DATA BITS [3:0]
     assert(dut.sio_o==0x2)
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.clk, 3)
     # sram disabled
     assert(dut.sram_cs_n==1)
 
@@ -106,15 +108,17 @@ async def test_spi_sram_encoder(dut):
     SRAM_MAPPED_ADDRESS = (HACK_ADDRESS<<1) 
 
     dut.address = 0xFEDC
-    dut.request = 1
-    dut.write_enable = 0
+    await ClockCycles(dut.clk, 1)
 
-    await ClockCycles(dut.clk, 2)
+    dut.write_enable = 0
+    dut.request = 1
+    
+    await ClockCycles(dut.clk, 1)
     assert(dut.busy)    	
 
     dut.request = 0
 
-    await ClockCycles(dut.clk, 2)
+    await ClockCycles(dut.sram_sck, 1)
     # sram chip selected
     assert(dut.sram_cs_n==0)
 	# READ INSTRUCTION HIGH NIBBLE
@@ -152,23 +156,51 @@ async def test_spi_sram_encoder(dut):
 
     # DUMMY BYTE
     await ClockCycles(dut.clk, 1)
-    dut.sio_i = 0xF
+    # 0xF
+    dut.sram_sio0_i = 1
+    dut.sram_sio1_i = 1
+    dut.sram_sio2_i = 1
+    dut.sram_sio3_i = 1
+
     await ClockCycles(dut.clk, 1)
     await ClockCycles(dut.clk, 1)
-    dut.sio_i = 0xF
+    # 0xF
+    dut.sram_sio0_i = 1
+    dut.sram_sio1_i = 1
+    dut.sram_sio2_i = 1
+    dut.sram_sio3_i = 1
+
     await ClockCycles(dut.clk, 1)
     await ClockCycles(dut.clk, 1)
 
-    dut.sio_i = 0x1
+    # 0x1
+    dut.sram_sio0_i = 1
+    dut.sram_sio1_i = 0
+    dut.sram_sio2_i = 0
+    dut.sram_sio3_i = 0
     await ClockCycles(dut.clk, 2)
-    dut.sio_i = 0x2
+    # 0x2
+    dut.sram_sio0_i = 0
+    dut.sram_sio1_i = 1
+    dut.sram_sio2_i = 0
+    dut.sram_sio3_i = 0
     await ClockCycles(dut.clk, 2)
-    dut.sio_i = 0x3
+    # 0x3
+    dut.sram_sio0_i = 1
+    dut.sram_sio1_i = 1
+    dut.sram_sio2_i = 0
+    dut.sram_sio3_i = 0
+    
     await ClockCycles(dut.clk, 2)
-    dut.sio_i = 0x4
+    # 0x4
+    dut.sram_sio0_i = 0
+    dut.sram_sio1_i = 0
+    dut.sram_sio2_i = 1
+    dut.sram_sio3_i = 0
+    
     await ClockCycles(dut.clk, 2)
 
-    await ClockCycles(dut.clk, 1)
+    await ClockCycles(dut.clk, 2)
     assert(dut.data_in==0x1234)
 
     await ClockCycles(dut.clk, 2)

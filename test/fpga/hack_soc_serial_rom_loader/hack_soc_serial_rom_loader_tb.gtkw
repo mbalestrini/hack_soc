@@ -1,0 +1,82 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Mon Jun 14 08:27:43 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/fpga/hack_soc_serial_rom_loader/hack_soc_serial_rom_loader_tb.vcd"
+[dumpfile_mtime] "Mon Jun 14 08:27:29 2021"
+[dumpfile_size] 222277
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/fpga/hack_soc_serial_rom_loader/hack_soc_serial_rom_loader_tb.gtkw"
+[timestart] 2160000000
+[size] 1920 1147
+[pos] -1 -1
+*-31.000000 12390000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] hack_soc_serial_rom_loader_tb.
+[treeopen] hack_soc_serial_rom_loader_tb.hack_soc_fpga.
+[treeopen] hack_soc_serial_rom_loader_tb.hack_soc_fpga.soc.
+[sst_width] 329
+[signals_width] 272
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.EXTERNAL_CLK
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.reset
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.rom_loader_load
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.rom_loader_sck
+@22
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.rom_loader_data[15:0]
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.soc.rom_loader.current_address[14:0]
+@28
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.serial_received
+hack_soc_serial_rom_loader_tb.rom.CS_N
+hack_soc_serial_rom_loader_tb.rom.IOMode[1:0]
+@c00200
+-rom
+@28
+hack_soc_serial_rom_loader_tb.rom.InstructionREAD
+hack_soc_serial_rom_loader_tb.rom.InstructionWRITE
+hack_soc_serial_rom_loader_tb.rom.InstructionEQIO
+hack_soc_serial_rom_loader_tb.rom.SCK
+@800200
+-mem
+@22
+hack_soc_serial_rom_loader_tb.rom.MemoryByte00000[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte00001[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte00002[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte00003[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte00004[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte00005[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte00006[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte00007[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte00008[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte00009[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte0000A[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte0000B[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte0000C[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte0000D[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte0000E[7:0]
+hack_soc_serial_rom_loader_tb.rom.MemoryByte0000F[7:0]
+@1000200
+-mem
+@1401200
+-rom
+@28
+hack_soc_serial_rom_loader_tb.BTN1
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.debounced_btn1
+@800200
+-hack_cpu
+@28
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.soc.hack_clk
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.soc.hack_reset
+@23
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.soc.hack_pc[14:0]
+@22
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.soc.hack_instruction[15:0]
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.soc.hack_inM[15:0]
+@28
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.soc.hack_writeM
+@22
+hack_soc_serial_rom_loader_tb.hack_soc_fpga.soc.hack_outM[15:0]
+@1000200
+-hack_cpu
+[pattern_trace] 1
+[pattern_trace] 0

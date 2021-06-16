@@ -74,7 +74,7 @@ async def test_hack_soc_plus_rom_loader(dut):
     await FallingEdge(dut.soc.hack_reset);
 
     # Wait for program counter to reach 6 (
-    while (int(dut.soc.hack_pc.value) < 6):
+    while (int(dut.soc.hack_pc.value) < 7):
         await ClockCycles(dut.soc.hack_clk, 1)
 
     # Read Hack Memory[1]

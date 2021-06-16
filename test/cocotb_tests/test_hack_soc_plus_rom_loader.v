@@ -8,7 +8,7 @@ module test_hack_soc_plus_rom_loader (
 
 
 
-localparam  ROM_FILE = "hack_programs/test_assignment_and_jump.hack";
+localparam  ROM_FILE = "hack_programs/test_assignment_and_jump.hack8";
 localparam	FILE_LINES = 24;
 localparam  INSTRUCTION_WIDTH = 16;
 localparam  ROM_ADDRESS_WIDTH = 16;

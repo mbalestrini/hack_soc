@@ -1,23 +1,22 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Sun May 30 02:50:12 2021
+[*] Mon Jun 14 14:41:57 2021
 [*]
 [dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_plus_rom_loader.vcd"
-[dumpfile_mtime] "Sun May 30 02:49:42 2021"
-[dumpfile_size] 3908300
+[dumpfile_mtime] "Mon Jun 14 14:23:25 2021"
+[dumpfile_size] 79294254
 [savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_plus_rom_loader.gtwk"
-[timestart] 0
+[timestart] 8448000000
 [size] 1920 1147
 [pos] -1 -1
-*-31.000000 235690000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-29.000000 9441000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test_hack_soc_plus_rom_loader.
 [treeopen] test_hack_soc_plus_rom_loader.soc.
+[treeopen] test_hack_soc_plus_rom_loader.soc.cpu.
 [sst_width] 226
 [signals_width] 366
 [sst_expanded] 1
 [sst_vpaned_height] 344
-@22
-test_hack_soc_plus_rom_loader.soc.debug_gpio[15:0]
 @28
 test_hack_soc_plus_rom_loader.clk
 test_hack_soc_plus_rom_loader.reset
@@ -26,16 +25,34 @@ test_hack_soc_plus_rom_loader.soc.hack_reset
 test_hack_soc_plus_rom_loader.hack_external_reset
 @800200
 -HACK_SOC
-@22
+@25
 test_hack_soc_plus_rom_loader.soc.hack_pc[14:0]
+@22
 test_hack_soc_plus_rom_loader.soc.hack_instruction[15:0]
+@28
+test_hack_soc_plus_rom_loader.soc.cpu.PC.load
+@22
 test_hack_soc_plus_rom_loader.soc.hack_addressM[14:0]
 test_hack_soc_plus_rom_loader.soc.hack_outM[15:0]
 test_hack_soc_plus_rom_loader.soc.hack_inM[15:0]
 @28
 test_hack_soc_plus_rom_loader.soc.hack_writeM
+@22
++{DReg} test_hack_soc_plus_rom_loader.soc.cpu.DReg.data[15:0]
+@800200
+-Areg
+@22
++{AReg} test_hack_soc_plus_rom_loader.soc.cpu.AReg.data[15:0]
+@28
+test_hack_soc_plus_rom_loader.soc.cpu.AReg.load
+@22
+test_hack_soc_plus_rom_loader.soc.cpu.AReg.in[15:0]
+test_hack_soc_plus_rom_loader.soc.cpu.AReg.out[15:0]
+@1000200
+-Areg
+@28
 test_hack_soc_plus_rom_loader.soc.rom_write_enable
-@23
+@22
 test_hack_soc_plus_rom_loader.soc.gpio[15:0]
 @1000200
 -HACK_SOC

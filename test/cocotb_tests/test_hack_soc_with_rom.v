@@ -7,7 +7,7 @@ module test_hack_soc_with_rom(
 
 	);
 
-parameter ROM_FILE = "hack_programs/test_assignment_and_jump.hack";
+parameter ROM_FILE = "hack_programs/test_assignment_and_jump.hack8";
 // parameter ROM_FILE = "hack_programs/counter_loop.hack";
 //parameter ROM_FILE = "hack_programs/zero_op.hack";
 

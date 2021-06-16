@@ -34,6 +34,8 @@ async def test_encoder_with_23LC2014_tb(dut):
     dut.hack_addressM = 0xFEDC
     dut.hack_writeM = 1
     dut.hack_outM = 0x1234
+    await(ClockCycles(dut.clk, 1))
+
     dut.request = 1
 
     await(RisingEdge(dut.busy))
@@ -113,6 +115,8 @@ async def test_encoder_with_23LC2014_tb(dut):
     dut.hack_addressM = 0xFEDC
     dut.hack_writeM = 0
     dut.hack_outM = 0
+    await(ClockCycles(dut.clk, 1))
+
     dut.request = 1
     
 

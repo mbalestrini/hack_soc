@@ -74,6 +74,9 @@ async def test_rom_loader_with_spi_encoder(dut):
     # Write first batch
     for value in output_data:
         dut.manual_rom_loader_data <= value
+
+        await ClockCycles(dut.clk, 1)
+
         dut.manual_rom_loader_sck <= 1
         await ClockCycles(dut.clk, 1)
         await with_timeout(RisingEdge(dut.rom_loader_ack), 250, "ms")
@@ -90,6 +93,9 @@ async def test_rom_loader_with_spi_encoder(dut):
     # Write second batch    
     for value in output_data:        
         dut.manual_rom_loader_data <= value
+
+        await ClockCycles(dut.clk, 1)
+
         dut.manual_rom_loader_sck <= 1
 
         await ClockCycles(dut.clk, 1)

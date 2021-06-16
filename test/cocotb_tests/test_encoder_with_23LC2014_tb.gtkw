@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Tue Jun  8 22:48:48 2021
+[*] Mon Jun 14 18:51:12 2021
 [*]
 [dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_encoder_with_23LC2014_tb.vcd"
-[dumpfile_mtime] "Tue Jun  8 22:48:09 2021"
-[dumpfile_size] 12214
+[dumpfile_mtime] "Mon Jun 14 18:49:37 2021"
+[dumpfile_size] 15296
 [savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_encoder_with_23LC2014_tb.gtkw"
 [timestart] 0
 [size] 1920 1147
 [pos] -9 -23
-*-28.000000 577000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-28.000000 80000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] encoder_with_23LC2014_tb.
 [treeopen] encoder_with_23LC2014_tb._spi_sram_encoder.
 [sst_width] 323
@@ -20,10 +20,8 @@
 encoder_with_23LC2014_tb.clk
 encoder_with_23LC2014_tb.initialized
 encoder_with_23LC2014_tb.reset
-@22
-encoder_with_23LC2014_tb._spi_sram_encoder.initializing_step[4:0]
 @2028
-^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_sram_encoder_states.gtkw
+^2 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_2_states.gtkw
 encoder_with_23LC2014_tb._spi_sram_encoder.current_state[2:0]
 @28
 encoder_with_23LC2014_tb._spi_sram_encoder.clk
@@ -42,7 +40,6 @@ encoder_with_23LC2014_tb._spi_sram_encoder.sram_cs_n
 encoder_with_23LC2014_tb._spi_sram_encoder.sram_sio_oe
 @22
 encoder_with_23LC2014_tb._spi_sram_encoder.sio_o[3:0]
-encoder_with_23LC2014_tb._spi_sram_encoder.sio_i[3:0]
 @28
 encoder_with_23LC2014_tb.sram_sio0
 encoder_with_23LC2014_tb.sram_sio1
@@ -73,7 +70,7 @@ encoder_with_23LC2014_tb._23ml1024.InstructionEDIO
 encoder_with_23LC2014_tb._23ml1024.InstructionRSTIO
 encoder_with_23LC2014_tb._23ml1024.InstructionWRITE
 encoder_with_23LC2014_tb._23ml1024.InstructionRDMR
-@c00201
+@c00200
 -MEM
 @22
 encoder_with_23LC2014_tb._23ml1024.MemoryByte00000[7:0]
@@ -86,7 +83,7 @@ encoder_with_23LC2014_tb._23ml1024.MemoryByte00006[7:0]
 encoder_with_23LC2014_tb._23ml1024.MemoryByte00007[7:0]
 encoder_with_23LC2014_tb._23ml1024.MemoryByte00008[7:0]
 encoder_with_23LC2014_tb._23ml1024.MemoryByte00009[7:0]
-@1401201
+@1401200
 -MEM
 [pattern_trace] 1
 [pattern_trace] 0
