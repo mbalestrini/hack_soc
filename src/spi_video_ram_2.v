@@ -162,13 +162,13 @@ wire [1:0] temp_pixel_index = ~(display_hpos[1:0]);
 // Squares background:
 // wire background = display_vpos[3] || display_hpos[3]
 // Frame background:
-wire background =   (
-                    (display_vpos==(HACK_SCREEN_V_OFFSET-1) & display_hpos[0]) || 
-                    (display_vpos==(HACK_SCREEN_HEIGHT+HACK_SCREEN_V_OFFSET) & ~display_hpos[0]) || 
-                    (display_hpos==(HACK_SCREEN_H_OFFSET-1) & display_vpos[0]) || 
-                    (display_hpos==(HACK_SCREEN_H_OFFSET+HACK_SCREEN_WIDTH) & ~display_vpos[0])
-                    );
-// wire background = 0;
+// wire background =   (
+//                     (display_vpos==(HACK_SCREEN_V_OFFSET-1) & display_hpos[0]) || 
+//                     (display_vpos==(HACK_SCREEN_HEIGHT+HACK_SCREEN_V_OFFSET) & ~display_hpos[0]) || 
+//                     (display_hpos==(HACK_SCREEN_H_OFFSET-1) & display_vpos[0]) || 
+//                     (display_hpos==(HACK_SCREEN_H_OFFSET+HACK_SCREEN_WIDTH) & ~display_vpos[0])
+//                     );
+wire background = 0;
 
 wire pixel_out = display_active ? 
                 (is_active_hack_line & is_active_hack_col) ? ~read_value[temp_pixel_index] : background
