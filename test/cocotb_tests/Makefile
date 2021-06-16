@@ -80,6 +80,13 @@ test_hack_soc_bug_instructions:
 	! grep failure results.xml
 
 
+test_hack_soc_gpio:
+	rm -rf sim_build/
+	mkdir sim_build/
+	iverilog -o sim_build/sim.vvp -s test_hack_soc_gpio -s dump -g2012 -I $(PROJECT_SOURCE_PATH) $(PROJECT_SOURCE_PATH)/*.v dump_test_hack_soc_gpio.v test_hack_soc_gpio.v rom_23LC1024.v ../imported_modules/23LC1024.v 
+	MODULE=test_hack_soc_gpio vvp -M $$(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus sim_build/sim.vvp
+	! grep failure results.xml
+
 
 
 
@@ -121,3 +128,5 @@ show_hack_soc_program:
 show_hack_soc_bug_instructions:
 	gtkwave test_hack_soc_bug_instructions.vcd test_hack_soc_bug_instructions.gtwk	
 
+show_hack_soc_gpio:
+	gtkwave test_hack_soc_gpio.vcd test_hack_soc_gpio.gtwk	

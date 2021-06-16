@@ -1,0 +1,39 @@
+[*]
+[*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
+[*] Wed Jun 16 03:32:17 2021
+[*]
+[dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_gpio.vcd"
+[dumpfile_mtime] "Wed Jun 16 03:29:36 2021"
+[dumpfile_size] 682084
+[savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_gpio.gtwk"
+[timestart] 0
+[size] 1920 1147
+[pos] -9 -23
+*-31.000000 7020000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] test_hack_soc_gpio.
+[sst_width] 213
+[signals_width] 243
+[sst_expanded] 1
+[sst_vpaned_height] 344
+@28
+test_hack_soc_gpio.clk
+test_hack_soc_gpio.reset
+@800200
+-HACK
+@29
+test_hack_soc_gpio.soc.hack_reset
+@22
+test_hack_soc_gpio.soc.hack_inM[15:0]
+test_hack_soc_gpio.soc.hack_instruction[15:0]
+test_hack_soc_gpio.soc.hack_outM[15:0]
+test_hack_soc_gpio.soc.hack_pc[14:0]
+@28
+test_hack_soc_gpio.soc.hack_clk
+test_hack_soc_gpio.soc.hack_writeM
+@1000200
+-HACK
+@22
+test_hack_soc_gpio.soc.gpio_i[3:0]
+test_hack_soc_gpio.soc.gpio_o[3:0]
+[pattern_trace] 1
+[pattern_trace] 0

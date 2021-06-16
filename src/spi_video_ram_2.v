@@ -64,7 +64,7 @@ module spi_video_ram_2 (
 `include "includes/params.v"
 
 // 23LC1024 Address width
-localparam signed CLKS_BEFORE_TRIGGER = 42; //46;  // 26? if we use the fast version of the read instruction  
+localparam signed CLKS_BEFORE_TRIGGER = 46; //42;  // 26? if we use the fast version of the read instruction  
 // localparam SRAM_ADDRESS_WIDTH = 24;
 localparam OUTPUT_BUFFER_WIDTH = SRAM_ADDRESS_WIDTH;
 localparam INPUT_BUFFER_WIDTH = 4;

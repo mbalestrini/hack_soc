@@ -67,7 +67,8 @@ module hack_soc (
 	input [7:0] keycode,
 
 	// ** GPIO ** //
-	output reg [HACK_GPIO_WIDTH-1:0] gpio,
+	input  		[HACK_GPIO_I_WIDTH-1:0] gpio_i,
+	output reg 	[HACK_GPIO_O_WIDTH-1:0] gpio_o,
 
 
 	// ROM LOADING LINES
@@ -326,7 +327,8 @@ wire mapping_is_ram_address = hack_addressM < HACK_ADDRESS_VRAM_START;
 wire mapping_is_vram_address = (hack_addressM >= HACK_ADDRESS_VRAM_START) && (hack_addressM <= HACK_ADDRESS_VRAM_END);
 wire mapping_is_ram_or_vram_address = hack_addressM <= HACK_ADDRESS_VRAM_END;
 wire mapping_is_keyboard_address = (hack_addressM==HACK_ADDRESS_KEYBOARD);
-wire mapping_is_gpio_address = (hack_addressM==HACK_ADDRESS_GPIO);
+wire mapping_is_gpio_i_address = (hack_addressM==HACK_ADDRESS_GPIO_I);
+wire mapping_is_gpio_o_address = (hack_addressM==HACK_ADDRESS_GPIO_O);
 
 
 assign ram_request = !hack_reset && ram_initialized && !ram_busy && hack_clk_strobe && hack_clk;
@@ -342,7 +344,8 @@ assign vram_write_address = hack_addressM[VRAM_ADDRESS_WIDTH-1:0];
 
 assign hack_inM = (mapping_is_ram_or_vram_address) ? ram_data_out : /* ram & vram */
 					(hack_addressM == HACK_ADDRESS_KEYBOARD) ? { {(WORD_WIDTH-8){1'b0}}, keycode} :  /*keyboard*/
-					(hack_addressM == HACK_ADDRESS_GPIO) ? gpio : /* GPIO */
+					mapping_is_gpio_i_address ? { {(WORD_WIDTH-HACK_GPIO_O_WIDTH){1'b0}},gpio_i_stored} : /* GPIO_I */
+					mapping_is_gpio_o_address ? { {(WORD_WIDTH-HACK_GPIO_O_WIDTH){1'b0}}, gpio_o} : /* GPIO_O */
 					0;
 
 
@@ -379,13 +382,25 @@ end
 
 
 
-// GPIO
+// GPIO_O
 always @(posedge hack_clk) begin
 	if(hack_reset) begin
-		gpio <= 0;
+		gpio_o <= 0;
 	end else begin
-		if(hack_addressM==HACK_ADDRESS_GPIO && hack_writeM) begin
-			gpio <= hack_outM;
+		if(mapping_is_gpio_o_address && hack_writeM) begin
+			gpio_o <= hack_outM[HACK_GPIO_O_WIDTH-1:0];
+		end
+	end
+end
+
+// GPIO_I
+reg [HACK_GPIO_I_WIDTH-1:0] gpio_i_stored;
+always @(posedge hack_clk) begin
+	if(hack_reset) begin
+		gpio_i_stored <= 0;
+	end else begin
+		if(mapping_is_gpio_i_address && ~hack_writeM) begin
+			gpio_i_stored <= gpio_i;
 		end
 	end
 end

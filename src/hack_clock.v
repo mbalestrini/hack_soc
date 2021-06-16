@@ -20,7 +20,7 @@ always @(posedge clk) begin
     end else begin
         counter <= counter + 1'b1;
         strobe <= 1'b0;
-        if(counter==18) begin
+        if(counter==30) begin
             counter <= 0;
             strobe <= 1'b1;
             hack_clk <= ~hack_clk;

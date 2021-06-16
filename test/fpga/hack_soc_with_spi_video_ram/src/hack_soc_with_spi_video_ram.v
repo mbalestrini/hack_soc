@@ -63,17 +63,19 @@ wire RAM_SIO3;
 // localparam  ROM_FILE = "../../../hack_programs/FillVram_to16390.hack8";
 // localparam  ROM_FILE = "../../../hack_programs/FillVram_to24574.hack8";
 // localparam  ROM_FILE = "../../../hack_programs/Pong.hack8";
-// localparam  ROM_FILE = "../../../hack_programs/some_pre_game_test.hack8"; //250
+// localparam  ROM_FILE = "../../../hack_programs/some_pre_game_test.hack8", FILE_LINES = 250;
 // localparam  ROM_FILE = "../../../hack_programs/beatles_by_Diogo.hack8"; //31980
-localparam  ROM_FILE = "../../../hack_programs/terminal2.hack8", FILE_LINES = 973;
+// localparam  ROM_FILE = "../../../hack_programs/terminal2.hack8", FILE_LINES = 973;
+// localparam  ROM_FILE = "../../../hack_programs/test_gpio.hack8", FILE_LINES = 16;
 // localparam  ROM_FILE = "../../../hack_programs/fill_screen_on_key.hack8"; //101
-// localparam  ROM_FILE = "../../../hack_programs/dibuja_esquinas.hack8", FILE_LINES = 110;
+localparam  ROM_FILE = "../../../hack_programs/dibuja_esquinas.hack8", FILE_LINES = 110;
 // localparam	FILE_LINES = 973; //250; //96;
 
 localparam WORD_WIDTH = 16;
 localparam  INSTRUCTION_WIDTH = 16;
 localparam  ROM_ADDRESS_WIDTH = 16;
-localparam HACK_GPIO_WIDTH = 16;
+localparam HACK_GPIO_I_WIDTH = 4;
+localparam HACK_GPIO_O_WIDTH = 4;
 
 
 wire debounced_btn1;
@@ -295,7 +297,8 @@ assign vram_sio3_i = VRAM_SIO3;
 
 
 wire hack_external_reset;
-wire [HACK_GPIO_WIDTH-1:0] gpio;
+reg [HACK_GPIO_I_WIDTH-1:0] gpio_i;
+wire [HACK_GPIO_O_WIDTH-1:0] gpio_o;
 // wire [15:0] debug_pc;
 wire keycode;
 
@@ -373,7 +376,8 @@ hack_soc soc(
 	.keycode(keycode),
 
 	// GPIO
-	.gpio(gpio)
+	.gpio_i(gpio_i),
+	.gpio_o(gpio_o)
 
 
 	// DEBUG	
@@ -426,12 +430,19 @@ always @(posedge clk) begin
 end
 
 
+always @(posedge clk ) begin
+	gpio_i[0] <= debounced_btn1;
+	gpio_i[1] <= debounced_btn3;
+
+end
 
 // assign {LED5, LED4, LED3, LED2} = debug_gpio[3:0];
 // assign {LED5, LED4, LED3, LED2} = gpio[3:0];
 
-assign LEDR_N = ~gpio[0];
-assign LEDG_N = ~gpio[1];
+assign LEDR_N = ~gpio_o[0];
+assign LEDG_N = ~gpio_o[1];
+
+
 // assign LED1 = !ready_to_start | debug_pc[0];
 
 // assign FLASH_SSB = gpio[0];
