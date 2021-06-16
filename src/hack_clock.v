@@ -5,10 +5,13 @@ module hack_clock(
     input clk,
     input reset, 
     output reg hack_clk,
-    output reg strobe
+    output reg strobe,
+    output going_to_rise
 );
 
-reg [5:0] counter;
+reg [6:0] counter;
+
+assign going_to_rise = counter==32 && ~hack_clk; 
 
 always @(posedge clk) begin
 
@@ -20,7 +23,7 @@ always @(posedge clk) begin
     end else begin
         counter <= counter + 1'b1;
         strobe <= 1'b0;
-        if(counter==30) begin
+        if(counter==34) begin
             counter <= 0;
             strobe <= 1'b1;
             hack_clk <= ~hack_clk;

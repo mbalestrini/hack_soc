@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Tue Jun 15 19:08:52 2021
+[*] Wed Jun 16 07:21:28 2021
 [*]
 [dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_bug_instructions.vcd"
-[dumpfile_mtime] "Tue Jun 15 19:03:24 2021"
-[dumpfile_size] 821000
+[dumpfile_mtime] "Wed Jun 16 07:20:06 2021"
+[dumpfile_size] 1314622
 [savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_bug_instructions.gtwk"
-[timestart] 6806000000
+[timestart] 22801000000
 [size] 1920 1147
 [pos] -1 -1
-*-30.000000 8260000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-28.000000 23470000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test_hack_soc_bug_instructions.
 [treeopen] test_hack_soc_bug_instructions.soc.
 [treeopen] test_hack_soc_bug_instructions.soc.cpu.
@@ -23,6 +23,7 @@ test_hack_soc_bug_instructions.reset
 test_hack_soc_bug_instructions.soc.rom_loading_process
 test_hack_soc_bug_instructions.soc.hack_reset
 test_hack_soc_bug_instructions.soc.hack_clk
+test_hack_soc_bug_instructions.soc.hack_clk_going_to_rise
 test_hack_soc_bug_instructions.soc.hack_clk_strobe
 @22
 test_hack_soc_bug_instructions.soc.hack_pc[14:0]
@@ -38,9 +39,7 @@ test_hack_soc_bug_instructions.soc.hack_writeM
 @22
 test_hack_soc_bug_instructions.soc.hack_inM[15:0]
 test_hack_soc_bug_instructions.soc.hack_outM[15:0]
-@23
 test_hack_soc_bug_instructions.soc.cpu.areg_in[15:0]
-@22
 test_hack_soc_bug_instructions.soc.cpu.areg_out[15:0]
 @28
 test_hack_soc_bug_instructions.soc.cpu.areg_load
@@ -62,10 +61,20 @@ test_hack_soc_bug_instructions.soc.ram_encoder_0.sram_sck
 test_hack_soc_bug_instructions.soc.ram_encoder_0.address[14:0]
 test_hack_soc_bug_instructions.ram.AddrRegister[16:0]
 @2028
-^2 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_2_states.gtkw
+^2 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_sram_encoder_states.gtkw
 test_hack_soc_bug_instructions.soc.ram_encoder_0.current_state[2:0]
 @28
 test_hack_soc_bug_instructions.soc.ram_encoder_0.request
+test_hack_soc_bug_instructions.soc.ram_step1_write_request
+test_hack_soc_bug_instructions.soc.ram_step2_read_request
+@29
+test_hack_soc_bug_instructions.soc.ram_encoder_0.toggled_sram_sck
+@28
+test_hack_soc_bug_instructions.soc.synch_hack_writeM
+@22
+test_hack_soc_bug_instructions.soc.synch_hack_outM[15:0]
+@28
+test_hack_soc_bug_instructions.soc.ram_encoder_0.request_write
 @22
 test_hack_soc_bug_instructions.soc.ram_encoder_0.data_out[15:0]
 test_hack_soc_bug_instructions.soc.ram_encoder_0.data_in[15:0]

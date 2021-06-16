@@ -21,17 +21,18 @@ module hack_soc_with_screen (
 // localparam  ROM_FILE = "../hack_programs/FillVram_to16390.hack8";
 // localparam  ROM_FILE = "../hack_programs/FillVram_to24574.hack8";
 //  localparam  ROM_FILE = "../../hack_programs/dibuja_esquinas_sin_clear.hack8", FILE_LINES = 110;
-//localparam  ROM_FILE = "../../hack_programs/terminal2.hack8", FILE_LINES = 1000;
+localparam  ROM_FILE = "../../hack_programs/terminal2.hack8", FILE_LINES = 1000;
 // localparam  ROM_FILE = "../../hack_programs/beatles_by_Diogo.hack8", FILE_LINES = 31981;
 // localparam  ROM_FILE = "../../hack_programs/beatles_by_Diogo_loop.hack8", FILE_LINES = 31981;
- localparam  ROM_FILE = "../../hack_programs/Pong.hack8", FILE_LINES = 54967;
+//  localparam  ROM_FILE = "../../hack_programs/Pong.hack8", FILE_LINES = 54967;
 
 
 // localparam	FILE_LINES = 100;
 
 localparam  INSTRUCTION_WIDTH = 16;
 localparam  ROM_ADDRESS_WIDTH = 16;
-localparam HACK_GPIO_WIDTH = 16;
+localparam HACK_GPIO_I_WIDTH = 4;
+localparam HACK_GPIO_O_WIDTH = 4;
 
 
 // ROM Loading Lines
@@ -157,7 +158,8 @@ reg hack_external_reset;
 wire display_hsync;
 wire display_vsync;
 wire display_rgb;
-wire [HACK_GPIO_WIDTH-1:0] gpio;
+wire [HACK_GPIO_I_WIDTH-1:0] gpio_i;
+wire [HACK_GPIO_O_WIDTH-1:0] gpio_o;
 
 wire [7:0] keycode;
 
@@ -235,7 +237,8 @@ hack_soc soc(
 	.keycode(keycode),
 
 	// GPIO
-	.gpio(gpio)
+	.gpio_i(gpio_i),
+	.gpio_o(gpio_o)
 
 
 	// .debug_pc(debug_pc),

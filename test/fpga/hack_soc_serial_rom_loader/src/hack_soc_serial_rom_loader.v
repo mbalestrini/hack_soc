@@ -63,7 +63,8 @@ module hack_soc_serial_rom_loader (
 localparam WORD_WIDTH = 16;
 localparam  INSTRUCTION_WIDTH = 16;
 localparam  ROM_ADDRESS_WIDTH = 16;
-localparam HACK_GPIO_WIDTH = 16;
+localparam HACK_GPIO_I_WIDTH = 4;
+localparam HACK_GPIO_O_WIDTH = 4;
 
 
 wire debounced_btn1;
@@ -280,7 +281,8 @@ assign vram_sio3_i = VRAM_SIO3;
 
 wire reset;
 reg hack_external_reset;
-wire [HACK_GPIO_WIDTH-1:0] gpio;
+reg [HACK_GPIO_I_WIDTH-1:0] gpio_i;
+wire [HACK_GPIO_O_WIDTH-1:0] gpio_o;
 // wire [15:0] debug_pc;
 wire [7:0] keycode;
 
@@ -359,7 +361,8 @@ hack_soc soc(
 	.keycode(keycode),
 
 	// GPIO
-	.gpio(gpio)
+	.gpio_i(gpio_i),
+	.gpio_o(gpio_o)
 
 
 	// DEBUG	
@@ -465,8 +468,8 @@ end
 // assign {LED5, LED4, LED3, LED2} = debug_gpio[3:0];
 // assign {LED5, LED4, LED3, LED2} = gpio[3:0];
 
-assign LEDR_N = ~gpio[0];
-assign LEDG_N = ~gpio[1];
+assign LEDR_N = ~gpio_o[0];
+assign LEDG_N = ~gpio_o[1];
 // assign LED1 = !ready_to_start | debug_pc[0];
 
 // assign FLASH_SSB = gpio[0];

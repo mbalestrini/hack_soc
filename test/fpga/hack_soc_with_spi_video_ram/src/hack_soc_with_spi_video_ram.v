@@ -65,10 +65,10 @@ wire RAM_SIO3;
 // localparam  ROM_FILE = "../../../hack_programs/Pong.hack8";
 // localparam  ROM_FILE = "../../../hack_programs/some_pre_game_test.hack8", FILE_LINES = 250;
 // localparam  ROM_FILE = "../../../hack_programs/beatles_by_Diogo.hack8"; //31980
-// localparam  ROM_FILE = "../../../hack_programs/terminal2.hack8", FILE_LINES = 973;
+localparam  ROM_FILE = "../../../hack_programs/terminal2.hack8", FILE_LINES = 973;
 // localparam  ROM_FILE = "../../../hack_programs/test_gpio.hack8", FILE_LINES = 16;
 // localparam  ROM_FILE = "../../../hack_programs/fill_screen_on_key.hack8"; //101
-localparam  ROM_FILE = "../../../hack_programs/dibuja_esquinas.hack8", FILE_LINES = 110;
+// localparam  ROM_FILE = "../../../hack_programs/dibuja_esquinas.hack8", FILE_LINES = 110;
 // localparam	FILE_LINES = 973; //250; //96;
 
 localparam WORD_WIDTH = 16;

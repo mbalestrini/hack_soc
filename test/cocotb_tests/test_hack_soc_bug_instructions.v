@@ -13,7 +13,7 @@ module test_hack_soc_bug_instructions (
 // localparam  ROM_FILE = "../hack_programs/FillVram_to16390.hack8";
 // localparam  ROM_FILE = "../hack_programs/FillVram_to24574.hack8";
 // localparam  ROM_FILE = "../hack_programs/dibuja_esquinas_sin_clear.hack8";
-localparam  ROM_FILE = "../hack_programs/bug_instructions.hack8", FILE_LINES = 40;
+localparam  ROM_FILE = "../hack_programs/bug_instructions.hack8", FILE_LINES = 52;
 
 
 // localparam	FILE_LINES = 100;
@@ -241,12 +241,12 @@ hack_soc soc(
 	.rom_loader_sck(rom_loader_sck),
 	.rom_loader_data(rom_loader_data),
 	// outputs
-	.rom_loader_ack(rom_loader_ack),
+	.rom_loader_ack(rom_loader_ack)
 	
 
 
 	// GPIO
-	.gpio(gpio)
+	// .gpio(gpio)
 
 	// DEBUG	
 	// .debug_pc(debug_pc)

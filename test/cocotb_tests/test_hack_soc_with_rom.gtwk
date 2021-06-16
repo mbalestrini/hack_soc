@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.86 (w)1999-2017 BSI
-[*] Tue Jun 15 15:49:11 2021
+[*] Wed Jun 16 05:42:23 2021
 [*]
 [dumpfile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_with_rom.vcd"
-[dumpfile_mtime] "Tue Jun 15 15:48:47 2021"
-[dumpfile_size] 606269
+[dumpfile_mtime] "Wed Jun 16 05:41:41 2021"
+[dumpfile_size] 770031
 [savefile] "/home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/test_hack_soc_with_rom.gtwk"
-[timestart] 4672000000
+[timestart] 6225000000
 [size] 1920 1147
 [pos] -1 -1
-*-28.000000 5171000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-30.000000 9516000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] test_hack_soc_with_rom.
 [treeopen] test_hack_soc_with_rom.soc.
 [treeopen] test_hack_soc_with_rom.soc.cpu.
@@ -54,19 +54,32 @@ test_hack_soc_with_rom.soc.cpu.dreg_in[15:0]
 @800200
 -RAM
 @28
+test_hack_soc_with_rom.soc.ram_step1_write_request
+test_hack_soc_with_rom.soc.ram_step2_read_request
+test_hack_soc_with_rom.soc.ram_encoder_0.toggled_sram_sck
 test_hack_soc_with_rom.soc.ram_encoder_0.request
-@23
-test_hack_soc_with_rom.soc.ram_encoder_0.address[14:0]
+test_hack_soc_with_rom.soc.ram_encoder_0.request_write
 @22
+test_hack_soc_with_rom.soc.ram_encoder_0.request_address[14:0]
+test_hack_soc_with_rom.soc.ram_encoder_0.request_data_out[15:0]
+@28
+test_hack_soc_with_rom.soc.ram_encoder_0.busy
+@22
+test_hack_soc_with_rom.soc.ram_encoder_0.address[14:0]
 test_hack_soc_with_rom.ram.AddrRegister[16:0]
 @28
+test_hack_soc_with_rom.ram.CS_N
 test_hack_soc_with_rom.ram.SCK
 @2028
-^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_2_states.gtkw
+^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_sram_encoder_states.gtkw
 test_hack_soc_with_rom.soc.ram_encoder_0.current_state[2:0]
 @22
 test_hack_soc_with_rom.soc.ram_encoder_0.data_in[15:0]
 test_hack_soc_with_rom.soc.ram_encoder_0.data_out[15:0]
+@28
+test_hack_soc_with_rom.soc.synch_hack_writeM
+@22
+test_hack_soc_with_rom.soc.synch_hack_outM[15:0]
 @c00200
 -mem
 @22
@@ -90,10 +103,10 @@ test_hack_soc_with_rom.ram.MemoryByte0000F[7:0]
 -mem
 @1000200
 -RAM
-@800200
+@c00200
 -ROM
 @2028
-^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_2_states.gtkw
+^2 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_2_states.gtkw
 test_hack_soc_with_rom.soc.rom_encoder_0.current_state[2:0]
 @c00200
 -mem
@@ -110,17 +123,19 @@ test_hack_soc_with_rom.rom.MemoryByte00008[7:0]
 test_hack_soc_with_rom.rom.MemoryByte00009[7:0]
 @1401200
 -mem
-@1000200
 -ROM
 @28
 test_hack_soc_with_rom.rom.CS_N
+@29
+test_hack_soc_with_rom.soc.rom_encoder_0.request
+@22
+test_hack_soc_with_rom.soc.rom_encoder_0.request_address[14:0]
+@28
 test_hack_soc_with_rom.soc.rom_encoder_0.sram_sck
 @2028
-^1 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_2_states.gtkw
+^2 /home/videogamo/Work/ZeroToAsic_Course/hack_computer_project/test/cocotb_tests/filter_spi_video_ram_2_states.gtkw
 test_hack_soc_with_rom.soc.ram_encoder_0.current_state[2:0]
 @22
-test_hack_soc_with_rom.soc.rom_encoder_0.state_counter[6:0]
-test_hack_soc_with_rom.soc.rom_encoder_0.state_sram_clk_counter[4:0]
 test_hack_soc_with_rom.soc.ram_encoder_0.data_in[15:0]
 test_hack_soc_with_rom.soc.ram_encoder_0.data_out[15:0]
 @28

@@ -15,4 +15,12 @@ A=D+A
 AMD=M+1
 @1000
 D=-1
-D+1;JEQ
+D+1;JNE
+@5
+M=0
+@3
+AM=M-1
+AM=M+1
+(LOOP)
+@LOOP
+0;JMP

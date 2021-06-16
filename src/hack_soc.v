@@ -96,11 +96,13 @@ reg rom_loading_process;
 
 
 wire hack_clk_strobe;
+wire hack_clk_going_to_rise;
 hack_clock hack_clock_0(
 	.clk(clk),
 	.reset(reset),
 	.hack_clk(hack_clk),
-	.strobe(hack_clk_strobe)
+	.strobe(hack_clk_strobe),
+	.going_to_rise(hack_clk_going_to_rise)
 );
 
 
@@ -112,7 +114,7 @@ wire [WORD_WIDTH-1:0] hack_inM;
 wire [WORD_WIDTH-1:0] hack_outM;
 wire [INSTRUCTION_WIDTH-1:0] hack_instruction;
 wire [ROM_ADDRESS_WIDTH-1:0] hack_pc;
-wire hack_rom_request;
+reg hack_rom_request;
 hack_cpu cpu(
 		.clk(hack_clk), 
 		.inM(hack_inM), 
@@ -155,18 +157,48 @@ rom_stream_loader #(.DATA_WIDTH(INSTRUCTION_WIDTH), .ADDRESS_WIDTH(ROM_ADDRESS_W
 
 // inputs to spi_sram_encoder
 wire ram_request;
+reg ram_step1_write_request;
+reg ram_step2_read_request;
+
 // outputs from spi_sram_encoder
 wire ram_busy;
 wire ram_initialized;
 wire ram_write_enable;
 wire [WORD_WIDTH-1:0] ram_data_out;
 
+reg [RAM_ADDRESS_WIDTH-1:0] synch_hack_addressM;
 reg synch_hack_writeM;
 reg [WORD_WIDTH-1:0] synch_hack_outM;
 
-always @(posedge hack_clk ) begin
-	synch_hack_writeM <= hack_writeM;
-	synch_hack_outM <= hack_outM;
+// always @(posedge hack_clk ) begin
+// 	synch_hack_writeM <= hack_writeM;
+// 	synch_hack_outM <= hack_outM;
+// end
+
+
+
+
+always @(posedge clk ) begin
+	ram_step1_write_request <= 0;
+
+	ram_step2_read_request <= 0;
+
+	if(hack_clk_going_to_rise) begin
+		synch_hack_outM <= 0;
+		if(hack_writeM) begin
+			synch_hack_writeM <= hack_writeM;
+			synch_hack_outM <= hack_outM;
+			synch_hack_addressM <= hack_addressM;
+			ram_step1_write_request <= 1;
+		end
+	end else if(hack_clk_strobe && ~hack_clk) begin
+		ram_step1_write_request <= 0;
+		ram_step2_read_request <= 1;
+		synch_hack_writeM <= 0;
+		synch_hack_addressM <= hack_addressM;
+		synch_hack_outM <= 0;
+
+	end
 end
 
 
@@ -180,7 +212,7 @@ spi_sram_encoder #(	.WORD_WIDTH(WORD_WIDTH), .ADDRESS_WIDTH(RAM_ADDRESS_WIDTH) )
 			.busy(ram_busy),
 			.initialized(ram_initialized),
 			
-			.address(hack_addressM),
+			.address(synch_hack_addressM),
 			.write_enable(ram_write_enable),
 			.data_in(ram_data_out),
 			.data_out(synch_hack_outM),
@@ -331,8 +363,17 @@ wire mapping_is_gpio_i_address = (hack_addressM==HACK_ADDRESS_GPIO_I);
 wire mapping_is_gpio_o_address = (hack_addressM==HACK_ADDRESS_GPIO_O);
 
 
-assign ram_request = !hack_reset && ram_initialized && !ram_busy && hack_clk_strobe && hack_clk;
-assign hack_rom_request = rom_initialized && !rom_busy && hack_clk_strobe && hack_clk;
+// assign ram_request = !hack_reset && ram_initialized && !ram_busy && hack_clk_strobe && hack_clk;
+// assign ram_request = !hack_reset && ram_initialized && !ram_busy && hack_clk_strobe;
+assign ram_request = !hack_reset && ram_initialized && !ram_busy && (ram_step1_write_request || ram_step2_read_request) ;
+// assign hack_rom_request = rom_initialized && !rom_busy && hack_clk_strobe && hack_clk;
+always @(posedge clk ) begin
+	hack_rom_request <= 0;
+	if(hack_clk_strobe && ~hack_clk) begin
+		hack_rom_request <= rom_initialized && !rom_busy ;//&& hack_clk_strobe && hack_clk;	
+	end
+end
+
 assign rom_request = rom_loading_process ? rom_loader_request : hack_rom_request;
 
 assign rom_write_enable = (rom_loading_process);// && rom_loader_request);
@@ -353,6 +394,8 @@ assign hack_reset = rom_loading_process || hack_external_reset || (hack_wait_clo
 
 
 assign display_rgb = display_active ? pixel_value : 0 ;
+
+
 
 
 always @(posedge clk ) begin
