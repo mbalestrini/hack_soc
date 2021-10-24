@@ -128,10 +128,6 @@ hack_cpu cpu(
 
 
 
-wire rom_loader_load;
-wire [INSTRUCTION_WIDTH-1:0] rom_loader_data;
-wire rom_loader_sck;
-wire rom_loader_ack;
 wire rom_loader_request;
 wire [INSTRUCTION_WIDTH-1:0] rom_loader_output_data;
 wire [ROM_ADDRESS_WIDTH-1:0] rom_loader_output_address;

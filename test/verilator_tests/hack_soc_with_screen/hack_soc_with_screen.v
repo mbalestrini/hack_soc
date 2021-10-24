@@ -155,13 +155,10 @@ assign vram_sio3_i = vram_sio3;
 
 reg hack_external_reset;
 
-wire display_hsync;
-wire display_vsync;
-wire display_rgb;
 wire [HACK_GPIO_I_WIDTH-1:0] gpio_i;
 wire [HACK_GPIO_O_WIDTH-1:0] gpio_o;
 
-wire [7:0] keycode;
+// wire [7:0] keycode;
 
 hack_soc soc(
 	.clk(clk),

@@ -12,7 +12,7 @@ module rom_stream_loader#(
 	input load,
     input [DATA_WIDTH-1:0] input_data,
 	input sck,
-	output ack,
+	output reg ack,
 
 
 	// ROM nets
@@ -26,7 +26,6 @@ module rom_stream_loader#(
 
 reg writing;
 reg [ADDRESS_WIDTH-1:0] current_address;
-reg ack;
 wire rom_receive_ready;
 wire request_written;
 reg wait_fall_clk;

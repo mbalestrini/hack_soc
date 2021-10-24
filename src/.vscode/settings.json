@@ -1,0 +1,5 @@
+{
+    "verilog.linting.iverilog.runAtFileLocation": true,
+    "verilog.linting.linter": "iverilog",
+    "verilog.linting.iverilog.arguments": "-I /home/videogamo/Work/hack_soc/src, -y  /home/videogamo/Work/hack_soc/src"
+}

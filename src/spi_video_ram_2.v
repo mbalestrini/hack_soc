@@ -170,7 +170,7 @@ wire [1:0] temp_pixel_index = ~(display_hpos[1:0]);
 //                     );
 wire background = 0;
 
-wire pixel_out = display_active ? 
+assign pixel_out = display_active ? 
                 (is_active_hack_line & is_active_hack_col) ? ~read_value[temp_pixel_index] : background
                 : 0;
 
