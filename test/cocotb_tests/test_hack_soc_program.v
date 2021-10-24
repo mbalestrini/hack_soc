@@ -169,7 +169,8 @@ reg hack_external_reset;
 wire display_hsync;
 wire display_vsync;
 wire display_rgb;
-wire [HACK_GPIO_WIDTH-1:0] gpio;
+wire [HACK_GPIO_WIDTH-1:0] gpio_i;
+wire [HACK_GPIO_WIDTH-1:0] gpio_o;
 wire [15:0] debug_pc;
 
 
@@ -245,7 +246,8 @@ hack_soc soc(
 
 
 	// GPIO
-	.gpio(gpio)
+	.gpio_i(gpio_i),
+	.gpio_o(gpio_o)
 
 	// DEBUG	
 	// .debug_pc(debug_pc)
