@@ -1,5 +1,9 @@
 PROJECT_SOURCE_PATH = ../../src
 
+# COCOTB variables
+export COCOTB_REDUCED_LOG_FMT=1
+export PYTHONPATH := test:$(PYTHONPATH)
+export LIBPYTHON_LOC=$(shell cocotb-config --libpython)
 
 test_encoder_with_23LC2014_tb:
 	rm -rf sim_build/
