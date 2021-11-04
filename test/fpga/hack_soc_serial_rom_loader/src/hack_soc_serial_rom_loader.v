@@ -386,6 +386,9 @@ wire rom_loader_ack;
 reg [7:0] serial_first_byte;
 reg serial_word_idx;
 
+// 
+reg serial_rom_loading_done;
+
 wire display_rgb;
 
 assign RGB = display_rgb;
@@ -410,21 +413,34 @@ always @(posedge clk ) begin
 		rom_loader_load <= 1;
 		rom_loader_sck <= 0;
 
+		serial_rom_loading_done <= 0;
 
+		rom_loader_data <= 0;
+		
+		TEST_KEYBOARD <= 0;
+		
     end else begin
         serial_transmit <= 0;
         if(serial_received) begin
-			if(rom_loader_load==0) begin
-				rom_loader_load <= 1;
-			end
 
-			if(serial_word_idx==0) begin
-				serial_first_byte <= serial_rx_byte;
-				serial_word_idx <= 1;
-			end else  begin
-				rom_loader_data <= {serial_first_byte, serial_rx_byte};
-				rom_loader_sck <= 1;
-				serial_word_idx <= 0;
+			// Serial Loading ROM
+			if(serial_rom_loading_done==0) begin
+				if(rom_loader_load==0) begin
+					rom_loader_load <= 1;
+				end
+
+				if(serial_word_idx==0) begin
+					serial_first_byte <= serial_rx_byte;
+					serial_word_idx <= 1;
+				end else  begin
+					rom_loader_data <= {serial_first_byte, serial_rx_byte};
+					rom_loader_sck <= 1;
+					serial_word_idx <= 0;
+				end
+			end else begin
+
+				// Serial as keyboard input
+				TEST_KEYBOARD <= serial_rx_byte;				
 			end
             //serial_tx_byte <= serial_rx_byte;
             //serial_transmit <= 1;
@@ -437,6 +453,7 @@ always @(posedge clk ) begin
 		end
 
 		if(strobe_btn1) begin
+			serial_rom_loading_done <= 1;
 			rom_loader_load <= 0;
 		end
     end
@@ -450,18 +467,18 @@ end
 assign keycode = TEST_KEYBOARD[7:0];
 
 reg [WORD_WIDTH-1:0] TEST_KEYBOARD;
-always @(posedge clk) begin
-	if(reset) begin
-		TEST_KEYBOARD <= 97;
-	end else begin
-		if(strobe_btn1) begin
-			TEST_KEYBOARD <= TEST_KEYBOARD + 1;
-			if(TEST_KEYBOARD>98) begin
-				TEST_KEYBOARD <= 97;
-			end	
-		end
-	end
-end
+// always @(posedge clk) begin
+// 	if(reset) begin
+// 		TEST_KEYBOARD <= 97;
+// 	end else begin
+// 		if(strobe_btn1) begin
+// 			TEST_KEYBOARD <= TEST_KEYBOARD + 1;
+// 			if(TEST_KEYBOARD>98) begin
+// 				TEST_KEYBOARD <= 97;
+// 			end	
+// 		end
+// 	end
+// end
 
 
 

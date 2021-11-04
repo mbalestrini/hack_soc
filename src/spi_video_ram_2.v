@@ -152,7 +152,7 @@ reg start_read;
 wire is_active_hack_line = ( display_vpos >= HACK_SCREEN_V_OFFSET ) && (display_vpos< (HACK_SCREEN_V_OFFSET+HACK_SCREEN_HEIGHT));
 wire is_active_hack_col = (display_hpos >= HACK_SCREEN_H_OFFSET) && (display_hpos < (HACK_SCREEN_H_OFFSET+HACK_SCREEN_WIDTH));
 // wire display_trigger_read = is_active_hack_line && (clks_before_active==CLKS_BEFORE_TRIGGER);
-wire display_trigger_read = is_active_hack_line && (clks_before_active==(CLKS_BEFORE_TRIGGER-HACK_SCREEN_H_OFFSET));
+wire display_trigger_read = initialized && is_active_hack_line && (clks_before_active==(CLKS_BEFORE_TRIGGER-HACK_SCREEN_H_OFFSET));
 
 // wire write_to_sram_ready = !busy && !fifo_empty && ($signed(clks_before_active)>$signed(CLKS_BEFORE_TRIGGER-HACK_SCREEN_H_OFFSET+24) );
 wire write_to_sram_ready = !busy && !fifo_empty ;

@@ -329,7 +329,7 @@ wire [9:0] display_hpos;
 wire [9:0] display_vpos;
 wire display_active;
 wire [9:0] display_clks_before_active;
-wire reset_display = hack_reset; //reset;
+wire reset_display = reset; //hack_reset; //reset;
 // assign display_rgb = display_hpos[2] || display_vpos[2];
 video_signal_generator_640x480 video_generator_1 (
 	//i_clk,           // base clock
@@ -389,9 +389,30 @@ assign hack_inM = (mapping_is_ram_or_vram_address) ? ram_data_out : /* ram & vra
 assign hack_reset = rom_loading_process || hack_external_reset || (hack_wait_clocks!=0) || reset || !ram_initialized || !rom_initialized || !vram_initialized;
 
 
-assign display_rgb = display_active ? pixel_value : 0 ;
+assign display_rgb = display_active ? (hack_reset ? logo_pixel : pixel_value) : 0 ;
 
 
+wire logo_pixel;
+reg [4:0] boot_loading_offset;
+
+//assign boot_loading_offset = rom_loader_data[3:0];// rom_loading_process ? rom_loader_data[9:0] : 0;
+
+always @(posedge clk ) begin
+	if(reset) begin
+		boot_loading_offset <= 0;
+	end else begin
+		if(rom_loading_process && rom_loader_sck) 
+			boot_loading_offset <= boot_loading_offset + 1;	
+	end
+end
+
+boot_logo boot_logo_1 (
+	.hpos(display_hpos),
+	.vpos(display_vpos),
+	.pixel(logo_pixel)
+	 ,	.loading_offset(boot_loading_offset)
+
+);
 
 
 always @(posedge clk ) begin
