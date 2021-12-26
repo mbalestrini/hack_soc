@@ -151,4 +151,21 @@ module hack_cpu(
 	//assign pc = pc_load ? pc_in : pc_output[ROM_ADDRESS_WIDTH-1:0];
 	assign pc = pc_output[ROM_ADDRESS_WIDTH-1:0];
 	
+
+
+	`ifdef verilator
+   	function [ROM_ADDRESS_WIDTH-1:0] get_pc;
+		// verilator public
+      	get_pc = pc;
+   	endfunction // 
+
+	function [WORD_WIDTH-1:0] get_dreg;
+		// verilator public
+      	get_dreg = dreg_out;
+   	endfunction // 
+
+	
+	`endif
+
+
 endmodule
