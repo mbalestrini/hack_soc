@@ -25,7 +25,7 @@ module vram_write_fifo #(
     output reg underrun
 );
 
-localparam FIFO_INDEX_WIDTH = 3;
+localparam FIFO_INDEX_WIDTH = 3; // 2^3 => 8. Total FIFO Memory 8x32 bits
 
 reg [(DATA_WIDTH + ADDRESS_WIDTH)-1:0] fifo_mem [0:(1<<FIFO_INDEX_WIDTH)-1];
 reg [FIFO_INDEX_WIDTH-1:0] write_pointer;
