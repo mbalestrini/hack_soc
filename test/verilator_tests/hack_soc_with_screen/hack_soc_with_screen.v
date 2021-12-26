@@ -24,7 +24,12 @@ module hack_soc_with_screen (
 localparam  ROM_FILE = "../../hack_programs/terminal2.hack8", FILE_LINES = 1000;
 // localparam  ROM_FILE = "../../hack_programs/beatles_by_Diogo.hack8", FILE_LINES = 31981;
 // localparam  ROM_FILE = "../../hack_programs/beatles_by_Diogo_loop.hack8", FILE_LINES = 31981;
-//  localparam  ROM_FILE = "../../hack_programs/Pong.hack8", FILE_LINES = 54967;
+//  localparam  ROM_FILE = "../../hack_programs/Pong.hack8", FILE_LINES = 54968;
+// localparam  ROM_FILE = "../../hack_programs/PongL.hack8", FILE_LINES = 54968;
+//localparam  ROM_FILE = "../../hack_programs/SysTest.hack8", FILE_LINES = 52205;
+// localparam  ROM_FILE = "../../hack_programs/ScreenTest.hack8", FILE_LINES = 48625;
+// localparam  ROM_FILE = "../../hack_programs/KeyboardTest.hack8", FILE_LINES = 63948;
+// localparam  ROM_FILE = "../../hack_programs/fill_screen_on_key.hack8", FILE_LINES = 109;
 
 
 // localparam	FILE_LINES = 100;

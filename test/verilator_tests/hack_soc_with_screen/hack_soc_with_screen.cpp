@@ -1,4 +1,8 @@
 #include "Vhack_soc_with_screen.h"
+#include "Vhack_soc_with_screen_hack_soc_with_screen.h"
+#include "Vhack_soc_with_screen_hack_soc.h"
+#include "Vhack_soc_with_screen_hack_cpu.h"
+
 #include "verilated.h"
 
 #include "verilated_vcd_c.h"
@@ -9,7 +13,7 @@
 
 #include <iostream>
 #include <string>
-
+#include <iomanip>
 
 
 #define SCREEN_WIDTH 640
@@ -83,7 +87,9 @@ void process_screen(Uint32 *pixels) {
 		if(top->display_vsync==1 && screen.in_vsync) {
 			// Finish vsync
 			screen.in_vsync = false;
-			std::cout << "VYSNC" << std::endl;
+			std::cout << "VYSNC" << "  PC:" << std::setw(10) << top->hack_soc_with_screen->soc->cpu->get_pc() << "    DREG:" << std::setw(10) << top->hack_soc_with_screen->soc->cpu->get_dreg() << " --- \r" << std::flush;
+
+			
 			vsync_happened  = true;
 			break;
 		}
