@@ -25,9 +25,9 @@ module vram_write_fifo #(
     output reg underrun
 );
 
-localparam FIFO_INDEX_WIDTH = 3; // 2^3 => 8. Total FIFO Memory 8x32 bits
+localparam FIFO_INDEX_WIDTH = 5; // 2^5 => 32. Total FIFO Memory 32x32 bits
 
-reg [(DATA_WIDTH + ADDRESS_WIDTH)-1:0] fifo_mem [0:(1<<FIFO_INDEX_WIDTH)-1];
+// reg [(DATA_WIDTH + ADDRESS_WIDTH)-1:0] fifo_mem [0:(1<<FIFO_INDEX_WIDTH)-1];
 reg [FIFO_INDEX_WIDTH-1:0] write_pointer;
 reg [FIFO_INDEX_WIDTH-1:0] read_pointer;
 wire [FIFO_INDEX_WIDTH-1:0] next_pointer;
@@ -66,15 +66,36 @@ always @(posedge clk ) begin
     end
 end
 
+
+wire [(DATA_WIDTH + ADDRESS_WIDTH)-1:0] dffrf_DA;
+
+DFFRF_2R1W dffrf(
+    .CLK(clk),
+    .DA(dffrf_DA),
+    // .DB(),
+    .DW( {write_address, write_data} ),
+
+    .RA(read_pointer),
+    .RB(5'b0),
+    .RW(write_pointer),
+
+    .WE(1'b1)
+);
+
+
+
+
+
 // ** read_address & read_data ** //
 //always @(posedge clk ) begin
-assign {read_address, read_data} = fifo_mem[read_pointer];    
+assign {read_address, read_data} = dffrf_DA;    
+// assign {read_address, read_data} = fifo_mem[read_pointer];    
 //end
 
 // ** fifo_mem ** //
-always @(posedge clk ) begin
-    fifo_mem[write_pointer] <= {write_address, write_data};    
-end
+// always @(posedge clk ) begin
+    // fifo_mem[write_pointer] <= {write_address, write_data};    
+// end
 
 
 // ** items_count ** //

@@ -108,7 +108,7 @@ reg fifo_write_request;
 reg [VRAM_ADDRESS_WIDTH-1:0] fifo_in_address;
 reg [WORD_WIDTH-1:0] fifo_in_data;
 
-vram_write_fifo #(.DATA_WIDTH(WORD_WIDTH), .ADDRESS_WIDTH(VRAM_ADDRESS_WIDTH)) 
+vram_write_fifo #(.DATA_WIDTH(16), .ADDRESS_WIDTH(16)) 
     write_fifo (
         .clk(clk), 
         .reset(reset),
@@ -550,6 +550,7 @@ end
                 COVER_STATE_READ: cover(current_state==state_read);
 
                 COVER_FINISH_READ: cover($past(current_state)==state_read && current_state==state_idle);
+
             end
 
         end        

@@ -14,10 +14,11 @@ task_cover: depth 60
 smtbmc
 
 [script]
-read -formal vram_write_fifo.v
+read -formal vram_write_fifo.v DFFRF_2R1W.v
 prep -top vram_write_fifo
 
 [files]
 ../src/vram_write_fifo.v
+../src/DFFRF_2R1W.v
 
 

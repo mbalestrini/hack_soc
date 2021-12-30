@@ -17,7 +17,8 @@ smtbmc
 
 [script]
 read -formal hack_soc.v
-read -sv dmux8way.v hack_alu.v hack_clock.v hack_cpu.v pc.v register.v spi_sram_encoder.v rom_stream_loader.v video_signal_generator_640x480.v spi_video_ram_2.v vram_write_fifo.v boot_logo.v
+read -sv dmux8way.v hack_alu.v hack_clock.v hack_cpu.v pc.v register.v spi_sram_encoder.v rom_stream_loader.v video_signal_generator_640x480.v spi_video_ram_2.v vram_write_fifo.v boot_logo.v 
+read -formal DFFRF_2R1W.v
 prep -top hack_soc
 
 [files]
@@ -34,6 +35,7 @@ prep -top hack_soc
 ../src/spi_video_ram_2.v
 ../src/vram_write_fifo.v
 ../src/boot_logo.v
+../src/DFFRF_2R1W.v
 includes/params.v ../src/includes/params.v 
 
 

@@ -20,6 +20,7 @@ smtbmc
 [script]
 read -formal spi_video_ram_2_with_video_generator.v
 read -sv spi_video_ram_2.v video_signal_generator_640x480.v vram_write_fifo.v
+read -formal DFFRF_2R1W.v
 prep -top spi_video_ram_2_with_video_generator
 
 [files]
