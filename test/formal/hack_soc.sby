@@ -36,6 +36,6 @@ prep -top hack_soc
 ../src/vram_write_fifo.v
 ../src/boot_logo.v
 ../src/DFFRF_2R1W.v
-includes/params.v ../src/includes/params.v 
+
 
 

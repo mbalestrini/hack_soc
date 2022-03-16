@@ -3,7 +3,15 @@
 
 // Mienstras no esta leyendo la linea puede escribir. deberia cortas a tiempos para empezar antes que se necesite el primer dato
 
-module spi_video_ram_2 (
+module spi_video_ram_2 #(
+    parameter WORD_WIDTH = 0,
+    parameter VRAM_ADDRESS_WIDTH = 0,
+    parameter SRAM_ADDRESS_WIDTH = 0,
+    parameter HACK_SCREEN_WIDTH = 0,
+    parameter HACK_SCREEN_HEIGHT = 0,
+    parameter HACK_SCREEN_H_OFFSET = 0,
+    parameter HACK_SCREEN_V_OFFSET = 0
+)(
     input wire clk,
 	input wire reset, 	
 
@@ -61,7 +69,6 @@ module spi_video_ram_2 (
 `define SDIMODE   2'b01                                 // SDI I/O mode
 `define SQIMODE   2'b10                                 // SQI I/O mode 
 
-`include "includes/params.v"
 
 // 23LC1024 Address width
 localparam signed CLKS_BEFORE_TRIGGER = 46; //42;  // 26? if we use the fast version of the read instruction  

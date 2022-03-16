@@ -24,4 +24,3 @@ prep -top spi_video_ram_2
 ../src/spi_video_ram_2.v
 ../src/vram_write_fifo.v
 ../src/DFFRF_2R1W.v
-includes/params.v ../src/includes/params.v 

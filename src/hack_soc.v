@@ -86,8 +86,37 @@ module hack_soc (
 
 	);
 
-// Include main project parameters
-`include "includes/params.v"
+
+//*******************************************************************************************
+// Main project parameters 
+//*******************************************************************************************
+parameter WORD_WIDTH = 16; 
+parameter RAM_WORDS = 32768; // 2^A_WIDTH
+parameter RAM_ADDRESS_WIDTH = $clog2(RAM_WORDS);
+parameter ROM_WORDS = 32768; // 2^A_WIDTH
+parameter ROM_ADDRESS_WIDTH = $clog2(ROM_WORDS);
+parameter INSTRUCTION_WIDTH = WORD_WIDTH;
+parameter VRAM_WORDS = 8192;
+parameter VRAM_ADDRESS_WIDTH = $clog2(VRAM_WORDS);
+
+// Address Mapping
+parameter [RAM_ADDRESS_WIDTH-1:0] HACK_ADDRESS_VRAM_START = 16384;
+parameter [RAM_ADDRESS_WIDTH-1:0 ]HACK_ADDRESS_VRAM_END = 24575;
+parameter [RAM_ADDRESS_WIDTH-1:0] HACK_ADDRESS_KEYBOARD = 'h6000;
+parameter [RAM_ADDRESS_WIDTH-1:0] HACK_ADDRESS_GPIO_I = 'h6001;
+parameter [RAM_ADDRESS_WIDTH-1:0] HACK_ADDRESS_GPIO_O = 'h6002;
+
+parameter SRAM_ADDRESS_WIDTH = 24;
+
+parameter HACK_GPIO_WIDTH = 8;
+parameter HACK_GPIO_I_WIDTH = 4;
+parameter HACK_GPIO_O_WIDTH = 4;
+
+parameter HACK_SCREEN_WIDTH = 512;
+parameter HACK_SCREEN_HEIGHT = 256;
+parameter HACK_SCREEN_H_OFFSET = 64;//64;
+parameter HACK_SCREEN_V_OFFSET = 112;
+
 
 
 
@@ -115,7 +144,12 @@ wire [WORD_WIDTH-1:0] hack_outM;
 wire [INSTRUCTION_WIDTH-1:0] hack_instruction;
 wire [ROM_ADDRESS_WIDTH-1:0] hack_pc;
 reg hack_rom_request;
-hack_cpu cpu(
+hack_cpu #(
+		.WORD_WIDTH(WORD_WIDTH),
+		.INSTRUCTION_WIDTH(INSTRUCTION_WIDTH),
+		.RAM_ADDRESS_WIDTH(RAM_ADDRESS_WIDTH),
+		.ROM_ADDRESS_WIDTH(ROM_ADDRESS_WIDTH)
+	) cpu (
 		.clk(hack_clk), 
 		.inM(hack_inM), 
 		.instruction(hack_instruction), 
@@ -280,7 +314,15 @@ wire pixel_value;
 wire vram_initialized;
 wire vram_write_enable;
 wire [VRAM_ADDRESS_WIDTH-1:0] vram_write_address;
-spi_video_ram_2 spi_video_ram_1 (
+spi_video_ram_2 #(
+	.WORD_WIDTH(WORD_WIDTH),
+    .VRAM_ADDRESS_WIDTH(VRAM_ADDRESS_WIDTH),
+    .SRAM_ADDRESS_WIDTH(SRAM_ADDRESS_WIDTH),
+    .HACK_SCREEN_WIDTH(HACK_SCREEN_WIDTH),
+    .HACK_SCREEN_HEIGHT(HACK_SCREEN_HEIGHT),
+    .HACK_SCREEN_H_OFFSET(HACK_SCREEN_H_OFFSET),
+    .HACK_SCREEN_V_OFFSET(HACK_SCREEN_V_OFFSET)
+) spi_video_ram_1 (
     .clk(clk),
 	.reset(reset), 	
 

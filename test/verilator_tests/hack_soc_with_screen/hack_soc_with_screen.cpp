@@ -1,7 +1,10 @@
 #include "Vhack_soc_with_screen.h"
 #include "Vhack_soc_with_screen_hack_soc_with_screen.h"
 #include "Vhack_soc_with_screen_hack_soc.h"
-#include "Vhack_soc_with_screen_hack_cpu.h"
+// #include "Vhack_soc_with_screen_hack_cpu.h"
+// The name of this .h file changed, I guess because now the hack_cpu module takes parameters? 
+#include "Vhack_soc_with_screen_hack_cpu__I10_Rf_RBf.h"
+
 
 #include "verilated.h"
 

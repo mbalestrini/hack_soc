@@ -1,7 +1,12 @@
 `default_nettype none
 `timescale 1ns/10ps
 
-module hack_cpu(
+module hack_cpu #(
+		parameter WORD_WIDTH = 16,
+		parameter INSTRUCTION_WIDTH = WORD_WIDTH,
+		parameter RAM_ADDRESS_WIDTH = $clog2(32768),
+		parameter ROM_ADDRESS_WIDTH = $clog2(32768)
+	)(
 		input clk, 
 		input [WORD_WIDTH-1:0] inM, 
 		input [INSTRUCTION_WIDTH-1:0] instruction, 
@@ -12,18 +17,6 @@ module hack_cpu(
 		output [ROM_ADDRESS_WIDTH-1:0] pc
 		);
 
-	// Include main project parameters
-	`include "includes/params.v"
-
-	// parameter WORD_WIDTH = 16; 
-    // parameter RAM_WORDS = 32768; // 2^A_WIDTH
-	// parameter RAM_ADDRESS_WIDTH = $clog2(RAM_WORDS);
-    // parameter ROM_WORDS = 32768; // 2^A_WIDTH
-	// parameter ROM_ADDRESS_WIDTH = $clog2(ROM_WORDS);
-	// parameter INSTRUCTION_WIDTH = WORD_WIDTH;
-	
-	
-	
 	
 	// A REG
 	wire [WORD_WIDTH-1:0] areg_in;

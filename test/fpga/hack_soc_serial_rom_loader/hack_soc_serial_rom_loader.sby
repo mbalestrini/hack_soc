@@ -35,6 +35,6 @@ src/uart.v
 ../../../src/video_signal_generator_640x480.v
 ../../../src/spi_video_ram_2.v
 ../../../src/vram_write_fifo.v
-includes/params.v ../../../src/includes/params.v 
+
 
 
