@@ -15,4 +15,4 @@ _next_commit_message_.txt
 obj_dir
 *.vvp
 
-
+.vscode/
